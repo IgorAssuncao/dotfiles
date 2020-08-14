@@ -1,2 +1,0 @@
-colorscheme panda
-" color panda

@@ -44,7 +44,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
-Plug 'markvincze/panda-vim'
 
 """""" Syntax highlighting js
 " Plug 'pangloss/vim-javascript'
