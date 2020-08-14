@@ -43,6 +43,7 @@ Plug 'jiangmiao/auto-pairs'
 """""" Themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 
 """""" Syntax highlighting js
