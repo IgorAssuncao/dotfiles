@@ -24,3 +24,5 @@ function! s:show_documentation()
       call CocAction('doHover')
     endif
 endfunction
+
+inoremap <silent><expr> <C-Space> coc#refresh()
