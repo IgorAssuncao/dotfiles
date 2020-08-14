@@ -1,6 +1,3 @@
-" airline_theme config
-let g:airline_theme = 'dark'
-
 " airline config
 let g:airline_extensios = ['branch', 'coc']
 let g:airline#extensions#ale#enabled = 1

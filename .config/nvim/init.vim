@@ -19,11 +19,12 @@ call SourceFileIfExists('general/mappings.vim')
 call SourceFileIfExists('vim-plug/plugins.vim')
 
 " Plugins configs
+call SourceFileIfExists('plugins-config/airline.vim')
 call SourceFileIfExists('plugins-config/ale.vim')
 call SourceFileIfExists('plugins-config/coc.vim')
 call SourceFileIfExists('plugins-config/nerdtree.vim')
 
 " Themes
-call SourceFileIfExists('themes/airline.vim')
-call SourceFileIfExists('themes/onedark.vim')
+call SourceFileIfExists('themes/one.vim')
+" call SourceFileIfExists('themes/onedark.vim')
 " call SourceFileIfExists('themes/lucid.vim')
