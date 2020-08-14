@@ -25,4 +25,6 @@ call SourceFileIfExists('plugins-config/nerdtree.vim')
 
 " Themes
 call SourceFileIfExists('themes/airline.vim')
-call SourceFileIfExists('themes/onedark.vim')
+" call SourceFileIfExists('themes/onedark.vim')
+call SourceFileIfExists('themes/panda.vim')
+" call SourceFileIfExists('themes/lucid.vim')

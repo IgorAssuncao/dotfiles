@@ -40,12 +40,11 @@ Plug 'editorconfig/editorconfig-vim'
 """""" Auto insert quotes, parentheses, brackets, braces
 Plug 'jiangmiao/auto-pairs'
 
-""" Onedark theme
-Plug 'joshdick/onedark.vim'
-
 """""" Themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'joshdick/onedark.vim'
+Plug 'markvincze/panda-vim'
 
 """""" Syntax highlighting js
 " Plug 'pangloss/vim-javascript'

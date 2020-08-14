@@ -1,4 +1,3 @@
-let g:onedark_termcolors = 256
+let g:onedark_termcolors = 16
 
-" Theme
 colorscheme onedark
