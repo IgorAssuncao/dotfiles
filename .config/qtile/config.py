@@ -37,7 +37,8 @@ GROUPS = "12345678"
 MOD = "mod4"
 TERMINAL = "kitty"
 BROWSER = "firefox-developer-edition"
-FILEMANAGER = "pcmanfm"
+FILE_MANAGER_TERM = "ranger"
+FILE_MANAGER_GUI = "pcmanfm"
 
 keys = [
     # Switch between windows in current stack pane
@@ -83,8 +84,11 @@ keys = [
     # Spawn browser
     Key([MOD], "b", lazy.spawn(BROWSER)),
 
-    # Spawn File Manager
-    Key([MOD], "F3", lazy.spawn(FILEMANAGER)),
+    # Spawn Ranger (Terminal File Manager)
+    Key([MOD], "F2", lazy.spawn(FILE_MANAGER_TERM)),
+
+    # Spawn pcmanfm (GUI File Manager)
+    Key([MOD], "F3", lazy.spawn(FILE_MANAGER_GUI)),
 
     # Spawn pavucontrol
     Key([MOD, "control", "shift"], "m", lazy.spawn("pavucontrol")),
