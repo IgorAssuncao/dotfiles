@@ -40,6 +40,9 @@ Plug 'editorconfig/editorconfig-vim'
 """""" Auto insert quotes, parentheses, brackets, braces
 Plug 'jiangmiao/auto-pairs'
 
+"""""" Git
+Plug 'tpope/vim-fugitive'
+
 """""" Themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

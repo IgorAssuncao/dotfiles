@@ -23,6 +23,7 @@ call SourceFileIfExists('plugins-config/airline.vim')
 call SourceFileIfExists('plugins-config/ale.vim')
 call SourceFileIfExists('plugins-config/coc.vim')
 call SourceFileIfExists('plugins-config/nerdtree.vim')
+call SourceFileIfExists('plugins-config/fugitive.vim')
 
 " Themes
 call SourceFileIfExists('themes/one.vim')
