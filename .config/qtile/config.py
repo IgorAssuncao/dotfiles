@@ -85,7 +85,7 @@ keys = [
     Key([MOD], "b", lazy.spawn(BROWSER)),
 
     # Spawn Ranger (Terminal File Manager)
-    Key([MOD], "F2", lazy.spawn(FILE_MANAGER_TERM)),
+    Key([MOD], "F2", lazy.spawn(f"{TERMINAL} -e {FILE_MANAGER_TERM}")),
 
     # Spawn pcmanfm (GUI File Manager)
     Key([MOD], "F3", lazy.spawn(FILE_MANAGER_GUI)),
