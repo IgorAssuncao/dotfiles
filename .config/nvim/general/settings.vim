@@ -22,6 +22,11 @@ set nobackup
 set incsearch
 set omnifunc=syntaxcomplete#Complete
 " set omnifunc=ale#completion#OmniFunc
+" Disables automatic commenting on new line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Splits open at the bottom and right
+set splitbelow splitright
 
 set background=dark
 if (has("termguicolors"))
