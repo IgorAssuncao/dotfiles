@@ -37,7 +37,7 @@ GROUPS = "12345678"
 MOD = "mod4"
 TERMINAL = "kitty"
 BROWSER = "firefox-developer-edition"
-FILEMANAGER = "pacmanfm"
+FILEMANAGER = "pcmanfm"
 
 keys = [
     # Switch between windows in current stack pane
