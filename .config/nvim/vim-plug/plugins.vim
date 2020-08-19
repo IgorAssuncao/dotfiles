@@ -48,6 +48,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
+Plug 'jcherven/jummidark.vim'
 
 """""" Syntax highlighting js
 " Plug 'pangloss/vim-javascript'
