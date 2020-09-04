@@ -14,7 +14,7 @@ echo "All of these tools will be prompted to install:
   "
 echo "Do you want to continue?"
 read -p "Please, answer (y/n): " -n 1 choice && \
-  if [ $choice == "y" ]; then
+  if [ $choice != "y" ]; then
     exit 0
   fi
 
