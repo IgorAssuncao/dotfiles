@@ -91,7 +91,7 @@ keys = [
     Key([MOD], "F3", lazy.spawn(FILE_MANAGER_GUI)),
 
     # Spawn alsamixer
-    Key([MOD], "F2", lazy.spawn(f"{TERMINAL} -e alsamixer")),
+    Key([MOD], "control"], "m", lazy.spawn(f"{TERMINAL} -e alsamixer")),
 
     # Spawn pavucontrol
     Key([MOD, "control", "shift"], "m", lazy.spawn("pavucontrol")),
