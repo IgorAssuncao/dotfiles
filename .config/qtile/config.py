@@ -35,10 +35,17 @@ from typing import List  # noqa: F401
 
 GROUPS = "12345678"
 MOD = "mod4"
+SPACER = 16
 TERMINAL = "kitty"
 BROWSER = "firefox-developer-edition"
 FILE_MANAGER_TERM = "ranger"
 FILE_MANAGER_GUI = "pcmanfm"
+
+@hook.subscribe.startup
+def autostart():
+    scriptLocation = '~/system-config/.config/qtile/autostart.sh'
+    script = os.path.expanduser(scriptLocation)
+    subprocess.call([script])
 
 keys = [
     # Switch between windows in current stack pane
@@ -91,7 +98,7 @@ keys = [
     Key([MOD], "F3", lazy.spawn(FILE_MANAGER_GUI)),
 
     # Spawn alsamixer
-    Key([MOD], "control"], "m", lazy.spawn(f"{TERMINAL} -e alsamixer")),
+    Key([MOD, "control"], "m", lazy.spawn(f"{TERMINAL} -e alsamixer")),
 
     # Spawn pavucontrol
     Key([MOD, "control", "shift"], "m", lazy.spawn("pavucontrol")),
@@ -107,7 +114,7 @@ for i in groups:
         # MOD + letter of group = switch to group
         Key([MOD], i.name, lazy.group[i.name].toscreen()),
 
-        # MOD + shift + letter of group = switch to & move focused window to group
+        # MOD + control + letter of group = send window to group
         Key([MOD, "control"], i.name, lazy.window.togroup(i.name)),
 
         # MOD + shift + letter of group = switch to & move focused window to group
@@ -140,8 +147,17 @@ screens = [
             [
                 widget.GroupBox(),
                 widget.Prompt(),
+                widget.Spacer(SPACER),
                 widget.WindowName(),
+                widget.Spacer(SPACER),
                 widget.Systray(),
+                widget.Spacer(SPACER),
+                widget.CPU(),
+                widget.Spacer(SPACER),
+                widget.Memory(),
+                widget.Spacer(SPACER),
+                widget.Volume(),
+                widget.Spacer(SPACER),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p')
             ],
             24,
@@ -190,9 +206,3 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-@hook.subscribe.startup
-def autostart():
-    scriptLocation = '~/system-config/.config/qtile/autostart.sh'
-    script = os.path.expanduser(scriptLocation)
-    subprocess.call([script])
