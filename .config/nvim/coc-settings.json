@@ -3,7 +3,7 @@
   "diagnostic.displayByAle": true,
   "languageserver": {
     "terraform": {
-      "command": "terraform-lsp",
+      "command": "terraform-ls",
       "filetypes": ["terraform"],
       "initializationOptions": {}
     }
