@@ -41,11 +41,11 @@ BROWSER = "firefox-developer-edition"
 FILE_MANAGER_TERM = "ranger"
 FILE_MANAGER_GUI = "pcmanfm"
 
-# @hook.subscribe.startup
-# def autostart():
-#     scriptLocation = '~/system-config/.config/qtile/autostart.sh'
-#     script = os.path.expanduser(scriptLocation)
-#     subprocess.call([script])
+@hook.subscribe.startup
+def autostart():
+    scriptLocation = '~/system-config/.config/qtile/autostart.sh'
+    script = os.path.expanduser(scriptLocation)
+    subprocess.call([script])
 
 keys = [
     # Switch between windows in current stack pane
