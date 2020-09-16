@@ -41,11 +41,11 @@ BROWSER = "firefox-developer-edition"
 FILE_MANAGER_TERM = "ranger"
 FILE_MANAGER_GUI = "pcmanfm"
 
-@hook.subscribe.startup
-def autostart():
-    scriptLocation = '~/system-config/.config/qtile/autostart.sh'
-    script = os.path.expanduser(scriptLocation)
-    subprocess.call([script])
+# @hook.subscribe.startup
+# def autostart():
+#     scriptLocation = '~/system-config/.config/qtile/autostart.sh'
+#     script = os.path.expanduser(scriptLocation)
+#     subprocess.call([script])
 
 keys = [
     # Switch between windows in current stack pane
@@ -80,7 +80,13 @@ keys = [
     Key([MOD], "r", lazy.spawncmd()),
 
     # Spawn bmenu
+    # Bmenu allows to control multiple settings on the pc
+    # Like Package manager UI, System Information, File Manager
     Key([MOD, "control"], "b", lazy.spawn(f"{TERMINAL} -e bmenu")),
+
+    # Spawn system-menu
+    # system-menu allows to control Appearance, Network, Sound
+    Key([MOD, "control", "shift"], "b", lazy.spawn(f"{TERMINAL} -e system-menu")),
 
     # Spawn dmenu_run
     Key([MOD], "c", lazy.spawn("dmenu_run")),
