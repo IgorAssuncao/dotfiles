@@ -4,8 +4,13 @@
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
-      "filetypes": ["terraform"],
-      "initializationOptions": {}
+      "args": ["serve"],
+      "filetypes": [
+        "tf",
+        "terraform"
+      ],
+      "initializationOptions": {},
+      "settings": {}
     }
   }
 }
