@@ -10,24 +10,6 @@ set $BROWSER firefox-developer-edition
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
-new_float normal
-
-# Hide borders
-hide_edge_borders none
-
-#######################################################
-# IGOR MOD TO ALWAYS HAVE WINDOWS BORDERS
-#####################################################
-default_border pixel 3
-default_floating_border pixel 3
-
-# change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 3
-bindsym $mod+n border normal
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font xft:URWGothic-Book 10
@@ -420,6 +402,28 @@ bindsym $mod+m bar mode toggle
 #
 #   client.background       #2B2C2B
 
+################################
+### settings for i3-borders: ###
+################################
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window pixel 1
+new_float normal
+
+# Hide borders
+hide_edge_borders none
+
+#######################################################
+# IGOR MOD TO ALWAYS HAVE WINDOWS BORDERS
+#####################################################
+# default_border pixel 3
+# default_floating_border pixel 3
+
+# change borders
+bindsym $mod+u border none
+bindsym $mod+y border pixel 3
+bindsym $mod+n border normal
+
 
 #############################
 ### settings for i3-gaps: ###
@@ -435,11 +439,11 @@ gaps outer 0
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
+smart_borders no_gaps
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
