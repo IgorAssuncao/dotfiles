@@ -22,6 +22,17 @@ echo "Downloading repo" && \
   git clone https://github.com/IgorAssuncao/system-config.git ~/system-config && \
   echo "Finished downloading repo"
 
+echo "Install custom i3 config?"
+read -p "Please, answer (y/n): " -n 1 choice && \
+  if [ $choice == "y" ]; then
+      if [ -d "~/.i3/config" ]; then
+        echo "Renaming ~.i3/config to ~/.i3/config.bkp" && \
+        mv ~/.i3/config ~/.i3/config.bkp
+        echo "Creating ~/.i3/config symlink" && \
+        ln -s ~/system-config/.i3/config ~/.i3/config && \
+        echo "Finished creating ~/.i3/config symlink"
+  fi
+
 echo "Install Qtile?"
 read -p "Please, answer (y/n): " -n 1 choice && \
   if [ $choice == "y" ]; then
@@ -77,14 +88,6 @@ read -p "Please, answer (y/n): " -n 1 choice && \
         echo "Finished creating ~/.zshrc symlink"
   fi
 
-echo "Install NeoVim?"
-read -p "Please, answer (y/n): " -n 1 choice && \
-  if [ $choice == "y" ]; then
-    echo "Installing NeoVim" && \
-      sudo pacman -S neovim && \
-      echo "Finished installing NeoVim"
-  fi
-
 echo "Install custom vimrc?"
 read -p "Please, answer (y/n): " -n 1 choice && \
   if [ $choice == "y" ]; then
@@ -96,6 +99,14 @@ read -p "Please, answer (y/n): " -n 1 choice && \
       ln -s ~/system-config/.config/vim/vimrc ~/.vimrc
     echo "Creating ~/.vim/coc-settings synlink" && \
       ln -s ~/system-config/.config/vim/coc-settings.json ~/.vim/coc-settings.json
+  fi
+
+echo "Install NeoVim?"
+read -p "Please, answer (y/n): " -n 1 choice && \
+  if [ $choice == "y" ]; then
+    echo "Installing NeoVim" && \
+      sudo pacman -S neovim && \
+      echo "Finished installing NeoVim"
   fi
 
 echo "Install custom init.vim (nvim config file)?"
