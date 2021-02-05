@@ -55,9 +55,11 @@ exec --no-startup-id pkill pulseaudio && dbus-launch
 #####################################################
 
 # Screen brightness controls
-exec --no-startup-id /bin/sh -c "xrandr --output $(xrandr -q | grep connected | head -n 1 | cut -d ' ' -f1) --brightness 1 --gamma 1.25:1.25:1.25"
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+exec --no-startup-id /bin/sh -c "xrandr --output $(xrandr -q | grep connected | head -n 1 | cut -d ' ' -f1) --brightness 1 --gamma 1.25:1.25:1.25"
+exec --no-startup-id /bin/sh -c "nvidia-settings --load-config-only"
+
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -333,7 +335,7 @@ bar {
 	position bottom # It can be top or bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
+  tray_output primary
 #	tray_output eDP1
 
 	bindsym button4 nop
