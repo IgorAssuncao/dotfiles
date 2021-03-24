@@ -99,3 +99,19 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zshrc
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
