@@ -31,6 +31,7 @@ read -p "Please, answer (y/n): " -n 1 choice && \
         echo "Creating ~/.i3/config symlink" && \
         ln -s ~/system-config/.i3/config ~/.i3/config && \
         echo "Finished creating ~/.i3/config symlink"
+      fi
   fi
 
 echo "Install Qtile?"
