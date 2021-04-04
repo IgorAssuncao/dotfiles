@@ -39,7 +39,6 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
-
 exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 exec --no-startup-id pulseaudio
@@ -54,12 +53,11 @@ bindsym $mod+Ctrl+Shift+m exec pavucontrol
 exec --no-startup-id pkill pulseaudio && dbus-launch
 #####################################################
 
-# Screen brightness controls
+# Screen setup controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-exec --no-startup-id /bin/sh -c "xrandr --output $(xrandr -q | grep connected | head -n 1 | cut -d ' ' -f1) --brightness 1 --gamma 1.25:1.25:1.25"
-exec --no-startup-id /bin/sh ~/.screenlayout/home-setup.sh
-exec --no-startup-id /bin/sh -c "nvidia-settings --load-config-only"
+exec_always source /home/igor/system-config/.config/xrandr/.screenlayout/home-setup.sh
+exec_always nvidia-settings --load-config-only
 
 
 # Start Applications
