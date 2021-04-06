@@ -100,4 +100,11 @@ source $ZSH/oh-my-zsh.sh
 
 source /usr/share/nvm/init-nvm.sh
 
+# golang gopath
+export GOPATH="$HOME/go/bin"
+export PATH="$PATH:$GOPATH"
+
+# aws-iam-authenticator
+export PATH="$PATH:$HOME/bin"
+
 alias tf='aws-vault --debug exec terraform --duration=1h -- terraform'
