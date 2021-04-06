@@ -8,6 +8,13 @@ checkInput() {
   fi
 }
 
+downloadRepo() {
+  checkInput
+  echo "Downloading repo"
+  git clone git@github.com:IgorAssuncao/system-config.git
+  echo "Finished downloading repo"
+}
+
 echo "This script automatically installs some tools and creates symlinks for you."
 echo "All of these tools will be prompted to install:
     - QTile (A window manager written in python)
@@ -20,9 +27,6 @@ echo "All of these tools will be prompted to install:
     - Custom Xresources
   "
 
-echo "Downloading repo"
-git clone git@github.com:IgorAssuncao/system-config.git
-echo "Finished downloading repo"
 
 echo "Install custom i3 config?"
 checkInput
