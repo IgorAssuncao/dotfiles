@@ -65,9 +65,7 @@ if [ -d "~/.config/kitty" ]; then
   echo "Renaming ~/.config/kitty to ~/.config/kitty.bkp"
   mv ~/.config/kitty ~/.config/kitty.bkp
 fi
-ln -s ~/system-config/.config/kitty/ ~/.config/kitty
-echo "Finished creating kitty symlink"
-
+ln -s ~/system-config/.config/kitty ~/.config
 
 echo "Install Oh-my-zsh?"
 checkInput
