@@ -22,7 +22,6 @@ echo "All of these tools will be prompted to install:
     - Kitty custom config
     - Oh-my-zsh
     - NeoVim (Newer version of vim)
-    - Custom vimrc (vim config file)
     - Custom init.vim (nvim config file)
     - Custom Xresources
   "
@@ -78,17 +77,6 @@ fi
 ln -s ~/system-config/.config/zsh/.zshrc ~/.zshrc
 echo "Finished creating ~/.zshrc symlink"
 
-echo "Install custom vimrc?"
-checkInput
-if [ -a "~/.vimrc" ]; then
-  echo "Renaming ~/.vimrc to ~/.vimrc.bkp"
-  mv ~/.vimrc ~/.vimrc.bkp
-fi
-echo "Creating ~/.vimrc symlink"
-ln -s ~/system-config/.config/vim/vimrc ~/.vimrc
-echo "Creating ~/.vim/coc-settings synlink"
-ln -s ~/system-config/.config/vim/coc-settings.json ~/.vim/coc-settings.json
-
 echo "Install NeoVim?"
 read -p "Please, answer (y/n): " -n 1 choice
 if [ $choice == "y" ]; then
@@ -115,3 +103,8 @@ mv ~/.xinitrc ~/.xinit.bkp
 echo "Creating symlinks" && \
 ln -s ~/system-config/.config/x/.Xresources ~/.Xresource
 ln -s ~/system-config/.config/x/.xinitrc ~/.xinitrc
+
+echo "Install custom profile?
+  (custom user settings like default editor and browser)"
+checkInput
+ln -s ~/system-config/.config/user-settings/.profile ~/.profile
