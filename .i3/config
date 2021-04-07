@@ -81,10 +81,10 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 focus_follows_mouse no
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -110,8 +110,8 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+Ctrl+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -157,6 +157,16 @@ set $ws5 5
 set $ws6 6
 set $ws7 7
 set $ws8 8
+
+# Bind workspace to output
+workspace $ws1 output primary # DP-4
+workspace $ws2 output primary # DP-4
+workspace $ws3 output primary # DP-4
+workspace $ws4 output primary # DP-4
+workspace $ws5 output nonprimary # HDMI-0
+workspace $ws6 output nonprimary # HDMI-0
+workspace $ws7 output nonprimary # HDMI-0
+workspace $ws8 output nonprimary # HDMI-0
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -336,13 +346,12 @@ bar {
 	position bottom # It can be top or bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-  tray_output primary
-#	tray_output eDP1
+  tray_output primary # DP-4
 
 	bindsym button4 nop
 	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+	strip_workspace_numbers no # yes
 
 ##############################
 ##### tab colors settings ####
