@@ -12,3 +12,6 @@
 
 # Terraform state folder
 .terraform
+
+# Node_modules
+node_modules
