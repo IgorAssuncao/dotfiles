@@ -108,3 +108,8 @@ echo "Install custom profile?
   (custom user settings like default editor and browser)"
 checkInput
 ln -s ~/system-config/.config/user-settings/.profile ~/.profile
+
+echo "Create git custom config?"
+checkInput
+ln -s ~/system-config/.config/git/.gitconfig ~/.gitconfig
+ln -s ~/system-config/.config/git/.gitignore ~/.gitignore
