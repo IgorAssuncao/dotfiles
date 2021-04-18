@@ -1,0 +1,7 @@
+[user]
+	name = Igor Assuncao
+	email = igor.ormonde@gmail.com
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = /home/igor/.gitignore

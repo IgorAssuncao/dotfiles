@@ -1,0 +1,14 @@
+# Useless MacOSx junk
+.DS_Store
+
+# VS Code project config
+.vscode
+
+# Vim trash
+.vim
+
+# Jetbrains useless stuff
+.idea
+
+# Terraform state folder
+.terraform
