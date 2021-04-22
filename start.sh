@@ -113,3 +113,5 @@ echo "Create git custom config?"
 checkInput
 ln -s ~/system-config/.config/git/.gitconfig ~/.gitconfig
 ln -s ~/system-config/.config/git/.gitignore ~/.gitignore
+
+echo "Test"
