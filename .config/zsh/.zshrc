@@ -108,7 +108,6 @@ export PATH="$PATH:$GOPATH"
 export PATH="$PATH:$HOME/bin"
 
 alias tf='aws-vault --debug exec terraform --duration=1h -- terraform'
-alias kubectx='kubectl config use-context'
 alias k='kubectl'
 
 myip() {
