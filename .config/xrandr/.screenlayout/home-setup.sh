@@ -42,7 +42,7 @@ adjustBrightness() {
   outputs=$(xrandr -q | grep -E '(\sconnected\s)' | cut -d ' ' -f1)
   for output in $outputs; do
     echo $output
-    xrandr --output $output --brightness 1
+    xrandr --output $output --brightness 0.375
   done
 }
 
