@@ -4,4 +4,4 @@
 [init]
 	defaultBranch = main
 [core]
-	excludesfile = /home/igor/.gitignore
+	excludesfile = ~/.gitignore
