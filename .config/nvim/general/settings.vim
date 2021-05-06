@@ -20,8 +20,11 @@ set noswapfile
 set nowritebackup
 set nobackup
 set incsearch
-set omnifunc=syntaxcomplete#Complete
-" set omnifunc=ale#completion#OmniFunc
+
+" Choose which autocomplete plugin VIM will use.
+set omnifunc=syntaxcomplete#Complete " coc
+" set omnifunc=ale#completion#OmniFunc " ale
+
 " Disables automatic commenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
