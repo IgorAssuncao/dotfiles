@@ -113,3 +113,11 @@ alias k='kubectl'
 myip() {
   curl -s https://httpbin.org/ip | grep -E '(origin)' | sed -e 's/\s//g' | sed -e 's/"//g' | cut -d ':' -f2 | xclip -selection clipboard
 }
+
+decode() {
+  for b64 in "$@"
+  do
+    echo "$b64" | base64 -d
+    echo ""
+  done
+}
