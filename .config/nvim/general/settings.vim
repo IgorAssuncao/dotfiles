@@ -2,6 +2,11 @@ syntax enable
 syntax on
 filetype plugin indent on
 set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set number relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set number norelativenumber
+augroup END
 set numberwidth=2
 set breakindent
 set autoindent

@@ -21,3 +21,8 @@ nnoremap <silent> <Leader>bn :bn<CR>
 nnoremap <silent> <Leader>bp :bp<CR>
 """ Buffer deletion
 nnoremap <silent> <Leader>bd :bd<CR>
+
+nnoremap <silent> <Leader>q :q<CR>
+nnoremap <silent> <Leader>w :w<CR>
+nnoremap <silent> <Leader>x :x<CR>
+nnoremap <silent> <Leader>c :nohls<CR>
