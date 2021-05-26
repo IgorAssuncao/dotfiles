@@ -1,4 +1,4 @@
-let g:NERDTreeShowHidded=1
+let g:NERDTreeShowHidden=1
 
 function! NerdTreeToggle()
    :NERDTreeToggle
@@ -6,4 +6,4 @@ function! NerdTreeToggle()
      set number relativenumber
    endif
 endfunc
-nnoremap <leader>t :call NerdTreeToggle() <CR>
+nnoremap <silent> <leader>t :call NerdTreeToggle() <CR>
