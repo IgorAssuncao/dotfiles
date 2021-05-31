@@ -101,8 +101,8 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/nvm/init-nvm.sh
 
 # golang gopath
-export GOPATH="$HOME/go/bin"
-export PATH="$PATH:$GOPATH"
+export GOPATH="$HOME/code/go"
+export PATH="$PATH:/usr/local/go/bin"
 
 # aws-iam-authenticator
 export PATH="$PATH:$HOME/bin"
