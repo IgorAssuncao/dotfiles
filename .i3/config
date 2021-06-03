@@ -63,7 +63,7 @@ exec_always nvidia-settings --load-config-only
 exec_always source $HOME/system-config/.config/scripts/startup.sh
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+Ctrl+b exec $TERMINAL -e 'bmenu'
 bindsym $mod+F2 exec $BROWSER
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Ctrl+F3 exec ranger
