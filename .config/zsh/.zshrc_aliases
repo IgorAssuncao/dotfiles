@@ -1,0 +1,3 @@
+alias ls="exa -a -l -h -b --group-directories-first --git"
+alias tf='aws-vault --debug exec terraform --duration=1h -- terraform'
+alias k='kubectl'

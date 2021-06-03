@@ -107,23 +107,5 @@ export PATH="$PATH:/usr/local/go/bin"
 # aws-iam-authenticator
 export PATH="$PATH:$HOME/bin"
 
-alias tf='aws-vault --debug exec terraform --duration=1h -- terraform'
-alias k='kubectl'
-
-myip() {
-  curl -s https://httpbin.org/ip | grep -E '(origin)' | sed -e 's/\s//g' | sed -e 's/"//g' | cut -d ':' -f2 | xclip -selection clipboard
-}
-
-ecrlogin(){
-  # aws ecr get-login --no-include-email --registry-ids 307424997672 --region us-east-1 | docker login --username AWS --password-stdin https://307424997672.dkr.ecr.us-east-1.amazonaws.com
-  # aws ecr get-login --no-include-email --registry-ids 307424997672 --region us-east-1 | zsh
-  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin https://307424997672.dkr.ecr.us-east-1.amazonaws.com
-}
-
-decode() {
-  for b64 in "$@"
-  do
-    echo "$b64" | base64 -d
-    echo ""
-  done
-}
+source ~/.zshrc_aliases
+source ~/.zshrc_functions
