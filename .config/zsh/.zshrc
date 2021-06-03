@@ -114,6 +114,12 @@ myip() {
   curl -s https://httpbin.org/ip | grep -E '(origin)' | sed -e 's/\s//g' | sed -e 's/"//g' | cut -d ':' -f2 | xclip -selection clipboard
 }
 
+ecrlogin(){
+  # aws ecr get-login --no-include-email --registry-ids 307424997672 --region us-east-1 | docker login --username AWS --password-stdin https://307424997672.dkr.ecr.us-east-1.amazonaws.com
+  # aws ecr get-login --no-include-email --registry-ids 307424997672 --region us-east-1 | zsh
+  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin https://307424997672.dkr.ecr.us-east-1.amazonaws.com
+}
+
 decode() {
   for b64 in "$@"
   do
