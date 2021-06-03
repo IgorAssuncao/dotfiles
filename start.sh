@@ -30,12 +30,23 @@ echo "All of these tools will be prompted to install:
 echo "Install custom i3 config?"
 checkInput
 if [ -d "~/.i3/config" ]; then
-  echo "Renaming ~.i3/config to ~/.i3/config.bkp"
+  echo "Renaming ~/.i3/config to ~/.i3/config.bkp"
   mv ~/.i3/config ~/.i3/config.bkp
   echo "Creating ~/.i3/config symlink"
   ln -s ~/system-config/.i3/config ~/.i3/config
   echo "Finished creating ~/.i3/config symlink"
 fi
+
+echo "Creating .i3status.conf symlink"
+checkInput
+if [ -a "~/.i3status.conf" ]; then
+  echo "Renaming ~/.i3status.conf to ~/.i3status.conf.bkp"
+  mv ~/.i3status.conf ~/.i3status.conf.bkp
+  echo "Creating ~/.i3status.conf symlink"
+  ln -s /etc/i3status.conf ~/.i3status.conf
+  echo "Finished symlink creation"
+fi
+
 
 echo "Install Qtile?"
 checkInput
@@ -113,5 +124,3 @@ echo "Create git custom config?"
 checkInput
 ln -s ~/system-config/.config/git/.gitconfig ~/.gitconfig
 ln -s ~/system-config/.config/git/.gitignore ~/.gitignore
-
-echo "Test"
