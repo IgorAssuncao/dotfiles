@@ -18,8 +18,6 @@ downloadRepo() {
 echo "This script automatically installs some tools and creates symlinks for you."
 echo "All of these tools will be prompted to install:
     - QTile (A window manager written in python)
-    - Kitty (A terminal emulator)
-    - Kitty custom config
     - Oh-my-zsh
     - NeoVim (Newer version of vim)
     - Custom init.vim (nvim config file)
@@ -61,22 +59,6 @@ fi
 ln -s ~/system-config/.config/qtile/ ~/.config/qtile
 echo "Finished creating qtile symlink"
 
-echo "Install Kitty?"
-checkInput
-echo "Installing kitty"
-sudo pacman -S kitty
-echo "Finished installing kitty"
-echo "Creating kitty symlink"
-
-echo "Install custom Kitty config?"
-checkInput
-echo "Creating kitty symlink"
-if [ -d "~/.config/kitty" ]; then
-  echo "Renaming ~/.config/kitty to ~/.config/kitty.bkp"
-  mv ~/.config/kitty ~/.config/kitty.bkp
-fi
-ln -s ~/system-config/.config/kitty ~/.config
-
 echo "Install Oh-my-zsh?"
 checkInput
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -86,6 +68,8 @@ if [ -a "~/.zshrc" ]; then
   mv ~/.zshrc ~/.zshrc.bkp
 fi
 ln -s ~/system-config/.config/zsh/.zshrc ~/.zshrc
+ln -s ~/system-config/.config/zsh/.zshrc_aliases ~/.zshrc_aliases
+ln -s ~/system-config/.config/zsh/.zshrc_functions ~/.zshrc_functions
 echo "Finished creating ~/.zshrc symlink"
 
 echo "Install NeoVim?"
@@ -124,3 +108,20 @@ echo "Create git custom config?"
 checkInput
 ln -s ~/system-config/.config/git/.gitconfig ~/.gitconfig
 ln -s ~/system-config/.config/git/.gitignore ~/.gitignore
+
+echo "Installing alacritty"
+sudo pacman -S alacritty
+if [ -d "~/.config/alacritty" ]; then
+  mv ~/.config/alacritty ~/.config/alacritty.bkp
+fi
+ln -s ~/system-config/.config/alacritty ~/.config/alacritty
+
+echo "Installing exa (ls replacement written in Rust)"
+sudo pacman -S exa
+echo "alias ls=\"exa -a -l -h -b --group-directories-first --git\"" >> ~/.zshrc_aliases
+
+echo "Installing bat (cat replacement written in Rust)"
+sudo pacman -S bat
+
+echo "Installing ripgrep"
+sudo pacman -S ripgrep
