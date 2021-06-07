@@ -58,5 +58,5 @@ adjustBrightness() {
 
 # createCustomModes
 # addModesIntoOutputs
-adjustBrightness
+# adjustBrightness
 setupXrandr

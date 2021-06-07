@@ -26,18 +26,28 @@
 
 import os
 import subprocess
-
-from libqtile.config import Key, Screen, Group, Drag, Click
-from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
-
 from typing import List  # noqa: F401
+
+from libqtile import bar, hook, layout, widget
+from libqtile.command import lazy
+from libqtile.config import Click, Drag, Group, Key, Screen
+
+
+def get_profile_var(variable):
+    profile_path = '~/system-config/.config/user-settings/.profile'
+    command = f"grep {variable} {profile_path} | cut -d '=' -f2"
+    var = subprocess.run(
+        ["sh", "-c", command],
+            stdout=subprocess.PIPE
+        ).stdout.decode("utf-8").replace('\n', '').split('/')[-1]
+    return var
 
 GROUPS = "12345678"
 MOD = "mod4"
 SPACER = 16
-TERMINAL = "kitty"
-BROWSER = "firefox-developer-edition"
+TERMINAL = get_profile_var("TERM")
+EDITOR = get_profile_var("EDITOR")
+BROWSER = get_profile_var("BROWSER")
 FILE_MANAGER_TERM = "ranger"
 FILE_MANAGER_GUI = "pcmanfm"
 
@@ -53,8 +63,8 @@ keys = [
     Key([MOD], "j", lazy.layout.up()),
 
     # Move windows up or down in current stack
-    Key([MOD, "control"], "k", lazy.layout.shuffle_down()),
-    Key([MOD, "control"], "j", lazy.layout.shuffle_up()),
+    Key([MOD, "control"], "j", lazy.layout.shuffle_down()),
+    Key([MOD, "control"], "k", lazy.layout.shuffle_up()),
 
     # Switch window focus to other pane(s) of stack
     Key([MOD], "space", lazy.layout.next()),
@@ -88,8 +98,9 @@ keys = [
     # system-menu allows to control Appearance, Network, Sound
     Key([MOD, "control", "shift"], "b", lazy.spawn(f"{TERMINAL} -e system-menu")),
 
-    # Spawn dmenu_run
-    Key([MOD], "c", lazy.spawn("dmenu_run")),
+    # Spawn i3-dmenu-desktop and dmenu_run
+    Key([MOD], "d", lazy.spawn("i3-dmenu-desktop")),
+    Key([MOD, "shift"], "d", lazy.spawn("dmenu_run")),
 
     # Spawn morce_menu
     Key([MOD], "z", lazy.spawn("morc_menu")),
@@ -129,7 +140,7 @@ for i in groups:
 
 # Layout theme that will be applied to all layouts specified below
 LAYOUT_THEME = {
-    "margin": 5,
+    "margin": 10,
     "border_width": 2,
     "border_focus": "00ffff",
     "border_normal": "969896",
