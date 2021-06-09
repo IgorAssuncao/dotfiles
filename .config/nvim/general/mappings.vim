@@ -1,4 +1,3 @@
-" let mapleader = ","
 let mapleader = "\<Space>"
 
 " Panels navigation
