@@ -153,7 +153,7 @@ layouts = [
 
 widget_defaults = {
     "font": "monospace",
-    "fontsize": 12,
+    "fontsize": 11,
     "padding": 3
 }
 extension_defaults = widget_defaults.copy()
