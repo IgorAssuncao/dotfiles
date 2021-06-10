@@ -141,7 +141,7 @@ for i in groups:
 # Layout theme that will be applied to all layouts specified below
 LAYOUT_THEME = {
     "margin": 10,
-    "border_width": 2,
+    "border_width": 1,
     "border_focus": "00ffff",
     "border_normal": "969896",
 }
