@@ -5,7 +5,7 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 set $TERMINAL alacritty
-set $BROWSER firefox-developer-edition
+set $BROWSER brave
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
