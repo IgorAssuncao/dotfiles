@@ -23,7 +23,7 @@ createCustomModes() {
 }
 
 addModesIntoOutputs() {
-  xrandr --addmode DP-4 $mode_samsung
+  xrandr --addmode DP-5 $mode_samsung
   xrandr --addmode HDMI-0 $mode_lg
 }
 
@@ -33,9 +33,10 @@ setupXrandr() {
     --output DP-1 --off \
     --output DP-2 --off \
     --output DP-3 --off \
-    --output HDMI-0 --mode 2560x1080 --rate 74.99 --pos 0x0 --rotate normal \
-    --output DP-4 --primary --mode 1920x1080 --rate 143.98 --pos 2560x0 --rotate normal \
-    --output DP-5 --off
+    --output HDMI-0 --mode 2560x1080 --rate 74.99 --pos 1920x0 --rotate normal \
+    --output DP-4 --off \
+    --output DP-5 --primary --mode 1920x1080 --rate 60 --pos 0x0 --rotate normal
+    # --output DP-5 --primary --mode 1920x1080 --rate 143.98 --pos 2560x0 --rotate normal
 }
 
 setupVerticalMonitor() {
@@ -44,9 +45,10 @@ setupVerticalMonitor() {
     --output DP-1 --off \
     --output DP-2 --off \
     --output DP-3 --off \
-    --output HDMI-0 --mode 2560x1080 --rate 74.99 --pos 0x420 --rotate normal \
-    --output DP-4 --primary --mode 1920x1080 --rate 143.98 --pos 2560x0 --rotate right \
-    --output DP-5 --off
+    --output HDMI-0 --mode 2560x1080 --rate 74.99 --pos 1920x420 --rotate normal \
+    --output DP-4 --off \
+    --output DP-5 --primary --mode 1920x1080 --rate 60 --pos 0x0 --rotate right
+    # --output DP-5 --primary --mode 1920x1080 --rate 143.98 --pos 2560x0 --rotate right
 }
 
 adjustBrightness() {
