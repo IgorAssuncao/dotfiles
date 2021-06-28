@@ -160,14 +160,14 @@ set $ws7 7
 set $ws8 8
 
 # Bind workspace to output
-workspace $ws1 output primary # DP-4
-workspace $ws2 output primary # DP-4
-workspace $ws3 output primary # DP-4
-workspace $ws4 output primary # DP-4
-workspace $ws5 output nonprimary # HDMI-0
-workspace $ws6 output nonprimary # HDMI-0
-workspace $ws7 output nonprimary # HDMI-0
-workspace $ws8 output nonprimary # HDMI-0
+workspace $ws1 output primary # HDMI-0
+workspace $ws2 output primary # HDMI-0
+workspace $ws3 output primary # HDMI-0
+workspace $ws4 output primary # HDMI-0
+workspace $ws5 output nonprimary # DP-4
+workspace $ws6 output nonprimary # DP-4
+workspace $ws7 output nonprimary # DP-4
+workspace $ws8 output nonprimary # DP-4
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
