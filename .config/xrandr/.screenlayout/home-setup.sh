@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # Horizontal x Vertical _ RefreshRate
 # 2560x1080_73.99
 # 1920x1080_143.98
 
-export mode_lg="lg29"
-export mode_samsung="samsung24"
+local mode_lg="lg29"
+local mode_samsung="samsung24"
 
 createCustomMode1920_144Hz() {
   local mode=$(gtf 1920 1080 143.98 | sed -n 3p | sed -E 's/Modeline//gmi' | sed -E 's/(\"[0-9]+x[0-9]+\_[0-9]+\.[0-9]+\")//gmi')
