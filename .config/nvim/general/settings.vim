@@ -17,8 +17,9 @@ set shiftwidth=2
 set ruler
 set cursorline
 " set colorcolumn=80,120
-let &colorcolumn="80,".join(range(120,999),",")
-highlight ColorColumn ctermbg=0 guibg=darkgray
+" let &colorcolumn="80,".join(range(120,999),",")
+" highlight ColorColumn ctermbg=0 guibg=NONE
+highlight Normal guibg=NONE ctermbg=NONE
 set nowrap
 set noswapfile
 set nowritebackup
