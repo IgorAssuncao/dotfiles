@@ -343,7 +343,7 @@ set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
+	i3bar_command i3bar -t
 	status_command i3status
 	position bottom # It can be top or bottom
 
@@ -374,16 +374,16 @@ bar {
 
 ### Custom
   colors {
-    background $term_background
-    statusline #F9FAF9
-    separator  #454947
+    background #00000000
+    statusline #F9FAF9FF
+    separator  #454947FF
 
-###################### border  backgr. text
-    focused_workspace  #F9FAF9 #00A0FF #292F34
-    active_workspace   #595B5B #00A0FF #FDF6E3
-    inactive_workspace #595B5B #222D31 #EEE8D5
-    binding_mode       #16a085 #2C2C2C #F9FAF9
-    urgent_workspace   #16a085 #FDF6E3 #E5201D
+###################### border  backgr.   text
+    focused_workspace  #F9FAF9 #00A0FFC0 #292F34
+    active_workspace   #595B5B #00A0FF00 #FDF6E3
+    inactive_workspace #595B5B #222D31   #EEE8D5
+    binding_mode       #16a085 #2C2C2C   #F9FAF9
+    urgent_workspace   #16a085 #FDF6E3   #E5201D
   }
 }
 
