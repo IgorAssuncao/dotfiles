@@ -66,7 +66,7 @@ setupMonitorsLayout() {
     --output DP-3 --off \
     --output HDMI-0 --primary --mode 2560x1080 --rate 74.99 --pos $hdmiPosition --rotate $hdmiRotation \
     --output DP-4 --off \
-    --output DP-5 --mode 1920x1080 --rate 60 --pos $dpPosition --rotate $dpRotation
+    --output DP-5 --noprimary --mode 1920x1080 --rate 60 --pos $dpPosition --rotate $dpRotation
     # --output DP-5 --mode 1920x1080 --rate 143.98 --pos $dpPosition --rotate $dpRotation
 }
 
