@@ -46,16 +46,16 @@ setupMonitorsLayout() {
   local dpRotation
 
   if [ $1 = "h" ]; then
-    hdmiPosition="0x0"
+    hdmiPosition="1920x0"
     hdmiRotation="normal"
-    dpPosition="2560x0"
+    dpPosition="0x0"
     dpRotation="normal"
   fi
 
   if [ $1 = "v" ]; then
-    hdmiPosition="0x420"
+    hdmiPosition="1920x420"
     hdmiRotation="normal"
-    dpPosition="2560x0"
+    dpPosition="0x0"
     dpRotation="right"
   fi
 
