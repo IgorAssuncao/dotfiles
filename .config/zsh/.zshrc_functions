@@ -1,5 +1,10 @@
 myip() {
-  curl -s https://httpbin.org/ip | grep -E '(origin)' | sed -e 's/\s//g' | sed -e 's/"//g' | cut -d ':' -f2 | xclip -selection clipboard
+  curl -s https://httpbin.org/ip |
+  grep -E '(origin)' |
+  sed -e 's/\s//g' |
+  sed -e 's/"//g' |
+  cut -d ':' -f2 |
+  xclip -selection clipboard
 }
 
 ecrlogin(){
