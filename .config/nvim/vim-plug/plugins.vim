@@ -54,6 +54,8 @@ Plug 'jcherven/jummidark.vim'
 " Plug 'pangloss/vim-javascript'
 " Plug 'mxw/vim-jsx'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
 unlet vimPlugDir
