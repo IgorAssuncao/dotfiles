@@ -42,7 +42,7 @@ def get_profile_var(variable):
         ).stdout.decode("utf-8").replace('\n', '').split('/')[-1]
     return var
 
-GROUPS = "12345678"
+GROUPS = "1234qwer"
 MOD = "mod4"
 SPACER = 16
 TERMINAL = get_profile_var("TERM")
@@ -59,8 +59,8 @@ def autostart():
 
 keys = [
     # Switch between windows in current stack pane
-    Key([MOD], "k", lazy.layout.down()),
-    Key([MOD], "j", lazy.layout.up()),
+    Key([MOD], "j", lazy.layout.down()),
+    Key([MOD], "k", lazy.layout.up()),
 
     # Move windows up or down in current stack
     Key([MOD, "control"], "j", lazy.layout.shuffle_down()),
@@ -131,8 +131,8 @@ for i in groups:
         # MOD + letter of group = switch to group
         Key([MOD], i.name, lazy.group[i.name].toscreen()),
 
-        # MOD + control + letter of group = send window to group
-        Key([MOD, "control"], i.name, lazy.window.togroup(i.name)),
+        # # MOD + control + letter of group = send window to group
+        # Key([MOD, "control"], i.name, lazy.window.togroup(i.name)),
 
         # MOD + shift + letter of group = switch to & move focused window to group
         Key([MOD, "shift"], i.name, lazy.window.togroup(i.name), lazy.group[i.name].toscreen()),
@@ -148,39 +148,43 @@ LAYOUT_THEME = {
 
 layouts = [
     layout.MonadTall(**LAYOUT_THEME),
-    layout.Stack(num_stacks = 4)
+    layout.Stack(num_stacks = 2)
 ]
 
 widget_defaults = {
-    "font": "monospace",
-    "fontsize": 11,
+    "font": "source code pro semibold",
+    "fontsize": 9,
     "padding": 3
 }
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        top=bar.Bar(
-            [
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.Spacer(SPACER),
-                widget.WindowName(),
-                widget.Spacer(SPACER),
-                widget.Systray(),
-                widget.Spacer(SPACER),
-                widget.CPU(),
-                widget.Spacer(SPACER),
-                widget.Memory(),
-                widget.Spacer(SPACER),
-                widget.Volume(),
-                widget.Spacer(SPACER),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p')
-            ],
-            24,
-        ),
-    ),
-]
+def create_widgets_list():
+    widgets = [
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.Spacer(SPACER),
+        widget.WindowName(),
+        widget.Spacer(SPACER),
+        widget.Systray(),
+        widget.Spacer(SPACER),
+        widget.CPU(),
+        widget.Spacer(SPACER),
+        widget.Memory(),
+        widget.Spacer(SPACER),
+        widget.Volume(),
+        widget.Spacer(SPACER),
+        widget.Clock(format='%Y-%m-%d %a %I:%M %p')
+    ]
+    return widgets
+
+def setup_screens():
+    screens = [
+        Screen(top=bar.Bar(widgets=create_widgets_list()), size=20),
+        Screen(top=bar.Bar(widgets=create_widgets_list()), size=20)
+    ]
+    return screens
+
+screens = setup_screens()
 
 # Drag floating layouts.
 mouse = [
