@@ -56,8 +56,7 @@ exec --no-startup-id pkill pulseaudio && dbus-launch
 # Screen setup controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-exec_always --no-startup-id source $HOME/system-config/.config/xrandr/.screenlayout/home-setup.sh && setupMonitor v
-exec_always --no-startup-id source $HOME/system-config/.config/xrandr/.screenlayout/home-setup.sh && adjustBrightness
+exec_always --no-startup-id source $HOME/system-config/.config/xrandr/.screenlayout/home-setup.sh && setupMonitor h && adjustBrightness
 exec_always nvidia-settings --load-config-only
 
 # Source initial scripts
