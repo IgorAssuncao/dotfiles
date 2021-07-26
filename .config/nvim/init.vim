@@ -20,13 +20,13 @@ call SourceFileIfExists('vim-plug/plugins.vim')
 
 " Plugins configs
 call SourceFileIfExists('plugins-config/airline.vim')
-call SourceFileIfExists('plugins-config/ale.vim')
-call SourceFileIfExists('plugins-config/coc.vim')
 call SourceFileIfExists('plugins-config/nerdtree.vim')
 call SourceFileIfExists('plugins-config/fugitive.vim')
+call SourceFileIfExists('plugins-config/coc.vim')
 
 " Themes
 " call SourceFileIfExists('themes/one.vim')
 " call SourceFileIfExists('themes/onedark.vim')
-call SourceFileIfExists('themes/jummidark.vim')
+" call SourceFileIfExists('themes/jummidark.vim')
 " call SourceFileIfExists('colors/lucid.vim')
+call SourceFileIfExists('themes/space-vim-dark.vim')
