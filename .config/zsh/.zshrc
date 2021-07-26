@@ -98,8 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /usr/share/nvm/init-nvm.sh
-
 # golang gopath
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:/usr/local/go/bin"
