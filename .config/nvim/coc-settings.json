@@ -1,6 +1,5 @@
 {
   "diagnostic.enable": false,
-  "diagnostic.displayByAle": true,
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
