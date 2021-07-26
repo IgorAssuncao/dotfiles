@@ -104,8 +104,7 @@ source /usr/share/nvm/init-nvm.sh
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:/usr/local/go/bin"
 
-# aws-iam-authenticator
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 source ~/.zshrc_aliases
 source ~/.zshrc_functions
