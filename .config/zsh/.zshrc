@@ -99,7 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # golang gopath
-export GOPATH="$HOME/code/go"
+export GOPATH="$HOME/coding/go"
 export PATH="$PATH:/usr/local/go/bin"
 
 export PATH="$PATH:$HOME/.local/bin"
