@@ -15,6 +15,9 @@ call SourceFileIfExists('general/settings.vim')
 " Mappings
 call SourceFileIfExists('general/mappings.vim')
 
+" Filetypes customization
+call SourceFileIfExists('general/filetypes/terraform.vim')
+
 " VimPlug Init
 call SourceFileIfExists('vim-plug/plugins.vim')
 
