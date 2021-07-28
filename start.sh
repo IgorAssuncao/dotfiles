@@ -1,13 +1,6 @@
 #!/bin/sh
 # sh -c "$(curl -H 'Cache-Control: no-cache' -LsSo- https://raw.githubusercontent.com/IgorAssuncao/system-config/master/start.sh)"
 
-checkInput() {
-  read -p "Please, answer (y/n): " -n 1 choice
-  if [ $choice != "y" ]; then
-    exit 0
-  fi
-}
-
 downloadRepo() {
   checkInput
   echo "Downloading repo"
@@ -24,9 +17,6 @@ echo "All of these tools will be prompted to install:
     - Custom Xresources
   "
 
-
-echo "Install custom i3 config?"
-checkInput
 if [ -d "~/.i3/config" ]; then
   echo "Renaming ~/.i3/config to ~/.i3/config.bkp"
   mv ~/.i3/config ~/.i3/config.bkp
@@ -36,7 +26,6 @@ if [ -d "~/.i3/config" ]; then
 fi
 
 echo "Creating .i3status.conf symlink"
-checkInput
 if [ -a "~/.i3status.conf" ]; then
   echo "Renaming ~/.i3status.conf to ~/.i3status.conf.bkp"
   mv ~/.i3status.conf ~/.i3status.conf.bkp
@@ -46,42 +35,22 @@ if [ -a "~/.i3status.conf" ]; then
 fi
 
 
-echo "Install Qtile?"
-checkInput
-echo "Installing Qtile"
-sudo pacman -S qtile
-echo "Finished installed Qtile"
 echo "Creating qtile symlink"
 if [ -d "~/.config/qtile" ]; then
   echo "Renaming ~/.config/qtile to ~/.config/qtile.bkp"
   mv ~/.config/qtile ~/.config/qtile.bkp
 fi
-ln -s ~/system-config/.config/qtile/ ~/.config/qtile
-echo "Finished creating qtile symlink"
 
-echo "Install Oh-my-zsh?"
-checkInput
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "Creating ~/.zshrc symlink"
 if [ -a "~/.zshrc" ]; then
   echo "Renaming ~/.zshrc to ~/.zshrc.bkp"
   mv ~/.zshrc ~/.zshrc.bkp
 fi
-ln -s ~/system-config/.config/zsh/.zshrc ~/.zshrc
-ln -s ~/system-config/.config/zsh/.zshrc_aliases ~/.zshrc_aliases
-ln -s ~/system-config/.config/zsh/.zshrc_functions ~/.zshrc_functions
-echo "Finished creating ~/.zshrc symlink"
 
 echo "Install NeoVim?"
-read -p "Please, answer (y/n): " -n 1 choice
-if [ $choice == "y" ]; then
-  echo "Installing NeoVim"
-  sudo pacman -S neovim
-  echo "Finished installing NeoVim"
-fi
+sudo pacman -S neovim
 
-echo "Install custom init.vim (nvim config file)?"
-checkInput
 if [ -d "~/.config/nvim" ]; then
   echo "Renaming ~/.config/nvim to ~/.config/nvim.bkp"
   mv ~/.config/nvim ~/.config/nvim.bkp
@@ -89,8 +58,6 @@ fi
 echo "Creating ~/.config/nvim symlink"
 ln -s ~/system-config/.config/nvim ~/.config/nvim
 
-echo "Install custom Xresources?"
-checkInput
 echo "Renaming ~/.Xresources to ~/.Xresources.bkp"
 mv ~/.Xresources ~/.Xresources.bkp
 echo "Renaming ~/.xinitrc to ~/.xinitrc.bkp"
@@ -99,26 +66,8 @@ echo "Creating symlinks" && \
 ln -s ~/system-config/.config/x/.Xresources ~/.Xresource
 ln -s ~/system-config/.config/x/.xinitrc ~/.xinitrc
 
-echo "Install custom profile?
-  (custom user settings like default editor and browser)"
-checkInput
-ln -s ~/system-config/.config/user-settings/.profile ~/.profile
-
-echo "Create git custom config?"
-checkInput
-ln -s ~/system-config/.config/git/.gitconfig ~/.gitconfig
-ln -s ~/system-config/.config/git/.gitignore ~/.gitignore
-
-echo "Installing alacritty"
-sudo pacman -S alacritty
-if [ -d "~/.config/alacritty" ]; then
-  mv ~/.config/alacritty ~/.config/alacritty.bkp
-fi
-ln -s ~/system-config/.config/alacritty ~/.config/alacritty
-
 echo "Installing exa (ls replacement written in Rust)"
 sudo pacman -S exa
-echo "alias ls=\"exa -a -l -h -b --group-directories-first --git\"" >> ~/.zshrc_aliases
 
 echo "Installing bat (cat replacement written in Rust)"
 sudo pacman -S bat
