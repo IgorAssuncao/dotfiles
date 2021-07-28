@@ -6,4 +6,5 @@ function! NerdTreeToggle()
      set number relativenumber
    endif
 endfunc
+
 nnoremap <silent> <leader>t :call NerdTreeToggle() <CR>
