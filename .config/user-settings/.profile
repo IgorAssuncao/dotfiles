@@ -8,6 +8,8 @@
 # 	unset profile
 # fi
 
+source /usr/share/defaults/etc/profile
+
 # Set our default path
 # export PATH
 export XDG_CONFIG_HOME="$HOME/.config"
