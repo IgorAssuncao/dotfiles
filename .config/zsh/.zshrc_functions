@@ -20,3 +20,7 @@ decode() {
     echo ""
   done
 }
+
+del-evicted() {
+  kubectl -n $1 get pods | grep Evicted | awk '{print $1}' | xargs -P 5 kubectl -n $1 delete pod
+}
