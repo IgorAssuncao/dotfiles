@@ -53,9 +53,9 @@ setupMonitorsLayout() {
   fi
 
   if [ $1 = "v" ]; then
-    hdmiPosition="1920x420"
+    hdmiPosition="1920x0"
     hdmiRotation="normal"
-    dpPosition="0x0"
+    dpPosition="0x420"
     dpRotation="right"
   fi
 
