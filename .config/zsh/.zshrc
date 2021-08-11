@@ -98,12 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# golang gopath
-export GOPATH="$HOME/coding/go"
-export PATH="$PATH:$HOME/.local/go/bin"
-
-export PATH="$PATH:$HOME/.local/bin"
-
 source ~/.zshrc_aliases
 source ~/.zshrc_functions
 
