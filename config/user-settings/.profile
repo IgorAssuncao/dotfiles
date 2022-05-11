@@ -23,9 +23,12 @@ export VISUAL=/usr/bin/nvim
 export TERMINAL=/usr/bin/alacritty
 
 # custom path
-export PATH="$PATH:$HOME/.local/bin"
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
+
 
 # golang gopath
 export GOPATH="$HOME/coding/go"
-export PATH="$PATH:$HOME/.local/go/bin"
+export PATH="$HOME/.local/go/bin:$PATH"
 
