@@ -1,5 +1,5 @@
 function! SourceFileIfExists(filename)
-  let l:extra_file = fnamemodify($HOME, ':p:h') . '/system-config/.config/nvim/' . a:filename
+  let l:extra_file = fnamemodify($HOME, ':p:h') . '/system-config/config/nvim/' . a:filename
   if filereadable(l:extra_file)
     execute ':so ' . l:extra_file
   else

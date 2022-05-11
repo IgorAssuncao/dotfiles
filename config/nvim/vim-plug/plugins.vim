@@ -1,4 +1,4 @@
-let vimPlugDir = fnamemodify($HOME, ':p:h') . '/system-config/.config/nvim/autoload'
+let vimPlugDir = fnamemodify($HOME, ':p:h') . '/system-config/config/nvim/autoload'
 
 """""" VimPlug
 if empty(glob(vimPlugDir . '/plug.vim'))
