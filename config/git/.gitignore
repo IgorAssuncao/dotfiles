@@ -15,3 +15,6 @@
 
 # Node_modules
 node_modules
+
+# Python Venv
+venv
