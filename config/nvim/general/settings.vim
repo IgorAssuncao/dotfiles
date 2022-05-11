@@ -40,3 +40,13 @@ set background=dark
 if (has("termguicolors"))
   set termguicolors
 endif
+
+" Source vim configuration file whenever it is saved
+if (has ('autocmd'))        " Remain compatible with earlier versions
+ augroup Reload_Vimrc       " Group name.  Always use a unique name!
+    " Line below clears any preexisting autocommands from this group
+    autocmd!
+    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+  augroup END
+endif

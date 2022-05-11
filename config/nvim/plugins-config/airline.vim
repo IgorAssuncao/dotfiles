@@ -1,6 +1,7 @@
 " airline config
 " let g:airline_statusline_ontop = 0
-let g:airline_theme = 'angr'
+" let g:airline_theme = 'angr'
+let g:airline_theme = 'tokyonight'
 
 " airline extensions
 let g:airline_extensios = ['branch', 'coc']
