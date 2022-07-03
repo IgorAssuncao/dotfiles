@@ -1,11 +1,34 @@
 " coc config
 let g:coc_global_extensions = [
+\ 'coc-actions',
 \ 'coc-pairs',
+\ 'coc-highlight',
+\ 'coc-diagnostic',
+\ 'coc-import-cost',
+\ 'coc-git',
+\ 'coc-gitignore',
+\ 'coc-terminal',
+\ 'coc-swagger',
+\ 'coc-vimlsp',
+\ 'coc-coverage',
 \ 'coc-tsserver',
+\ 'coc-vetur',
+\ 'coc-jest',
 \ 'coc-json',
+\ 'coc-format-json',
 \ 'coc-python',
+\ 'coc-pydocstring',
 \ 'coc-yaml',
+\ 'coc-css',
+\ 'coc-go',
+\ 'coc-rust-analyzer',
+\ 'coc-sql',
+\ 'coc-sqlfluff',
+\ 'coc-cmake',
+\ 'coc-tabnine',
 \ ]
+" \ 'coc-kite',
+" \ 'coc-fzf-preview',
 
 """ Remap keys for gotos
 nmap <silent> gd :call CocAction('jumpDefinition', 'tab drop')<CR>
