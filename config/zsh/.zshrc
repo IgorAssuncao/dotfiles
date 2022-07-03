@@ -98,6 +98,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+HISTFILE=~/.zsh_histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd nomatch notify
+
 source ~/.zshrc_aliases
 source ~/.zshrc_functions
 
