@@ -1,5 +1,8 @@
 {
   "diagnostic.enable": true,
+  "python.linting.enabled": false,
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",

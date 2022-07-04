@@ -16,7 +16,7 @@ let g:coc_global_extensions = [
 \ 'coc-jest',
 \ 'coc-json',
 \ 'coc-format-json',
-\ 'coc-python',
+\ 'coc-pyright',
 \ 'coc-pydocstring',
 \ 'coc-yaml',
 \ 'coc-css',
