@@ -105,5 +105,3 @@ setopt autocd nomatch notify
 
 source ~/.zshrc_aliases
 source ~/.zshrc_functions
-
-source /usr/share/nvm/init-nvm.sh
