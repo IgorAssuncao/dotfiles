@@ -25,7 +25,6 @@ let g:coc_global_extensions = [
 \ 'coc-sql',
 \ 'coc-sqlfluff',
 \ 'coc-cmake',
-\ 'coc-tabnine',
 \ ]
 " \ 'coc-kite',
 " \ 'coc-fzf-preview',
