@@ -29,6 +29,10 @@ export TERMINAL=/usr/bin/kitty
 
 # golang gopath
 USER_LOCAL_BIN_PATH="$HOME/.local/bin"
-export GOPATH="$USER_LOCAL_BIN_PATH/go_ext_tools"
+GO_EXT_TOOLS_PATH="$USER_LOCAL_BIN_PATH/go_ext_tools"
+GO_PROJECTS_PATH="$HOME/coding/go"
+export GOPATH="$GO_EXT_TOOLS_PATH:$GO_PROJECTS_PATH"
 export PATH="$USER_LOCAL_BIN_PATH/go/bin:$PATH"
 unset USER_LOCAL_BIN_PATH
+unset GO_EXT_TOOLS_PATH
+unset GO_PROJECTS_PATH
