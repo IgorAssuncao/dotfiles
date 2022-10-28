@@ -45,11 +45,12 @@ Plug 'tpope/vim-fugitive'
 """""" Themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'rakr/vim-one'
-" Plug 'joshdick/onedark.vim'
-" Plug 'jcherven/jummidark.vim'
-" Plug 'liuchengxu/space-vim-dark'
+Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
+Plug 'jcherven/jummidark.vim'
+Plug 'liuchengxu/space-vim-dark'
 Plug 'ghifarit53/tokyonight-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 """""" Syntax highlighting js
 " Plug 'pangloss/vim-javascript'
