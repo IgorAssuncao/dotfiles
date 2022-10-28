@@ -105,3 +105,4 @@ setopt autocd nomatch notify
 
 source ~/.zshrc_aliases
 source ~/.zshrc_functions
+source /opt/asdf-vm/asdf.sh
