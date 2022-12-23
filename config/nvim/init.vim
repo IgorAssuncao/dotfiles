@@ -29,9 +29,11 @@ call SourceFileIfExists('plugins-config/coc')
 
 " Themes
 " call SourceFileIfExists('themes/one')
-call SourceFileIfExists('themes/onedark')
+" call SourceFileIfExists('themes/onedark')
 " call SourceFileIfExists('themes/jummidark')
 " call SourceFileIfExists('themes/tokyonight')
+call SourceFileIfExists('themes/nightfox')
+" call SourceFileIfExists('themes/eva01')
 
 " Custom themes (located in colors dir)
 " call SourceFileIfExists('colors/lucid')

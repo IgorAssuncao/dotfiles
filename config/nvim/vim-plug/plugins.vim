@@ -51,6 +51,8 @@ Plug 'jcherven/jummidark.vim'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'hachy/eva01.vim'
 
 """""" Syntax highlighting js
 " Plug 'pangloss/vim-javascript'
