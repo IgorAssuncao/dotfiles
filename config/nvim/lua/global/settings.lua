@@ -32,11 +32,11 @@ vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 
 -- TODO: Sets number and relativenumber only on current buffer
 
--- TODO: Disable auto commenting on new line
+-- Disable auto commenting on new line
 vim.api.nvim_create_autocmd(
   { "FileType" },
   {
@@ -44,7 +44,6 @@ vim.api.nvim_create_autocmd(
     command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
   }
 )
-
 
 -- Terraform auto format on save
 vim.api.nvim_create_autocmd(
