@@ -1,4 +1,4 @@
 **pycache**
 **.netrwhist**
-.config/nvim/autoload/
-.config/nvim/undodir/
+config/nvim/autoload/
+config/nvim/undodir/
