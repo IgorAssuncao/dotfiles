@@ -1,6 +1,6 @@
 **pycache**
 **.netrwhist**
 config/nvim/autoload/
-config/nvim/undodir/
+config/nvim/undodir/**
 config/nvim/plugin/packer_compiled.lua
 config/nvim/packer.nvim/
