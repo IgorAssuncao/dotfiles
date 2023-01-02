@@ -1,13 +1,14 @@
 -- Only required if you have packer configured as `opt`
 -- vim.cmd [[packadd packer.nvim]]
 
--- TODO: Make custom directory work.
--- local config_dir = os.getenv('HOME')..'/system-config/config/nvim-lua'
--- local install_path = config_dir..'/packer.nvim'
-
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+  -- -- TODO: Custom packer install_path.
+  -- local config_dir = os.getenv('HOME')..'/system-config/config/nvim'
+  -- local install_path = config_dir..'/packer.nvim'
+
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd [[packadd packer.nvim]]
@@ -15,6 +16,9 @@ local ensure_packer = function()
   end
   return false
 end
+
+-- print(nvim_list_runtime_paths())
+-- print(nvim_get_runtime_file())
 
 local packer_bootstrap = ensure_packer()
 
@@ -52,7 +56,7 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-treesitter/playground'
-  
+
   -- use 'theprimeagen/harpoon'
 
   use 'mbbill/undotree'
@@ -66,7 +70,7 @@ return require('packer').startup(function(use)
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
-    
+
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},
       {'hrsh7th/cmp-buffer'},
@@ -74,7 +78,7 @@ return require('packer').startup(function(use)
       {'saadparwaiz1/cmp_luasnip'},
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-nvim-lua'},
-    
+
       -- Snippets
       {'L3MON4D3/LuaSnip'},
       {'rafamadriz/friendly-snippets'},
