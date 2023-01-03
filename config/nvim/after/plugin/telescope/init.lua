@@ -10,4 +10,4 @@ require("telescope").setup{
   }
 }
 
-require(".after.plugin.telescope.keymaps")
+-- require(".after.plugin.telescope.keymaps")
