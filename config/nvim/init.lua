@@ -1,2 +1,4 @@
-require("global")
 require("plugins")
+require("global")
+require("after")
+

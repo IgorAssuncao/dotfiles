@@ -6,7 +6,6 @@ lsp.ensure_installed({
   'bashls',
   -- 'awk-language-server',
   'tsserver',
-  'eslint',
   'gopls',
   'rust_analyzer',
   -- 'jq-lsp',
@@ -29,11 +28,23 @@ lsp.on_attach(function(client, bufnr)
   keybind("n", "gd", function() vim.lsp.buf.definition() end, opts)
   keybind("n", "K", function() vim.lsp.buf.hover() end, opts)
   keybind("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  -- keybind("n", "<leader>ld", function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts)
   keybind("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   keybind("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
 
   -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
 end)
+
+vim.api.nvim_create_autocmd(
+  {
+    "CursorHold",
+    "CursorHoldI"
+  },
+  {
+    pattern = { "*" },
+    command = "lua vim.diagnostic.open_float(nil, { focus = false, scope = \"line\" })"
+  }
+)
 
 -- TODO: Split cmp config into its own file.
 
@@ -78,13 +89,13 @@ lsp.setup_nvim_cmp({
 
 lsp.setup()
 
-vim.api.nvim_create_autocmd(
-  { "BufWritePre" },
-  {
-    pattern = { "*" },
-    command = "LspZeroFormat"
-  }
-)
+-- vim.api.nvim_create_autocmd(
+--   { "BufWritePre" },
+--   {
+--     pattern = { "*" },
+--     command = "LspZeroFormat"
+--   }
+-- )
 
 vim.api.nvim_create_autocmd(
   { "BufWritePre" },
