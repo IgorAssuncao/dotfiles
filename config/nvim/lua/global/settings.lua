@@ -34,6 +34,9 @@ vim.opt.updatetime = 50
 
 -- vim.opt.colorcolumn = "80"
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- TODO: Sets number and relativenumber only on current buffer
 
 -- Disable auto commenting on new line
