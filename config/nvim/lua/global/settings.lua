@@ -1,6 +1,3 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
-
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -37,7 +34,39 @@ vim.opt.updatetime = 50
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- TODO: Sets number and relativenumber only on current buffer
+vim.opt.number = true
+vim.opt.relativenumber = true
+-- Sets number and relativenumber only on current buffer
+local dynamicNumberGroup = vim.api.nvim_create_augroup(
+  "DynamicNumbers",
+  {
+    clear = true
+  }
+)
+-- -- Enables both numbers and relativenumbers on focused buffers.
+vim.api.nvim_create_autocmd(
+  {
+    "BufEnter",
+    "FocusGained"
+  },
+  {
+    group = dynamicNumberGroup,
+    pattern = { "*" },
+    command = "set number relativenumber"
+  }
+)
+-- -- Enables only numbers on unfocused buffers.
+vim.api.nvim_create_autocmd(
+  {
+    "BufLeave",
+    "FocusLost"
+  },
+  {
+    group = dynamicNumberGroup,
+    pattern = { "*" },
+    command = "set number norelativenumber"
+  }
+)
 
 -- Disable auto commenting on new line
 vim.api.nvim_create_autocmd(
