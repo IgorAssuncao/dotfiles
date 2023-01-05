@@ -57,9 +57,9 @@ lsp.on_attach(function(client, bufnr)
 
   local keybind = vim.keymap.set
 
-  keybind("n", "gs", function() split_definition() end, opts)
-  keybind("n", "gv", function() split_definition_vertical() end, opts)
-  keybind("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  keybind("n", "gg", function() vim.lsp.buf.definition() end, opts)
+  keybind("n", "gD", function() split_definition() end, opts)
+  keybind("n", "gd", function() split_definition_vertical() end, opts)
   keybind("n", "K", function() vim.lsp.buf.hover() end, opts)
   keybind("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   -- keybind("n", "<leader>ld", function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts)
