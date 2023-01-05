@@ -10,6 +10,7 @@ lsp.ensure_installed({
   'rust_analyzer',
   -- 'jq-lsp',
   -- 'json-lsp',
+
   'terraformls',
   -- 'vim-language-server',
   -- 'yaml-langugage-server',
@@ -19,12 +20,45 @@ lsp.ensure_installed({
 
 -- lsp.nvim_workspace()
 
+function split_definition()
+  vim.lsp.buf_request(0, "textDocument/definition", vim.lsp.util.make_position_params(),
+    function(err, result, ctx, config)
+      if err then
+        print(err)
+        return
+      end
+
+      local command = 'split ' .. vim.uri_to_fname(result[1].uri)
+      local line = "call cursor(" ..
+          (result[1].range.start.line + 1) .. "," .. (result[1].range.start.character + 1) .. ")"
+      vim.cmd(command)
+      vim.cmd(line)
+    end)
+end
+
+function split_definition_vertical()
+  vim.lsp.buf_request(0, "textDocument/definition", vim.lsp.util.make_position_params(),
+    function(err, result, ctx, config)
+      if err then
+        print(err)
+        return
+      end
+
+      local command = 'vsplit ' .. vim.uri_to_fname(result[1].uri)
+      local line = "call cursor(" ..
+          (result[1].range.start.line + 1) .. "," .. (result[1].range.start.character + 1) .. ")"
+      vim.cmd(command)
+      vim.cmd(line)
+    end)
+end
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   local keybind = vim.keymap.set
 
+  keybind("n", "gs", function() split_definition() end, opts)
+  keybind("n", "gv", function() split_definition_vertical() end, opts)
   keybind("n", "gd", function() vim.lsp.buf.definition() end, opts)
   keybind("n", "K", function() vim.lsp.buf.hover() end, opts)
   keybind("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
@@ -35,6 +69,13 @@ lsp.on_attach(function(client, bufnr)
   -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
 end)
 
+local diagnosticsGroup = vim.api.nvim_create_augroup(
+  "DiagnosticsGroup",
+  {
+    clear = true
+  }
+)
+
 vim.api.nvim_create_autocmd(
   {
     "CursorHold",
@@ -42,9 +83,33 @@ vim.api.nvim_create_autocmd(
   },
   {
     pattern = { "*" },
-    command = "lua vim.diagnostic.open_float(nil, { focus = false, scope = \"line\" })"
+    command = "lua vim.diagnostic.open_float(nil, { focus = false, scope = \"line\" })",
+    group = diagnosticsGroup
   }
 )
+
+vim.api.nvim_create_autocmd(
+  {
+    "InsertEnter"
+  },
+  {
+    pattern = { "*" },
+    command = "lua vim.diagnostic.hide()",
+    group = diagnosticsGroup
+  }
+)
+
+vim.api.nvim_create_autocmd(
+  {
+    "InsertLeave"
+  },
+  {
+    pattern = { "*" },
+    command = "lua vim.diagnostic.show()",
+    group = diagnosticsGroup
+  }
+)
+
 
 -- TODO: Split cmp config into its own file.
 
@@ -79,13 +144,6 @@ lsp.setup_nvim_cmp({
 -- cmp_config.mapping["<Tab>"] = nil
 -- cmp_config.mapping["<S-Tab>"] = nil
 -- cmp_config.mapping["<CR>"] = nil
-
-
--- vim.lsp.start({
---   name = 'terraformls',
---   cmd = { 'serve' },
---   root_dir = vim.fs.dirname(vim.fs.find({ '*.tf' }, { upward = true })[1]),
--- })
 
 lsp.setup()
 
