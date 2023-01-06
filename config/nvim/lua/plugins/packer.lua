@@ -29,28 +29,33 @@ local packer_bootstrap = ensure_packer()
 --   }
 -- )
 
-return require("packer").startup(function(use)
+-- Use a protected call so packer don't error
+-- out in first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+-- Auto sorce this file and make PackerSync
+vim.api.nvim_create_autocmd(
+  {
+    "BufWritePost"
+  },
+  {
+    pattern = "plugins/packer.lua",
+    command = "source <afile> | PackerSync",
+    group = vim.api.nvim_create_augroup(
+      "SourcePackerAndSync",
+      {
+        clear = true
+      }
+    )
+  }
+)
+
+return packer.startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
-
-  use {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.0",
-    requires = { { "nvim-lua/plenary.nvim" } }
-  }
-
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate"
-  }
-
-  use "nvim-treesitter/playground"
-
-  -- use "theprimeagen/harpoon"
-
-  use "mbbill/undotree"
-
-  use "tpope/vim-fugitive"
 
   use {
     "VonHeikemen/lsp-zero.nvim",
