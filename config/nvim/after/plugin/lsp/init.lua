@@ -57,12 +57,14 @@ lsp.on_attach(function(client, bufnr)
 
   local keybind = vim.keymap.set
 
-  keybind("n", "gg", function() vim.lsp.buf.definition() end, opts)
-  keybind("n", "gD", function() split_definition() end, opts)
-  keybind("n", "gd", function() split_definition_vertical() end, opts)
+  keybind("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  keybind("n", "gsd", function() split_definition() end, opts)
+  keybind("n", "gvd", function() split_definition_vertical() end, opts)
   keybind("n", "K", function() vim.lsp.buf.hover() end, opts)
   keybind("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   -- keybind("n", "<leader>ld", function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts)
+  keybind("n", "<leader>ds", function() vim.diagnostic.show() end, opts)
+  keybind("n", "<leader>dh", function() vim.diagnostic.hide() end, opts)
   keybind("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   keybind("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
 
@@ -83,7 +85,7 @@ vim.api.nvim_create_autocmd(
   },
   {
     pattern = { "*" },
-    command = "lua vim.diagnostic.open_float(nil, { focus = false, scope = \"line\" })",
+    command = "lua vim.diagnostic.open_float(nil, { focus = false, scope = \"cursor\" })",
     group = diagnosticsGroup
   }
 )
@@ -110,14 +112,14 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- LSP-Zero auto format
+-- LSP auto format
 vim.api.nvim_create_autocmd(
   {
     "BufWrite"
   },
   {
     pattern = { "*" },
-    command = "LspZeroFormat"
+    command = "lua vim.lsp.buf.format()"
   }
 )
 
@@ -157,18 +159,6 @@ lsp.setup_nvim_cmp({
 
 lsp.setup()
 
--- vim.api.nvim_create_autocmd(
---   { "BufWritePre" },
---   {
---     pattern = { "*" },
---     command = "LspZeroFormat"
---   }
--- )
-
-vim.api.nvim_create_autocmd(
-  { "BufWritePre" },
-  {
-    pattern = { ".tf" },
-    command = "TerraformFmt"
-  }
-)
+vim.diagnostic.config({
+  update_in_insert = true
+})
