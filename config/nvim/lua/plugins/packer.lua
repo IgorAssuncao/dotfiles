@@ -123,10 +123,7 @@ return packer.startup(function(use)
 
   use {
     "EdenEast/nightfox.nvim",
-    as = "nightfox",
-    config = function()
-      vim.cmd("colorscheme carbonfox")
-    end
+    as = "nightfox"
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
