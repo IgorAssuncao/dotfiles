@@ -110,6 +110,16 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+-- LSP-Zero auto format
+vim.api.nvim_create_autocmd(
+  {
+    "BufWrite"
+  },
+  {
+    pattern = { "*" },
+    command = "LspZeroFormat"
+  }
+)
 
 -- TODO: Split cmp config into its own file.
 
