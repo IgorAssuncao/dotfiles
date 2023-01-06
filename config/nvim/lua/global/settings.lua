@@ -25,7 +25,7 @@ vim.opt.incsearch = true
 
 -- vim.opt.guicursor = ""
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 
 vim.opt.updatetime = 50
 
@@ -36,6 +36,7 @@ vim.opt.splitright = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+
 -- Sets number and relativenumber only on current buffer
 local dynamicNumberGroup = vim.api.nvim_create_augroup(
   "DynamicNumbers",
@@ -50,9 +51,9 @@ vim.api.nvim_create_autocmd(
     "FocusGained"
   },
   {
-    group = dynamicNumberGroup,
     pattern = { "*" },
-    command = "set number relativenumber"
+    command = "set number relativenumber",
+    group = dynamicNumberGroup
   }
 )
 -- -- Enables only numbers on unfocused buffers.
@@ -62,9 +63,9 @@ vim.api.nvim_create_autocmd(
     "FocusLost"
   },
   {
-    group = dynamicNumberGroup,
     pattern = { "*" },
-    command = "set number norelativenumber"
+    command = "set number norelativenumber",
+    group = dynamicNumberGroup
   }
 )
 
