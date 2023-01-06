@@ -80,12 +80,21 @@ return packer.startup(function(use)
   }
 
   use {
-    "windwp/nvim-autopairs",
-    requires = {
-      "hrsh7th/nvim-cmp"
-    },
-    config = function() require("nvim-autopairs").setup {} end,
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate"
   }
+
+  use "nvim-treesitter/playground"
+
+  use {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.0",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
+
+  -- use "theprimeagen/harpoon"
+
+  use "tpope/vim-fugitive"
 
   use {
     "lewis6991/gitsigns.nvim",
@@ -96,11 +105,21 @@ return packer.startup(function(use)
   }
 
   use {
+    "windwp/nvim-autopairs",
+    requires = {
+      "hrsh7th/nvim-cmp"
+    },
+    config = function() require("nvim-autopairs").setup {} end,
+  }
+
+  use {
     "nvim-tree/nvim-tree.lua",
     requires = {
       "nvim-tree/nvim-web-devicons"
     }
   }
+
+  use "mbbill/undotree"
 
   use {
     "EdenEast/nightfox.nvim",
