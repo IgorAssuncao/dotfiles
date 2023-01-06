@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd(
   },
   {
     pattern = { "*" },
-    command = "lua vim.lsp.buf.format()"
+    command = "lua vim.lsp.buf.format({ async = true })"
   }
 )
 
