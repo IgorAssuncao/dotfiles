@@ -91,10 +91,17 @@ return require("packer").startup(function(use)
   }
 
   use {
+    "nvim-tree/nvim-tree.lua",
+    requires = {
+      "nvim-tree/nvim-web-devicons"
+    }
+  }
+
+  use {
     "EdenEast/nightfox.nvim",
     as = "nightfox",
     config = function()
-      vim.cmd("colorscheme nightox")
+      vim.cmd("colorscheme carbonfox")
     end
   }
 
