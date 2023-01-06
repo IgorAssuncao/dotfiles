@@ -1,20 +1,23 @@
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+local lsp = require("lsp-zero")
+lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'sumneko_lua',
-  'bashls',
-  -- 'awk-language-server',
-  'tsserver',
-  'gopls',
-  'rust_analyzer',
-  -- 'jq-lsp',
-  -- 'json-lsp',
-  'terraformls',
-  -- 'vim-language-server',
-  -- 'yaml-langugage-server',
-  'sqlls',
-  -- 'dockerfile-language-server',
+  "awk_ls",
+  "bashls",
+  "clangd",
+  "cmake",
+  "dockerls",
+  "gopls",
+  "grammarly",
+  -- "jqls",
+  "jsonls",
+  "rust_analyzer",
+  "sqlls",
+  "sumneko_lua",
+  "tsserver",
+  "terraformls",
+  "vimls",
+  "yamlls",
 })
 
 -- lsp.nvim_workspace()
