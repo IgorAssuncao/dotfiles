@@ -1,4 +1,4 @@
-require("telescope").setup{
+require("telescope").setup {
   defaults = {
     file_ignore_patterns = {
       "packer.nvim",
@@ -9,5 +9,3 @@ require("telescope").setup{
     }
   }
 }
-
--- require(".after.plugin.telescope.keymaps")
