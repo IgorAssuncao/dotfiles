@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd(
   },
   {
     pattern = { "*" },
-    command = "lua vim.diagnostic.hide()",
+    command = "lua vim.diagnostic.hide(nil, 0)",
     group = diagnosticsGroup
   }
 )
@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd(
   },
   {
     pattern = { "*" },
-    command = "lua vim.diagnostic.show()",
+    command = "lua vim.diagnostic.show(nil, 0)",
     group = diagnosticsGroup
   }
 )
