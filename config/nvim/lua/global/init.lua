@@ -1,4 +1,4 @@
-require("global.settings")
+require("global.base")
 require("global.remaps")
 
 -- local home = os.getenv("HOME") .. "/"
