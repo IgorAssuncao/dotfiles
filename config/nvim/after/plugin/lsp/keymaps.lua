@@ -24,11 +24,24 @@ function split_definition(split_direction)
     end)
 end
 
+local function preview_location_callback(_, result)
+  if result == nil or vim.tbl_isempty(result) then
+    return nil
+  end
+  vim.lsp.util.preview_location(result[1])
+end
+
+function peekDefinition()
+  local params = vim.lsp.util.make_position_params()
+  return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
+end
+
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   local keybind = vim.keymap.set
 
+  keybind("n", "pd", function() peekDefinition() end, opts)
   keybind("n", "gd", function() vim.lsp.buf.definition() end, opts)
   keybind("n", "gsd", function() split_definition() end, opts)
   keybind("n", "gvd", function() split_definition("v") end, opts)
