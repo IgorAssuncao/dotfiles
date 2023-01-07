@@ -121,6 +121,8 @@ return packer.startup(function(use)
 
   use "mbbill/undotree"
 
+  use "akinsho/toggleterm.nvim"
+
   use {
     "EdenEast/nightfox.nvim",
     as = "nightfox"
