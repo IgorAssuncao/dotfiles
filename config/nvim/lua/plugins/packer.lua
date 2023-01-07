@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd(
     "BufWritePost"
   },
   {
-    pattern = "plugins/packer.lua",
+    pattern = "packer.lua",
     command = "source <afile> | PackerSync",
     group = vim.api.nvim_create_augroup(
       "SourcePackerAndSync",
