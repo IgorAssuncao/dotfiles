@@ -1,6 +1,6 @@
 local lsp = require('lsp-zero')
 
-function split_definition(split_direction)
+local function split_definition(split_direction)
   split_direction = split_direction or "s"
 
   local split_direction_command = "split"
@@ -31,7 +31,7 @@ local function preview_location_callback(_, result)
   vim.lsp.util.preview_location(result[1])
 end
 
-function peekDefinition()
+local function peekDefinition()
   local params = vim.lsp.util.make_position_params()
   return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
 end
