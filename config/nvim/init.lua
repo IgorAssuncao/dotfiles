@@ -1,4 +1,3 @@
+require("base")
 require("plugins")
-require("global")
 require("after")
-

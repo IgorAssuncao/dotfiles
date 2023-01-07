@@ -77,12 +77,3 @@ vim.api.nvim_create_autocmd(
     command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
   }
 )
-
--- Terraform auto format on save
-vim.api.nvim_create_autocmd(
-  { "BufWritePre" },
-  {
-    pattern = { ".tf" },
-    command = "TerraformFmt"
-  }
-)

@@ -1,6 +1,6 @@
-require("global.base")
-require("global.keymaps")
-require("global.text")
+require("base.keymaps")
+require("base.settings")
+require("base.text")
 
 -- local home = os.getenv("HOME") .. "/"
 -- local asdf_shims_path = home .. ".asdf/shims"
