@@ -41,7 +41,7 @@ lsp.on_attach(function(client, bufnr)
 
   local keybind = vim.keymap.set
 
-  keybind("n", "pd", function() peekDefinition() end, opts)
+  keybind("n", "<leader>pd", function() peekDefinition() end, opts)
   keybind("n", "gd", function() vim.lsp.buf.definition() end, opts)
   keybind("n", "gsd", function() split_definition() end, opts)
   keybind("n", "gvd", function() split_definition("v") end, opts)
