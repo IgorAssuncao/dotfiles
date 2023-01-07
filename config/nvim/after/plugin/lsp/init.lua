@@ -117,5 +117,33 @@ lsp.setup_nvim_cmp({
 lsp.setup()
 
 vim.diagnostic.config({
-  update_in_insert = true
+  update_in_insert = true,
+  severity_sort = true
+})
+
+vim.fn.sign_define({
+  {
+    name = "DiagnosticSignError",
+    text = "E",
+    texthl = "DiagnosticSignError",
+    linehl = "ErrorLine"
+  },
+  {
+    name = "DiagnosticSignWarn",
+    text = "W",
+    texthl = "DiagnosticSignWarn",
+    linehl = "WarnLine"
+  },
+  {
+    name = "DiagnosticSignInfo",
+    text = "I",
+    texthl = "DiagnosticSignInfo",
+    linehl = "InfoLine"
+  },
+  {
+    name = "DiagnosticSignHint",
+    text = "H",
+    texthl = "DiagnosticSignHint",
+    linehl = "HintLine"
+  },
 })
