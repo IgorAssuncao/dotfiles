@@ -66,11 +66,17 @@ vim.api.nvim_create_autocmd(
 -- LSP auto format
 vim.api.nvim_create_autocmd(
   {
-    "BufWrite"
+    "BufWritePre"
   },
   {
     pattern = { "*" },
-    command = "lua vim.lsp.buf.format({ async = true })"
+    command = "lua vim.lsp.buf.format()"
+    -- The format() can also receive an argument
+    -- to make formatting async, like:
+    -- format({ async = true })
+    -- I'm not currently using it because it makes
+    -- changes to the buffer after its saved, therefore
+    -- entering a loop.
   }
 )
 
