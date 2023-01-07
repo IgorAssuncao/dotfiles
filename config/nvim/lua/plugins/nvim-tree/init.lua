@@ -3,3 +3,5 @@ require("nvim-tree").setup {
     side = "right"
   }
 }
+
+require("plugins.nvim-tree.keymaps")

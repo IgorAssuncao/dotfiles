@@ -1,5 +1,5 @@
 require("global.base")
-require("global.remaps")
+require("global.keymaps")
 require("global.text")
 
 -- local home = os.getenv("HOME") .. "/"
