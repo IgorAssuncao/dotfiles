@@ -1,23 +1,45 @@
 vim.g.mapleader = " "
 
-local keybind = vim.keymap.set
+local function set_keybind(params)
+  local mode = params.mode or "n"
+
+  if params.keys then
+    keys = params.keys
+  end
+
+  if params.cmd then
+    cmd = params.cmd
+  end
+
+  local _opts = {
+    remap = false
+  }
+
+  if params.opts then
+    for k, v in pairs(params.opts) do
+      _opts[k] = v
+    end
+  end
+
+  return vim.keymap.set(mode, keys, cmd, _opts)
+end
 
 -- Explorer
-keybind("n", "<leader>e", vim.cmd.Ex)
+set_keybind { keys = "<leader>e", cmd = vim.cmd.Ex, { desc = "[E]xplorer" } }
 
-keybind("n", "<leader>q", vim.cmd.quit)
-keybind("n", "<leader>w", vim.cmd.write)
-keybind("n", "<leader>x", vim.cmd.exit)
+set_keybind { keys = "<leader>q", cmd = vim.cmd.quit, { desc = "[Q]uit" } }
+set_keybind { keys = "<leader>w", cmd = vim.cmd.write, { desc = "[W]rite" } }
+set_keybind { keys = "<leader>x", cmd = vim.cmd.exit, { desc = "E[X]it" } }
 
 -- Clear Search Highlighting
-keybind("n", "<leader>c", vim.cmd('nohls'))
+set_keybind { keys = "<leader>c", cmd = vim.cmd('nohls'), { desc = "[C]lear Search Highlighting" } }
 
 -- Navigation
 -- -- Panels
-keybind("n", "<C-H>", "<C-W><C-H>")
-keybind("n", "<C-J>", "<C-W><C-J>")
-keybind("n", "<C-K>", "<C-W><C-K>")
-keybind("n", "<C-L>", "<C-W><C-L>")
+set_keybind { keys = "<C-H>", cmd = "<C-W><C-H>", { desc = "Move to left window" } }
+set_keybind { keys = "<C-J>", cmd = "<C-W><C-J>", { desc = "Move to down window" } }
+set_keybind { keys = "<C-K>", cmd = "<C-W><C-K>", { desc = "Move to up window" } }
+set_keybind { keys = "<C-L>", cmd = "<C-W><C-L>", { desc = "Move to right window" } }
 -- TODO: discover how to make it work:
 -- Keybind("n", "<C-H>", vim.cmd.wincmd('h'))
 -- Keybind("n", "<C-J>", vim.cmd.wincmd('j'))
@@ -25,23 +47,19 @@ keybind("n", "<C-L>", "<C-W><C-L>")
 -- Keybind("n", "<C-L>", vim.cmd.wincmd('l'))
 
 -- -- Buffers
-keybind("n", "<leader>bn", vim.cmd.bn)
-keybind("n", "<leader>bp", vim.cmd.bp)
-keybind("n", "<leader>bd", vim.cmd.bd)
+set_keybind { keys = "<leader>bn", cmd = vim.cmd.bn, { desc = "[B]uffer [n]ext" } }
+set_keybind { keys = "<leader>bp", cmd = vim.cmd.bp, { desc = "[B]uffer [p]revious" } }
+set_keybind { keys = "<leader>bd", cmd = vim.cmd.bd, { desc = "[B]uffer [d]elete" } }
 
--- Moving text around while in visual mode
-keybind("v", "J", ":m '>+1<CR>gv=gv")
-keybind("v", "K", ":m '<-2<CR>gv=gv")
+set_keybind { mode = "v", keys = "J", cmd = ":m '>+1<CR>gv=gv", { desc = "Move current selection downwards." } }
+set_keybind { mode = "v", keys = "K", cmd = ":m '<-2<CR>gv=gv", { desc = "Move current selection upwards." } }
 
--- Scroll but with cursos in the middle
-keybind("n", "<C-d>", "<C-d>zz")
-keybind("n", "<C-u>", "<C-u>zz")
+set_keybind { keys = "<C-d>", cmd = "<C-d>zz", { desc = "Scroll down with cursor in the middle of buffer" } }
+set_keybind { keys = "<C-u>", cmd = "<C-u>zz", { desc = "Scroll up with cursor in the middle of buffer" } }
 
--- Keep old paste in paste buffer
-keybind("x", "<leader>p", "\"_dP")
+set_keybind { mode = "x", keys = "<leader>p", cmd = "\"_dP", { desc = "Keep old paste in paste buffer" } }
 
 -- Yank into system clipboard
-keybind("n", "<leader>y", "\"+y")
-keybind("v", "<leader>y", "\"+y")
+set_keybind { mode = "v", keys = "<leader>y", cmd = "\"+y", { desc = "Yank into system clipboard while in visual mode" } }
 
-return { Keybind = keybind }
+return { Keybind = { set = set_keybind } }

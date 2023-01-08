@@ -37,27 +37,28 @@ local function peekDefinition()
 end
 
 lsp.on_attach(function(client, bufnr)
-  local keybind = require("base.keymaps").Keybind
+  local keybind = require("base.keymaps").Keybind.set
 
-  keybind("n", "<leader>pd", function() peekDefinition() end,
-    { buffer = bufnr, remap = false, desc = "[P]eek [D]efinition" })
-  keybind("n", "gd", function() vim.lsp.buf.definition() end,
-    { buffer = bufnr, remap = false, desc = "[G]o to [D]efinition" })
-  keybind("n", "gsd", function() split_definition() end,
-    { buffer = bufnr, remap = false, desc = "[G]o to [S]plit [D]efinition" })
-  keybind("n", "gvd", function() split_definition("v") end,
-    { buffer = bufnr, remap = false, desc = "[G]o to [V]ertical [D]efinition" })
-  keybind("n", "K", function() vim.lsp.buf.hover() end, { buffer = bufnr, remap = false, desc = "Hover" })
-  keybind("i", "<C-h>", function() vim.lsp.buf.signature_help() end, { buffer = bufnr, remap = false, desc = "[H]elp" })
-  -- Keybind("n", "<leader>ld", function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, { buffer = bufnr, remap = false, desc = "Open diagnostics"})
-  keybind("n", "<leader>ds", function() vim.diagnostic.show() end,
-    { buffer = bufnr, remap = false, desc = "[D]iagnostics [S]how" })
-  keybind("n", "<leader>dh", function() vim.diagnostic.hide() end,
-    { buffer = bufnr, remap = false, desc = "[D]iagnostics [H]ide" })
-  keybind("n", "[d", function() vim.diagnostic.goto_prev() end,
-    { buffer = bufnr, remap = false, desc = "Go to prev diagnostic" })
-  keybind("n", "]d", function() vim.diagnostic.goto_next() end,
-    { buffer = bufnr, remap = false, desc = "Go to next diagnostic" })
+  keybind { keys = "<leader>pd", cmd = function() peekDefinition() end,
+    { buffer = bufnr, desc = "[P]eek [D]efinition" } }
+  keybind { keys = "gd", cmd = function() vim.lsp.buf.definition() end,
+    { buffer = bufnr, desc = "[G]o to [D]efinition" } }
+  keybind { keys = "gsd", cmd = function() split_definition() end,
+    { buffer = bufnr, desc = "[G]o to [S]plit [D]efinition" } }
+  keybind { keys = "gvd", cmd = function() split_definition("v") end,
+    { buffer = bufnr, desc = "[G]o to [V]ertical [D]efinition" } }
+  keybind { keys = "K", cmd = function() vim.lsp.buf.hover() end, { buffer = bufnr, desc = "Hover" } }
+  keybind { mode = "i", keys = "<C-h>", cmd = function() vim.lsp.buf.signature_help() end,
+    { buffer = bufnr, desc = "[H]elp" } }
+  -- Keybind{ keys ="<leader>ld", function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, { buffer = bufnr, desc = "Open diagnostics"})
+  keybind { keys = "<leader>ds", cmd = function() vim.diagnostic.show() end,
+    { buffer = bufnr, desc = "[D]iagnostics [S]how" } }
+  keybind { keys = "<leader>dh", cmd = function() vim.diagnostic.hide() end,
+    { buffer = bufnr, desc = "[D]iagnostics [H]ide" } }
+  keybind { keys = "[d", cmd = function() vim.diagnostic.goto_prev() end,
+    { buffer = bufnr, desc = "Go to prev diagnostic" } }
+  keybind { keys = "]d", cmd = function() vim.diagnostic.goto_next() end,
+    { buffer = bufnr, desc = "Go to next diagnostic" } }
 
   -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
 end)

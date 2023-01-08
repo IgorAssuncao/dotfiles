@@ -5,14 +5,7 @@ require("toggleterm").setup({
   close_on_exit = true
 })
 
-function Toggleterm_set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  vim.keymap.set('t', [[<C-\><C-\>]], [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wicmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wicmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wicmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wicmd l<CR>]], opts)
-end
+require("plugins.toggleterm.keymaps")
 
 vim.api.nvim_create_autocmd(
   {
@@ -24,6 +17,8 @@ vim.api.nvim_create_autocmd(
   }
 )
 
+local keybind = require("base.keymaps").Keybind.set
+
 local terminal = require("toggleterm.terminal").Terminal
 
 local git_terminal = terminal:new({ dir = "git_dir", direction = "float" })
@@ -32,7 +27,7 @@ local function _toggle_git_terminal()
   git_terminal:toggle()
 end
 
-vim.keymap.set("n", [[<C-\>g]], function() _toggle_git_terminal() end)
+keybind { keys = [[<C-\>g]], cmd = function() _toggle_git_terminal() end, { desc = "Toggle terminal opening git dir" } }
 
 local htop_terminal = terminal:new({ cmd = "htop", hidden = true, close_on_exit = true })
 
@@ -40,4 +35,4 @@ local function _toggle_htop_terminal()
   htop_terminal:toggle()
 end
 
-vim.keymap.set("n", [[<C-\>h]], function() _toggle_htop_terminal() end)
+keybind { keys = [[<C-\>h]], cmd = function() _toggle_htop_terminal() end, { desc = "Toggle terminal opening htop" } }
