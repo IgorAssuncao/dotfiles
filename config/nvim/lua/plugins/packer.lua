@@ -124,6 +124,13 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim"
 
   use {
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      "nvim-tree/nvim-web-devicons"
+    }
+  }
+
+  use {
     "EdenEast/nightfox.nvim",
     as = "nightfox"
   }
