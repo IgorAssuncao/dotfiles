@@ -2,9 +2,16 @@ source ./utils.sh
 
 plugins_list=(
   "awscli"
+  "golang"
   "neovim"
   "nodejs"
-  "terraform")
+  "terraform"
+)
+
+dependencies=(
+  "git"
+  "curl"
+)
 
 ensure_dependencies() {
   dependencies=($@)
@@ -27,17 +34,17 @@ download() {
 }
 
 configure_shell() {
-  if [[ $SHELL == "/bin/zsh" ]]; then
-    source_cmd=". \$HOME/.asdf/asdf.sh"
-    zsh_config_file=~/.zshrc
-    if [[ ! $(grep "$source_cmd" $zsh_config_file) ]]; then
-      echo "$source_cmd" >> $zsh_config_file
-    fi
-  else
+  if [[ ! $SHELL == "/bin/zsh" ]]; then
     echo "$SHELL currently not supported"
     echo "You need to configure manually"
     echo "Check asdf documentation for more information"
     return 1
+  fi
+
+  source_cmd=". \$HOME/.asdf/asdf.sh"
+  zsh_config_file=~/.zshrc
+  if [[ ! $(grep "$source_cmd" $zsh_config_file) ]]; then
+    echo "$source_cmd" >> $zsh_config_file
   fi
 }
 
@@ -49,14 +56,14 @@ setup_plugins() {
   done
 
   if [[ ! -e ~/.tool-versions ]]; then
-    createSymlink asdf/.tool_versions .tool_versions
+    createSymlink asdf/.tool-versions .tool-versions
   fi
   asdf install
 }
 
 install() {
   echo "Checking asdf dependencies."
-  ensure_dependencies git curl
+  ensure_dependencies "${dependencies[@]}"
 
   if [[ ! asdf_exists ]]; then
     download

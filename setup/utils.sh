@@ -13,6 +13,6 @@ createSymlink() {
     target=$software
   fi
   echo "Creating symlink for $software"
-  ln -s ~/system-config/config/$software ~/$target
+  ln -s ~/system-config/config/$software ~/.config/$target
   echo "Created symlink for $t successfully"
 }
