@@ -1,43 +1,47 @@
 vim.g.mapleader = " "
 
--- Explorer
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+local keybind = vim.keymap.set
 
-vim.keymap.set("n", "<leader>q", vim.cmd.quit)
-vim.keymap.set("n", "<leader>w", vim.cmd.write)
-vim.keymap.set("n", "<leader>x", vim.cmd.exit)
+-- Explorer
+keybind("n", "<leader>e", vim.cmd.Ex)
+
+keybind("n", "<leader>q", vim.cmd.quit)
+keybind("n", "<leader>w", vim.cmd.write)
+keybind("n", "<leader>x", vim.cmd.exit)
 
 -- Clear Search Highlighting
-vim.keymap.set("n", "<leader>c", vim.cmd('nohls'))
+keybind("n", "<leader>c", vim.cmd('nohls'))
 
 -- Navigation
 -- -- Panels
-vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
-vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
-vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
-vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
+keybind("n", "<C-H>", "<C-W><C-H>")
+keybind("n", "<C-J>", "<C-W><C-J>")
+keybind("n", "<C-K>", "<C-W><C-K>")
+keybind("n", "<C-L>", "<C-W><C-L>")
 -- TODO: discover how to make it work:
--- vim.keymap.set("n", "<C-H>", vim.cmd.wincmd('h'))
--- vim.keymap.set("n", "<C-J>", vim.cmd.wincmd('j'))
--- vim.keymap.set("n", "<C-K>", vim.cmd.wincmd('k'))
--- vim.keymap.set("n", "<C-L>", vim.cmd.wincmd('l'))
+-- Keybind("n", "<C-H>", vim.cmd.wincmd('h'))
+-- Keybind("n", "<C-J>", vim.cmd.wincmd('j'))
+-- Keybind("n", "<C-K>", vim.cmd.wincmd('k'))
+-- Keybind("n", "<C-L>", vim.cmd.wincmd('l'))
 
 -- -- Buffers
-vim.keymap.set("n", "<leader>bn", vim.cmd.bn)
-vim.keymap.set("n", "<leader>bp", vim.cmd.bp)
-vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
+keybind("n", "<leader>bn", vim.cmd.bn)
+keybind("n", "<leader>bp", vim.cmd.bp)
+keybind("n", "<leader>bd", vim.cmd.bd)
 
 -- Moving text around while in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keybind("v", "J", ":m '>+1<CR>gv=gv")
+keybind("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Scroll but with cursos in the middle
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+keybind("n", "<C-d>", "<C-d>zz")
+keybind("n", "<C-u>", "<C-u>zz")
 
 -- Keep old paste in paste buffer
-vim.keymap.set("x", "<leader>p", "\"_dP")
+keybind("x", "<leader>p", "\"_dP")
 
 -- Yank into system clipboard
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+keybind("n", "<leader>y", "\"+y")
+keybind("v", "<leader>y", "\"+y")
+
+return { Keybind = keybind }
