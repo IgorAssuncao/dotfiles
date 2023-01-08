@@ -100,16 +100,14 @@ return packer.startup(function(use)
     "lewis6991/gitsigns.nvim",
     requires = {
       "nvim-lua/plenary.nvim"
-    },
-    config = function() require("gitsigns").setup() end
+    }
   }
 
   use {
     "windwp/nvim-autopairs",
     requires = {
       "hrsh7th/nvim-cmp"
-    },
-    config = function() require("nvim-autopairs").setup {} end,
+    }
   }
 
   use {
