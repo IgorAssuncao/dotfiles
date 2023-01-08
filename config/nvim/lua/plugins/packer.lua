@@ -131,6 +131,14 @@ return packer.startup(function(use)
   }
 
   use {
+    "akinsho/bufferline.nvim",
+    tag = 'v3.*',
+    requires = {
+      "nvim-tree/nvim-web-devicons"
+    }
+  }
+
+  use {
     "EdenEast/nightfox.nvim",
     as = "nightfox"
   }

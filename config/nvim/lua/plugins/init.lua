@@ -1,5 +1,6 @@
 require("plugins.packer")
 require("plugins.autopairs")
+require("plugins.bufferline")
 require("plugins.fugitive")
 -- require("plugins.harpoon")
 require("plugins.lsp")
