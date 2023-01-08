@@ -36,6 +36,8 @@ vim.opt.updatetime = 50
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.termguicolors = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
