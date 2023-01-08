@@ -2,16 +2,28 @@ source ./utils.sh
 
 plugins_list=(
   "awscli"
+  "bat"
+  "exa"
   "golang"
+  "jq"
+  "k9s"
+  "kubectl"
+  "lazygit"
   "neovim"
   "nodejs"
+  "ripgrep"
+  "rust"
   "terraform"
+  "yq"
 )
 
 dependencies=(
   "git"
   "curl"
 )
+
+source_cmd=". \$HOME/.asdf/asdf.sh"
+zsh_config_file=~/.zshrc
 
 ensure_dependencies() {
   dependencies=($@)
@@ -41,11 +53,7 @@ configure_shell() {
     return 1
   fi
 
-  source_cmd=". \$HOME/.asdf/asdf.sh"
-  zsh_config_file=~/.zshrc
-  if [[ ! $(grep "$source_cmd" $zsh_config_file) ]]; then
-    echo "$source_cmd" >> $zsh_config_file
-  fi
+  echo "$source_cmd" >> $zsh_config_file
 }
 
 setup_plugins() {
@@ -71,8 +79,10 @@ install() {
     echo "Skipping asdf download since its already installed."
   fi
 
-  echo "Configuring asdf to $SHELL"
-  configure_shell
+  if [[ ! $(grep "$source_cmd" $zsh_config_file) ]]; then
+    echo "Configuring asdf to $SHELL"
+    configure_shell
+  fi
 
   if [[ ! $SHELL == "/bin/zsh" ]]; then
     exit 1
