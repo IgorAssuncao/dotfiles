@@ -41,9 +41,9 @@ keybind { keys = [[<C-\>h]], cmd = function() _toggle_htop_terminal() end,
 
 local lazygit_terminal = terminal:new({ cmd = "lazygit", hidden = true, close_on_exit = true })
 
-local function _toggle_htop_terminal()
-  htop_terminal:toggle()
+local function _toggle_lazygit_terminal()
+  lazygit_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>g]], cmd = function() _toggle_htop_terminal() end,
+keybind { keys = [[<C-\>g]], cmd = function() _toggle_lazygit_terminal() end,
   opts = { desc = "Toggle terminal opening htop" } }
