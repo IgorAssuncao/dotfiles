@@ -50,7 +50,7 @@ lsp.on_attach(function(client, bufnr)
   keybind { keys = "K", cmd = function() vim.lsp.buf.hover() end, opts = { buffer = bufnr, desc = "Hover" } }
   keybind { mode = "i", keys = "<C-h>", cmd = function() vim.lsp.buf.signature_help() end,
     opts = { buffer = bufnr, desc = "[H]elp" } }
-  -- Keybind{ keys ="<leader>ld", function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"})
+  -- Keybind{ keys ="<leader>ld", cmd = function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"})
   keybind { keys = "<leader>ds", cmd = function() vim.diagnostic.show() end,
     opts = { buffer = bufnr, desc = "[D]iagnostics [S]how" } }
   keybind { keys = "<leader>dh", cmd = function() vim.diagnostic.hide() end,

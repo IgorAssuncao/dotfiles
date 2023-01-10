@@ -27,7 +27,8 @@ local function _toggle_git_terminal()
   git_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>g]], cmd = function() _toggle_git_terminal() end, { desc = "Toggle terminal opening git dir" } }
+keybind { keys = [[<C-\>g]], cmd = function() _toggle_git_terminal() end,
+  opts = { desc = "Toggle terminal opening git dir" } }
 
 local htop_terminal = terminal:new({ cmd = "htop", hidden = true, close_on_exit = true })
 
@@ -35,7 +36,8 @@ local function _toggle_htop_terminal()
   htop_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>h]], cmd = function() _toggle_htop_terminal() end, { desc = "Toggle terminal opening htop" } }
+keybind { keys = [[<C-\>h]], cmd = function() _toggle_htop_terminal() end,
+  opts = { desc = "Toggle terminal opening htop" } }
 
 local lazygit_terminal = terminal:new({ cmd = "lazygit", hidden = true, close_on_exit = true })
 
@@ -43,4 +45,5 @@ local function _toggle_htop_terminal()
   htop_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>g]], cmd = function() _toggle_htop_terminal() end, { desc = "Toggle terminal opening htop" } }
+keybind { keys = [[<C-\>g]], cmd = function() _toggle_htop_terminal() end,
+  opts = { desc = "Toggle terminal opening htop" } }
