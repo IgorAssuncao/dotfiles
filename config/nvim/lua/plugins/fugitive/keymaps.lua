@@ -8,7 +8,7 @@ keybind { keys = "<leader>gp", cmd = function() vim.cmd { cmd = "Git!", args = {
   opts = { desc = "[G]it [P]ush" } }
 keybind { keys = "<leader>gP", cmd = function() vim.cmd { cmd = "Git!", args = { "pull" } } end,
   opts = { desc = "[G]it [P]ull" } }
-keybind { keys = "<leader>gPR", function() vim.cmd { cmd = "Git!", args = { "pull --rebase" } } end,
+keybind { keys = "<leader>gR", function() vim.cmd { cmd = "Git!", args = { "pull --rebase" } } end,
   opts = { desc = "[G]it [P]ull [R]ebase" } }
 keybind { keys = "<leader>gb",
   cmd = function() vim.cmd { cmd = "Git!", args = { "checkout " .. vim.fn.input("Target branch: ") } } end,
