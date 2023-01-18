@@ -79,9 +79,9 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-require("plugins.p_lsp.cmp")
-
 PLUGINS.lsp_zero.setup()
+
+require("plugins.p_lsp.cmp")
 
 local function eslint_config_exists()
   local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
