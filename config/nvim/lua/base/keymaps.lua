@@ -21,7 +21,20 @@ local function set_keybind(params)
     end
   end
 
+  -- if keys == "<leader>gPR" or keys == "<leader>gPP" then
+  --   print(mode, keys, cmd)
+  --   for k, v in pairs(_opts) do
+  --     print(k, v)
+  --   end
+  -- end
+
   return vim.keymap.set(mode, keys, cmd, _opts)
+end
+
+local function set_multiple_keybinds(keybinds)
+  for k, v in pairs(keybinds) do
+    set_keybind(v)
+  end
 end
 
 -- Explorer
@@ -63,4 +76,4 @@ set_keybind { mode = "x", keys = "<leader>p", cmd = "\"_dP", opts = { desc = "Ke
 set_keybind { mode = "v", keys = "<leader>y", cmd = "\"+y",
   opts = { desc = "Yank into system clipboard while in visual mode" } }
 
-return { Keybind = { set = set_keybind } }
+return { Keybind = { set = set_keybind, mult = set_multiple_keybinds } }
