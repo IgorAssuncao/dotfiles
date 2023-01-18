@@ -118,31 +118,31 @@ vim.diagnostic.config({
   severity_sort = true
 })
 
-vim.fn.sign_define({
-  {
-    name = "DiagnosticSignError",
-    text = "E",
-    texthl = "DiagnosticSignError",
-    linehl = "ErrorLine"
-  },
-  {
-    name = "DiagnosticSignWarn",
-    text = "W",
-    texthl = "DiagnosticSignWarn",
-    linehl = "WarnLine"
-  },
-  {
-    name = "DiagnosticSignInfo",
-    text = "I",
-    texthl = "DiagnosticSignInfo",
-    linehl = "InfoLine"
-  },
-  {
-    name = "DiagnosticSignHint",
-    text = "H",
-    texthl = "DiagnosticSignHint",
-    linehl = "HintLine"
-  },
-})
+-- vim.fn.sign_define({
+--   {
+--     name = "DiagnosticSignError",
+--     text = "E",
+--     texthl = "DiagnosticSignError",
+--     linehl = "ErrorLine"
+--   },
+--   {
+--     name = "DiagnosticSignWarn",
+--     text = "W",
+--     texthl = "DiagnosticSignWarn",
+--     linehl = "WarnLine"
+--   },
+--   {
+--     name = "DiagnosticSignInfo",
+--     text = "I",
+--     texthl = "DiagnosticSignInfo",
+--     linehl = "InfoLine"
+--   },
+--   {
+--     name = "DiagnosticSignHint",
+--     text = "H",
+--     texthl = "DiagnosticSignHint",
+--     linehl = "HintLine"
+--   },
+-- })
 
 require("plugins.p_lsp.keymaps")
