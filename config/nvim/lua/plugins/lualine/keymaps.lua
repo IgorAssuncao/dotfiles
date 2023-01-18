@@ -1,7 +1,11 @@
-local keybind = require("base.keymaps").Keybind.set
+local Keymaps = require("base.keymaps").Keymaps
+
+local keymaps = {}
 
 for i = 1, 9 do
   local key = "<leader>" .. i
   local cmd = i .. "<C-W>w"
-  keybind { keys = key, cmd = cmd, opts = { desc = "Move to window " .. i } }
+  table.insert(keymaps, { keys = key, cmd = cmd, opts = { desc = "Move to window " .. i } })
 end
+
+Keymaps(keymaps)

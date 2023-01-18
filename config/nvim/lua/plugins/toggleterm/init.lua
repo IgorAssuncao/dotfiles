@@ -17,7 +17,8 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-local keybind = require("base.keymaps").Keybind.set
+local Keymaps = require("base.keymaps").Keymaps
+local keymaps = {}
 
 local terminal = require("toggleterm.terminal").Terminal
 
@@ -27,8 +28,8 @@ local function _toggle_git_terminal()
   git_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>g]], cmd = function() _toggle_git_terminal() end,
-  opts = { desc = "Toggle terminal opening git dir" } }
+table.insert(keymaps, { keys = [[<C-\>g]], cmd = function() _toggle_git_terminal() end,
+  opts = { desc = "Toggle terminal opening git dir" } })
 
 local htop_terminal = terminal:new({ cmd = "htop", hidden = true, close_on_exit = true })
 
@@ -36,8 +37,8 @@ local function _toggle_htop_terminal()
   htop_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>h]], cmd = function() _toggle_htop_terminal() end,
-  opts = { desc = "Toggle terminal opening htop" } }
+table.insert(keymaps, { keys = [[<C-\>h]], cmd = function() _toggle_htop_terminal() end,
+  opts = { desc = "Toggle terminal opening htop" } })
 
 local lazygit_terminal = terminal:new({ cmd = "lazygit", hidden = true, close_on_exit = true })
 
@@ -45,8 +46,8 @@ local function _toggle_lazygit_terminal()
   lazygit_terminal:toggle()
 end
 
-keybind { keys = [[<C-\>g]], cmd = function() _toggle_lazygit_terminal() end,
-  opts = { desc = "Toggle terminal opening htop" } }
+table.insert(keymaps, { keys = [[<C-\>g]], cmd = function() _toggle_lazygit_terminal() end,
+  opts = { desc = "Toggle terminal opening htop" } })
 
 
 local _terminal_below = terminal:new({ direction = "horizontal", close_on_exit = true })
@@ -55,5 +56,5 @@ local function _toggle_terminal_below()
   _terminal_below:toggle()
 end
 
-keybind { keys = [[<C-\>d]], cmd = function() _toggle_terminal_below() end,
-  opts = { desc = "Toggle terminal below" } }
+table.insert(keymaps, { keys = [[<C-\>d]], cmd = function() _toggle_terminal_below() end,
+  opts = { desc = "Toggle terminal below" } })

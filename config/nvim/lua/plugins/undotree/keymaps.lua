@@ -1,3 +1,7 @@
-local keybind = require("base.keymaps").Keybind.set
+local Keymaps = require("base.keymaps").Keymaps
 
-keybind { keys = '<leader>u', cmd = vim.cmd.UndotreeToggle, opts = { desc = "[U]ndotree Toggle" } }
+local keymaps = {
+  { keys = '<leader>u', cmd = vim.cmd.UndotreeToggle, opts = { desc = "[U]ndotree Toggle" } }
+}
+
+Keymaps(keymaps)
