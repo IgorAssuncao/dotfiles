@@ -47,3 +47,13 @@ end
 
 keybind { keys = [[<C-\>g]], cmd = function() _toggle_lazygit_terminal() end,
   opts = { desc = "Toggle terminal opening htop" } }
+
+
+local _terminal_below = terminal:new({ direction = "horizontal", close_on_exit = true })
+
+local function _toggle_terminal_below()
+  _terminal_below:toggle()
+end
+
+keybind { keys = [[<C-\>d]], cmd = function() _toggle_terminal_below() end,
+  opts = { desc = "Toggle terminal below" } }
