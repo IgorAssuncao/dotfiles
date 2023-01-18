@@ -1,3 +1,27 @@
+-- local function old_split_definition(split_direction)
+--   split_direction = split_direction or "s"
+--
+--   local split_direction_command = "split"
+--
+--   if split_direction == "v" then
+--     split_direction_command = "vsplit"
+--   end
+--
+--   vim.lsp.buf_request(0, "textDocument/definition", vim.lsp.util.make_position_params(),
+--     function(err, result, ctx, config)
+--       if err then
+--         print(err)
+--         return
+--       end
+--
+--       local command = split_direction_command .. vim.uri_to_fname(result[1].uri)
+--       local line = "call cursor(" ..
+--           (result[1].range.start.line + 1) .. "," .. (result[1].range.start.character + 1) .. ")"
+--       vim.cmd(command)
+--       vim.cmd(line)
+--     end)
+-- end
+
 local function split_definition(split_direction)
   split_direction = split_direction or "s"
 
@@ -7,19 +31,8 @@ local function split_definition(split_direction)
     split_direction_command = "vsplit"
   end
 
-  vim.lsp.buf_request(0, "textDocument/definition", vim.lsp.util.make_position_params(),
-    function(err, result, ctx, config)
-      if err then
-        print(err)
-        return
-      end
-
-      local command = split_direction_command .. vim.uri_to_fname(result[1].uri)
-      local line = "call cursor(" ..
-          (result[1].range.start.line + 1) .. "," .. (result[1].range.start.character + 1) .. ")"
-      vim.cmd(command)
-      vim.cmd(line)
-    end)
+  vim.cmd(split_direction_command)
+  vim.lsp.buf.definition()
 end
 
 local function _preview_location_callback(_, result)
