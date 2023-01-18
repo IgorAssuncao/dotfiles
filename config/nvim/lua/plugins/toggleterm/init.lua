@@ -46,8 +46,8 @@ local function _toggle_lazygit_terminal()
   lazygit_terminal:toggle()
 end
 
-table.insert(keymaps, { keys = [[<C-\>g]], cmd = function() _toggle_lazygit_terminal() end,
-  opts = { desc = "Toggle terminal opening htop" } })
+table.insert(keymaps, { keys = [[<C-\>G]], cmd = function() _toggle_lazygit_terminal() end,
+  opts = { desc = "Toggle terminal opening lazygit" } })
 
 
 local _terminal_below = terminal:new({ direction = "horizontal", close_on_exit = true })
@@ -58,3 +58,5 @@ end
 
 table.insert(keymaps, { keys = [[<C-\>d]], cmd = function() _toggle_terminal_below() end,
   opts = { desc = "Toggle terminal below" } })
+
+Keymaps(keymaps)
