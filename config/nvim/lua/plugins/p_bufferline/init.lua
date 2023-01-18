@@ -1,4 +1,4 @@
-require("bufferline").setup({
+PLUGINS.bufferline.setup({
   options = {
     active = true,
     always_show_bufferline = true,

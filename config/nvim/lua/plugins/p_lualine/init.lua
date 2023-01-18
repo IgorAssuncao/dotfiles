@@ -1,4 +1,4 @@
-require("lualine").setup({
+PLUGINS.lualine.setup({
   options = {
     theme = "auto" -- or horizon
   },
@@ -11,4 +11,4 @@ require("lualine").setup({
   }
 })
 
-require("plugins.lualine.keymaps")
+require("plugins.p_lualine.keymaps")

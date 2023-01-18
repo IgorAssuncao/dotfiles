@@ -1,5 +1,3 @@
-local Keymaps = require("base.keymaps").Keymaps
-
 function Toggleterm_set_terminal_keymaps()
   local buffer = 0
   local keymaps = {
@@ -14,5 +12,15 @@ function Toggleterm_set_terminal_keymaps()
     { mode = "t", keys = "<C-l>", cmd = [[<Cmd>wicmd l<CR>]],
       opts = { buffer = buffer, desc = "Move to right terminal" } }
   }
-  Keymaps(keymaps)
+  BASE.set_keymaps(keymaps)
 end
+
+vim.api.nvim_create_autocmd(
+  {
+    "TermOpen"
+  },
+  {
+    pattern = "term://*toggleterm#*",
+    command = "lua Toggleterm_set_terminal_keymaps()"
+  }
+)

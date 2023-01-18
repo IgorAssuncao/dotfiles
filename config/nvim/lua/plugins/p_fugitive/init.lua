@@ -1,6 +1,4 @@
-require("plugins.fugitive.keymaps")
-
-local Keymaps = require("base.keymaps").Keymaps
+require("plugins.p_fugitive.keymaps")
 
 function open_fugitive_in_floating_window()
   local width = 100
@@ -29,4 +27,4 @@ local keymaps = {
   end }
 }
 
-Keymaps(keymaps)
+BASE.set_keymaps(keymaps)

@@ -1,3 +1,6 @@
+-- Custom global base table
+BASE = {}
+
 require("base.keymaps")
 require("base.settings")
 require("base.text")

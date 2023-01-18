@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-return packer.startup(function(use)
+packer.startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
@@ -147,3 +147,5 @@ return packer.startup(function(use)
     packer.sync()
   end
 end)
+
+return packer

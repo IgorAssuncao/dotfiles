@@ -31,7 +31,7 @@ local function set_keymap(params)
   return vim.keymap.set(mode, keys, cmd, _opts)
 end
 
-local function set_keymaps(keymaps_list)
+function BASE.set_keymaps(keymaps_list)
   for _, v in pairs(keymaps_list) do
     set_keymap(v)
   end
@@ -78,6 +78,4 @@ local keymaps = {
     opts = { desc = "Yank into system clipboard while in visual mode" } }
 }
 
-set_keymaps(keymaps)
-
-return { Keymaps = set_keymaps }
+BASE.set_keymaps(keymaps)

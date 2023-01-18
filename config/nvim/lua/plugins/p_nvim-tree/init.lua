@@ -1,4 +1,4 @@
-require("nvim-tree").setup {
+PLUGINS.nvim_tree.setup {
   diagnostics = {
     enable = true,
     show_on_dirs = true
@@ -53,4 +53,4 @@ require("nvim-tree").setup {
   }
 }
 
-require("plugins.nvim-tree.keymaps")
+require("plugins.p_nvim-tree.keymaps")

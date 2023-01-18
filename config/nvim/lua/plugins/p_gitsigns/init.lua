@@ -1,0 +1,1 @@
+PLUGINS.gitsigns.setup()

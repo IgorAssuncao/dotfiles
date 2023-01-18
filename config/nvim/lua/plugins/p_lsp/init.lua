@@ -1,7 +1,6 @@
-local lsp = require("lsp-zero")
-lsp.preset("recommended")
+PLUGINS.lsp_zero.preset("recommended")
 
-lsp.ensure_installed({
+PLUGINS.lsp_zero.ensure_installed({
   "awk_ls",
   "bashls",
   "clangd",
@@ -80,43 +79,9 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- TODO: Split cmp config into its own file.
+require("plugins.p_lsp.cmp")
 
-local cmp = require("cmp")
-
-local cmp_mappings = lsp.defaults.cmp_mappings()
-
-cmp_mappings["<C-Space>"] = cmp.mapping.complete()
-cmp_mappings["<C-Esc>"] = cmp.mapping.abort()
--- cmp_mappings["<C-Tab>"] = function() cmp.select_next_item({ behavior = cmp.SelectBehavior.Select }) end
--- cmp_mappings["<C-S-Tab>"] = function() cmp.select_prev_item() end
--- cmp_mappings["<C-CR>"] = cmp.mapping.confirm({ select = true })
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
-
--- local cmp_config = cmp.get_config()
-
--- cmp_config.mapping["<C-Tab>"] = cmp.mapping(
---   function()
---     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
---   end,
---   {"i"}
--- )
--- cmp_config.mapping["<C-S-Tab>"] = cmp.mapping(
---   function()
---     cmp.select_prev_item()
---   end,
---   {"i"}
--- )
--- cmp_config.mapping["<Tab>"] = nil
--- cmp_config.mapping["<S-Tab>"] = nil
--- cmp_config.mapping["<CR>"] = nil
-
-lsp.setup()
-
-local lspconfig = require("lspconfig")
+PLUGINS.lsp_zero.setup()
 
 local function eslint_config_exists()
   local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
@@ -132,7 +97,7 @@ local function eslint_config_exists()
   end
 end
 
-lspconfig.tsserver.setup {
+PLUGINS.lspconfig.tsserver.setup {
   on_attach = function(client)
     client.server_capabilities.document_formatting = false
   end,
@@ -180,4 +145,4 @@ vim.fn.sign_define({
   },
 })
 
-require("plugins.lsp.keymaps")
+require("plugins.p_lsp.keymaps")

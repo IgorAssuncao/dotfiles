@@ -1,7 +1,5 @@
 local builtin = require("telescope.builtin")
 
-local Keymaps = require("base.keymaps").Keymaps
-
 local keymaps = {
   { keys = "<leader>gf", cmd = builtin.git_files, opts = { desc = "[G]it [F]iles" } },
   { keys = "<leader>pf", cmd = builtin.find_files, opts = { desc = "[F]ind [F]iles" } },
@@ -14,4 +12,4 @@ local keymaps = {
   end, opts = { desc = "Find text in project dir with previous grep" } },
 }
 
-Keymaps(keymaps)
+BASE.set_keymaps(keymaps)

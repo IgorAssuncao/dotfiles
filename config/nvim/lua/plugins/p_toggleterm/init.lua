@@ -1,23 +1,12 @@
-require("toggleterm").setup({
+PLUGINS.toggleterm.setup({
   direction = "float",
   open_mapping = [[<C-\>t]],
   insert_mappings = false,
   close_on_exit = true
 })
 
-require("plugins.toggleterm.keymaps")
+require("plugins.p_toggleterm.keymaps")
 
-vim.api.nvim_create_autocmd(
-  {
-    "TermOpen"
-  },
-  {
-    pattern = "term://*toggleterm#*",
-    command = "lua Toggleterm_set_terminal_keymaps()"
-  }
-)
-
-local Keymaps = require("base.keymaps").Keymaps
 local keymaps = {}
 
 local terminal = require("toggleterm.terminal").Terminal
@@ -59,4 +48,4 @@ end
 table.insert(keymaps, { keys = [[<C-\>d]], cmd = function() _toggle_terminal_below() end,
   opts = { desc = "Toggle terminal below" } })
 
-Keymaps(keymaps)
+BASE.set_keymaps(keymaps)

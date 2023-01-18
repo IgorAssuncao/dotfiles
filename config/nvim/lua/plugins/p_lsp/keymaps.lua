@@ -1,5 +1,3 @@
-local lsp = require('lsp-zero')
-
 local function split_definition(split_direction)
   split_direction = split_direction or "s"
 
@@ -36,9 +34,7 @@ local function peekDefinition()
   return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
 
-local Keymaps = require("base.keymaps").Keymaps
-
-lsp.on_attach(function(client, bufnr)
+PLUGINS.lsp_zero.on_attach(function(client, bufnr)
   local keymaps = {
     { keys = "<leader>pd", cmd = function() peekDefinition() end,
       opts = { buffer = bufnr, desc = "[P]eek [D]efinition" } },
@@ -63,5 +59,5 @@ lsp.on_attach(function(client, bufnr)
   }
   -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
 
-  Keymaps(keymaps)
+  BASE.set_keymaps(keymaps)
 end)
