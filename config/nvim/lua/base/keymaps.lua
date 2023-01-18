@@ -78,4 +78,12 @@ local keymaps = {
     opts = { desc = "Yank into system clipboard while in visual mode" } }
 }
 
+-- for i = 1, 9 do
+--   local key = "<leader>b" .. i
+--   local cmd = "buffer " .. i
+--   table.insert(keymaps, { keys = key, cmd = cmd, opts = { desc = "Move to buffer " .. i } })
+-- end
+--
+-- print(vim.cmd.buffers())
+
 BASE.set_keymaps(keymaps)
