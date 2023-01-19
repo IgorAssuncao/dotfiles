@@ -2,6 +2,7 @@ function Toggleterm_set_terminal_keymaps()
   local buffer = 0
   PLUGINS.which_key.register({
     ["<C-\\>"] = {
+      name = "Toggleterm",
       ["<C-\\>"] = { [[<C-\><C-n>]], "Exit insert mode inside terminal" },
       ["<C-h>"] = { [[<cmd>wincmd h<cr>]], "Move to left terminal" },
       ["<C-j>"] = { [[<cmd>wincmd j<cr>]], "Move to terminal below" },
