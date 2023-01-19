@@ -47,6 +47,24 @@ local function peekDefinition()
   return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
 
+function registerKeysIntoVimHelp()
+  PLUGINS.which_key.register({
+    ["<leader>"] = {
+      d = {
+        name = "[D]efinition",
+        g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
+        s = { function() split_definition() end, "Open in a [S]plit window" },
+        v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
+        p = { function() peekDefinition() end, "[P]eek" }
+      }
+    }
+  })
+end
+
+vim.cmd([[
+autocmd FileType help lua registerKeysIntoVimHelp()
+]])
+
 PLUGINS.lsp_zero.on_attach(function(client, bufnr)
   -- -- { keys ="<leader>ld", cmd = function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"}),
   -- -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
