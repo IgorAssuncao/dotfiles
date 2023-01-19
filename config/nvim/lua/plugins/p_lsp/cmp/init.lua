@@ -77,7 +77,3 @@ PLUGINS.cmp.setup({
   --   }
   -- )
 })
-
-for k, v in pairs(PLUGINS.cmp.config) do
-  print(k, v)
-end
