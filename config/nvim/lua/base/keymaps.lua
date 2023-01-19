@@ -46,7 +46,7 @@ local keymaps = {
   { keys = "<leader>x", cmd = vim.cmd.exit, opts = { desc = "E[X]it" } },
 
   -- Clear Search Highlighting
-  { keys = "<leader>c", cmd = vim.cmd('nohls'), opts = { desc = "[C]lear Search Highlighting" } },
+  { keys = "<leader>c", cmd = function() vim.cmd("nohls") end, opts = { desc = "[C]lear Search Highlighting" } },
 
   -- Navigation
   -- -- Panels
