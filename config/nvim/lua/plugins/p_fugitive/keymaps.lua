@@ -25,11 +25,6 @@ PLUGINS.which_key.register({
     s = { vim.cmd.Git, "[S]tatus" },
     l = { vim.cmd.GcLog, "[L]og" },
     f = { function() vim.cmd.Git { args = "fetch" } end, "[F]etch" },
-    P = {
-      name = "Pull Options",
-      P = { function() vim.cmd { cmd = "Git", args = { "pull" } } end, "Default" },
-      R = { function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end, "[R]ebasing" }
-    },
     b = { function() vim.cmd.Git { args = { "branch" } } end, "[B]ranch" },
     c = {
       name = "Checkout",
@@ -37,6 +32,12 @@ PLUGINS.which_key.register({
         "[S]witch to existing branch" },
       c = { function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,
         "[C]reate branch" },
-    }
+    },
+    p = { function() vim.cmd.Git { args = "push" } end, "[P]ush" },
+    P = {
+      name = "Pull Options",
+      P = { function() vim.cmd { cmd = "Git", args = { "pull" } } end, "Default" },
+      R = { function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end, "[R]ebasing" }
+    },
   }
 }, { prefix = "<leader>" })
