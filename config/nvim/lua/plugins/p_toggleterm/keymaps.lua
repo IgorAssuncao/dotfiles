@@ -1,18 +1,14 @@
 function Toggleterm_set_terminal_keymaps()
   local buffer = 0
-  local keymaps = {
-    { mode = "t", keys = [[<C-\><C-\>]], cmd = [[<C-\><C-n>]],
-      opts = { buffer = buffer, desc = "Exit insert mode inside terminal" } },
-    { mode = "t", keys = "<C-h>", cmd = [[<Cmd>wicmd h<CR>]],
-      opts = { buffer = buffer, desc = "Move to left terminal" } },
-    { mode = "t", keys = "<C-j>", cmd = [[<Cmd>wicmd j<CR>]],
-      opts = { buffer = buffer, desc = "Move to bottom terminal" } },
-    { mode = "t", keys = "<C-k>", cmd = [[<Cmd>wicmd k<CR>]],
-      opts = { buffer = buffer, desc = "Move to up terminal" } },
-    { mode = "t", keys = "<C-l>", cmd = [[<Cmd>wicmd l<CR>]],
-      opts = { buffer = buffer, desc = "Move to right terminal" } }
-  }
-  BASE.set_keymaps(keymaps)
+  PLUGINS.which_key.register({
+    ["<C-\\>"] = {
+      ["<C-\\>"] = { [[<C-\><C-n>]], "Exit insert mode inside terminal" },
+      ["<C-h>"] = { [[<cmd>wincmd h<cr>]], "Move to left terminal" },
+      ["<C-j>"] = { [[<cmd>wincmd j<cr>]], "Move to terminal below" },
+      ["<C-k>"] = { [[<cmd>wincmd k<cr>]], "Move to terminal above" },
+      ["<C-l>"] = { [[<cmd>wincmd l<cr>]], "Move to right terminal" },
+    }
+  }, { mode = "t", buffer = buffer })
 end
 
 vim.api.nvim_create_autocmd(

@@ -1,6 +1,4 @@
 -- Custom global plugins table
-PLUGINS = {}
-
 PLUGINS.packer = require("plugins.packer")
 
 PLUGINS.autopairs = require("nvim-autopairs")
@@ -14,7 +12,6 @@ PLUGINS.nvim_tree = require("nvim-tree")
 PLUGINS.telescope = require("telescope")
 PLUGINS.toggleterm = require("toggleterm")
 PLUGINS.treesitter = require("nvim-treesitter")
-PLUGINS.which_key = require("which-key")
 
 require("plugins.p_autopairs")
 require("plugins.p_bufferline")

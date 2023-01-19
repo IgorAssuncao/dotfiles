@@ -1,6 +1,16 @@
 -- Custom global base table
 BASE = {}
 
+-- Custom global plugins table
+PLUGINS = {}
+
+local ok, which_key = pcall(require, "which-key")
+if not ok then
+  print("which-key not yet installed.")
+  return
+end
+PLUGINS.which_key = which_key
+
 require("base.keymaps")
 require("base.settings")
 require("base.text")

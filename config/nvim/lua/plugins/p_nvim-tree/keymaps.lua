@@ -1,8 +1,9 @@
-local keymaps = {
-  { keys = "<leader>nt", cmd = function() vim.cmd { cmd = "NvimTreeToggle" } end,
-    opts = { desc = "[N]vim[T]ree Toggle" } },
-  { keys = "<leader>nf", cmd = function() vim.cmd { cmd = "NvimTreeFindFile" } end,
-    opts = { desc = "[N]vim[T]ree Find File" } }
-}
-
-BASE.set_keymaps(keymaps)
+PLUGINS.which_key.register({
+  ["<leader>"] = {
+    n = {
+      name = "[N]vim-Tree",
+      f = { function() vim.cmd { cmd = "NvimTreeFindFile" } end, "[F]ind File" },
+      t = { function() vim.cmd { cmd = "NvimTreeToggle" } end, "[T]oggle" }
+    }
+  }
+})

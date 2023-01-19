@@ -48,29 +48,30 @@ local function peekDefinition()
 end
 
 PLUGINS.lsp_zero.on_attach(function(client, bufnr)
-  local keymaps = {
-    { keys = "<leader>pd", cmd = function() peekDefinition() end,
-      opts = { buffer = bufnr, desc = "[P]eek [D]efinition" } },
-    { keys = "gd", cmd = function() vim.lsp.buf.definition() end,
-      opts = { buffer = bufnr, desc = "[G]o to [D]efinition" } },
-    { keys = "gsd", cmd = function() split_definition() end,
-      opts = { buffer = bufnr, desc = "[G]o to [S]plit [D]efinition" } },
-    { keys = "gvd", cmd = function() split_definition("v") end,
-      opts = { buffer = bufnr, desc = "[G]o to [V]ertical [D]efinition" } },
-    { keys = "K", cmd = function() vim.lsp.buf.hover() end, opts = { buffer = bufnr, desc = "Hover" } },
-    { mode = "i", keys = "<C-h>", cmd = function() vim.lsp.buf.signature_help() end,
-      opts = { buffer = bufnr, desc = "[H]elp" } },
-    -- { keys ="<leader>ld", cmd = function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"}),
-    { keys = "<leader>ds", cmd = function() vim.diagnostic.show() end,
-      opts = { buffer = bufnr, desc = "[D]iagnostics [S]how" } },
-    { keys = "<leader>dh", cmd = function() vim.diagnostic.hide() end,
-      opts = { buffer = bufnr, desc = "[D]iagnostics [H]ide" } },
-    { keys = "[d", cmd = function() vim.diagnostic.goto_prev() end,
-      opts = { buffer = bufnr, desc = "Go to prev diagnostic" } },
-    { keys = "]d", cmd = function() vim.diagnostic.goto_next() end,
-      opts = { buffer = bufnr, desc = "Go to next diagnostic" } },
-  }
-  -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
+  -- -- { keys ="<leader>ld", cmd = function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"}),
+  -- -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
 
-  BASE.set_keymaps(keymaps)
+  PLUGINS.which_key.register({
+    ["<leader>"] = {
+      d = {
+        name = "[D]efinition",
+        g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
+        s = { function() split_definition() end, "Open in a [S]plit window" },
+        v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
+        p = { function() peekDefinition() end, "[P]eek" }
+      },
+      D = {
+        name = "[D]iagnostics",
+        h = { function() vim.diagnostic.show() end, "[H]ide" },
+        s = { function() vim.diagnostic.hide() end, "[S]how" },
+        D = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
+        d = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
+      },
+    },
+    K = { function() vim.lsp.buf.hover() end, "Hover" }
+  }, { buffer = bufnr })
 end)
+
+PLUGINS.which_key.register({
+  ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
+}, { mode = "i" })

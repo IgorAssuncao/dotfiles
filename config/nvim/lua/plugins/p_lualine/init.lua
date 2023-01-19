@@ -1,6 +1,5 @@
 local function window()
   return "W: " .. tostring(vim.api.nvim_win_get_number(0))
-
 end
 
 PLUGINS.lualine.setup({
@@ -24,5 +23,3 @@ PLUGINS.lualine.setup({
     -- lualine_z = { "location" }
   }
 })
-
-require("plugins.p_lualine.keymaps")
