@@ -33,7 +33,7 @@ PLUGINS.which_key.register({
       c = { function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,
         "[C]reate branch" },
     },
-    p = { function() vim.cmd.Git { args = "push" } end, "[P]ush" },
+    p = { function() vim.cmd.Git { args = { "push" } } end, "[P]ush" },
     P = {
       name = "Pull Options",
       P = { function() vim.cmd { cmd = "Git", args = { "pull" } } end, "Default" },
