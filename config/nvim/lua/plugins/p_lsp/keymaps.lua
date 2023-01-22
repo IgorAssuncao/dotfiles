@@ -35,6 +35,33 @@ local function split_definition(split_direction)
   vim.lsp.buf.definition()
 end
 
+-- local function eslint_config_exists()
+--   local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
+--
+--   if not vim.tbl_isempty(eslintrc) then
+--     return true
+--   end
+--
+--   if vim.fn.filereadable("package.json") then
+--     if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
+--       return true
+--     end
+--   end
+-- end
+
+-- PLUGINS.lspconfig.tsserver.setup {
+--   root_dir = function()
+--     if not eslint_config_exists() then
+--       return nil
+--     end
+--     return vim.fn.getcwd()
+--   end,
+--   filetypes = {
+--     "javascript",
+--     "typescript"
+--   }
+-- }
+
 local function _preview_location_callback(_, result)
   if result == nil or vim.tbl_isempty(result) then
     return nil
@@ -69,6 +96,11 @@ PLUGINS.lsp_zero.on_attach(function(client, bufnr)
   -- -- { keys ="<leader>ld", cmd = function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"}),
   -- -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
 
+  -- This won't exist after I find a way to configure all LSP servers.
+  if (client.name == "tsserver") then
+    client.server_capabilities.document_formatting = false
+  end
+
   PLUGINS.which_key.register({
     ["<leader>"] = {
       d = {
@@ -93,3 +125,6 @@ end)
 PLUGINS.which_key.register({
   ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
 }, { mode = "i" })
+
+-- Maybe create a function or table that returns the keys to be mapped
+-- return { lsp_keys = lsp_keys }

@@ -11,6 +11,8 @@ if not ok then
 end
 PLUGINS.which_key = which_key
 
+BASE.defaults = require("base.defaults"):init().defaults
+
 require("base.keymaps")
 require("base.settings")
 require("base.text")

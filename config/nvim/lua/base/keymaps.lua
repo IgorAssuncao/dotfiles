@@ -1,9 +1,11 @@
-vim.g.mapleader = " "
-
 vim.cmd.mapclear()
+
+vim.g.mapleader = " "
 
 local function set_keymap(params)
   local mode = params.mode or "n"
+  local keys
+  local cmd
 
   if params.keys then
     keys = params.keys
