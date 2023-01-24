@@ -72,11 +72,13 @@ packer.startup(function(use)
       },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
+      -- Snippets source for nvim-cmp
       { "saadparwaiz1/cmp_luasnip" },
+      -- LSP source for nvim-cmp
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
 
-      -- Snippets
+      -- Snippets plugin
       { "L3MON4D3/LuaSnip" },
       { "rafamadriz/friendly-snippets" },
     }
