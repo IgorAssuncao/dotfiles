@@ -13,11 +13,6 @@ BASE = {
   protected_require = functions.protected_require
 }
 
--- PLUGINS = {
---   packer = BASE.protected_require("plugins.packer"),
--- }
-
--- Custom global plugins table
 BASE.protected_require("base.settings")
 BASE.protected_require("base.text")
 
