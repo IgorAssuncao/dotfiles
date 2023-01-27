@@ -2,13 +2,20 @@ PLUGINS.lsp_zero.preset("recommended")
 
 PLUGINS.lsp_zero.ensure_installed(BASE.defaults.lsp_servers)
 
--- lsp.nvim_workspace()
-
 require("plugins.p_lsp.autocmds")
 
 PLUGINS.lsp_zero.setup()
+PLUGINS.lsp_zero.nvim_workspace()
 
 require("plugins.p_cmp")
+
+-- PLUGINS.lspconfig["sumneko_lua"].setup {
+--   on_attach = function(client)
+--     for k, v in pairs(client) do
+--       print(k, v)
+--     end
+--   end
+-- }
 
 vim.diagnostic.config({
   update_in_insert = true,

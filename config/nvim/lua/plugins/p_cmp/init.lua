@@ -63,6 +63,7 @@ PLUGINS.cmp.setup({
   mapping = cmp_mappings,
   sources = PLUGINS.cmp.config.sources {
     { name = "nvim_lsp" }
+    -- { name = "luasnip" }
   }
   -- sources = PLUGINS.cmp.config.sources(
   --   {
