@@ -97,6 +97,16 @@ packer.startup({
       requires = { "nvim-tree/nvim-web-devicons" }
     }
 
+    -- use "theprimeagen/harpoon"
+
+    use "tpope/vim-fugitive"
+
+    use {
+      "lewis6991/gitsigns.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim"
+    }
+
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
