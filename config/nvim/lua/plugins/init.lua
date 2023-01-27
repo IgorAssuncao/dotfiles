@@ -4,9 +4,12 @@ PLUGINS.packer = require("plugins.packer")
 PLUGINS.autopairs = require("nvim-autopairs")
 PLUGINS.bufferline = require("bufferline")
 PLUGINS.gitsigns = require("gitsigns")
-PLUGINS.lsp_zero = require("lsp-zero")
+PLUGINS.lsp = {
+  mason = require("mason"),
+  mason_lspconfig = require("mason-lspconfig"),
+  lspconfig = require("lspconfig")
+}
 PLUGINS.cmp = require("cmp")
-PLUGINS.lspconfig = require("lspconfig")
 PLUGINS.lualine = require("lualine")
 PLUGINS.nvim_tree = require("nvim-tree")
 PLUGINS.telescope = require("telescope")

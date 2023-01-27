@@ -1,3 +1,5 @@
+local M = {}
+
 -- local function old_split_definition(split_direction)
 --   split_direction = split_direction or "s"
 --
@@ -35,33 +37,6 @@ local function split_definition(split_direction)
   vim.lsp.buf.definition()
 end
 
--- local function eslint_config_exists()
---   local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
---
---   if not vim.tbl_isempty(eslintrc) then
---     return true
---   end
---
---   if vim.fn.filereadable("package.json") then
---     if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
---       return true
---     end
---   end
--- end
-
--- PLUGINS.lspconfig.tsserver.setup {
---   root_dir = function()
---     if not eslint_config_exists() then
---       return nil
---     end
---     return vim.fn.getcwd()
---   end,
---   filetypes = {
---     "javascript",
---     "typescript"
---   }
--- }
-
 local function _preview_location_callback(_, result)
   if result == nil or vim.tbl_isempty(result) then
     return nil
@@ -92,14 +67,10 @@ vim.cmd([[
 autocmd FileType help lua registerKeysIntoVimHelp()
 ]])
 
-PLUGINS.lsp_zero.on_attach(function(client, bufnr)
-  -- -- { keys ="<leader>ld", cmd = function() vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" }) end, opts = { buffer = bufnr, desc = "Open diagnostics"}),
-  -- -- vim.lsp.buf_attach_client(vim.api.nvim_get_current_buf(), client.id)
-
-  -- This won't exist after I find a way to configure all LSP servers.
-  if (client.name == "tsserver") then
-    client.server_capabilities.document_formatting = false
-  end
+function M.register_lsp_keymaps(bufnr)
+  PLUGINS.which_key.register({
+    ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
+  }, { mode = "i" })
 
   PLUGINS.which_key.register({
     ["<leader>"] = {
@@ -114,17 +85,16 @@ PLUGINS.lsp_zero.on_attach(function(client, bufnr)
         name = "[D]iagnostics",
         h = { function() vim.diagnostic.show() end, "[H]ide" },
         s = { function() vim.diagnostic.hide() end, "[S]how" },
-        D = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
-        d = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
+        p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
+        n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
       },
+      -- a = { function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end,
+      --   "Code [A]ctions" }
+      a = { function() vim.lsp.buf.code_action() end,
+        "Code [A]ctions" }
     },
     K = { function() vim.lsp.buf.hover() end, "Hover" }
   }, { buffer = bufnr })
-end)
+end
 
-PLUGINS.which_key.register({
-  ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
-}, { mode = "i" })
-
--- Maybe create a function or table that returns the keys to be mapped
--- return { lsp_keys = lsp_keys }
+return M

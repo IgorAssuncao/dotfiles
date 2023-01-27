@@ -42,6 +42,9 @@ vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- disable swap file
+vim.opt.swapfile = false
+
 -- Sets number and relativenumber only on current buffer
 local dynamicNumberGroup = vim.api.nvim_create_augroup(
   "DynamicNumbers",

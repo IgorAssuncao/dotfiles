@@ -2,7 +2,9 @@
 BASE = {}
 
 -- Custom global plugins table
-PLUGINS = {}
+PLUGINS = {
+  packer = require("plugins.packer")
+}
 
 local ok, which_key = pcall(require, "which-key")
 if not ok then
@@ -11,7 +13,10 @@ if not ok then
 end
 PLUGINS.which_key = which_key
 
-BASE.defaults = require("base.defaults"):init().defaults
+local defs = require("base.defaults"):init()
+
+BASE.defaults = defs.defaults
+BASE.get_all_lsp_servers = defs.get_all_lsp_servers
 
 require("base.keymaps")
 require("base.settings")

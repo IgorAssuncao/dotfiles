@@ -19,16 +19,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- local packer = require("packer")
--- TODO: Change packer git default_url_format to use SSH
--- packer.init(
---   {
---     git = {
--- 	  default_url_format = "git@github.com:%s"
--- 	}
---   }
--- )
-
 -- Use a protected call so packer don't error
 -- out in first use
 local status_ok, packer = pcall(require, "packer")
@@ -53,108 +43,132 @@ vim.api.nvim_create_autocmd(
   }
 )
 
-packer.startup(function(use)
-  -- Packer can manage itself
-  use "wbthomason/packer.nvim"
+-- Maybe? use packer.init instead of startup
+-- packer.init {
+--   disable_commands = true,
+--   display = {
+--     open_fn = function()
+--       local result, win, buf = require("packer.util").float()
+--       vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
+--       return result, win, buf
+--     end
+--   },
+-- TODO: Change packer git default_url_format to use SSH
+--   {
+--     git = {
+-- 	     default_url_format = "git@github.com:%s"
+-- 	   }
+--   }
+-- }
 
-  use {
-    "VonHeikemen/lsp-zero.nvim",
-    requires = {
-      -- LSP Support
-      { "neovim/nvim-lspconfig" },
-      { "williamboman/mason.nvim" },
-      { "williamboman/mason-lspconfig.nvim" },
+packer.startup({
+  function(use)
+    -- Packer can manage itself
+    use "wbthomason/packer.nvim"
 
-      -- Autocompletion
-      {
-        "hrsh7th/nvim-cmp",
-        requires = { "onsails/lspkind.nvim" }
-      },
-      { "hrsh7th/cmp-buffer" },
-      { "hrsh7th/cmp-path" },
-      -- Snippets source for nvim-cmp
-      { "saadparwaiz1/cmp_luasnip" },
-      -- LSP source for nvim-cmp
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-nvim-lua" },
+    use {
+      "EdenEast/nightfox.nvim",
+      as = "nightfox"
+    }
 
-      -- Snippets plugin
-      { "L3MON4D3/LuaSnip" },
-      { "rafamadriz/friendly-snippets" },
+    use "folke/which-key.nvim"
+
+    use "mbbill/undotree"
+
+    use "akinsho/toggleterm.nvim"
+
+    use {
+      "nvim-tree/nvim-tree.lua",
+      requires = { "nvim-tree/nvim-web-devicons" }
+    }
+
+    use {
+      "nvim-lualine/lualine.nvim",
+      requires = { "nvim-tree/nvim-web-devicons" }
+    }
+
+    use {
+      "akinsho/bufferline.nvim",
+      tag = 'v3.*',
+      requires = { "nvim-tree/nvim-web-devicons" }
+    }
+
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      requires = {
+        { "p00f/nvim-ts-rainbow" },
+        { "nvim-treesitter/playground" }
+      }
+    }
+
+    use {
+      "nvim-telescope/telescope.nvim",
+      tag = "0.1.0",
+      requires = { "nvim-lua/plenary.nvim" }
+    }
+
+    -- use "theprimeagen/harpoon"
+
+    use "tpope/vim-fugitive"
+
+    use {
+      "lewis6991/gitsigns.nvim",
+      requires = { "nvim-lua/plenary.nvim" }
+    }
+
+    use "williamboman/mason.nvim" -- Auto install LSP servers
+    use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
+    use "neovim/nvim-lspconfig" -- NeoVim LSP
+
+    use {
+      "hrsh7th/nvim-cmp", -- Autocompletion
+      requires = {
+        { "L3MON4D3/LuaSnip" }, -- Snippets plugin
+        { "saadparwaiz1/cmp_luasnip" }, -- completion source for nvim-cmp
+        { "hrsh7th/cmp-nvim-lsp" }, -- nvim-cmp source for nvim builtin language server client
+        { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- nvim-cmp source for nvim builtin language server client for signature helping
+        { "hrsh7th/cmp-nvim-lua" }, -- nvim-cmp source for nvim lua api
+        { "hrsh7th/cmp-buffer" }, -- nvim-cmp source for buffer
+        { "hrsh7th/cmp-path" }, -- nvim-cmp source for buffer words
+
+        { "chrisgrieser/cmp-nerdfont" }, -- nvim-cmp source for buffer words
+
+        { "onsails/lspkind.nvim" }, -- Autocompletion Icons
+
+        -- { "rafamadriz/friendly-snippets" }
+      }
+    }
+
+    use {
+      "windwp/nvim-autopairs",
+      requires = {
+        "hrsh7th/nvim-cmp"
+      }
+    }
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+      packer.sync()
+    end
+  end,
+  config = {
+    display = {
+      open_fn = function()
+        local result, win, buf = require("packer.util").float({ border = "single" })
+        vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
+        return result, win, buf
+      end
+    },
+    log = { level = "debug" },
+    profile = {
+      enable = true,
+      threshold = 1
     }
   }
+})
 
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate"
-  }
 
-  use "nvim-treesitter/playground"
-
-  use {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.0",
-    requires = { "nvim-lua/plenary.nvim" }
-  }
-
-  -- use "theprimeagen/harpoon"
-
-  use "tpope/vim-fugitive"
-
-  use {
-    "lewis6991/gitsigns.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim"
-    }
-  }
-
-  use {
-    "windwp/nvim-autopairs",
-    requires = {
-      "hrsh7th/nvim-cmp"
-    }
-  }
-
-  use {
-    "nvim-tree/nvim-tree.lua",
-    requires = {
-      "nvim-tree/nvim-web-devicons"
-    }
-  }
-
-  use "mbbill/undotree"
-
-  use "akinsho/toggleterm.nvim"
-
-  use {
-    "nvim-lualine/lualine.nvim",
-    requires = {
-      "nvim-tree/nvim-web-devicons"
-    }
-  }
-
-  use {
-    "akinsho/bufferline.nvim",
-    tag = 'v3.*',
-    requires = {
-      "nvim-tree/nvim-web-devicons"
-    }
-  }
-
-  use {
-    "folke/which-key.nvim"
-  }
-
-  use {
-    "EdenEast/nightfox.nvim",
-    as = "nightfox"
-  }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    packer.sync()
-  end
-end)
 
 return packer
