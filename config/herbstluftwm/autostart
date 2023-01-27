@@ -22,6 +22,7 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn "${TERMINAL:-xterm}" # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-F2 spawn "${BROWSER:-firefox}"
 
 # basic movement in tiling and floating mode
 # focusing clients
