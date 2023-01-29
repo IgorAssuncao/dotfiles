@@ -10,7 +10,7 @@ nvim_tree.setup {
     show_on_dirs = true
   },
   filters = {
-    dotfiles = true
+    dotfiles = false
   },
   git = {
     enable = true,
