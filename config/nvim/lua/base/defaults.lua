@@ -1,9 +1,9 @@
 local M = {}
 
 local defaults = {
-  colorscheme = function(colorscheme_name)
-    require(colorscheme_name).load()
-  end,
+  -- colorscheme = function(colorscheme_name)
+  --   require(colorscheme_name).load()
+  -- end,
   lsp_servers = {
     awk = "awk_ls",
     bask = "bashls",
@@ -102,7 +102,7 @@ setmetatable(M, {
 
 function M.get_all_lsp_servers()
   local lsp_servers = {}
-  for k, v in pairs(M.defaults.lsp_servers) do
+  for _, v in pairs(M.defaults.lsp_servers) do
     table.insert(lsp_servers, v)
   end
   return lsp_servers
