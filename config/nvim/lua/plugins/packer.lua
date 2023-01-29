@@ -21,10 +21,7 @@ local packer_bootstrap = ensure_packer()
 
 -- Use a protected call so packer don't error
 -- out in first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+local packer = BASE.protected_require("packer")
 
 -- Auto sorce this file and make PackerSync
 vim.api.nvim_create_autocmd(
@@ -43,23 +40,27 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- Maybe? use packer.init instead of startup
--- packer.init {
---   disable_commands = true,
---   display = {
---     open_fn = function()
---       local result, win, buf = require("packer.util").float()
---       vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
---       return result, win, buf
---     end
---   },
--- TODO: Change packer git default_url_format to use SSH
---   {
---     git = {
--- 	     default_url_format = "git@github.com:%s"
--- 	   }
---   }
--- }
+packer.init {
+  -- disable_commands = true,
+  log = { level = "debug" },
+  profile = {
+    enable = true,
+    threshold = 1
+  },
+  display = {
+    open_fn = function()
+      local result, win, buf = require("packer.util").float({ border = "rounded" })
+      vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
+      return result, win, buf
+    end
+  },
+  -- TODO: Change packer git default_url_format to use SSH
+  -- {
+  --   git = {
+  -- 	   default_url_format = "git@github.com:%s"
+  -- 	 }
+  -- }
+}
 
 packer.startup({
   function(use)
@@ -156,20 +157,6 @@ packer.startup({
       packer.sync()
     end
   end,
-  config = {
-    display = {
-      open_fn = function()
-        local result, win, buf = require("packer.util").float({ border = "single" })
-        vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
-        return result, win, buf
-      end
-    },
-    log = { level = "debug" },
-    profile = {
-      enable = true,
-      threshold = 1
-    }
-  }
 })
 
 
