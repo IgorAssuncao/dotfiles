@@ -1,26 +1,27 @@
--- Custom global base table
-BASE = {}
-
--- Custom global plugins table
-PLUGINS = {
-  packer = require("plugins.packer")
-}
-
-local ok, which_key = pcall(require, "which-key")
-if not ok then
-  print("which-key not yet installed.")
+local status_functions, functions = pcall(require, "base.functions")
+if not status_functions then
+  print("Error requiring base.functions")
   return
 end
-PLUGINS.which_key = which_key
 
 local defs = require("base.defaults"):init()
 
-BASE.defaults = defs.defaults
-BASE.get_all_lsp_servers = defs.get_all_lsp_servers
+-- Custom global base table
+BASE = {
+  defaults = defs.defaults,
+  get_all_lsp_servers = defs.get_all_lsp_servers,
+  protected_require = functions.protected_require
+}
 
-require("base.keymaps")
-require("base.settings")
-require("base.text")
+-- Custom global plugins table
+PLUGINS = {
+  packer = BASE.protected_require("plugins.packer"),
+  which_key = BASE.protected_require("which-key")
+}
+
+BASE.protected_require("base.keymaps")
+BASE.protected_require("base.settings")
+BASE.protected_require("base.text")
 
 -- local home = os.getenv("HOME") .. "/"
 -- local asdf_shims_path = home .. ".asdf/shims"
