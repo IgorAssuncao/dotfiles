@@ -1,5 +1,11 @@
 local M = {}
 
+local status, cmp = pcall(require, "cmp")
+if not status then
+  vim.notify("cmp not found.")
+  return
+end
+
 -- PLUGINS.cmp.setup({
 --   formatting = {
 --     format = function(_, vim_item)
@@ -12,7 +18,7 @@ local M = {}
 local menu = {
   nvim_lsp = "[LSP]",
   nvim_lua = "[Lua]",
-  luasnip = "[Snippet]",
+  luasnip = "[LuaSnip]",
   buffer = "[Buffer]",
   path = "[Path]",
   latex_symbols = "[Latex]"
@@ -76,37 +82,24 @@ local function create_sources_table()
     table.insert(sources, { name = "nvim_lsp" })
     table.insert(sources, { name = "nvim_lsp_signature_help" })
   end
-  table.insert(sources, { name = "nerdfont" })
+  table.insert(sources, { name = "luasnip" })
+  table.insert(sources, { name = "buffer" })
   table.insert(sources, { name = "path" })
-  -- table.insert(sources, { name = "luasnip" })
-  -- table.insert(sources, { name = "buffer" })
+  table.insert(sources, { name = "nerdfont" })
 
   return sources
 end
 
-PLUGINS.cmp.setup({
+cmp.setup({
   snippet = { -- THIS IS REQUIRED
     expand = function(args)
-      -- require("cmp-nvim-lsp").lsp_expand(args.body)
-      -- require("cmp-nvim-lua").lsp_expand(args.body)
-      -- require("cmp-buffer").lsp_expand(args.body)
-      -- require("cmp-path").lsp_expand(args.body)
       require("luasnip").lsp_expand(args.body)
-      -- require("friendly-snippets").lsp_expand(args.body)
     end
   },
   completion = {
     completeopt = "menu,menuone,noinsert",
   },
-  mapping = cmp_mappings,
-  views = {
-    entries = "custom"
-  },
-  window = {
-    completion = PLUGINS.cmp.config.window.bordered(),
-    documentation = PLUGINS.cmp.config.window.bordered()
-  },
-  sources = PLUGINS.cmp.config.sources(create_sources_table()),
+  sources = cmp.config.sources(create_sources_table()),
   -- sources = PLUGINS.cmp.config.sources(
   --   {
   --     { name = "luasnip" },
@@ -122,7 +115,19 @@ PLUGINS.cmp.setup({
   --     { name = "friendly-snippets" }
   --   }
   -- )
-  preselect = PLUGINS.cmp.PreselectMode.None,
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false
+  },
+  mapping = cmp_mappings,
+  views = {
+    entries = "custom"
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered()
+  },
+  preselect = cmp.PreselectMode.None,
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = function(entry, vim_item)
@@ -153,6 +158,9 @@ PLUGINS.cmp.setup({
 
       return f
     end
+  },
+  experimental = {
+    ghost_text = true
   }
 })
 

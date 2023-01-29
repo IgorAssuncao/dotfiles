@@ -1,6 +1,16 @@
 local M = {}
 
-local cmp = PLUGINS.cmp
+local status, cmp = pcall(require, "cmp")
+if not status then
+  vim.notify("cmp not found.")
+  return
+end
+
+local status, luasnip = pcall(require, "luasnip")
+if not status then
+  vim.notify("luasnip not found.")
+  return
+end
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -54,7 +64,26 @@ local cmp_mappings = {
     fallback()
   end),
   ["<C-s>"] = cmp.mapping(cmp.mapping.scroll_docs(-5), { "i", "c" }),
-  ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(5), { "i", "c" })
+  ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(5), { "i", "c" }),
+  ["<Tab>"] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    elseif luasnip.expandable() then
+      luasnip.expand()
+    elseif luasnip.expand_or_jumpable() then
+      liasnip.expand_or_jump()
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
+  ["<S-Tab>"] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif luasnip.jumpable(-1) then
+    else
+      fallback()
+    end
+  end, { "i", "s" })
 }
 
 local cmp_config_mappings = cmp.get_config().mapping
@@ -77,20 +106,22 @@ vim.tbl_deep_extend("force", cmp_config_mappings, cmp_mappings)
 -- cmp_config.mapping["<S-Tab>"] = nil
 -- cmp_config.mapping["<CR>"] = nil
 
-PLUGINS.which_key.register({
-  [""] = {
-    name = "CMP Autocompletion",
-    ["<C-Space>"] = { "Toggle Autocompletion" },
-    ["<C-Esc>"] = { "Abort Autocompletion" },
-    ["<C-e>"] = { "Close Autocompletion" },
-    ["<C-m>"] = { "Complete current word" },
-    ["<CR>"] = { "Confirm selected completion" },
-    ["<C-s>"] = { "Scroll autocompletion docs upwards" },
-    ["<C-f>"] = { "Scroll autocompletion docs downwards" },
-    ["<Up>"] = { "Move to previous item in completion list" },
-    ["<Down>"] = { "Move to next item in completion list" },
-  }
-}, { mode = { "i", "c" } })
+-- PLUGINS.which_key.register({
+--   [""] = {
+--     name = "CMP Autocompletion",
+--     ["<C-Space>"] = { "Toggle Autocompletion" },
+--     ["<C-Esc>"] = { "Abort Autocompletion" },
+--     ["<C-e>"] = { "Close Autocompletion" },
+--     ["<C-m>"] = { "Complete current word" },
+--     ["<CR>"] = { "Confirm selected completion" },
+--     ["<C-s>"] = { "Scroll autocompletion docs upwards" },
+--     ["<C-f>"] = { "Scroll autocompletion docs downwards" },
+--     ["<Up>"] = { "Move to previous item in completion list" },
+--     ["<Down>"] = { "Move to next item in completion list" },
+--     ["<Tab>"] = { "Cycle forwards through options, snippets" },
+--     ["<S-Tab>"] = { "Cycle backwards through options, snippets" },
+--   }
+-- }, { mode = { "i", "c" } })
 
 M.mappings = cmp_mappings
 

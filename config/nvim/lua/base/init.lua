@@ -13,15 +13,23 @@ BASE = {
   protected_require = functions.protected_require
 }
 
--- Custom global plugins table
-PLUGINS = {
-  packer = BASE.protected_require("plugins.packer"),
-  which_key = BASE.protected_require("which-key")
-}
+-- PLUGINS = {
+--   packer = BASE.protected_require("plugins.packer"),
+-- }
 
-BASE.protected_require("base.keymaps")
+-- Custom global plugins table
 BASE.protected_require("base.settings")
 BASE.protected_require("base.text")
+
+local status, _ = pcall(require, "plugins.packer")
+if not status then
+  vim.notify("Error in requiring plugins.packer")
+  return
+end
+-- keymaps is being required after packer
+-- because of which-key plugin that registers
+-- keymaps.
+BASE.protected_require("base.keymaps")
 
 -- local home = os.getenv("HOME") .. "/"
 -- local asdf_shims_path = home .. ".asdf/shims"

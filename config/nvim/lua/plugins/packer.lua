@@ -77,79 +77,79 @@ packer.startup({
 
     use "folke/which-key.nvim"
 
-    use "mbbill/undotree"
+    -- use "mbbill/undotree"
 
-    use "akinsho/toggleterm.nvim"
+    -- use "akinsho/toggleterm.nvim"
 
-    use {
-      "nvim-tree/nvim-tree.lua",
-      requires = { "nvim-tree/nvim-web-devicons" }
-    }
+    -- use {
+    --   "nvim-tree/nvim-tree.lua",
+    --   requires = { "nvim-tree/nvim-web-devicons" }
+    -- }
 
-    use {
-      "nvim-lualine/lualine.nvim",
-      requires = { "nvim-tree/nvim-web-devicons" }
-    }
+    -- use {
+    --   "nvim-lualine/lualine.nvim",
+    --   requires = { "nvim-tree/nvim-web-devicons" }
+    -- }
 
-    use {
-      "akinsho/bufferline.nvim",
-      tag = 'v3.*',
-      requires = { "nvim-tree/nvim-web-devicons" }
-    }
+    -- use {
+    --   "akinsho/bufferline.nvim",
+    --   tag = 'v3.*',
+    --   requires = { "nvim-tree/nvim-web-devicons" }
+    -- }
 
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      requires = {
-        { "p00f/nvim-ts-rainbow" },
-        { "nvim-treesitter/playground" }
-      }
-    }
+    -- use {
+    --   "nvim-treesitter/nvim-treesitter",
+    --   run = ":TSUpdate",
+    --   requires = {
+    --     { "p00f/nvim-ts-rainbow" },
+    --     { "nvim-treesitter/playground" }
+    --   }
+    -- }
 
-    use {
-      "nvim-telescope/telescope.nvim",
-      tag = "0.1.0",
-      requires = { "nvim-lua/plenary.nvim" }
-    }
+    -- use {
+    --   "nvim-telescope/telescope.nvim",
+    --   tag = "0.1.0",
+    --   requires = { "nvim-lua/plenary.nvim" }
+    -- }
 
     -- use "theprimeagen/harpoon"
 
-    use "tpope/vim-fugitive"
+    -- use "tpope/vim-fugitive"
 
+    -- use {
+    --   "lewis6991/gitsigns.nvim",
+    --   requires = { "nvim-lua/plenary.nvim" }
+    -- }
+
+    -- use "williamboman/mason.nvim" -- Auto install LSP servers
+    -- use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
+    -- use "neovim/nvim-lspconfig" -- NeoVim LSP
+
+    -- Autocompletion
     use {
-      "lewis6991/gitsigns.nvim",
-      requires = { "nvim-lua/plenary.nvim" }
-    }
-
-    use "williamboman/mason.nvim" -- Auto install LSP servers
-    use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
-    use "neovim/nvim-lspconfig" -- NeoVim LSP
-
-    use {
-      "hrsh7th/nvim-cmp", -- Autocompletion
+      "hrsh7th/nvim-cmp",
       requires = {
-        { "L3MON4D3/LuaSnip" }, -- Snippets plugin
-        { "saadparwaiz1/cmp_luasnip" }, -- completion source for nvim-cmp
+        { "L3MON4D3/LuaSnip" }, -- Snippets engine
+
         { "hrsh7th/cmp-nvim-lsp" }, -- nvim-cmp source for nvim builtin language server client
         { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- nvim-cmp source for nvim builtin language server client for signature helping
         { "hrsh7th/cmp-nvim-lua" }, -- nvim-cmp source for nvim lua api
+        { "saadparwaiz1/cmp_luasnip" }, -- completion source for nvim-cmp
         { "hrsh7th/cmp-buffer" }, -- nvim-cmp source for buffer
         { "hrsh7th/cmp-path" }, -- nvim-cmp source for buffer words
 
         { "chrisgrieser/cmp-nerdfont" }, -- nvim-cmp source for buffer words
 
         { "onsails/lspkind.nvim" }, -- Autocompletion Icons
-
-        -- { "rafamadriz/friendly-snippets" }
       }
     }
 
-    use {
-      "windwp/nvim-autopairs",
-      requires = {
-        "hrsh7th/nvim-cmp"
-      }
-    }
+    -- use {
+    --   "windwp/nvim-autopairs",
+    --   requires = {
+    --     "hrsh7th/nvim-cmp"
+    --   }
+    -- }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

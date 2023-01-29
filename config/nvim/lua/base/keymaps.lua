@@ -62,7 +62,13 @@ local keymaps = {
 
 BASE.set_keymaps(keymaps)
 
-PLUGINS.which_key.register({
+local status, which_key = pcall(require, "which-key")
+if not status then
+  vim.notify("which_key not found.")
+  return
+end
+
+which_key.register({
   -- ["<C-H>"] = { function() vim.cmd.wincmd('h') end, "Move to window on the left" },
   -- ["<C-J>"] = { function() vim.cmd.wincmd('j') end, "Move to window below" },
   -- ["<C-K>"] = { function() vim.cmd.wincmd('k') end, "Move to window above" },
@@ -90,12 +96,12 @@ PLUGINS.which_key.register({
 for i = 1, 9, 1 do
   local key = "<leader>" .. i
   local cmd = i .. "<C-W>w"
-  PLUGINS.which_key.register({
+  which_key.register({
     [key] = { cmd, "move to window " .. i }
   })
 end
 
-PLUGINS.which_key.register({
+which_key.register({
   [""] = {
     name = "Visual Character Mode",
     J = { ":m '>+1<CR>gv=gv", "Move current selection downwards" },
@@ -104,7 +110,7 @@ PLUGINS.which_key.register({
   ["<leader>y"] = { "\"+y", "Yank into system clipboard while in visual mode" }
 }, { mode = "v" })
 
-PLUGINS.which_key.register({
+which_key.register({
   ["<leader>"] = {
     name = "[X] mode",
     P = { "\"_dP", "Keep old past in paste buffer" }
