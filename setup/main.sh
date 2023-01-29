@@ -25,6 +25,7 @@ downloadRepo
 ./zsh.sh
 ./asdf.sh
 ./nvim.sh
+./fonts.sh
 
 # if [ -d "~/.i3/config" ]; then
 #   echo "Renaming ~/.i3/config to ~/.i3/config.bkp"
