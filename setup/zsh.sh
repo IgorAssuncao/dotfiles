@@ -7,6 +7,7 @@ after() {
 }
 
 install
+after
 
 if [[ ! -e ~/.zshrc ]]; then
   echo "Creating symlink for ~/.zshrc"

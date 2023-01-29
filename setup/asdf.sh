@@ -1,4 +1,4 @@
-source ./utils.sh
+source $HOME/system-config/setup/utils.sh
 
 plugins_list=(
   "awscli"
