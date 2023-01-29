@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd(
 
 packer.init {
   -- disable_commands = true,
-  log = { level = "debug" },
+  -- log = { level = "debug" },
   profile = {
     enable = true,
     threshold = 1
@@ -71,7 +71,7 @@ packer.startup({
       "EdenEast/nightfox.nvim",
       as = "nightfox",
       config = function()
-        vim.cmd("colorscheme carbonfox")
+        vim.cmd("colorscheme duskfox")
       end
     }
 
