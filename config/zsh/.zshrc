@@ -68,7 +68,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, asdf, colored-man-pages, zsh-syntax-highlighting)
+plugins=(git asdf colored-man-pages zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,4 +106,4 @@ setopt autocd nomatch notify
 source ~/.zshrc_aliases
 source ~/.zshrc_functions
 
-source /opt/asdf-vm/asdf.sh
+. $HOME/.asdf/asdf.sh
