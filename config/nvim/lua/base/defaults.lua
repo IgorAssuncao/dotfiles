@@ -1,7 +1,7 @@
 local M = {}
 
 local defaults = {
-  -- colorscheme = function(colorscheme_name)
+  -- load_colorscheme = function(colorscheme_name)
   --   require(colorscheme_name).load()
   -- end,
   lsp_servers = {
@@ -28,46 +28,46 @@ local defaults = {
     vue = "vuels",
     yaml = "yamlls",
   },
-  -- icons = {
-  -- 	diagnostics = {},
-  -- 	git = {},
-  -- 	kinds = {
-  -- 		Array = "",
-  -- 		Boolean = "",
-  -- 		Class = "",
-  -- 		Color = "",
-  -- 		Constant = "",
-  -- 		Constructor = "",
-  -- 		Enum = "",
-  -- 		EnumMember = "",
-  -- 		Event = "",
-  -- 		Field = "",
-  -- 		File = "",
-  -- 		Folder = "",
-  -- 		Function = "",
-  -- 		Interface = "",
-  -- 		Key = "",
-  -- 		Keyword = "",
-  -- 		Method = "",
-  -- 		Module = "",
-  -- 		Namespace = "",
-  -- 		Null = "",
-  -- 		Object = "",
-  -- 		Operator = "",
-  -- 		Package = "",
-  -- 		Property = "",
-  -- 		Reference = "",
-  -- 		Snippet = "",
-  -- 		String = "",
-  -- 		Struct = "",
-  -- 		Text = "",
-  -- 		Type = "",
-  -- 		TypeParameter = "",
-  -- 		Unit = "",
-  -- 		Value = "",
-  -- 		Variable = ""
-  -- 	}
-  -- }
+  icons = {
+  	diagnostics = {},
+  	git = {},
+  	kinds = {
+  		Array = "", -- ""
+  		Boolean = "",
+  		Class = "",
+  		Color = "", -- ""
+  		Constant = "",
+  		Constructor = "",
+  		Enum = "",
+  		EnumMember = "",
+  		Event = "",
+  		Field = "",
+  		File = "",
+  		Folder = "",
+  		Function = "",
+  		Interface = "",
+  		Key = "",
+  		Keyword = "",
+  		Method = "",
+  		Module = "",
+  		Namespace = "",
+  		Null = "ﳠ",
+  		Object = "",
+  		Operator = "",
+  		Package = "",
+  		Property = "",
+  		Reference = "",
+  		Snippet = "",
+  		String = "",
+  		Struct = "",
+  		Text = "",
+  		Type = "",
+  		TypeParameter = "",
+  		Unit = "",
+  		Value = "",
+  		Variable = ""
+  	}
+  }
 }
 
 local options = {}
@@ -100,7 +100,7 @@ setmetatable(M, {
   end
 })
 
-function M.get_all_lsp_servers()
+function M.get_all_lsp_servers_names()
   local lsp_servers = {}
   for _, v in pairs(M.defaults.lsp_servers) do
     table.insert(lsp_servers, v)

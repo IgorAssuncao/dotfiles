@@ -1,6 +1,6 @@
 local status_functions, functions = pcall(require, "base.functions")
 if not status_functions then
-  print("Error requiring base.functions")
+  vim.notify("Error requiring base.functions")
   return
 end
 
@@ -9,7 +9,7 @@ local defs = require("base.defaults"):init()
 -- Custom global base table
 BASE = {
   defaults = defs.defaults,
-  get_all_lsp_servers = defs.get_all_lsp_servers,
+  get_all_lsp_servers_names = defs.get_all_lsp_servers_names,
   protected_require = functions.protected_require
 }
 
