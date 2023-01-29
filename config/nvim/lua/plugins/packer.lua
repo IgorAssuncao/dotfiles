@@ -105,6 +105,7 @@ packer.startup({
       "lewis6991/gitsigns.nvim",
       requires = {
         "nvim-lua/plenary.nvim"
+      }
     }
 
     use {
@@ -172,7 +173,5 @@ packer.startup({
     end
   end,
 })
-
-
 
 return packer
