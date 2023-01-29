@@ -1,4 +1,10 @@
-PLUGINS.toggleterm.setup({
+local status_toggleterm, toggleterm = pcall(require, "toggleterm")
+if not status_toggleterm then
+  vim.notify("Error from plugins.p_toggleterm: toggleterm not found.")
+  return
+end
+
+toggleterm.setup({
   direction = "float",
   open_mapping = [[<C-\>t]],
   insert_mappings = false,
@@ -17,7 +23,13 @@ local lazygit_terminal = terminal:new({ cmd = "lazygit", hidden = true, close_on
 
 local _terminal_below = terminal:new({ direction = "horizontal", close_on_exit = true })
 
-PLUGINS.which_key.register({
+local status_which_key, which_key = pcall(require, "which-key")
+if not status_which_key then
+  vim.notify("Error from plugins.p_nvim-tree.keymaps: which-key not found.")
+  return
+end
+
+which_key.register({
   ["<C-\\>"] = {
     name = "Toggleterm",
     d = { function() _terminal_below:toggle() end, "Toggle terminal below" },

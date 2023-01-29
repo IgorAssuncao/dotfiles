@@ -1,4 +1,10 @@
-PLUGINS.which_key.register({
+local status_which_key, which_key = pcall(require, "which-key")
+if not status_which_key then
+  vim.notify("Error from plugins.p_undotree.keymaps: which-key not found.")
+  return
+end
+
+which_key.register({
   ["<leader>W"] = {
     W = { function() vim.cmd { cmd = "WhichKey" } end, "[W]hich [K]ey Toggle" },
     N = { "<cmd>WhichKey '' n<cr>", "[W]hich [K]ey [N]ormal mode Toggle" },

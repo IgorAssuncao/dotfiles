@@ -21,7 +21,11 @@ local packer_bootstrap = ensure_packer()
 
 -- Use a protected call so packer don't error
 -- out in first use
-local packer = BASE.protected_require("packer")
+local status_packer, packer = pcall(require, "packer")
+if not status_packer then
+  vim.notify("Error from plugins.packer: packer not found.")
+  return
+end
 
 -- Auto sorce this file and make PackerSync
 vim.api.nvim_create_autocmd(
@@ -77,53 +81,45 @@ packer.startup({
 
     use "folke/which-key.nvim"
 
-    -- use "mbbill/undotree"
+    use {
+      "nvim-tree/nvim-tree.lua",
+      requires = { "nvim-tree/nvim-web-devicons" }
+    }
 
-    -- use "akinsho/toggleterm.nvim"
+    use {
+      "nvim-lualine/lualine.nvim",
+      requires = { "nvim-tree/nvim-web-devicons" }
+    }
 
-    -- use {
-    --   "nvim-tree/nvim-tree.lua",
-    --   requires = { "nvim-tree/nvim-web-devicons" }
-    -- }
+    use {
+      "akinsho/bufferline.nvim",
+      tag = 'v3.*',
+      requires = { "nvim-tree/nvim-web-devicons" }
+    }
 
-    -- use {
-    --   "nvim-lualine/lualine.nvim",
-    --   requires = { "nvim-tree/nvim-web-devicons" }
-    -- }
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      requires = {
+        { "p00f/nvim-ts-rainbow" },
+        { "nvim-treesitter/playground" }
+      }
+    }
 
-    -- use {
-    --   "akinsho/bufferline.nvim",
-    --   tag = 'v3.*',
-    --   requires = { "nvim-tree/nvim-web-devicons" }
-    -- }
-
-    -- use {
-    --   "nvim-treesitter/nvim-treesitter",
-    --   run = ":TSUpdate",
-    --   requires = {
-    --     { "p00f/nvim-ts-rainbow" },
-    --     { "nvim-treesitter/playground" }
-    --   }
-    -- }
-
-    -- use {
-    --   "nvim-telescope/telescope.nvim",
-    --   tag = "0.1.0",
-    --   requires = { "nvim-lua/plenary.nvim" }
-    -- }
+    use {
+      "nvim-telescope/telescope.nvim",
+      tag = "0.1.0",
+      requires = { "nvim-lua/plenary.nvim" }
+    }
 
     -- use "theprimeagen/harpoon"
 
-    -- use "tpope/vim-fugitive"
+    use "tpope/vim-fugitive"
 
-    -- use {
-    --   "lewis6991/gitsigns.nvim",
-    --   requires = { "nvim-lua/plenary.nvim" }
-    -- }
-
-    -- use "williamboman/mason.nvim" -- Auto install LSP servers
-    -- use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
-    -- use "neovim/nvim-lspconfig" -- NeoVim LSP
+    use {
+      "lewis6991/gitsigns.nvim",
+      requires = { "nvim-lua/plenary.nvim" }
+    }
 
     -- Autocompletion
     use {
@@ -144,12 +140,20 @@ packer.startup({
       }
     }
 
-    -- use {
-    --   "windwp/nvim-autopairs",
-    --   requires = {
-    --     "hrsh7th/nvim-cmp"
-    --   }
-    -- }
+    use "williamboman/mason.nvim" -- Auto install LSP servers
+    use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
+    use "neovim/nvim-lspconfig" -- NeoVim LSP
+
+    use {
+      "windwp/nvim-autopairs",
+      requires = {
+        "hrsh7th/nvim-cmp"
+      }
+    }
+
+    use "mbbill/undotree"
+
+    use "akinsho/toggleterm.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

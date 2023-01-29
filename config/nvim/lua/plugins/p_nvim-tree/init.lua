@@ -1,4 +1,10 @@
-PLUGINS.nvim_tree.setup {
+local status_nvim_tree, nvim_tree = pcall(require, "nvim-tree")
+if not status_nvim_tree then
+  vim.notify("Error from plugins.p_nvim-tree: nvim-tree not found.")
+  return
+end
+
+nvim_tree.setup {
   diagnostics = {
     enable = true,
     show_on_dirs = true

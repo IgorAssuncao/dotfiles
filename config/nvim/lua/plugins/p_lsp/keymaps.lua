@@ -1,5 +1,11 @@
 local M = {}
 
+local status, which_key = pcall(require, "which-key")
+if not status then
+  vim.notify("error from p_lsp/keymaps: which-key not found.")
+  return
+end
+
 -- local function old_split_definition(split_direction)
 --   split_direction = split_direction or "s"
 --
@@ -49,8 +55,8 @@ local function peekDefinition()
   return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
 
-function registerKeysIntoVimHelp()
-  PLUGINS.which_key.register({
+function RegisterKeysIntoVimHelp()
+  which_key.register({
     ["<leader>"] = {
       d = {
         name = "[D]efinition",
@@ -64,15 +70,15 @@ function registerKeysIntoVimHelp()
 end
 
 vim.cmd([[
-autocmd FileType help lua registerKeysIntoVimHelp()
+autocmd FileType help lua RegisterKeysIntoVimHelp()
 ]])
 
 function M.register_lsp_keymaps(bufnr)
-  PLUGINS.which_key.register({
+  which_key.register({
     ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
   }, { mode = "i" })
 
-  PLUGINS.which_key.register({
+  which_key.register({
     ["<leader>"] = {
       d = {
         name = "[D]efinition",

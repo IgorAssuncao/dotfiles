@@ -29,7 +29,7 @@ end
 -- keymaps is being required after packer
 -- because of which-key plugin that registers
 -- keymaps.
-BASE.protected_require("base.keymaps")
+require("base.keymaps")
 
 -- local home = os.getenv("HOME") .. "/"
 -- local asdf_shims_path = home .. ".asdf/shims"

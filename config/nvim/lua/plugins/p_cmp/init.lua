@@ -1,8 +1,6 @@
-local M = {}
-
 local status, cmp = pcall(require, "cmp")
 if not status then
-  vim.notify("cmp not found.")
+  vim.notify("Error from plugins.p_cmp: cmp not found.")
   return
 end
 
@@ -76,11 +74,10 @@ vim.opt.completeopt:append("noselect")
 local function create_sources_table()
   local sources = {}
 
+  table.insert(sources, { name = "nvim_lsp" })
+  table.insert(sources, { name = "nvim_lsp_signature_help" })
   if vim.api.nvim_buf_get_option(0, "filetype") == "lua" then
     table.insert(sources, { name = "nvim_lua" })
-  else
-    table.insert(sources, { name = "nvim_lsp" })
-    table.insert(sources, { name = "nvim_lsp_signature_help" })
   end
   table.insert(sources, { name = "luasnip" })
   table.insert(sources, { name = "buffer" })
@@ -146,8 +143,13 @@ cmp.setup({
       local f = lspkind.cmp_format({ mode = "symbol_text" })(entry, vim_item)
       local strings = vim.split(f.kind, "%s", { trimempty = true })
       f.kind = " " .. (strings[1] or "") .. " "
+      -- f.kind = BASE.defaults.icons.kinds[string[1]]
       f.menu = "[" .. (strings[2] or "") .. "]" .. " - " .. (menu[entry.source.name] or "")
       -- f.menu = type .. " - [" .. (strings[2] or "") .. "]"
+
+
+
+
 
       -- if entry.source.name == "luasnip" then
       --   for k, v in pairs(entry) do
@@ -160,8 +162,6 @@ cmp.setup({
     end
   },
   experimental = {
-    ghost_text = true
+    ghost_text = false
   }
 })
-
-return M

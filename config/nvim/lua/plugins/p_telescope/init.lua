@@ -1,4 +1,10 @@
-PLUGINS.telescope.setup {
+local status_telescope, telescope = pcall(require, "telescope")
+if not status_telescope then
+  vim.notify("Error from plugins.p_telescope: telescope not found.")
+  return
+end
+
+telescope.setup {
   defaults = {
     file_ignore_patterns = {
       "packer.nvim",

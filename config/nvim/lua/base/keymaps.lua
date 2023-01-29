@@ -62,9 +62,9 @@ local keymaps = {
 
 BASE.set_keymaps(keymaps)
 
-local status, which_key = pcall(require, "which-key")
-if not status then
-  vim.notify("which_key not found.")
+local status_which_key, which_key = pcall(require, "which-key")
+if not status_which_key then
+  vim.notify("Error from base.keymaps: which_key not found.")
   return
 end
 

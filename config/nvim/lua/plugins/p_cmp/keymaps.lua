@@ -71,7 +71,7 @@ local cmp_mappings = {
     elseif luasnip.expandable() then
       luasnip.expand()
     elseif luasnip.expand_or_jumpable() then
-      liasnip.expand_or_jump()
+      luasnip.expand_or_jump()
     else
       fallback()
     end

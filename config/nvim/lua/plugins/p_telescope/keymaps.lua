@@ -1,6 +1,12 @@
+local status_which_key, which_key = pcall(require, "which-key")
+if not status_which_key then
+  vim.notify("Error from plugins.p_telescope.keymaps: which-key not found.")
+  return
+end
+
 local builtin = require("telescope.builtin")
 
-PLUGINS.which_key.register({
+which_key.register({
   ["<leader>"] = {
     f = {
       name = "Telescope Fuzzy [F]inder",

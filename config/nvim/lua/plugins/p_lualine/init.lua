@@ -1,8 +1,14 @@
+local status_lualine, lualine = pcall(require, "lualine")
+if not status_lualine then
+  vim.notify("Error from plugins.p_lualine: lualine not found.")
+  return
+end
+
 local function window()
   return "W: " .. tostring(vim.api.nvim_win_get_number(0))
 end
 
-PLUGINS.lualine.setup({
+lualine.setup({
   options = {
     theme = "auto" -- or horizon
   },
