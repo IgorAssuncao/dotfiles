@@ -4,7 +4,9 @@ if not status_autopairs then
   return
 end
 
-autopairs.setup()
+autopairs.setup({
+  check_ts = true
+})
 
 local status_cmp, cmp = pcall(require, "cmp")
 if not status_cmp then
