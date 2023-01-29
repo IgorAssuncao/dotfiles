@@ -68,7 +68,10 @@ packer.startup({
 
     use {
       "EdenEast/nightfox.nvim",
-      as = "nightfox"
+      as = "nightfox",
+      config = function()
+        vim.cmd("colorscheme carbonfox")
+      end
     }
 
     use "folke/which-key.nvim"
