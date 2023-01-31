@@ -80,7 +80,7 @@ local function create_sources_table()
     table.insert(sources, { name = "nvim_lua" })
   end
   table.insert(sources, { name = "luasnip" })
-  table.insert(sources, { name = "buffer" })
+  -- table.insert(sources, { name = "buffer" })
   table.insert(sources, { name = "path" })
   table.insert(sources, { name = "nerdfont" })
 
