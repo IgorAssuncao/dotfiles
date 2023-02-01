@@ -1,6 +1,12 @@
+local status_which_key, which_key = pcall(require, "which-key")
+if not status_which_key then
+  vim.notify("Error from plugins.p_nvim-tree.keymaps: which-key not found.")
+  return
+end
+
 function Toggleterm_set_terminal_keymaps()
   local buffer = 0
-  PLUGINS.which_key.register({
+  which_key.register({
     ["<C-\\>"] = {
       name = "Toggleterm",
       ["<C-\\>"] = { [[<C-\><C-n>]], "Exit insert mode inside terminal" },
