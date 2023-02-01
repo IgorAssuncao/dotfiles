@@ -1,3 +1,8 @@
+-- local file = io.popen("pgrep -a -f -l 'lua-language-server'", "r")
+-- local output = file:read("a")
+-- file:close()
+-- print(output)
+
 return function(opts)
   opts.settings = {
     Lua = {
