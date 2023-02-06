@@ -9,7 +9,7 @@ which_key.register({
     name = "[G]it",
     s = { vim.cmd.Git, "[S]tatus" },
     l = { vim.cmd.GcLog, "[L]og" },
-    f = { function() vim.cmd.Git { args = "fetch" } end, "[F]etch" },
+    f = { function() vim.cmd.Git { args = { "fetch" } } end, "[F]etch" },
     b = { function() vim.cmd.Git { args = { "branch" } } end, "[B]ranch" },
     c = {
       name = "Checkout",
@@ -22,7 +22,12 @@ which_key.register({
     P = {
       name = "Pull Options",
       P = { function() vim.cmd { cmd = "Git", args = { "pull" } } end, "Default" },
-      R = { function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end, "[R]ebasing" }
+      B = { function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,
+        "Default from branch" },
+      R = { function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end, "[R]ebase" },
+      C = { function() vim.cmd { cmd = "Git",
+        args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } } end,
+        "[R]ebase from branch" }
     },
   }
 }, { prefix = "<leader>" })
