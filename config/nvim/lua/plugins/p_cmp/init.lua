@@ -4,6 +4,12 @@ if not status then
   return
 end
 
+local status_cmp_git, cmp_git = pcall(require, "cmp_git")
+if not status_cmp_git then
+  vim.notify("Error from plugins.p_cmp: cmp-git not found.")
+  return
+end
+
 -- PLUGINS.cmp.setup({
 --   formatting = {
 --     format = function(_, vim_item)
@@ -82,6 +88,7 @@ local function create_sources_table()
   table.insert(sources, { name = "luasnip" })
   -- table.insert(sources, { name = "buffer" })
   table.insert(sources, { name = "path" })
+  table.insert(sources, { name = "git" })
   table.insert(sources, { name = "nerdfont" })
 
   return sources
@@ -176,3 +183,5 @@ cmp.setup.cmdline('/', {
     }
   )
 })
+
+cmp_git.setup()

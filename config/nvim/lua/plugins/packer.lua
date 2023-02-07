@@ -134,6 +134,7 @@ packer.startup({
         { "hrsh7th/cmp-buffer" }, -- nvim-cmp source for buffer
         { "hrsh7th/cmp-path" }, -- nvim-cmp source for buffer words
         { "hrsh7th/cmp-nvim-lsp-document-symbol" }, -- nvim-cmp source for lsp symbols
+        { "petertriho/cmp-git" }, -- cmp-git source for git related stuff.
 
         { "chrisgrieser/cmp-nerdfont" }, -- nvim-cmp source for buffer words
 
