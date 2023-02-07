@@ -11,7 +11,10 @@ which_key.register({
     f = {
       name = "Telescope Fuzzy [F]inder",
       f = { builtin.find_files, "Find [f]iles in cwd" },
-      g = { builtin.git_files, "[G]it Files" },
+      g = { name = "[G]it",
+        c = { builtin.git_commits, "[C]ommits" },
+        f = { builtin.git_files, "[F]iles" }
+      },
       l = { builtin.live_grep, "[L]ive [G]rep" },
       w = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "Find [W]ord" }
     }
