@@ -4,6 +4,26 @@ if not status_which_key then
   return
 end
 
+local terminal = require("toggleterm.terminal").Terminal
+
+local terms = {
+  below = terminal:new({ direction = "horizontal", close_on_exit = true }),
+  git_dir = terminal:new({ dir = "git_dir", direction = "float" }),
+  lazygit = terminal:new({ cmd = "lazygit", hidden = true, close_on_exit = true }),
+  htop = terminal:new({ cmd = "htop", hidden = true, close_on_exit = true })
+}
+
+
+which_key.register({
+  ["<C-\\>"] = {
+    name = "Toggleterm",
+    d = { function() terms.below:toggle() end, "Toggle terminal below" },
+    G = { function() terms.lazygit:toggle() end, "Toggle Lazygit terminal" },
+    g = { function() terms.git_dir:toggle() end, "Toggle git dir terminal" },
+    h = { function() terms.htop:toggle() end, "Toggle htop terminal" },
+  }
+})
+
 function Toggleterm_set_terminal_keymaps()
   local buffer = 0
   which_key.register({
