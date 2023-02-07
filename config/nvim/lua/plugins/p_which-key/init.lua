@@ -6,7 +6,7 @@ end
 
 which_key.config = function()
   vim.o.timeout = true
-  vim.o.timeoutlen = 300
+  vim.o.timeoutlen = 200
   which_key.setup {}
 end
 
