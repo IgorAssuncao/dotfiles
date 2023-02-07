@@ -97,17 +97,6 @@ packer.startup({
       requires = { "nvim-tree/nvim-web-devicons" }
     }
 
-    -- use "theprimeagen/harpoon"
-
-    use "tpope/vim-fugitive"
-
-    use {
-      "lewis6991/gitsigns.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim"
-      }
-    }
-
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
@@ -144,6 +133,7 @@ packer.startup({
         { "saadparwaiz1/cmp_luasnip" }, -- completion source for nvim-cmp
         { "hrsh7th/cmp-buffer" }, -- nvim-cmp source for buffer
         { "hrsh7th/cmp-path" }, -- nvim-cmp source for buffer words
+        { "hrsh7th/cmp-nvim-lsp-document-symbol" }, -- nvim-cmp source for lsp symbols
 
         { "chrisgrieser/cmp-nerdfont" }, -- nvim-cmp source for buffer words
 
@@ -165,6 +155,15 @@ packer.startup({
     use "mbbill/undotree"
 
     use "akinsho/toggleterm.nvim"
+
+    use "ahmedkhalf/project.nvim"
+
+    -- Still has to learn its purpose and how it can be useful to me.
+    -- use {
+    --   "dhruvasagar/vim-prosession",
+    --   after = { "vim-obsession" },
+    --   requires = { "tpope/vim-obsession", cmd = "Prosession" }
+    -- }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
