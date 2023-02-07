@@ -158,6 +158,10 @@ packer.startup({
 
     use "ahmedkhalf/project.nvim"
 
+    use "lukas-reineke/indent-blankline.nvim"
+
+    use "lvimuser/lsp-inlayhints.nvim"
+
     -- Still has to learn its purpose and how it can be useful to me.
     -- use {
     --   "dhruvasagar/vim-prosession",

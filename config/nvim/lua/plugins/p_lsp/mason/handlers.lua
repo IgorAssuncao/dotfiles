@@ -22,15 +22,26 @@ if not status_mason_lspconfig then
   return
 end
 
+local status_lsp_inlay_hints, lsp_inlay_hints = pcall(require, "lsp-inlayhints")
+if not status_lsp_inlay_hints then
+  vim.notify("Error form p_lsp.mason: lsp-inlayhints not found.")
+  return
+end
+
+lsp_inlay_hints.setup()
+
+local default_setup_opts = {
+  capabilities = capabilities,
+  single_file_support = true,
+  on_attach = function(client, bufnr)
+    lsp_keymaps(bufnr)
+    lsp_inlay_hints.on_attach(client, bufnr, true)
+  end
+}
+
 mason_lspconfig.setup_handlers({
   function(server_name)
-    lspconfig[server_name].setup {
-      capabilities = capabilities,
-      single_file_support = true,
-      on_attach = function(_, bufnr)
-        lsp_keymaps(bufnr)
-      end
-    }
+    lspconfig[server_name].setup(default_setup_opts)
   end
 })
 
@@ -40,16 +51,9 @@ for k, v in pairs(lsp_servers) do
   local require_ok, server_setup = pcall(require, "plugins.p_lsp.mason.servers." .. k)
   if require_ok then
     local opts = {}
-    local setup_opts = {
-      capabilities = capabilities,
-      on_attach = function(_, bufnr)
-        lsp_keymaps(bufnr)
-      end,
-      single_file_support = true
-    }
 
-    local server_opts = server_setup(setup_opts)
-    opts = vim.tbl_deep_extend("force", setup_opts, server_opts)
+    local server_opts = server_setup(default_setup_opts)
+    opts = vim.tbl_deep_extend("force", default_setup_opts, server_opts)
     -- else
     --   vim.notify("Error from plugins.p_lsp.mason.handlers: requiring servers." .. k .. " not found.")
 

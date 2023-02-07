@@ -25,12 +25,12 @@ local eslint_configs = {
 }
 
 return function(opts)
-  opts.root_dir = function()
-    if not eslint_config_exists() then
-      return nil
-    end
-    return vim.fn.getcwd()
-  end
+  -- opts.root_dir = function()
+  --   if not eslint_config_exists() then
+  --     return nil
+  --   end
+  --   return vim.fn.getcwd()
+  -- end
   opts.settings = {
     -- format = eslint_config_exists(),
     languages = {
