@@ -163,6 +163,8 @@ packer.startup({
 
     use "lvimuser/lsp-inlayhints.nvim"
 
+    use "RRethy/vim-illuminate"
+
     -- Still has to learn its purpose and how it can be useful to me.
     -- use {
     --   "dhruvasagar/vim-prosession",
