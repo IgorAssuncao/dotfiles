@@ -1,6 +1,9 @@
 #!/bin/sh
 # sh -c "$(curl -H 'Cache-Control: no-cache' -LsSo- https://raw.githubusercontent.com/IgorAssuncao/system-config/master/setup/main.sh)"
 
+ASDF_VERSION="v0.10.2"
+ZELLIJ_VERSION="v0.35.2"
+
 downloadRepo() {
   if [[ ! -d ~/system-config/ ]]; then
     echo "Downloading repo"
@@ -23,8 +26,10 @@ echo "All of these tools will be prompted to install:
 downloadRepo
 
 ./zsh.sh
-./asdf.sh
+./asdf.sh $ASDF_VERSION
 ./nvim.sh
+./rofi.sh
+./zellij.sh $ZELLIJ_VERSION
 ./fonts.sh
 
 # if [ -d "~/.i3/config" ]; then

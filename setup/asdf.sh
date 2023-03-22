@@ -1,5 +1,7 @@
 source $HOME/system-config/setup/utils.sh
 
+ASDF_VERSION=$1
+
 plugins_list=(
   "awscli"
   "bat"
@@ -42,7 +44,7 @@ asdf_exists() {
 
 download() {
   echo "Downloading asdf"
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $ASDF_VERSION
 }
 
 configure_shell() {
@@ -93,3 +95,5 @@ install() {
 }
 
 install
+
+echo "ASDF done"
