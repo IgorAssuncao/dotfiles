@@ -107,3 +107,4 @@ source ~/.zshrc_aliases
 source ~/.zshrc_functions
 
 . $HOME/.asdf/asdf.sh
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
