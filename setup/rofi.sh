@@ -16,6 +16,9 @@ install_rofi() {
   if [[ $distro == "manjaro" || $distro == "arch" ]]; then
     sudo pacman -S rofi
   fi
+  if [[ $disto == "void" ]]; then
+    sudo xbps-install rofi
+  fi
 }
 
 if [[ rofi_exists -eq 0 ]]; then
