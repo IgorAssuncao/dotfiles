@@ -24,9 +24,12 @@ which_key.register({
       P = { function() vim.cmd { cmd = "Git", args = { "pull" } } end, "Default" },
       B = { function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,
         "Default from branch" },
+      M = { function() vim.cmd { cmd = "Git", args = { "pull --no-rebase" } } end, "[M]erge" },
       R = { function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end, "[R]ebase" },
-      C = { function() vim.cmd { cmd = "Git",
-        args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } } end,
+      C = { function()
+        vim.cmd { cmd = "Git",
+          args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } }
+      end,
         "[R]ebase from branch" }
     },
   }
