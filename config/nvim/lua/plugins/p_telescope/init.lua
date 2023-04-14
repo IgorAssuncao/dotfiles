@@ -12,7 +12,13 @@ telescope.setup {
       "node_modules",
       "venv",
       "plugin/packer_compiled.lua",
-    }
+    },
+    layout_config = {
+      horizontal = {
+        prompt_position = "top"
+      }
+    },
+    sorting_strategy = "ascending"
   }
 }
 
