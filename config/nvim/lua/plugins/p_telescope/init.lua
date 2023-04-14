@@ -17,3 +17,6 @@ telescope.setup {
 }
 
 require("plugins.p_telescope.keymaps")
+
+-- Extensions
+require("plugins.p_telescope.p_project")
