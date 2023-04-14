@@ -14,4 +14,4 @@ project.setup()
 
 telescope.load_extension('projects')
 
-require("plugins.p_project.keymaps")
+require("plugins.p_telescope.p_project.keymaps")
