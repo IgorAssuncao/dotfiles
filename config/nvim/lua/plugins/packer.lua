@@ -108,8 +108,12 @@ packer.startup({
 
     use {
       "nvim-telescope/telescope.nvim",
-      tag = "0.1.0",
-      requires = { "nvim-lua/plenary.nvim" }
+      branch = "0.1.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        -- Telescope extensions
+        "ahmedkhalf/project.nvim"
+      }
     }
 
     -- use "theprimeagen/harpoon"
@@ -156,8 +160,6 @@ packer.startup({
     use "mbbill/undotree"
 
     use "akinsho/toggleterm.nvim"
-
-    use "ahmedkhalf/project.nvim"
 
     use "lukas-reineke/indent-blankline.nvim"
 
