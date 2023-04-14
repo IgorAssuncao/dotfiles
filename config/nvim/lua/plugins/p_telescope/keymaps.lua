@@ -10,10 +10,13 @@ which_key.register({
   ["<leader>"] = {
     f = {
       name = "Telescope Fuzzy [F]inder",
+      b = { builtin.current_buffer_fuzzy_find, "Current [b]uffer fuzzy find" },
       f = { builtin.find_files, "Find [f]iles in cwd" },
       g = { name = "[G]it",
+        b = { builtin.git_bcommits, "[B]commits" },
         c = { builtin.git_commits, "[C]ommits" },
-        f = { builtin.git_files, "[F]iles" }
+        f = { builtin.git_files, "[F]iles" },
+        s = { builtin.git_status, "Files in git [S]tatus" }
       },
       h = { builtin.help_tags, "[H]elp Tags" },
       l = { builtin.live_grep, "[L]ive [G]rep" },
