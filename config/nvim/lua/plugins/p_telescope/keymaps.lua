@@ -15,7 +15,9 @@ which_key.register({
         c = { builtin.git_commits, "[C]ommits" },
         f = { builtin.git_files, "[F]iles" }
       },
+      h = { builtin.help_tags, "[H]elp Tags" },
       l = { builtin.live_grep, "[L]ive [G]rep" },
+      r = { builtin.resume, "[R]esume" },
       w = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "Find [W]ord" }
     }
   }
