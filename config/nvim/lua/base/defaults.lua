@@ -14,7 +14,7 @@ local defaults = {
     grammarly = "grammarly",
     html = "html",
     json = "jsonls",
-    -- lua = "lua_ls",
+    lua = "lua_ls",
     -- lua = "lua-language-server",
     markdown = "marksman",
     -- "ruff",
