@@ -18,6 +18,11 @@ telescope.setup {
         prompt_position = "top"
       }
     },
+    pickers = {
+      find_files = {
+        hidden = true
+      }
+    },
     sorting_strategy = "ascending"
   }
 }
