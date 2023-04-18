@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=polybar
+Hidden=false
+Name=Polybar
