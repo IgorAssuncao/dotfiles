@@ -146,4 +146,5 @@ configuration {
   }
 }
 
-@theme "Arc-Dark"
+// @theme "Arc-Dark"
+@theme "blue"
