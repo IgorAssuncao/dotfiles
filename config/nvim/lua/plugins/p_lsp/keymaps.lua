@@ -95,8 +95,8 @@ function M.register_lsp_keymaps(bufnr)
       },
       D = {
         name = "[D]iagnostics",
-        h = { function() vim.diagnostic.show() end, "[H]ide" },
-        s = { function() vim.diagnostic.hide() end, "[S]how" },
+        h = { function() vim.diagnostic.hide() end, "[H]ide" },
+        s = { function() vim.diagnostic.show() end, "[S]how" },
         p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
         n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
       },
