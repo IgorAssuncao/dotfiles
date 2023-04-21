@@ -58,12 +58,15 @@ end
 function RegisterKeysIntoVimHelp()
   which_key.register({
     ["<leader>"] = {
-      d = {
+      l = {
         name = "[D]efinition",
+        p = { function() peekDefinition() end, "[P]eek" },
         g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
         s = { function() split_definition() end, "Open in a [S]plit window" },
         v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
-        p = { function() peekDefinition() end, "[P]eek" }
+        i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
+        r = { function() vim.lsp.buf.references() end, "[R]eferences" },
+        R = { function() vim.lsp.buf.rename() end, "[R]ename" },
       }
     }
   })
@@ -80,12 +83,15 @@ function M.register_lsp_keymaps(bufnr)
 
   which_key.register({
     ["<leader>"] = {
-      d = {
-        name = "[D]efinition",
+      l = {
+        name = "[L]sp",
+        p = { function() peekDefinition() end, "[P]eek" },
         g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
         s = { function() split_definition() end, "Open in a [S]plit window" },
         v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
-        p = { function() peekDefinition() end, "[P]eek" }
+        i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
+        r = { function() vim.lsp.buf.references() end, "[R]eferences" },
+        R = { function() vim.lsp.buf.rename() end, "[R]ename" },
       },
       D = {
         name = "[D]iagnostics",
