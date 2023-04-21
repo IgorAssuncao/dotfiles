@@ -12,11 +12,16 @@ which_key.register({
     f = { function() vim.cmd.Git { args = { "fetch" } } end, "[F]etch" },
     b = { function() vim.cmd.Git { args = { "branch" } } end, "[B]ranch" },
     c = {
-      name = "Checkout",
+      name = "[C]heckout",
       b = { function() vim.cmd.Git { args = { "switch " .. vim.fn.input("Target branch: ") } } end,
         "[S]witch to existing branch" },
       c = { function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,
         "[C]reate branch" },
+    },
+    d = {
+      name = "[D]iff",
+      h = { function() vim.cmd { cmd = "diffget", args = { "//2" } } end, "Choose diff content on left window" },
+      l = { function() vim.cmd { cmd = "diffget", args = { "//3" } } end, "Choose diff content on right window" }
     },
     p = { function() vim.cmd.Git { args = { "push" } } end, "[P]ush" },
     P = {
