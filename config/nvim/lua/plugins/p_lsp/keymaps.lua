@@ -6,6 +6,13 @@ if not status then
   return
 end
 
+local status_telescope_builtin, telescope_builtin = pcall(require, "telescope.builtin")
+if not status_telescope_builtin then
+  vim.notify("Error from plugins.p_lsp.keymaps: telescope.builtin not found.")
+  return
+end
+
+
 -- local function old_split_definition(split_direction)
 --   split_direction = split_direction or "s"
 --
@@ -91,12 +98,13 @@ function M.register_lsp_keymaps(bufnr)
         v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
         i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
         r = { function() vim.lsp.buf.references() end, "[R]eferences" },
-        R = { function() vim.lsp.buf.rename() end, "[R]ename" },
+        R = { function() vim.lsp.buf.rename() end, "[R]ename" }
       },
       D = {
         name = "[D]iagnostics",
         h = { function() vim.diagnostic.hide() end, "[H]ide" },
         s = { function() vim.diagnostic.show() end, "[S]how" },
+        a = { telescope_builtin.diagnostics, "[A]ll" },
         p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
         n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
       },
