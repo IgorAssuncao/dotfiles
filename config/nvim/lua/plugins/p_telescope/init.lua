@@ -21,8 +21,15 @@ telescope.setup {
     pickers = {
       find_files = {
         hidden = true
+      },
+      live_grep = {
+        only_sort_text = true
+      },
+      grep_string = {
+        only_sort_text = true
       }
     },
+    -- path_display = { "smart" },
     sorting_strategy = "ascending"
   }
 }
