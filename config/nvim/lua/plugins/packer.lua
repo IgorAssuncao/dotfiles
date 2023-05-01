@@ -151,6 +151,11 @@ packer.startup({
     use "neovim/nvim-lspconfig" -- NeoVim LSP
 
     use {
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = { "nvim-lua/plenary.nvim" }
+    }
+
+    use {
       "windwp/nvim-autopairs",
       requires = {
         "hrsh7th/nvim-cmp"

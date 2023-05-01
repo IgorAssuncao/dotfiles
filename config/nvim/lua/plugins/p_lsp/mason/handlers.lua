@@ -36,6 +36,12 @@ local default_setup_opts = {
   on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     lsp_inlay_hints.on_attach(client, bufnr, true)
+
+    if client.name == "tsserver" then
+      -- client.server_capabilities.codeActionProvider = false
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end
   end
 }
 

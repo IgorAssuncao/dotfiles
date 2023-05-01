@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd(
   },
   {
     pattern = { "*" },
-    command = "lua vim.lsp.buf.format({ bufnr = nil })"
+    command = "lua vim.lsp.buf.format({ bufnr = nil, timeout_ms = 5000 })"
     -- The format() can also receive an argument
     -- to make formatting async, like:
     -- format({ async = true })
