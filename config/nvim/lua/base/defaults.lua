@@ -15,7 +15,6 @@ local defaults = {
     html = "html",
     json = "jsonls",
     lua = "lua_ls",
-    -- lua = "lua-language-server",
     markdown = "marksman",
     -- "ruff",
     python = "ruff_lsp",
