@@ -19,7 +19,7 @@ local defaults = {
     markdown = "marksman",
     -- "ruff",
     python = "ruff_lsp",
-    rust = "rust_analyzer",
+    -- rust = "rust_analyzer",
     sql = "sqlls",
     toml = "taplo", -- toml
     typescript = "tsserver",
