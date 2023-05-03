@@ -58,8 +58,11 @@ for k, v in pairs(lsp_servers) do
   if require_ok then
     local opts = {}
 
-    local server_opts = server_setup(default_setup_opts)
-    opts = vim.tbl_deep_extend("force", default_setup_opts, server_opts)
+    local default_opts = vim.tbl_deep_extend("force", default_setup_opts, {})
+
+    local server_opts = server_setup(default_opts)
+    opts = vim.tbl_deep_extend("force", default_opts, server_opts)
+
     -- else
     --   vim.notify("Error from plugins.p_lsp.mason.handlers: requiring servers." .. k .. " not found.")
 
@@ -67,16 +70,6 @@ for k, v in pairs(lsp_servers) do
   end
 end
 
--- lspconfig[lsp_servers.terraform].setup {
---   capabilities = capabilities,
---   filetypes = {
---     "terraform",
---     "terraform-vars",
---     ".tf",
---     ".tfvars",
---     "*.tfvars*"
---   }
--- }
 --   lspconfig[lsp_servers.terraform_lint].setup {
 --     capabilities = capabilities,
 --     root_dir = lspconfig.util.root_pattern(".terraform", ".git"),
