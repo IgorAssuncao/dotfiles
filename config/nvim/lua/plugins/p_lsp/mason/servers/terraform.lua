@@ -7,6 +7,7 @@ return function(opts)
     "tfvars",
     ".tfvars",
     "*.tfvars*",
+    "*.tfbackend",
     "terraformrc",
     ".terraformrc",
     "*.terraformrc",
