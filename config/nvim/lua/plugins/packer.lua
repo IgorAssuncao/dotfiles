@@ -73,10 +73,10 @@ packer.startup({
 
     use {
       "EdenEast/nightfox.nvim",
-      as = "nightfox",
-      config = function()
-        vim.cmd("colorscheme duskfox")
-      end
+      as = "nightfox"
+      -- config = function()
+      --   vim.cmd("colorscheme duskfox")
+      -- end
     }
 
     use "folke/which-key.nvim"
@@ -129,26 +129,26 @@ packer.startup({
     use {
       "hrsh7th/nvim-cmp",
       requires = {
-        { "L3MON4D3/LuaSnip" }, -- Snippets engine
+        { "L3MON4D3/LuaSnip" },                     -- Snippets engine
 
-        { "hrsh7th/cmp-nvim-lsp" }, -- nvim-cmp source for nvim builtin language server client
-        { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- nvim-cmp source for nvim builtin language server client for signature helping
-        { "hrsh7th/cmp-nvim-lua" }, -- nvim-cmp source for nvim lua api
-        { "saadparwaiz1/cmp_luasnip" }, -- completion source for nvim-cmp
-        { "hrsh7th/cmp-buffer" }, -- nvim-cmp source for buffer
-        { "hrsh7th/cmp-path" }, -- nvim-cmp source for buffer words
+        { "hrsh7th/cmp-nvim-lsp" },                 -- nvim-cmp source for nvim builtin language server client
+        { "hrsh7th/cmp-nvim-lsp-signature-help" },  -- nvim-cmp source for nvim builtin language server client for signature helping
+        { "hrsh7th/cmp-nvim-lua" },                 -- nvim-cmp source for nvim lua api
+        { "saadparwaiz1/cmp_luasnip" },             -- completion source for nvim-cmp
+        { "hrsh7th/cmp-buffer" },                   -- nvim-cmp source for buffer
+        { "hrsh7th/cmp-path" },                     -- nvim-cmp source for buffer words
         { "hrsh7th/cmp-nvim-lsp-document-symbol" }, -- nvim-cmp source for lsp symbols
-        { "petertriho/cmp-git" }, -- cmp-git source for git related stuff.
+        { "petertriho/cmp-git" },                   -- cmp-git source for git related stuff.
 
-        { "chrisgrieser/cmp-nerdfont" }, -- nvim-cmp source for buffer words
+        { "chrisgrieser/cmp-nerdfont" },            -- nvim-cmp source for buffer words
 
-        { "onsails/lspkind.nvim" }, -- Autocompletion Icons
+        { "onsails/lspkind.nvim" },                 -- Autocompletion Icons
       }
     }
 
-    use "williamboman/mason.nvim" -- Auto install LSP servers
+    use "williamboman/mason.nvim"           -- Auto install LSP servers
     use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
-    use "neovim/nvim-lspconfig" -- NeoVim LSP
+    use "neovim/nvim-lspconfig"             -- NeoVim LSP
 
     use {
       "jose-elias-alvarez/null-ls.nvim",
@@ -180,6 +180,15 @@ packer.startup({
     -- }
 
     use "ggandor/leap.nvim"
+
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app & npm install",
+      setup = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" }
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
