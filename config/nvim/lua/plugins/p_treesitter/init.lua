@@ -77,3 +77,5 @@ require 'nvim-treesitter.configs'.setup {
     }
   }
 }
+
+require('plugins.p_treesitter.p_treesitter_context')
