@@ -54,10 +54,11 @@ require 'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   },
+  -- nvim-ts-rainbow2 plugin
   rainbow = {
-    enable = true,
-    extended_mode = true
+    enable = true
   },
+  -- nvim-ts-playground plugin
   playground = {
     enable = true,
     disable = {},

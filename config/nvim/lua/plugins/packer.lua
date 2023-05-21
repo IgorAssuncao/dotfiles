@@ -102,8 +102,8 @@ packer.startup({
       run = ":TSUpdate",
       requires = {
         -- Treesitter extensions
-        { "p00f/nvim-ts-rainbow" },
         { "nvim-treesitter/playground" },
+        { "HiPhish/nvim-ts-rainbow2" },
         { "nvim-treesitter/nvim-treesitter-context" }
       }
     }
