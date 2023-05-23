@@ -1,14 +1,14 @@
-#/bin/sh
+#!/bin/bash
 
 github_nerd_fonts_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts"
 
 fonts_dir="${HOME}/.local/share/fonts"
 
 fonts_list=(
-  "Hack Bold Nerd Font Complete"
-  "Hack Bold Italic Nerd Font Complete"
-  "Hack Italic Nerd Font Complete"
-  "Hack Regular Nerd Font Complete"
+  "Hack Bold Nerd Font"
+  "Hack Bold Italic Nerd Font"
+  "Hack Italic Nerd Font"
+  "Hack Regular Nerd Font"
 )
 
 ensure_curl() {
@@ -19,9 +19,12 @@ ensure_curl() {
 }
 
 if [[ ! -d $fonts_dir ]]; then
-  echo $fonts_dir
   mkdir -p $fonts_dir
 fi
+
+# if [[ ! -d $HOME/.fonts ]]; then
+#   ln -s $fonts_dir $HOME/.fonts
+# fi
 
 cd $fonts_dir
 
@@ -32,8 +35,13 @@ download_font() {
   if [[ $(echo ${font} | cut -d ' ' -f3) == "Italic" ]]; then
     font_style="${font_style}Italic"
   fi
-  formatted_font="$(echo ${font} | sed -e 's/ /%20/g')"
-  download_url="${github_nerd_fonts_url}/${font_name}/${font_style}/complete/${formatted_font}.ttf"
+  formatted_font="$(echo ${font} | sed -e 's/ //g')"
+  download_url="${github_nerd_fonts_url}/${font_name}/${font_style}/${formatted_font}.ttf"
+  # original:
+  # https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/BoldItalic/HackNerdFont-BoldItalic.ttf
+  # mine:
+  # https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Hack/BoldItalic/complete/HackBoldItalicNerdFontComplete.ttf
+  echo $download_url
   curl -sfLo "${font}.ttf" $download_url
 }
 
@@ -43,6 +51,7 @@ install_fonts() {
   done
 }
 
-install_fonts
+ensure_curl
+# install_fonts
 
 cd -
