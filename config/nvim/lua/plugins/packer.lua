@@ -192,6 +192,15 @@ packer.startup({
       ft = { "markdown" }
     }
 
+    use {
+      "olexsmir/gopher.nvim",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-treesitter/nvim-treesitter" }
+      },
+      -- ft = { "go" }
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
