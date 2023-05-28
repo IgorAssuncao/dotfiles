@@ -4,4 +4,15 @@ if not status then
   return
 end
 
-gopher.setup()
+gopher.setup {
+  commands = {
+    go = "go",
+    gomodifytags = "gomodifytags",
+    gotests = "gotests",
+    impl = "impl",
+    iferr = "iferr",
+    dlv = "dlv"
+  }
+}
+
+require("plugins.p_gopher.keymaps")
