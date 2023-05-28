@@ -103,8 +103,12 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd nomatch notify
 
-source ~/.zshrc_aliases
-source ~/.zshrc_functions
+source ~/system-config/config/zsh/.zshrc_aliases
+source ~/system-config/config/zsh/.zshrc_functions
 
 . $HOME/.asdf/asdf.sh
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# export GOBIN="$(go env | grep GOPATH | awk -F '=' '{print $NF}' | sed -e s/\"//g)/bin"
+export GOBIN="$(go env GOPATH)/bin"
+export PATH=$PATH:$GOBIN
