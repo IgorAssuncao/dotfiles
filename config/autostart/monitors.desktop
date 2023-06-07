@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Configure Monitors
+Type=Application
+Exec="/home/void-dev/system-config/scripts/configure-monitors.sh"
+Hidden=false
+NoDisplay=false
