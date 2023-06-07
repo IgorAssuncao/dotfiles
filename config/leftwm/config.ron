@@ -57,6 +57,7 @@
     keybind: [
         (command: Execute, value: "dmenu_run", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "rofi -show run", modifier: ["modkey"], key: "r"),
+        (command: Execute, value: "rofi -show drun", modifier: ["modkey", "Shift"], key: "d"),
         (command: Execute, value: "rofi -show window", modifier: ["modkey"], key: "w"),
         (command: Execute, value: "alacritty", modifier: ["modkey", "Shift"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
