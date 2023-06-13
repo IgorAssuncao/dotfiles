@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source $HOME/system-config/setup/utils.sh
 
 ASDF_VERSION=$1
@@ -6,9 +8,13 @@ plugins_list=(
   "awscli"
   "bat"
   "exa"
+  "fzf"
+  "github-cli"
   "golang"
+  "helm"
   "jq"
   "k9s"
+  "kind"
   "kubectl"
   "lazygit"
   "neovim"
@@ -39,6 +45,12 @@ ensure_dependencies() {
 }
 
 asdf_exists() {
+  if [[ -d ~/.asdf ]]; then
+    return 0
+  else
+    return 1
+  fi
+
   return [[ -d ~/.asdf ]]
 }
 
@@ -65,9 +77,6 @@ setup_plugins() {
     asdf plugin add $plugin
   done
 
-  if [[ ! -e ~/.tool-versions ]]; then
-    createSymlink asdf/.tool-versions .tool-versions
-  fi
   asdf install
 }
 
@@ -75,7 +84,7 @@ install() {
   echo "Checking asdf dependencies."
   ensure_dependencies "${dependencies[@]}"
 
-  if [[ ! asdf_exists ]]; then
+  if [[ ! -d ~/.asdf ]]; then
     download
   else
     echo "Skipping asdf download since its already installed."
@@ -91,6 +100,11 @@ install() {
   fi
 
   # . ~/.zshrc
+
+  if [[ ! -e ~/.tool-versions ]]; then
+    createSymlink asdf/.tool-versions .tool-versions
+  fi
+
   setup_plugins "${plugins_list[@]}"
 }
 

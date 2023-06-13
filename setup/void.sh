@@ -11,7 +11,7 @@ base_packages=(
   make
   lightdm
   lightdm-gtk3-greeter
-  seatd
+  # seatd
   zsh
 )
 
@@ -35,7 +35,7 @@ sudo xbps-install -y ${xorg_packages[@]}
 
 extra_packages=(
   alacritty
-  neovim
+  # neovim
   nitrogen
 )
 
