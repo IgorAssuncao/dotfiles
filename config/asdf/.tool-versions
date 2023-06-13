@@ -5,7 +5,6 @@ fzf 0.37.0
 golang 1.19.4
 github-cli 2.22.1
 helm 3.11.1
-jq 1.6
 k9s 0.26.7
 kind 0.17.0
 kubectl 1.22.17
