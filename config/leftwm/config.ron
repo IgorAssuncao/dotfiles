@@ -65,6 +65,7 @@
         (command: Execute, value: "pkill leftwm", modifier: ["modkey", "Shift"], key: "x"),
         (command: Execute, value: "slock", modifier: ["modkey", "Control"], key: "l"),
         (command: MoveToLastWorkspace, value: "", modifier: ["modkey", "Shift"], key: "w"),
+        (command: ReturnToLastTag, value: "", modifier: ["modkey"], key: "t"),
         (command: SwapTags, value: "", modifier: ["modkey", "Control"], key: "w"),
         (command: MoveWindowUp, value: "", modifier: ["modkey", "Shift"], key: "k"),
         (command: MoveWindowDown, value: "", modifier: ["modkey", "Shift"], key: "j"),
