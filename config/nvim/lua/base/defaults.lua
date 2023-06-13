@@ -5,7 +5,7 @@ local defaults = {
   --   require(colorscheme_name).load()
   -- end,
   lsp_servers = {
-    awk = "awk_ls",
+    -- awk = "awk_ls",
     bask = "bashls",
     c = "clangd",
     docker = "dockerls",
@@ -17,7 +17,7 @@ local defaults = {
     lua = "lua_ls",
     markdown = "marksman",
     -- "ruff",
-    python = "ruff_lsp",
+    -- python = "ruff_lsp",
     -- rust = "rust_analyzer",
     sql = "sqlls",
     toml = "taplo", -- toml
