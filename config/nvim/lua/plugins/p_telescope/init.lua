@@ -38,3 +38,4 @@ require("plugins.p_telescope.keymaps")
 
 -- Extensions
 require("plugins.p_telescope.p_project")
+telescope.load_extension("notify")

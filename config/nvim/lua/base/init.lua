@@ -1,6 +1,14 @@
+local status_notify, notify = pcall(require, "notify")
+if not status_notify then
+  vim.notify("Error from base: notify not found.")
+  return
+end
+
+vim.notify = notify
+
 local status_functions, functions = pcall(require, "base.functions")
 if not status_functions then
-  vim.notify("Error requiring base.functions")
+  vim.notify("Error requiring base.functions", "error")
   return
 end
 
@@ -18,7 +26,7 @@ BASE.protected_require("base.text")
 
 local status, _ = pcall(require, "plugins.packer")
 if not status then
-  vim.notify("Error in requiring plugins.packer")
+  vim.notify("Error in requiring plugins.packer", "error")
   return
 end
 -- keymaps is being required after packer

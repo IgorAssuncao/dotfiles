@@ -7,7 +7,8 @@ end
 transparent.setup({
   extra_groups = {
     "NormalFloat",
-    "NvimTreeNormal"
+    "NvimTreeNormal",
+    "NotifyBackground"
   }
 })
 
