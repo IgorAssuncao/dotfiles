@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=polybar -r
+Exec=~/.config/polybar/launch-polybar.sh
 Hidden=false
 Name=Polybar

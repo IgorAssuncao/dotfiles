@@ -1,0 +1,74 @@
+[module/custom]
+background = ${theme.background}
+foreground = ${theme.foreground}
+label-background = ${self.background}
+label-foreground = ${self.foreground}
+format-background = ${self.background}
+format-foreground = ${theme.primary}
+
+[module/window]
+type = internal/xwindow
+format-background = ${module/custom.format-background}
+format-foreground = ${module/custom.foreground}
+
+[module/leftwm_tags]
+type = internal/xworkspaces
+pin-workspaces = true
+label-active = " %icon% %name%  "
+label-active-background = ${theme.primary}
+label-active-foreground = ${theme.foreground}
+label-active-underline = ${theme.secondary}
+label-occupied = " %icon% %name%  "
+label-occupied-background = ${module/custom.background}
+label-occupied-foreground = ${theme.primary}
+label-occupied-underline = ${theme.secondary}
+label-urgent = " %icon% %name%  "
+label-urgent-background = ${module/custom.background}
+label-urgent-foreground = ${theme.urgent}
+label-urgent-underline  = ${theme.urgent}
+label-empty = " %icon% %name%  "
+label-empty-foreground = ${theme.inactive}
+label-empty-background = ${module/custom.label-background}
+
+[module/memory]
+type = internal/memory
+interval = 1
+format-prefix = "RAM: "
+format-prefix-foreground = ${module/custom.format-foreground}
+label = %percentage_used:02%%
+label-foreground = ${module/custom.foreground}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format-prefix = "CPU: "
+format-prefix-foreground = ${module/custom.format-foreground}
+label = %percentage:02%%
+label-foreground = ${module/custom.foreground}
+
+[module/eth]
+type = internal/network
+interval = 3
+interface-type = wired
+label-connected = "%local_ip%"
+label-connected-foreground = ${module/custom.foreground}
+format-connected-prefix = "ETH: "
+format-connected-prefix-foreground = ${module/custom.format-foreground}
+format-connected = <label-connected>
+# format-connected = <ramp-signal> <label-connected>
+label-packetloss = "%essid%"
+format-packetloss-prefix = "Loss: "
+format-packetloss-prefix-foreground = ${module/custom.foreground}
+format-packetloss = <label-packetloss>
+label-disconnected = "disconnected"
+label-disconnected-foreground = ${theme.urgent}
+format-disconnected-prefix = "ETH: "
+format-disconnected-prefix-foreground = ${module/custom.foreground}
+format-disconnected = <label-disconnected>
+
+# ramp-signal-0 = 😱
+# ramp-signal-1 = 😠
+# ramp-signal-2 = 😒
+# ramp-signal-3 = 😊
+# ramp-signal-4 = 😃
+# ramp-signal-5 = 😈

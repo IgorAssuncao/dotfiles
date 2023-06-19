@@ -1,0 +1,45 @@
+[bar/base]
+fixed-center = true
+
+monitor = ${env:MONITOR:}
+
+font-0 = "Hack:size=10:weight=bold;0"
+
+width = 100%
+height = 30px
+
+offset-x = 0%
+offset-y = 0%
+
+background = ${theme.background}
+foreground = ${theme.foreground}
+
+line-size = 0pt
+border-size = 0pt
+border-color = ${theme.primary}
+
+padding-left = 2
+padding-right = 2
+
+module-margin = 1
+
+separator = |
+separator-foreground = ${theme.inactive}
+
+enable-ipc = true
+
+[bar/top]
+inherit = bar/base
+bottom = false
+
+modules-left = window
+modules-center = leftwm_tags
+modules-right = cpu memory eth
+
+[bar/bottom]
+inherit = bar/base
+bottom = true
+
+modules-left = 
+modules-center = window
+modules-right = 

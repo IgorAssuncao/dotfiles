@@ -1,0 +1,19 @@
+[colors]
+# name = #AARRGGBB A - alpha, R - red, G - green, B - blue
+black = #A0000000
+grey = #55777777
+white = #FFFFFFFF
+blue = #FF1F7ACA
+green = #FF00FF00
+red = #FFFF0000
+light_blue = #8800FFFF
+cyan = #FF00FFFF
+purple = #FFFF0000
+
+[theme]
+background = ${colors.black}
+foreground = ${colors.white}
+urgent = ${colors.purple}
+inactive = ${colors.grey}
+primary = ${colors.blue}
+secondary = ${colors.cyan}
