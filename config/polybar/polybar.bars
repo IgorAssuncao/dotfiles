@@ -5,11 +5,13 @@ monitor = ${env:MONITOR:}
 
 font-0 = "Hack:size=10:weight=bold;0"
 
-width = 100%
+width = ${env:width}
 height = 30px
 
-offset-x = 0%
-offset-y = 0%
+radius = 5
+
+offset-x = ${env:xoffset}
+offset-y = 0
 
 background = ${theme.background}
 foreground = ${theme.foreground}
