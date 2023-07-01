@@ -112,3 +112,4 @@ source ~/system-config/config/zsh/.zshrc_functions
 # export GOBIN="$(go env | grep GOPATH | awk -F '=' '{print $NF}' | sed -e s/\"//g)/bin"
 export GOBIN="$(go env GOPATH)/bin"
 export PATH=$PATH:$GOBIN
+source "$HOME/.cargo/env"
