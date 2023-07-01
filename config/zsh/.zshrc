@@ -106,7 +106,7 @@ setopt autocd nomatch notify
 source ~/system-config/config/zsh/.zshrc_aliases
 source ~/system-config/config/zsh/.zshrc_functions
 
-source ~/system-config/config/zsh/.zshrc_completion_yq
+source ~/system-config/config/zsh/.zsh_completion_yq
 
 . $HOME/.asdf/asdf.sh
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
@@ -116,4 +116,4 @@ export GOBIN="$(go env GOPATH)/bin"
 export PATH=$PATH:$GOBIN
 
 source "$HOME/.cargo/env"
-source ~/system-config/config/zsh/.zshrc_completion_rust
+source ~/system-config/config/zsh/.zsh_completion_rust
