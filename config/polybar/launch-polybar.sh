@@ -7,7 +7,6 @@ for monitor in $(polybar -M | cut -d ':' -f 1); do
   # width=$(expr $width - 200)
   width=$(($width - 0))
   x=$(($x + 0))
-  MONITOR=$monitor width=$width xoffset=$x polybar -r top &
-  MONITOR=$monitor width=$width xoffset=$x polybar -r bottom &
+  MONITOR=$monitor width=$width xoffset=$x polybar -c $HOME/.config/polybar/polybar.config -r top &
+  MONITOR=$monitor width=$width xoffset=$x polybar -c $HOME/.config/polybar/polybar.config -r bottom &
 done
-
