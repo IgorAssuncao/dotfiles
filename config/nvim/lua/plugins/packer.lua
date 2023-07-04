@@ -152,6 +152,20 @@ packer.startup({
     use "williamboman/mason-lspconfig.nvim" -- Bridges mason and nvim-lsp
     use "neovim/nvim-lspconfig"             -- NeoVim LSP
 
+    -- Debug Adapter
+    use {
+      "rcarriga/nvim-dap-ui",
+      requires = {
+        {
+          "mfussenegger/nvim-dap",
+          "folke/neodev.nvim"
+        },
+      }
+    }
+    use "theHamsta/nvim-dap-virtual-text"
+    use "leoluz/nvim-dap-go"
+    use "simrat39/rust-tools.nvim"
+
     use {
       "jose-elias-alvarez/null-ls.nvim",
       requires = { "nvim-lua/plenary.nvim" }

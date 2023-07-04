@@ -5,6 +5,7 @@ if not status_notify then
 end
 
 notify.setup({
+  background = "#000000",
   background_color = "#000000",
   render = "default",
   stages = "fade_in_slide_out"

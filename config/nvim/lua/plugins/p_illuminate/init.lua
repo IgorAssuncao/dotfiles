@@ -8,7 +8,7 @@ illuminate.configure()
 
 local status, which_key = pcall(require, "which-key")
 if not status then
-  vim.notify("error from p_lsp/keymaps: which-key not found.")
+  vim.notify("error from p_illuminate: which-key not found.")
   return
 end
 
