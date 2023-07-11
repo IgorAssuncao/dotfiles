@@ -89,8 +89,12 @@ which_key.register({
     },
     q = { vim.cmd.quit, "[Q]uit" },
     w = { vim.cmd.write, "[W]rite" },
-    x = { vim.cmd.exit, "E[x]it" }
-  }
+    x = { vim.cmd.exit, "E[x]it" },
+  },
+  H = { "^", "Go to start of line" },
+  L = { "$", "Go to end of line" },
+  ["<Left>"] = { vim.cmd.bp, "Previous buffer" },
+  ["<Right>"] = { vim.cmd.bn, "Next buffer" }
 })
 
 for i = 1, 9, 1 do

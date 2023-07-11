@@ -13,6 +13,6 @@ which_key.register({
     C = { "<cmd>WhichKey '' c<cr>", "[W]hich [K]ey [C]ommand mode Toggle" },
   },
   L = {
-    name = "[L]anguages"
+    name = "[L]anguages tools"
   },
 })
