@@ -12,7 +12,7 @@ which_key.register({
     V = { "<cmd>WhichKey '' v<cr>", "[W]hich [K]ey [V]isual mode Toggle" },
     C = { "<cmd>WhichKey '' c<cr>", "[W]hich [K]ey [C]ommand mode Toggle" },
   },
-  L = {
+  ["<leader>L"] = {
     name = "[L]anguages tools"
   },
 })

@@ -12,13 +12,15 @@ end
 
 local function register_keys(bufnr)
   which_key.register({
-    ["L"] = {
-      r = {
-        name = "[R]ust tools",
-        -- Hover Actions
-        h = { function() rust_tools.hover_actions.hover_actions() end, "[H]over actions" },
-        -- Code action groups
-        a = { function() rust_tools.code_action_group.code_action_group() end, "Code [a]ction group" },
+    ["<leader>"] = {
+      L = {
+        r = {
+          name = "[R]ust tools",
+          -- Hover Actions
+          h = { function() rust_tools.hover_actions.hover_actions() end, "[H]over actions" },
+          -- Code action groups
+          a = { function() rust_tools.code_action_group.code_action_group() end, "Code [a]ction group" },
+        }
       }
     }
   }, { buffer = bufnr })
@@ -30,10 +32,10 @@ if not status_mason_registry then
   return
 end
 
-local codelldb = mason_registry.get_package("codelldb")
-local extension_path = codelldb:get_install_path() .. "/extension/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+-- local codelldb = mason_registry.get_package("codelldb")
+-- local extension_path = codelldb:get_install_path() .. "/extension/"
+-- local codelldb_path = extension_path .. "adapter/codelldb"
+-- local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
 
 rust_tools.setup({
   dap = {
