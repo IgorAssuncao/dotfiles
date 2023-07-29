@@ -4,6 +4,12 @@ if not status_telescope then
   return
 end
 
+local status_trouble, trouble = pcall(require, "trouble.providers.telescope")
+if not status_trouble then
+  vim.notify("Error from plugins.p_telescope: trouble not found.")
+  return
+end
+
 telescope.setup {
   defaults = {
     file_ignore_patterns = {
@@ -17,6 +23,10 @@ telescope.setup {
       horizontal = {
         prompt_position = "top"
       }
+    },
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble }
     },
     pickers = {
       find_files = {
