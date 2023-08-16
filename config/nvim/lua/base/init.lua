@@ -1,3 +1,5 @@
+-- vim.inspect(table) allows table inspection, it returns the elements from the table passed as parameter
+
 local status_notify, notify = pcall(require, "notify")
 if not status_notify then
   vim.notify("Error from base: notify not found.")
