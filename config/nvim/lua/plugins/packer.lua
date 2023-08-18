@@ -166,10 +166,10 @@ packer.startup({
     use "leoluz/nvim-dap-go"
     use "simrat39/rust-tools.nvim"
 
-    use {
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = { "nvim-lua/plenary.nvim" }
-    }
+    -- use {
+    --   "jose-elias-alvarez/null-ls.nvim",
+    --   requires = { "nvim-lua/plenary.nvim" }
+    -- }
 
     use {
       "windwp/nvim-autopairs",
