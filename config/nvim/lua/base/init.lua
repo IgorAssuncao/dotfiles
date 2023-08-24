@@ -2,25 +2,25 @@
 
 local status_notify, notify = pcall(require, "notify")
 if not status_notify then
-  vim.notify("Error from base: notify not found.")
-  return
+	vim.notify("Error from base: notify not found.")
+	return
 end
 
 vim.notify = notify
 
 local status_functions, functions = pcall(require, "base.functions")
 if not status_functions then
-  vim.notify("Error requiring base.functions", "error")
-  return
+	vim.notify("Error requiring base.functions", "error")
+	return
 end
 
 local defs = require("base.defaults"):init()
 
 -- Custom global base table
 BASE = {
-  defaults = defs.defaults,
-  get_all_lsp_servers_names = defs.get_all_lsp_servers_names,
-  protected_require = functions.protected_require
+	defaults = defs.defaults,
+	get_all_lsp_servers_names = defs.get_all_lsp_servers_names,
+	protected_require = functions.protected_require
 }
 
 BASE.protected_require("base.settings")
@@ -28,8 +28,8 @@ BASE.protected_require("base.text")
 
 local status, _ = pcall(require, "plugins.packer")
 if not status then
-  vim.notify("Error in requiring plugins.packer", "error")
-  return
+	vim.notify("Error in requiring plugins.packer", "error")
+	return
 end
 -- keymaps is being required after packer
 -- because of which-key plugin that registers
