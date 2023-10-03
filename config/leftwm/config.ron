@@ -9,9 +9,12 @@
 
 #![enable(implicit_some)]
 (
+    terminal: "kitty",
     modkey: "Mod4",
     mousekey: "Mod4",
-    workspaces: [],
+    workspaces: [
+        (output: "HDMI-0", x: 0, y: 0, width: 1920, height: 1080),
+    ],
     tags: [
         "1",
         "2",
@@ -46,7 +49,7 @@
         (name: "Alacritty", value: "alacritty", x: 860, y: 390, height: 300, width: 200),
     ],
     window_rules: [],
-    disable_current_tag_swap: false,
+    disable_current_tag_swap: true,
     disable_tile_drag: false,
     disable_window_snap: true,
     focus_behaviour: Sloppy,
@@ -59,7 +62,7 @@
         (command: Execute, value: "rofi -show run", modifier: ["modkey"], key: "r"),
         (command: Execute, value: "rofi -show drun", modifier: ["modkey", "Shift"], key: "d"),
         (command: Execute, value: "rofi -show window", modifier: ["modkey"], key: "w"),
-        (command: Execute, value: "alacritty", modifier: ["modkey", "Shift"], key: "Return"),
+        (command: Execute, value: "kitty", modifier: ["modkey", "Shift"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: Execute, value: "pkill leftwm", modifier: ["modkey", "Shift"], key: "x"),
@@ -67,6 +70,7 @@
         (command: MoveToLastWorkspace, value: "", modifier: ["modkey", "Shift"], key: "w"),
         (command: ReturnToLastTag, value: "", modifier: ["modkey"], key: "t"),
         (command: SwapTags, value: "", modifier: ["modkey", "Control"], key: "w"),
+        (command: ToggleSticky, value: "", modifier: ["modkey", "Shift"], key: "t"),
         (command: MoveWindowUp, value: "", modifier: ["modkey", "Shift"], key: "k"),
         (command: MoveWindowDown, value: "", modifier: ["modkey", "Shift"], key: "j"),
         (command: MoveWindowTop, value: "", modifier: ["modkey"], key: "Return"),
