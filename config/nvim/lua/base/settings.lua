@@ -49,41 +49,41 @@ vim.opt.swapfile = false
 
 -- Sets number and relativenumber only on current buffer
 local dynamicNumberGroup = vim.api.nvim_create_augroup(
-     "DynamicNumbers",
-     {
-          clear = true
-     }
+    "DynamicNumbers",
+    {
+        clear = true
+    }
 )
 -- -- Enables both numbers and relativenumbers on focused buffers.
 vim.api.nvim_create_autocmd(
-     {
-          "BufEnter",
-          "FocusGained"
-     },
-     {
-          pattern = { "*" },
-          command = "set number relativenumber",
-          group = dynamicNumberGroup
-     }
+    {
+        "BufEnter",
+        "FocusGained"
+    },
+    {
+        pattern = { "*" },
+        command = "set number relativenumber",
+        group = dynamicNumberGroup
+    }
 )
 -- -- Enables only numbers on unfocused buffers.
 vim.api.nvim_create_autocmd(
-     {
-          "BufLeave",
-          "FocusLost"
-     },
-     {
-          pattern = { "*" },
-          command = "set number norelativenumber",
-          group = dynamicNumberGroup
-     }
+    {
+        "BufLeave",
+        "FocusLost"
+    },
+    {
+        pattern = { "*" },
+        command = "set number norelativenumber",
+        group = dynamicNumberGroup
+    }
 )
 
 -- Disable auto commenting on new line
 vim.api.nvim_create_autocmd(
-     { "FileType" },
-     {
-          pattern = { "*" },
-          command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
-     }
+    { "FileType" },
+    {
+        pattern = { "*" },
+        command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
+    }
 )
