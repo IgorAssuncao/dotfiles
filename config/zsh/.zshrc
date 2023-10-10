@@ -68,7 +68,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf colored-man-pages zsh-syntax-highlighting)
+plugins=(git asdf colored-man-pages zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,12 +108,11 @@ source ~/system-config/config/zsh/.zshrc_functions
 
 source ~/system-config/config/zsh/.zsh_completion_yq
 
-. $HOME/.asdf/asdf.sh
+[[ -e $HOME/.asdf/asdf.sh ]] && . $HOME/.asdf/asdf.sh
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 # export GOBIN="$(go env | grep GOPATH | awk -F '=' '{print $NF}' | sed -e s/\"//g)/bin"
 export GOBIN="$(go env GOPATH)/bin"
 export PATH=$PATH:$GOBIN
 
-source "$HOME/.cargo/env"
-source ~/system-config/config/zsh/.zsh_completion_rust
+[[ -e $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
