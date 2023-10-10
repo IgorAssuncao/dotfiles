@@ -26,30 +26,33 @@ local function register_keys(bufnr)
   }, { buffer = bufnr })
 end
 
-local status_mason_registry, mason_registry = pcall(require, "mason-registry")
-if not status_mason_registry then
-  vim.notify("Error from plugins.p_nvim-dap.rust: mason-registry not found.")
-  return
-end
+-- local status_mason_registry, mason_registry = pcall(require, "mason-registry")
+-- if not status_mason_registry then
+--   vim.notify("Error from plugins.p_nvim-dap.rust: mason-registry not found.")
+--   return
+-- end
 
 -- local codelldb = mason_registry.get_package("codelldb")
 -- local extension_path = codelldb:get_install_path() .. "/extension/"
 -- local codelldb_path = extension_path .. "adapter/codelldb"
 -- local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
 
+local register_lsp_keymaps = require("plugins.p_lsp.keymaps").register_lsp_keymaps
+
 rust_tools.setup({
-  dap = {
-    -- adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
-    adapter = require("dap").adapters.codelldb
-  },
-  server = {
-    on_attach = function(_, bufnr)
-      register_keys(bufnr)
-    end
-  },
-  tools = {
-    hover_actions = {
-      auto_focus = true
+    dap = {
+        -- adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
+        adapter = require("dap").adapters.codelldb
+    },
+    server = {
+        on_attach = function(_, bufnr)
+            register_lsp_keymaps(bufnr)
+            register_keys(bufnr)
+        end
+    },
+    tools = {
+        hover_actions = {
+            auto_focus = true
+        }
     }
-  }
 })
