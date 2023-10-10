@@ -2,14 +2,14 @@ local M = {}
 
 local status, cmp = pcall(require, "cmp")
 if not status then
-  vim.notify("cmp not found.")
-  return
+    vim.notify("cmp not found.")
+    return
 end
 
 local status, luasnip = pcall(require, "luasnip")
 if not status then
-  vim.notify("luasnip not found.")
-  return
+    vim.notify("luasnip not found.")
+    return
 end
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
@@ -24,66 +24,66 @@ local select_opts = { behavior = cmp.SelectBehavior.Select }
 -- end
 
 local cmp_mappings = {
-  ["<C-Space>"] = cmp.mapping(function(_)
-    if cmp.visible() then
-      cmp.close()
-    else
-      cmp.complete()
-    end
-  end),
-  ["<CR>"] = cmp.mapping.confirm({ select = false }),
-  -- Just an attempt to complete word if already has something previously written
-  -- ["<C-CR>"] = cmp.mapping(function(_)
-  --   if check_empty_or_dot() then
-  --     cmp.confirm({ select = false })
-  --   else
-  --     cmp.complete_common_string()
-  --   end
-  -- end, { "i", "c" }),
-  ["<C-Esc>"] = cmp.mapping.abort(),
-  ["<C-e>"] = cmp.mapping.close(),
-  -- Mapping below is not working.
-  -- ["<C-l>"] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     return cmp.complete_common_string()
-  --   end
-  --   fallback()
-  -- end, { "i", "c" }),
-  -- ["<C-b>"] = cmp.mapping(function(fallback) cmp.complete_common_string() end, { "i", "c" }),
-  -- ["<C-m>"] = cmp.mapping.complete_common_string(),
-  ["<Up>"] = cmp.mapping(function(fallback)
-    if cmp.visible() then
-      return cmp.select_prev_item(select_opts)
-    end
-    fallback()
-  end),
-  ["<Down>"] = cmp.mapping(function(fallback)
-    if cmp.visible() then
-      return cmp.select_next_item(select_opts)
-    end
-    fallback()
-  end),
-  ["<C-s>"] = cmp.mapping(cmp.mapping.scroll_docs(-5), { "i", "c" }),
-  ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(5), { "i", "c" }),
-  ["<Tab>"] = cmp.mapping(function(fallback)
-    if cmp.visible() then
-      cmp.select_next_item()
-    elseif luasnip.expandable() then
-      luasnip.expand()
-    elseif luasnip.expand_or_jumpable() then
-      luasnip.expand_or_jump()
-    else
-      fallback()
-    end
-  end, { "i", "s" }),
-  ["<S-Tab>"] = cmp.mapping(function(fallback)
-    if cmp.visible() then
-      cmp.select_prev_item()
-    elseif luasnip.jumpable(-1) then
-    else
-      fallback()
-    end
-  end, { "i", "s" })
+    ["<C-Space>"] = cmp.mapping(function(_)
+        if cmp.visible() then
+            cmp.close()
+        else
+            cmp.complete()
+        end
+    end),
+    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    -- Just an attempt to complete word if already has something previously written
+    -- ["<C-CR>"] = cmp.mapping(function(_)
+    --   if check_empty_or_dot() then
+    --     cmp.confirm({ select = false })
+    --   else
+    --     cmp.complete_common_string()
+    --   end
+    -- end, { "i", "c" }),
+    ["<C-Esc>"] = cmp.mapping.abort(),
+    ["<C-e>"] = cmp.mapping.close(),
+    -- Mapping below is not working.
+    -- ["<C-l>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     return cmp.complete_common_string()
+    --   end
+    --   fallback()
+    -- end, { "i", "c" }),
+    -- ["<C-b>"] = cmp.mapping(function(fallback) cmp.complete_common_string() end, { "i", "c" }),
+    -- ["<C-m>"] = cmp.mapping.complete_common_string(),
+    ["<Up>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            return cmp.select_prev_item(select_opts)
+        end
+        fallback()
+    end),
+    ["<Down>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            return cmp.select_next_item(select_opts)
+        end
+        fallback()
+    end),
+    ["<C-s>"] = cmp.mapping(cmp.mapping.scroll_docs(-5), { "i", "c" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(5), { "i", "c" }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.select_next_item()
+        elseif luasnip.expandable() then
+            luasnip.expand()
+        elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+        else
+            fallback()
+        end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+        else
+            fallback()
+        end
+    end, { "i", "s" })
 }
 
 local cmp_config_mappings = cmp.get_config().mapping

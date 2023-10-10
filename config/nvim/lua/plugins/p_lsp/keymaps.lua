@@ -2,14 +2,14 @@ local M = {}
 
 local status, which_key = pcall(require, "which-key")
 if not status then
-  vim.notify("error from p_lsp/keymaps: which-key not found.")
-  return
+    vim.notify("error from p_lsp/keymaps: which-key not found.")
+    return
 end
 
 local status_telescope_builtin, telescope_builtin = pcall(require, "telescope.builtin")
 if not status_telescope_builtin then
-  vim.notify("Error from plugins.p_lsp.keymaps: telescope.builtin not found.")
-  return
+    vim.notify("Error from plugins.p_lsp.keymaps: telescope.builtin not found.")
+    return
 end
 
 
@@ -38,45 +38,45 @@ end
 -- end
 
 local function split_definition(split_direction)
-  split_direction = split_direction or "s"
+    split_direction = split_direction or "s"
 
-  local split_direction_command = "split"
+    local split_direction_command = "split"
 
-  if split_direction == "v" then
-    split_direction_command = "vsplit"
-  end
+    if split_direction == "v" then
+        split_direction_command = "vsplit"
+    end
 
-  vim.cmd(split_direction_command)
-  vim.lsp.buf.definition()
+    vim.cmd(split_direction_command)
+    vim.lsp.buf.definition()
 end
 
 local function _preview_location_callback(_, result)
-  if result == nil or vim.tbl_isempty(result) then
-    return nil
-  end
-  vim.lsp.util.preview_location(result[1])
+    if result == nil or vim.tbl_isempty(result) then
+        return nil
+    end
+    vim.lsp.util.preview_location(result[1])
 end
 
 local function peekDefinition()
-  local params = vim.lsp.util.make_position_params()
-  return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
+    local params = vim.lsp.util.make_position_params()
+    return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
 
 function RegisterKeysIntoVimHelp()
-  which_key.register({
-    ["<leader>"] = {
-      l = {
-        name = "[D]efinition",
-        p = { function() peekDefinition() end, "[P]eek" },
-        g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
-        s = { function() split_definition() end, "Open in a [S]plit window" },
-        v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
-        i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
-        r = { function() vim.lsp.buf.references() end, "[R]eferences" },
-        R = { function() vim.lsp.buf.rename() end, "[R]ename" },
-      }
-    }
-  })
+    which_key.register({
+        ["<leader>"] = {
+            l = {
+                name = "[D]efinition",
+                p = { function() peekDefinition() end, "[P]eek" },
+                g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
+                s = { function() split_definition() end, "Open in a [S]plit window" },
+                v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
+                i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
+                r = { function() vim.lsp.buf.references() end, "[R]eferences" },
+                R = { function() vim.lsp.buf.rename() end, "[R]ename" },
+            }
+        }
+    })
 end
 
 vim.cmd([[
@@ -84,37 +84,37 @@ autocmd FileType help lua RegisterKeysIntoVimHelp()
 ]])
 
 function M.register_lsp_keymaps(bufnr)
-  which_key.register({
-    ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
-  }, { mode = "i" })
+    which_key.register({
+        ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
+    }, { mode = "i" })
 
-  which_key.register({
-    ["<leader>"] = {
-      l = {
-        name = "[L]sp",
-        p = { function() peekDefinition() end, "[P]eek" },
-        g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
-        s = { function() split_definition() end, "Open in a [S]plit window" },
-        v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
-        i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
-        r = { function() vim.lsp.buf.references() end, "[R]eferences" },
-        R = { function() vim.lsp.buf.rename() end, "[R]ename" }
-      },
-      D = {
-        name = "[D]iagnostics",
-        h = { function() vim.diagnostic.hide() end, "[H]ide" },
-        s = { function() vim.diagnostic.show() end, "[S]how" },
-        a = { telescope_builtin.diagnostics, "[A]ll" },
-        p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
-        n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
-      },
-      -- a = { function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end,
-      --   "Code [A]ctions" }
-      a = { function() vim.lsp.buf.code_action() end,
-        "Code [A]ctions" }
-    },
-    K = { function() vim.lsp.buf.hover() end, "Hover" }
-  }, { buffer = bufnr })
+    which_key.register({
+        ["<leader>"] = {
+            l = {
+                name = "[L]sp",
+                p = { function() peekDefinition() end, "[P]eek" },
+                g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
+                s = { function() split_definition() end, "Open in a [S]plit window" },
+                v = { function() split_definition("v") end, "Open in a [V]ertical split window" },
+                i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
+                r = { function() vim.lsp.buf.references() end, "[R]eferences" },
+                R = { function() vim.lsp.buf.rename() end, "[R]ename" }
+            },
+            D = {
+                name = "[D]iagnostics",
+                h = { function() vim.diagnostic.hide() end, "[H]ide" },
+                s = { function() vim.diagnostic.show() end, "[S]how" },
+                a = { telescope_builtin.diagnostics, "[A]ll" },
+                p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
+                n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
+            },
+            -- a = { function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end,
+            --   "Code [A]ctions" }
+            a = { function() vim.lsp.buf.code_action() end,
+                "Code [A]ctions" }
+        },
+        K = { function() vim.lsp.buf.hover() end, "Hover" }
+    }, { buffer = bufnr })
 end
 
 return M

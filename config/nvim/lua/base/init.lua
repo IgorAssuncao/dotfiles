@@ -6,13 +6,13 @@ if not status then
     return
 end
 
-local status_notify, notify = pcall(require, "notify")
-if not status_notify then
-    vim.notify("Error from base: notify not found.")
-    return
-else
-    vim.notify = notify
-end
+-- local status_notify, notify = pcall(require, "notify")
+-- if not status_notify then
+--     vim.notify("Error from base: notify not found.")
+--     return
+-- else
+--     vim.notify = notify
+-- end
 
 local status_functions, functions = pcall(require, "base.functions")
 if not status_functions then

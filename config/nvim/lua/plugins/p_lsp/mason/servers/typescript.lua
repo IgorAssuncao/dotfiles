@@ -15,27 +15,27 @@
 -- end
 
 return function(opts)
-  opts.settings = {
-    -- format = not eslint_config_exists(),
-    javascript = {
-      includeInlayEnumMemberValueHints = true,
-      includeInlayFunctionLikeReturnTypeHints = true,
-      includeInlayFunctionParameterTypeHints = true,
-      includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      includeInlayPropertyDeclarationTypeHints = true,
-      includeInlayVariableTypeHints = true
-    },
-    typescript = {
-      includeInlayEnumMemberValueHints = true,
-      includeInlayFunctionLikeReturnTypeHints = true,
-      includeInlayFunctionParameterTypeHints = true,
-      includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      includeInlayPropertyDeclarationTypeHints = true,
-      includeInlayVariableTypeHints = true
+    opts.settings = {
+        -- format = not eslint_config_exists(),
+        javascript = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true
+        },
+        typescript = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true
+        }
     }
-  }
 
-  return opts
+    return opts
 end

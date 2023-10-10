@@ -1,16 +1,16 @@
 return function(opts)
-  opts.settings = {
-    gopls = {
-      hints = {
-        assignVariableTypes = true,
-        compositeLiteralFields = true,
-        compositeLiteralTypes = true,
-        constantValues = true,
-        functionTypeParameters = true,
-        parameterNames = true,
-        rangeVariableTypes = true
-      }
+    opts.settings = {
+        gopls = {
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true
+            }
+        }
     }
-  }
-  return opts
+    return opts
 end

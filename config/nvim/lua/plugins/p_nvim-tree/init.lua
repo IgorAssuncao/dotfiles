@@ -8,19 +8,19 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- vim.api.nvim_create_autocmd(
---   {
---     "VimEnter"
---   },
---   {
---     callback = function(data)
---       local directory = vim.fn.isdirectory(data.file) == 1
---       if not directory then
---         return
---       end
+--     {
+--         "VimEnter"
+--     },
+--     {
+--         callback = function(data)
+--             local directory = vim.fn.isdirectory(data.file) == 1
+--             if not directory then
+--                 return
+--             end
 --
---       require("nvim-tree.api").tree.open()
---     end
---   }
+--             require("nvim-tree.api").tree.open()
+--         end
+--     }
 -- )
 
 nvim_tree.setup {
