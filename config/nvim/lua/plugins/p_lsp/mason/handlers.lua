@@ -28,14 +28,32 @@ if not status_lsp_inlay_hints then
     return
 end
 
-lsp_inlay_hints.setup()
+lsp_inlay_hints.setup {
+    inlay_hints = {
+        labels_separator = " - ",
+        parameter_hints = {
+            show = true,
+            prefix = "PT: <- ",
+            separator = ", ",
+            remove_colon_start = false,
+            remove_colon_end = true,
+        },
+        type_hints = {
+            -- type and other hints
+            show = true,
+            prefix = "RT: ",
+            separator = ", ",
+            remove_colon_start = false,
+            remove_colon_end = false,
+        },
+    }
+}
 
 local default_setup_opts = {
     capabilities = capabilities,
     single_file_support = true,
     on_attach = function(client, bufnr)
         lsp_keymaps(bufnr)
-        lsp_inlay_hints.on_attach(client, bufnr, true)
 
         if client.name == "tsserver" then
             -- client.server_capabilities.codeActionProvider = false
@@ -44,6 +62,24 @@ local default_setup_opts = {
         end
     end
 }
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        if not (args.data and args.data.client_id) then
+            return
+        end
+
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        lsp_inlay_hints.on_attach(client, bufnr, true)
+
+        -- vim.lsp.codelens.display(
+        --     vim.lsp.codelens.get(bufnr),
+        --     bufnr,
+        --     client.id
+        -- )
+    end
+})
 
 mason_lspconfig.setup_handlers({
     function(server_name)
