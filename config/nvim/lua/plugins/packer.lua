@@ -188,7 +188,12 @@ packer.startup({
 
         use "lukas-reineke/indent-blankline.nvim"
 
-        use "lvimuser/lsp-inlayhints.nvim"
+        use {
+            "lvimuser/lsp-inlayhints.nvim",
+            -- ONLY NECESSARY TO HAVE VIRTUAL TEXT
+            -- ONLY WORKS WITH NEOVIM NIGHTLY (v0.10)
+            branch = "anticonceal"
+        }
 
         use "RRethy/vim-illuminate"
 
@@ -215,8 +220,7 @@ packer.startup({
             requires = {
                 { "nvim-lua/plenary.nvim" },
                 { "nvim-treesitter/nvim-treesitter" }
-            },
-            ft = { "go" }
+            }
         }
 
         use {
@@ -230,28 +234,24 @@ packer.startup({
         use {
             "folke/noice.nvim",
             requires = {
-                {
-                    "MunifTanjim/nui.nvim",
-                    "rcarriga/nvim-notify"
-                }
+                { "MunifTanjim/nui.nvim" },
+                { "rcarriga/nvim-notify" }
             }
         }
 
         use {
             "folke/todo-comments.nvim",
             requires = {
-                {
-                    "nvim-lua/plenary.nvim"
-                }
+                { "nvim-lua/plenary.nvim" }
             }
         }
 
         use {
             "folke/trouble.nvim",
             requires = {
-                {
-                    "nvim-truee/nvim-web-devicons"
-                }
+                { "nvim-truee/nvim-web-devicons" }
+            }
+        }
 
         use {
             "kevinhwang91/nvim-ufo",
