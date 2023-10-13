@@ -252,6 +252,11 @@ packer.startup({
                 {
                     "nvim-truee/nvim-web-devicons"
                 }
+
+        use {
+            "kevinhwang91/nvim-ufo",
+            requires = {
+                { "kevinhwang91/promise-async" }
             }
         }
 
