@@ -103,9 +103,13 @@ packer.startup({
             requires = {
                 -- Treesitter extensions
                 { "nvim-treesitter/playground" },
-                { "HiPhish/nvim-ts-rainbow2" },
+                -- { "HiPhish/nvim-ts-rainbow2" },
                 { "nvim-treesitter/nvim-treesitter-context" }
             }
+        }
+
+        use {
+            "HiPhish/rainbow-delimiters.nvim"
         }
 
         use {
