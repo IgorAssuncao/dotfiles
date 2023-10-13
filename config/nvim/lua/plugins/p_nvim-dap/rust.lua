@@ -49,6 +49,9 @@ rust_tools.setup({
         end
     },
     tools = {
+        inlay_hints = {
+            auto = false
+        },
         hover_actions = {
             auto_focus = true
         }
