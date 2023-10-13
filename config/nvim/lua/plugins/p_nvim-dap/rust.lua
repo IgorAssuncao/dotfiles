@@ -12,15 +12,13 @@ end
 
 local function register_keys(bufnr)
     which_key.register({
-        ["<leader>"] = {
-            L = {
-                r = {
-                    name = "[R]ust tools",
-                    -- Hover Actions
-                    h = { function() rust_tools.hover_actions.hover_actions() end, "[H]over actions" },
-                    -- Code action groups
-                    a = { function() rust_tools.code_action_group.code_action_group() end, "Code [a]ction group" },
-                }
+        ["<leader>L"] = {
+            r = {
+                name = "[R]ust tools",
+                -- Hover Actions
+                h = { function() rust_tools.hover_actions.hover_actions() end, "[H]over actions" },
+                -- Code action groups
+                a = { function() rust_tools.code_action_group.code_action_group() end, "Code [a]ction group" },
             }
         }
     }, { buffer = bufnr })
