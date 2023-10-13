@@ -16,20 +16,22 @@ if not status_nvim_dap_ui then
     return
 end
 
-nvim_dap_virtual_text.setup()
+nvim_dap_virtual_text.setup {
+    all_references = true
+}
 nvim_dap_ui.setup()
 
 nvim_dap.listeners.after.event_initialized["dapui_config"] = function()
     nvim_dap_ui.open()
 end
 
-nvim_dap.listeners.after.event_terminated["dapui_config"] = function()
-    nvim_dap_ui.close()
-end
-
-nvim_dap.listeners.after.event_exited["dapui_config"] = function()
-    nvim_dap_ui.close()
-end
+-- nvim_dap.listeners.after.event_terminated["dapui_config"] = function()
+--     nvim_dap_ui.close()
+-- end
+--
+-- nvim_dap.listeners.after.event_exited["dapui_config"] = function()
+--     nvim_dap_ui.close()
+-- end
 
 local status_mason_registry, mason_registry = pcall(require, "mason-registry")
 if not status_mason_registry then
