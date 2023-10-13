@@ -9,5 +9,5 @@ notify.setup({
     fps = 60,
     render = "default",
     stages = "fade_in_slide_out",
-    timeout = 1000
+    timeout = 2500
 })
