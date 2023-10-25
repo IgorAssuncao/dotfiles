@@ -18,12 +18,3 @@ return function(opts)
 
     return opts
 end
--- lspconfig[lsp_servers.terraform].setup {
---   filetypes = {
---     "terraform",
---     "terraform-vars",
---     ".tf",
---     ".tfvars",
---     "*.tfvars*"
---   }
--- }

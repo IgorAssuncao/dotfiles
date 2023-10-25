@@ -14,7 +14,7 @@ local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_capabilities = cmp_nvim_lsp.default_capabilities()
 local capabilities = vim.tbl_deep_extend("force", client_capabilities, cmp_capabilities)
 
-local lsp_keymaps = require("plugins.p_lsp.keymaps").register_lsp_keymaps
+local register_lsp_keymaps = require("plugins.p_lsp.keymaps").register_lsp_keymaps
 
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_mason_lspconfig then
@@ -53,12 +53,16 @@ local default_setup_opts = {
     capabilities = capabilities,
     single_file_support = true,
     on_attach = function(client, bufnr)
-        lsp_keymaps(bufnr)
+        register_lsp_keymaps(bufnr)
 
         if client.name == "tsserver" then
             -- client.server_capabilities.codeActionProvider = false
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
+            -- elseif client.name == "terraform-ls" then
+            --     client.capabilities.experimental.showReferencesCommandId = "client.showReferences"
+            --     client.capabilities.refreshModuleProviders = "client.refreshModuleProviders"
+            --     client.capabilities.refreshModuleCalls = "client.refreshModuleCalls"
         end
     end
 }
