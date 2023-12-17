@@ -3,8 +3,14 @@ vim.g.loaded_netrwPlugin = 1
 
 return {
   "nvim-tree/nvim-tree.lua",
+  -- TODO: Make this plugin lazy load.
+  -- lazy = true,
+  -- keys = {
+  --   { "<leader>nt", function() vim.cmd { cmd = "NvimTreeToggle" } end, desc = "[T]oggle" },
+  -- },
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "git@github.com:nvim-tree/nvim-web-devicons.git"
+    -- "nvim-tree/nvim-web-devicons"
   },
   opts = {
     diagnostics = {
