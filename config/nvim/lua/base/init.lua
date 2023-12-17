@@ -1,11 +1,5 @@
 -- vim.inspect(table) allows table inspection, it returns the elements from the table passed as parameter
 
-local status, _ = pcall(require, "plugins.packer")
-if not status then
-    vim.notify("Error in requiring plugins.packer", "error")
-    return
-end
-
 -- local status_notify, notify = pcall(require, "notify")
 -- if not status_notify then
 --     vim.notify("Error from base: notify not found.")
@@ -33,8 +27,7 @@ BASE.protected_require("base.settings")
 BASE.protected_require("base.text")
 
 -- keymaps is being required after packer
--- because of which-key plugin that registers
--- keymaps.
+-- because of which-key plugin that registers keymaps.
 require("base.keymaps")
 
 -- local home = os.getenv("HOME") .. "/"
