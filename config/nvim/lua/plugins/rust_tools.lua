@@ -44,6 +44,7 @@ end
 
 return {
     "simrat39/rust-tools.nvim",
+    event = "VeryLazy",
     config = function()
         local status_dap, dap = pcall(require, "dap")
         local dap_settings = {}

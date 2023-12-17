@@ -29,7 +29,4 @@ return {
             -- lualine_z = { "location" }
         }
     }
-    -- init = function()
-    --   require("lualine").setup()
-    -- end
 }
