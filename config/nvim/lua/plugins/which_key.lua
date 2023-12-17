@@ -1,13 +1,12 @@
 return {
   "folke/which-key.nvim",
   lazy = true,
-  init = function()
+  config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 200
-    require("which-key").setup {}
-  end,
-  config = function()
+
     local which_key = require("which-key")
+    which_key.setup {}
     which_key.register({
       ["<leader>W"] = {
         W = { function() vim.cmd { cmd = "WhichKey" } end, "[W]hich [K]ey Toggle" },
