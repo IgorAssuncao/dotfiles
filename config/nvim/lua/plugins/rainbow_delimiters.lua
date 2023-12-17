@@ -1,19 +1,18 @@
-local status_rainbow_delimiters, rainbow_delimiters = pcall(require, "rainbow-delimiters")
-if not status_rainbow_delimiters then
-    vim.notify("Error from plugins.p_rainbow_delimiters: rainbow_delimiters not found.")
-    return
-end
+return {
+  "HiPhish/rainbow-delimiters.nvim",
+  config = function()
+    local rainbow_delimiters = require("rainbow-delimiters")
 
-vim.g.rainbow_delimiters = {
-    strategy = {
+    vim.g.rainbow_delimiters = {
+      strategy = {
         rainbow_delimiters.strategy["global"],
         rainbow_delimiters.strategy["local"]
-    },
-    query = {
+      },
+      query = {
         [""] = "rainbow-delimiters",
         lua = "rainbow-blocks"
-    },
-    highlight = {
+      },
+      highlight = {
         'RainbowDelimiterRed',
         'RainbowDelimiterYellow',
         'RainbowDelimiterBlue',
@@ -21,5 +20,7 @@ vim.g.rainbow_delimiters = {
         'RainbowDelimiterGreen',
         'RainbowDelimiterViolet',
         'RainbowDelimiterCyan',
+      }
     }
+  end
 }
