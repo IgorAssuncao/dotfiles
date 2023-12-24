@@ -67,6 +67,20 @@ local defaults = {
             Value = "",
             Variable = ""
         }
+    },
+    highlight_groups = {
+        "Function",
+        "Label",
+        "RainbowRed",
+        "RainbowGreen",
+        "RainbowViolet",
+        "RainbowBlue",
+        "RainbowCyan",
+        'RainbowDelimiterRed',
+        'RainbowDelimiterBlue',
+        'RainbowDelimiterGreen',
+        'RainbowDelimiterViolet',
+        'RainbowDelimiterCyan',
     }
 }
 

@@ -5,36 +5,27 @@ vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 -- vim.opt.listchars:append "tab:>"
 
-local highlight_colors = {
-    "RainbowRed",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowBlue",
-    "RainbowCyan"
-}
-
-local background_highlight_colors = {
+local background_highlight_groups = {
     "CursorColumn",
     "Whitespace"
 }
 
 return {
     "lukas-reineke/indent-blankline.nvim",
-    event = "VeryLazy",
+    main = "ibl",
     opts = {
         indent = {
-            char = "",
-            highlight = background_highlight_colors,
+            highlight = background_highlight_groups,
             smart_indent_cap = true
         },
         scope = {
             enabled = true,
-            highlight = highlight_colors,
+            highlight = BASE.defaults.highlight_groups,
             show_start = true,
             show_end = true
         },
         whitespace = {
-            -- highlight = background_highlight_colors,
+            highlight = background_highlight_groups,
             remove_blankline_trail = true
         },
         -- show_end_of_line = true,
@@ -43,14 +34,16 @@ return {
     config = function(_, opts)
         local indent_blankline_hooks = require("ibl.hooks")
 
-        indent_blankline_hooks.register(indent_blankline_hooks.type.HIGHLIGHT_SETUP, function()
-            vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-            vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-            vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-            vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-        end)
+        indent_blankline_hooks.register(
+            indent_blankline_hooks.type.HIGHLIGHT_SETUP,
+            BASE.functions.setup_highlight_groups
+        )
 
         require("ibl").setup(opts)
+
+        indent_blankline_hooks.register(
+            indent_blankline_hooks.type.SCOPE_HIGHLIGHT,
+            indent_blankline_hooks.builtin.scope_highlight_from_extmark
+        )
     end
 }

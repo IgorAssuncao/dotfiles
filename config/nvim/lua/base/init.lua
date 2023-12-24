@@ -15,16 +15,18 @@ if not status_functions then
 end
 
 local defs = require("base.defaults"):init()
+local functions = require("base.functions"):init()
 
 -- Custom global base table
 BASE = {
     defaults = defs.defaults,
     get_all_lsp_servers_names = defs.get_all_lsp_servers_names,
-    protected_require = functions.protected_require
+    functions = functions
 }
 
-BASE.protected_require("base.settings")
-BASE.protected_require("base.text")
+BASE.functions.protected_require("base.settings")
+BASE.functions.protected_require("base.text")
+BASE.functions.setup_highlight_groups()
 
 -- local home = os.getenv("HOME") .. "/"
 -- local asdf_shims_path = home .. ".asdf/shims"
