@@ -1,4 +1,4 @@
 return {
-  "theHamsta/nvim-dap-virtual-text",
-  lazy = true
+    "theHamsta/nvim-dap-virtual-text",
+    lazy = true
 }
