@@ -78,18 +78,19 @@ which_key.register({
         C = {
             function() vim.cmd("nohls") end, "[C]lear Search Highlighting"
         },
-        E = {
-            vim.cmd.Ex, "[E]xplorer"
-        },
+        E = { vim.cmd.Ex, "[E]xplorer" },
         b = {
             name = "[B]uffer",
             d = { vim.cmd.bd, "[D]elete", },
             n = { vim.cmd.bn, "[N]ext" },
             p = { vim.cmd.bp, "[P]revious" },
         },
-        q = { vim.cmd.quit, "[Q]uit" },
-        w = { vim.cmd.write, "[W]rite" },
-        x = { vim.cmd.exit, "E[x]it" },
+        q = { function() vim.cmd.quit {} end, "[Q]uit" },
+        Q = { function() vim.cmd.quit { bang = true } end, "Force [Q]uit" },
+        w = { function() vim.cmd.write {} end, "[W]rite" },
+        W = { function() vim.cmd.write { bang = true } end, "Force [W]rite" },
+        x = { function() vim.cmd.exit {} end, "E[x]it" },
+        X = { function() vim.cmd.exit { bang = true } end, "Force E[x]it" },
     },
     H = { "^", "Go to start of line" },
     L = { "$", "Go to end of line" },
