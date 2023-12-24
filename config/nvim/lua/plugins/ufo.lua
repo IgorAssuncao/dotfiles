@@ -58,5 +58,6 @@ return {
     },
     config = function(_, opts)
         vim.o.foldlevelstart = 99
+        require("ufo").setup(opts)
     end
 }
