@@ -1,3 +1,6 @@
+-- Plugin for navigating code based on current
+-- code symbol (keywords).
+
 return {
     "RRethy/vim-illuminate",
     event = "VeryLazy",

@@ -1,3 +1,5 @@
+-- Plugin that allows autopairing on symbols.
+
 return {
     "windwp/nvim-autopairs",
     dependencies = {

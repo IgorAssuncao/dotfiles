@@ -1,3 +1,5 @@
+-- Plugin for folding and unfolding code sections
+
 local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
     local suffix = (' 󰁂 %d '):format(endLnum - lnum)

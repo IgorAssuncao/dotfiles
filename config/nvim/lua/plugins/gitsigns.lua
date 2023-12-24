@@ -1,3 +1,5 @@
+-- Plugin for having Git related signs in Nvim.
+
 return {
     "lewis6991/gitsigns.nvim",
     dependencies = {

@@ -1,3 +1,6 @@
+-- Plugin that allows me to have versioning on undo,
+-- just like git commits.
+
 return {
     "mbbill/undotree",
     event = "VeryLazy",

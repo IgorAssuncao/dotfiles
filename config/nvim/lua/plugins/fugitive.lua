@@ -1,3 +1,5 @@
+-- Plugin for Git management inside Nvim
+
 -- function open_fugitive_in_floating_window()
 --     local width = 100
 --     local height = 25

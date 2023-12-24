@@ -1,3 +1,6 @@
+-- Plugin that allows me to have a nicer terminal
+-- inside Nvim.
+
 return {
     "akinsho/toggleterm.nvim",
     -- TODO: Lazy load this plugin.

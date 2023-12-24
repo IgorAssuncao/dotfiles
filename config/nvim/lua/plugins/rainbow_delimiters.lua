@@ -1,3 +1,7 @@
+-- Plugin for allowing me to have more clarification
+-- on which parenthesis, square brackets and curly braces
+-- start and end.
+
 return {
     "HiPhish/rainbow-delimiters.nvim",
     event = "VeryLazy",

@@ -1,3 +1,6 @@
+-- Plugin for having the vim window in the center
+-- of the screen.
+
 return {
     "folke/noice.nvim",
     event = "VeryLazy",

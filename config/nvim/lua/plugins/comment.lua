@@ -1,4 +1,5 @@
--- NOTE: For some reason this isn't working.
+-- Plugin for commmenting in and out lines.
+
 return {
     'numToStr/Comment.nvim',
     event = "VeryLazy",

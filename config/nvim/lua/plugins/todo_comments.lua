@@ -1,3 +1,6 @@
+-- Plugin that helps finding TODO (and others) comments
+-- in various parts of the code.
+
 return {
     "folke/todo-comments.nvim",
     dependencies = {

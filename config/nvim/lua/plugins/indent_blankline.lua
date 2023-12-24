@@ -1,3 +1,5 @@
+-- Plugin for having indentation guide.
+
 vim.opt.list = true
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
@@ -19,7 +21,26 @@ local background_highlight_colors = {
 return {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
-    config = function()
+    opts = {
+        indent = {
+            char = "",
+            highlight = background_highlight_colors,
+            smart_indent_cap = true
+        },
+        scope = {
+            enabled = true,
+            highlight = highlight_colors,
+            show_start = true,
+            show_end = true
+        },
+        whitespace = {
+            -- highlight = background_highlight_colors,
+            remove_blankline_trail = true
+        },
+        -- show_end_of_line = true,
+        -- space_char_blankline = " "
+    },
+    config = function(_, opts)
         local indent_blankline_hooks = require("ibl.hooks")
 
         indent_blankline_hooks.register(indent_blankline_hooks.type.HIGHLIGHT_SETUP, function()
@@ -30,24 +51,6 @@ return {
             vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
         end)
 
-        require("ibl").setup {
-            indent = {
-                char = "",
-                highlight = background_highlight_colors,
-                smart_indent_cap = true
-            },
-            scope = {
-                enabled = true,
-                highlight = highlight_colors,
-                show_start = true,
-                show_end = true
-            },
-            whitespace = {
-                -- highlight = background_highlight_colors,
-                remove_blankline_trail = true
-            },
-            -- show_end_of_line = true,
-            -- space_char_blankline = " "
-        }
+        require("ibl").setup(opts)
     end
 }
