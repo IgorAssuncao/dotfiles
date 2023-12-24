@@ -1,7 +1,3 @@
-local status_which_key, which_key = false, nil
-
-local rust_tools = nil
-
 local function register_keys(bufnr, wk, rt)
     wk.register({
         ["<leader>L"] = {
@@ -57,12 +53,12 @@ return {
             }
         end
 
-        status_which_key, which_key = pcall(require, "which-key")
+        local status_which_key, which_key = pcall(require, "which-key")
         if not status_which_key then
             vim.notify("Error from plugins.rust_tools: which-key not found.")
         end
 
-        rust_tools = require("rust-tools")
+        local rust_tools = require("rust-tools")
         rust_tools.setup({
             dap = dap_settings,
             server = {
