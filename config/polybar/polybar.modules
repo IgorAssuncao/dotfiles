@@ -52,7 +52,7 @@ interval = 3
 interface-type = wired
 label-connected = "%local_ip%"
 label-connected-foreground = ${module/custom.foreground}
-format-connected-prefix = "ETH: "
+format-connected-prefix = "UP: "
 format-connected-prefix-foreground = ${module/custom.format-foreground}
 format-connected = <label-connected>
 # format-connected = <ramp-signal> <label-connected>
@@ -62,7 +62,7 @@ format-packetloss-prefix-foreground = ${module/custom.foreground}
 format-packetloss = <label-packetloss>
 label-disconnected = "disconnected"
 label-disconnected-foreground = ${theme.urgent}
-format-disconnected-prefix = "ETH: "
+format-disconnected-prefix = "IP: "
 format-disconnected-prefix-foreground = ${module/custom.foreground}
 format-disconnected = <label-disconnected>
 
@@ -72,3 +72,16 @@ format-disconnected = <label-disconnected>
 # ramp-signal-3 = 😊
 # ramp-signal-4 = 😃
 # ramp-signal-5 = 😈
+
+
+[module/date]
+type = internal/date
+interval = 0.25
+date = %j - %Y-%m-%d -
+# Can also use %F - %j (%j is day of the year) for date
+time = %H:%M:%S
+# Can also use %T for time
+label = %date% %time%
+label-foreground = ${module/custom.foreground}
+format = DATE: <label>
+format-foreground = ${module/custom.format-foreground}
