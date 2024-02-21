@@ -1,7 +1,7 @@
 -- Plugin for commmenting in and out lines.
 
 return {
-    'numToStr/Comment.nvim',
+    "numToStr/Comment.nvim",
     event = "VeryLazy",
     -- opts = {},
     config = function()

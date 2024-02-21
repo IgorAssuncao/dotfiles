@@ -7,7 +7,8 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- Telescope extensions
-        "ahmedkhalf/project.nvim"
+        "ahmedkhalf/project.nvim",
+        "ThePrimeagen/git-worktree.nvim"
     },
     config = function()
         local telescope = require("telescope")
@@ -69,7 +70,7 @@ return {
                         b = { builtin.git_bcommits, "[B]commits" },
                         c = { builtin.git_commits, "[C]ommits" },
                         f = { builtin.git_files, "[F]iles" },
-                        s = { builtin.git_status, "Files in git [S]tatus" }
+                        s = { builtin.git_status, "Files in git [S]tatus" },
                     },
                     h = { builtin.help_tags, "[H]elp Tags" },
                     l = { builtin.live_grep, "[L]ive [G]rep" },
@@ -96,5 +97,21 @@ return {
 
         telescope.load_extension("projects")
         telescope.load_extension("notify")
+
+        require("git-worktree").setup()
+        telescope.load_extension("git_worktree")
+        which_key.register({
+            ["<leader>"] = {
+                f = {
+                    g = {
+                        w = {
+                            name = "[W]orktrees",
+                            c = { function() telescope.extensions.git_worktree.create_git_worktree() end, "[C]reate Worktree" },
+                            l = { function() telescope.extensions.git_worktree.git_worktrees() end, "[L]ist Worktrees" }
+                        }
+                    }
+                }
+            }
+        })
     end
 }
