@@ -1,4 +1,3 @@
-print(vim.inspect(require('harpoon'):list()))
 return {
     "theprimeagen/harpoon",
     branch = "harpoon2",
