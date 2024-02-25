@@ -8,7 +8,13 @@ return {
         "nvim-lua/plenary.nvim",
         -- Telescope extensions
         "ahmedkhalf/project.nvim",
-        "ThePrimeagen/git-worktree.nvim"
+        "ThePrimeagen/git-worktree.nvim",
+        -- NOTE: Check note near EOF.
+        -- {
+        --     "theprimeagen/harpoon",
+        --     branch = "harpoon2",
+        --     dependencies = { "nvim-lua/plenary.nvim" },
+        -- }
     },
     config = function()
         local telescope = require("telescope")
@@ -113,5 +119,15 @@ return {
                 }
             }
         })
+
+        -- NOTE: Attempt to integrate harpoon2 into telescope
+        -- local harpoon = require("harpoon")
+        -- harpoon:setup({})
+        -- telescope.load_extension("harpoon")
+        -- which_key.register({
+        --     h = {
+        --         u = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle [U]I" },
+        --     }
+        -- })
     end
 }
