@@ -27,7 +27,7 @@ return {
         --     }
         -- }, { prefix = "<leader>" })
 
-        local harpoon = require('harpoon')
+        local harpoon = require("harpoon")
         harpoon:setup({})
 
         -- basic telescope configuration
