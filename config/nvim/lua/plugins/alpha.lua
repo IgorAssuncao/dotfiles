@@ -1,4 +1,15 @@
 -- Plugin that allows a nicer startup menu.
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+        math.randomseed(os.time())
+        local fg_color = tostring(math.random(0, 12))
+        local hi_setter = "hi AlphaHeader ctermfg="
+        vim.cmd(hi_setter .. fg_color)
+    end
+})
+
 return {
     "goolord/alpha-nvim",
     dependencies = {
@@ -7,6 +18,14 @@ return {
     config = function()
         local telescope = require("telescope")
         local dashboard = require("alpha.themes.dashboard")
+        dashboard.section.header.val = {
+            " ██╗    ██████╗      ██████╗     ███╗   ██╗ ",
+            " ██║    ██╔══██╗    ██╔═████╗    ████╗  ██║ ",
+            " ██║    ██████╔╝    ██║██╔██║    ██╔██╗ ██║ ",
+            " ██║    ██╔══██╗    ████╔╝██║    ██║╚██╗██║ ",
+            " ██║    ██║  ██║    ╚██████╔╝    ██║ ╚████║ ",
+            " ╚═╝    ╚═╝  ╚═╝     ╚═════╝     ╚═╝  ╚═══╝ ",
+        }
         dashboard.section.buttons.val = vim.tbl_deep_extend(
             "force",
             dashboard.section.buttons.val,
