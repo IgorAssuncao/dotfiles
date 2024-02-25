@@ -1,0 +1,94 @@
+# dynamic_title = true
+live_config_reload = true
+working_directory = "None"
+
+[colors.bright]
+black = "0x969896"
+blue = "0x00a0ff"
+cyan = "0x00ffff"
+green = "0x00ff63"
+magenta = "0xa36ac7"
+red = "0xcc342b"
+white = "0xc5c8c6"
+yellow = "0xffff00"
+
+[colors.normal]
+black = "0x1d1f21"
+blue = "0x00a0ff"
+cyan = "0x00ffff"
+green = "0x00ff63"
+magenta = "0xa36ac7"
+red = "0xcc342b"
+white = "0xffffff"
+yellow = "0xffff00"
+
+[colors.primary]
+background = "#1f1f1f"
+bright_foreground = "#ffffff"
+dim_foreground = "#9a9a9a"
+foreground = "#eaeaea"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 10
+
+[font.bold]
+# family = "HackNerdFont"
+style = "Bold"
+
+[font.bold_italic]
+# family = "HackNerdFont"
+style = "Bold Italic"
+
+[font.italic]
+# family = "HackNerdFont"
+style = "Italic"
+
+[font.normal]
+# family = "HackNerdFont"
+style = "Regular"
+
+[mouse]
+hide_when_typing = false
+
+# [mouse.double_click]
+# threshold = 300
+# 
+# [mouse.triple_click]
+# threshold = 300
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[window]
+decorations = "full"
+dynamic_padding = false
+# gtk_theme_variant = "None"
+opacity = 0.75
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 5
+y = 5
