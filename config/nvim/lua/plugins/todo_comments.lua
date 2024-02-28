@@ -1,6 +1,19 @@
 -- Plugin that helps finding TODO (and others) comments
 -- in various parts of the code.
 
+local function createTodoCommandTable(command)
+    return {
+        a = { function() vim.cmd { cmd = command } end, "[A]ll" },
+        t = { function() vim.cmd { cmd = command, args = { "keywords=TODO" } } end, "[T]odo" },
+        n = { function() vim.cmd { cmd = command, args = { "keywords=NOTE" } } end, "[N]ote" },
+        f = { function() vim.cmd { cmd = command, args = { "keywords=FIX" } } end, "[F]ix" },
+        h = { function() vim.cmd { cmd = command, args = { "keywords=HACK" } } end, "[H]ack" },
+        w = { function() vim.cmd { cmd = command, args = { "keywords=WARN" } } end, "[W]arning" },
+        p = { function() vim.cmd { cmd = command, args = { "keywords=PERF" } } end, "[P]erf" },
+        T = { function() vim.cmd { cmd = command, args = { "keywords=TEST" } } end, "[T]est" }
+    }
+end
+
 return {
     "folke/todo-comments.nvim",
     dependencies = {
@@ -13,22 +26,27 @@ return {
         require("which-key").register({
             ["<leader>"] = {
                 f = {
-                    c = {
-                        name = "Todo [c]omments",
-                        a = { function() vim.cmd { cmd = "TodoTelescope" } end, "[A]ll" },
-                        t = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=TODO" } } end, "[T]odo" },
-                        n = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=NOTE" } } end, "[N]ote" },
-                        f = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=FIX" } } end, "[F]ix" },
-                        h = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=HACK" } } end, "[H]ack" },
-                        w = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=WARN" } } end, "[W]arning" },
-                        p = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=PERF" } } end, "[P]erf" },
-                        T = { function() vim.cmd { cmd = "TodoTelescope", args = { "keywords=TEST" } } end, "[T]est" }
-                    }
+                    c = vim.tbl_extend("keep",
+                        {
+                            name = "Todo [c]omments",
+                        },
+                        createTodoCommandTable("TodoTelescope")
+                    )
                 },
                 t = {
                     name = "[T]odo comments",
-                    q = { function() vim.cmd { cmd = "TodoQuickFix" } end, "Todo [Q]uickFix" },
-                    t = { function() vim.cmd { cmd = "TodoTrouble" } end, "Todo [T]rouble" }
+                    q = vim.tbl_extend("keep",
+                        {
+                            name = "Todo [Q]uickFix",
+                        },
+                        createTodoCommandTable("TodoQuickFix")
+                    ),
+                    t = vim.tbl_extend("keep",
+                        {
+                            name = "Todo [T]rouble",
+                        },
+                        createTodoCommandTable("TodoTrouble")
+                    )
                 }
             }
         })
