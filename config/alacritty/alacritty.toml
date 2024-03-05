@@ -42,22 +42,26 @@ render_timer = false
 TERM = "alacritty"
 
 [font]
-size = 10
+size = 11
 
 [font.bold]
 # family = "HackNerdFont"
+family = "HurmitNerdFont"
 style = "Bold"
 
 [font.bold_italic]
 # family = "HackNerdFont"
+family = "HurmitNerdFont"
 style = "Bold Italic"
 
 [font.italic]
 # family = "HackNerdFont"
+family = "HurmitNerdFont"
 style = "Italic"
 
 [font.normal]
 # family = "HackNerdFont"
+family = "HurmitNerdFont"
 style = "Regular"
 
 [mouse]
