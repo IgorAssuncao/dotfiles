@@ -16,7 +16,6 @@ return {
         "nvim-tree/nvim-web-devicons"
     },
     config = function()
-        local telescope = require("telescope")
         local dashboard = require("alpha.themes.dashboard")
         dashboard.section.header.val = {
             " ██╗    ██████╗      ██████╗     ███╗   ██╗ ",
