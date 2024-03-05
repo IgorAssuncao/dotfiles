@@ -1,6 +1,14 @@
 -- Bridges mason and nvim-lsp
 return {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+        {
+            "lvimuser/lsp-inlayhints.nvim",
+            -- ONLY NECESSARY TO HAVE VIRTUAL TEXT
+            -- ONLY WORKS WITH NEOVIM NIGHTLY (v0.10)
+            branch = "anticonceal"
+        }
+    },
     config = function()
         local mason_lspconfig = require("mason-lspconfig")
 
@@ -23,18 +31,18 @@ return {
                 capabilities = capabilities,
                 single_file_support = true,
                 on_attach = function(client, bufnr)
-                    -- local status_lsp_inlay_hints, lsp_inlay_hints = pcall(require("lsp-inlayhints"))
-                    -- if not status_lsp_inlay_hints then
-                    --     vim.notify("Error from plugins.lsp.mason_lspconfig: lsp-inlayhints not found")
-                    -- else
-                    --     lsp_inlay_hints.on_attach(client, bufnr, true)
-                    --
-                    --     -- vim.lsp.codelens.display(
-                    --     --     vim.lsp.codelens.get(bufnr),
-                    --     --     bufnr,
-                    --     --     client.id
-                    --     -- )
-                    -- end
+                    local status_lsp_inlay_hints, lsp_inlay_hints = pcall(require, "lsp-inlayhints")
+                    if not status_lsp_inlay_hints then
+                        vim.notify("Error from plugins.lsp.mason_lspconfig: lsp-inlayhints not found")
+                    else
+                        lsp_inlay_hints.on_attach(client, bufnr, true)
+
+                        -- vim.lsp.codelens.display(
+                        --     vim.lsp.codelens.get(bufnr),
+                        --     bufnr,
+                        --     client.id
+                        -- )
+                    end
 
                     -- TODO: Move keymaps assignments to its own file.
                     local status_which_key, which_key = pcall(require, "which-key")

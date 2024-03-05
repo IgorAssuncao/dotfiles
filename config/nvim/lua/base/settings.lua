@@ -30,7 +30,7 @@ vim.opt.incsearch = true
 
 -- vim.opt.guicursor = ""
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 15
 
 vim.opt.updatetime = 50
 

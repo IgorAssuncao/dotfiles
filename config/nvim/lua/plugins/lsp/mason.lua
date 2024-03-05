@@ -6,7 +6,7 @@ return {
             "lvimuser/lsp-inlayhints.nvim",
             -- ONLY NECESSARY TO HAVE VIRTUAL TEXT
             -- ONLY WORKS WITH NEOVIM NIGHTLY (v0.10)
-            -- branch = "anticonceal"
+            branch = "anticonceal"
         }
     },
     config = function()
