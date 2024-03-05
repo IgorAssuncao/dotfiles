@@ -21,5 +21,7 @@ return {
         --     return value.hl_group
         --   end, vim.tbl_values(require("bufferline.config").highlights or {}))
         -- )
+
+        vim.cmd { cmd = "TransparentEnable" }
     end
 }
