@@ -22,5 +22,5 @@ if [ -x "$(command -v nitrogen)" ]; then
 fi
 
 if [ -x "$(command -v polybar)" ]; then
-    MONITOR="HDMI-0" width="1920" xoffset="0" polybar -c $HOME/.config/polybar/polybar.config -r top &
+    $HOME/.config/polybar/launch-polybar.sh
 fi
