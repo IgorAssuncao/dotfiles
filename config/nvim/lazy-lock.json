@@ -2,7 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "LuaSnip": { "branch": "master", "commit": "a7a4b4682c4b3e2ba82b82a4e6e5f5a0e79dec32" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
-  "bufferline.nvim": { "branch": "main", "commit": "d6cb9b7cac52887bcac65f8698e67479553c0748" },
+  "bufferline.nvim": { "branch": "main", "commit": "615aeb04ae73d827e2cc0c35fa5ba15f2b77f4bb" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-git": { "branch": "main", "commit": "8d8993680d627c8f13bd85094eba84604107dbdd" },
   "cmp-nerdfont": { "branch": "main", "commit": "a3b7c0cadb7bd389f513eecda376d4c6bec90003" },
@@ -54,6 +54,7 @@
   "trouble.nvim": { "branch": "main", "commit": "f1168feada93c0154ede4d1fe9183bf69bac54ea" },
   "undotree": { "branch": "master", "commit": "9dbbf3b7d19dda0d22ceca461818e4739ad8154d" },
   "vim-fugitive": { "branch": "master", "commit": "41beedabc7e948c787ea5696e04c3544c3674e23" },
+  "vim-helm": { "branch": "master", "commit": "86cc6766db60b8cc5731068d0c2111dee1f2b328" },
   "vim-illuminate": { "branch": "master", "commit": "305bf07b919ac526deb5193280379e2f8b599926" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }

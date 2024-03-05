@@ -110,6 +110,7 @@ return {
             ["<leader>"] = {
                 f = {
                     g = {
+                        name = "[G]it",
                         w = {
                             name = "[W]orktrees",
                             c = { function() telescope.extensions.git_worktree.create_git_worktree() end, "[C]reate Worktree" },

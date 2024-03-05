@@ -119,12 +119,10 @@ return {
         for k, v in pairs(lsp_servers) do
             local require_ok, server_setup = pcall(require, "plugins.lsp.servers." .. k)
             if require_ok then
-                local opts = {}
-
                 local default_opts = vim.tbl_deep_extend("force", default_setup_opts, {})
 
                 local server_opts = server_setup(default_opts)
-                opts = vim.tbl_deep_extend("force", default_opts, server_opts)
+                local opts = vim.tbl_deep_extend("force", default_opts, server_opts)
 
                 -- else
                 --   vim.notify("Error from plugins.p_lsp.mason.handlers: requiring servers." .. k .. " not found.")
