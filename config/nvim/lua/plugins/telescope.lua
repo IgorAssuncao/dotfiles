@@ -108,14 +108,12 @@ return {
         telescope.load_extension("git_worktree")
         which_key.register({
             ["<leader>"] = {
-                f = {
-                    g = {
-                        name = "[G]it",
-                        w = {
-                            name = "[W]orktrees",
-                            c = { function() telescope.extensions.git_worktree.create_git_worktree() end, "[C]reate Worktree" },
-                            l = { function() telescope.extensions.git_worktree.git_worktrees() end, "[L]ist Worktrees" }
-                        }
+                g = {
+                    name = "[G]it",
+                    w = {
+                        name = "[W]orktrees",
+                        c = { function() telescope.extensions.git_worktree.create_git_worktree() end, "[C]reate Worktree" },
+                        l = { function() telescope.extensions.git_worktree.git_worktrees() end, "[L]ist Worktrees" }
                     }
                 }
             }
