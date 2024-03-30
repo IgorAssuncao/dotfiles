@@ -103,10 +103,10 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd nomatch notify
 
-source ~/system-config/config/zsh/.zshrc_aliases
-source ~/system-config/config/zsh/.zshrc_functions
+source ~/dotfiles/config/zsh/.zshrc_aliases
+source ~/dotfiles/config/zsh/.zshrc_functions
 
-source ~/system-config/config/zsh/.zsh_completion_yq
+source ~/dotfiles/config/zsh/.zsh_completion_yq
 
 [[ -e $HOME/.asdf/asdf.sh ]] && . $HOME/.asdf/asdf.sh
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
