@@ -4,7 +4,7 @@
 [init]
 	defaultBranch = main
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/dotfiles/config/git/.gitignore
 [push]
 	autoSetupRemote = true
 [url "ssh://git@github.com/"]
