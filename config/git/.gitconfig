@@ -9,3 +9,5 @@
 	autoSetupRemote = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[worktree]
+	guessRemote = true
