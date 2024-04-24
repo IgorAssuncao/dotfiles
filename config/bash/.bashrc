@@ -143,4 +143,4 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
-[[ -f ~/.bash_profile ]] && . ~/.bash_profile
+[[ -f ~/dotfiles/config/bash/.bash_profile ]] && . ~/dotfiles/config/bash/.bash_profile
