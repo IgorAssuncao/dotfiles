@@ -10,15 +10,15 @@ download() {
 }
 
 extract() {
-  tar -xzf /tmp/discord.tar.gz -C $HOME --overwrite
+  tar -xzf /tmp/discord.tar.gz -C "$HOME" --overwrite
 }
 
 createSymlink() {
   DISCORD_BINARY_PATH="$HOME/Discord/Discord"
   DISCORD_SYMLINK_PATH="$HOME/.local/bin/Discord"
   
-  if [ ! -h $DISCORD_SYMLINK_PATH ]; then
-    ln -s $DISCORD_BINARY_PATH $DISCORD_SYMLINK_PATH
+  if [ ! -h "$DISCORD_SYMLINK_PATH" ]; then
+    ln -s "$DISCORD_BINARY_PATH" "$DISCORD_SYMLINK_PATH"
   fi
 }
 
@@ -26,8 +26,8 @@ createDesktopSymlink() {
   DISCORD_DESKTOP_FILE_PATH="$HOME/Discord/discord.desktop"
   DISCORD_DESKTOP_FILE_SYMLINK_PATH="$HOME/.local/share/applications/Discord.desktop"
 
-  if [ ! -f $DISCORD_DESKTOP_FILE ]; then
-    ln -s $DISCORD_DESKTOP_FILE_PATH $DISCORD_DESKTOP_FILE_SYMLINK_PATH
+  if [ ! -f "$DISCORD_DESKTOP_FILE_PATH" ]; then
+    ln -s "$DISCORD_DESKTOP_FILE_PATH" "$DISCORD_DESKTOP_FILE_SYMLINK_PATH"
   fi
 }
 
