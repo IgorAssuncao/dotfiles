@@ -22,7 +22,8 @@ return {
             enabled = true,
             highlight = BASE.defaults.highlight_groups,
             show_start = true,
-            show_end = true
+            show_end = true,
+            show_exact_scope = true
         },
         whitespace = {
             highlight = background_highlight_groups,
