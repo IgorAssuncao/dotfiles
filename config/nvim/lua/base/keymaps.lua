@@ -95,7 +95,11 @@ which_key.register({
     H = { "^", "Go to start of line" },
     L = { "$", "Go to end of line" },
     ["<Left>"] = { vim.cmd.bp, "Previous buffer" },
-    ["<Right>"] = { vim.cmd.bn, "Next buffer" }
+    ["<Right>"] = { vim.cmd.bn, "Next buffer" },
+    ["<M-,>"] = { "<C-w>5<", "Decrease window width by 5" },
+    ["<M-.>"] = { "<C-w>5>", "Increase window width by 5" },
+    ["<M-t>"] = { "<C-w>+", "Decrease window height by 5" },
+    ["<M-s>"] = { "<C-w>-", "Decrease window height by 5" }
 })
 
 for i = 1, 9, 1 do
