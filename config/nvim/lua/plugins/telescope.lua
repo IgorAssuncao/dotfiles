@@ -19,14 +19,14 @@ return {
     config = function()
         local telescope = require("telescope")
 
-        local status_trouble, trouble = pcall(require, "trouble.providers.telescope")
+        local status_trouble, trouble = pcall(require, "trouble.sources.telescope")
         local mappings = {}
         if not status_trouble then
             vim.notify("Error from plugins.telescope: trouble not found.\nUnable to bind trouble keymaps to telescope")
         else
             mappings = {
-                i = { ["<c-t>"] = trouble.open_with_trouble },
-                n = { ["<c-t>"] = trouble.open_with_trouble }
+                i = { ["<c-t>"] = trouble.open },
+                n = { ["<c-t>"] = trouble.open }
             }
         end
 
