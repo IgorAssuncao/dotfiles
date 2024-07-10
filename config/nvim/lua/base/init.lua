@@ -10,7 +10,7 @@
 
 local status_functions, functions = pcall(require, "base.functions")
 if not status_functions then
-    vim.notify("Error requiring base.functions", "error")
+    vim.notify("Error requiring base.functions", vim.log.levels.ERROR)
     return
 end
 

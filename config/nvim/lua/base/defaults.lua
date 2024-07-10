@@ -12,6 +12,7 @@ local defaults = {
         -- eslint = "eslint",
         go = "gopls",
         grammarly = "grammarly",
+        helm = "helm_ls",
         html = "html",
         json = "jsonls",
         lua = "lua_ls",
