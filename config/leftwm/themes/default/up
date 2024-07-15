@@ -14,11 +14,11 @@ fi
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
 if [ -x "$(command -v nitrogen)" ]; then
-    WALLPAPERSPATH="~/system-config/config/nitrogen/wallpapers"
+    # WALLPAPERSPATH="~/dotfiles/config/nitrogen/wallpapers"
     nitrogen --restore &
     # nitrogen --save --head=0 --set-scaled $WALLPAPERSPATH/1920x1080/download\ \(4\)-1920x1080.jpeg &
     # nitrogen --save --head=1 --set-scaled $WALLPAPERSPATH/3840x2160/pexels-photo-1424246.jpeg  
-    unset WALLPAPERSPATH
+    # unset WALLPAPERSPATH
 fi
 
 if [ -x "$(command -v polybar)" ]; then
