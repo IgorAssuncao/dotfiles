@@ -111,8 +111,5 @@ source ~/dotfiles/config/zsh/.zsh_completion_yq
 [[ -e $HOME/.asdf/asdf.sh ]] && . $HOME/.asdf/asdf.sh
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-# export GOBIN="$(go env | grep GOPATH | awk -F '=' '{print $NF}' | sed -e s/\"//g)/bin"
-export GOBIN="$(go env GOPATH)/bin"
-export PATH=$PATH:$GOBIN
-
-[[ -e $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
+fastfetch
+alias n="/home/igor/Downloads/nvim-linux64/bin/nvim"
