@@ -5,6 +5,8 @@
 	defaultBranch = main
 [core]
 	excludesfile = ~/dotfiles/config/git/.gitignore
+[pull]
+    rebase = true
 [push]
 	autoSetupRemote = true
 [url "ssh://git@github.com/"]
