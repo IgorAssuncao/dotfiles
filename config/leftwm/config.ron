@@ -13,7 +13,9 @@
     modkey: "Mod4",
     mousekey: "Mod4",
     workspaces: [
-        (output: "HDMI-0", x: 0, y: 0, width: 1920, height: 1080),
+        // (output: "HDMI-0", x: 0, y: 0, width: 1920, height: 1080),
+        (output: "Virtual1", x: 0, y: 0, width: 2560, height: 1388),
+        (output: "Virtual1", x: 0, y: 1388, width: 2560, height: 1389),
     ],
     tags: [
         "1",

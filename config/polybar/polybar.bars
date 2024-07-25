@@ -11,7 +11,7 @@ height = 30px
 radius = 5
 
 offset-x = ${env:xoffset}
-offset-y = 0
+offset-y = ${env:yoffset}
 
 background = ${theme.background}
 foreground = ${theme.foreground}

@@ -68,14 +68,10 @@ return {
 
         require("nvim-tree").setup(opts)
 
-        require("which-key").register({
-            ["<leader>"] = {
-                n = {
-                    name = "[N]vim-Tree",
-                    f = { function() vim.cmd { cmd = "NvimTreeFindFile" } end, "[F]ind File" },
-                    t = { function() vim.cmd { cmd = "NvimTreeToggle" } end, "[T]oggle" }
-                }
-            }
+        require("which-key").add({
+            { "<leader>n",  group = "[N]vim-Tree" },
+            { "<leader>n",  function() vim.cmd { cmd = "NvimTreeFindFile" } end, desc = "[F]ind File" },
+            { "<leader>nt", function() vim.cmd { cmd = "NvimTreeToggle" } end,   desc = "[T]oggle" },
         })
     end
 }

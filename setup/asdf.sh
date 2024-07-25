@@ -62,7 +62,7 @@ download() {
 }
 
 configure_shell() {
-  if [[ ! $SHELL == "/bin/zsh" ]]; then
+  if [[ ! $SHELL == "/bin/zsh" && ! $SHELL == "/usr/bin/zsh" ]]; then
     echo "$SHELL currently not supported"
     echo "You need to configure manually"
     echo "Check asdf documentation for more information"
@@ -97,7 +97,7 @@ install() {
     configure_shell
   fi
 
-  if [[ ! $SHELL == "/bin/zsh" ]]; then
+  if [[ ! $SHELL == "/bin/zsh" && ! $SHELL == "/usr/bin/zsh" ]]; then
     exit 1
   fi
 
