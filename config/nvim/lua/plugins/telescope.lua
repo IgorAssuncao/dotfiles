@@ -102,7 +102,7 @@ return {
         })
 
         telescope.load_extension("projects")
-        telescope.load_extension("notify")
+        -- telescope.load_extension("notify")
 
         require("git-worktree").setup()
         telescope.load_extension("git_worktree")
