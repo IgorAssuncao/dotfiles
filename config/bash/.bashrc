@@ -143,4 +143,12 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 [[ -f ~/dotfiles/config/bash/.bash_profile ]] && . ~/dotfiles/config/bash/.bash_profile
+
+[[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
+[[ -f "$HOME/.asdf/completions/asdf.bash" ]] && . "$HOME/.asdf/completions/asdf.bash"
+
+[[ $(command -v fzf) ]] && eval "$(fzf --bash)"
+
