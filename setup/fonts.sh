@@ -55,3 +55,22 @@ ensure_curl
 # install_fonts
 
 cd -
+
+macos_brew() {
+    [[ ! $(command -v brew) ]] && "Brew not found...\nExiting..." && exit 1
+    # The fonts list can be found here: https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e
+    fonts_list=(
+        font-hack-nerd-font
+        font-hurmit-nerd-font
+        font-jetbrains-mono-nerd-font
+    )
+
+    brew tap homebrew/cask-fonts
+
+    for font in "${fonts_list[@]}"; do
+      brew install --cask "$font"
+    done
+    exit
+}
+
+$1
