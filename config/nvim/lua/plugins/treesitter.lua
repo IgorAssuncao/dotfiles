@@ -34,7 +34,7 @@ return {
                     "markdown_inline",
                     "python",
                     "regex",
-                    "ruby",
+                    -- "ruby",
                     "rust",
                     "sql",
                     "terraform",
@@ -86,7 +86,7 @@ return {
                 },
                 -- nvim-ts-playground plugin
                 playground = {
-                    enable = true,
+                    enable = false,
                     disable = {},
                     updatetime = 25,
                     persist_queries = false,
