@@ -5,8 +5,8 @@
 # .bash_profile -*- mode: sh -*-
 
 # Load login settings and environment variables
-if [[ -f ~/.profile ]]; then
-  source ~/.profile
+if [[ -f ~/dotfiles/config/user-settings/.profile ]]; then
+  source ~/dotfiles/config/user-settings/.profile
 fi
 
 # Load interactive settings
