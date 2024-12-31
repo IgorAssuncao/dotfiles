@@ -10,6 +10,7 @@ if [[ -f ~/.profile ]]; then
 fi
 
 # Load interactive settings
-# if [[ -f ~/.bashrc ]]; then
-#   source ~/.bashrc
-# fi
+if [[ -f ~/dotfiles/config/bash/.bashrc ]]; then
+  source ~/dotfiles/config/bash/.bashrc
+fi
+
