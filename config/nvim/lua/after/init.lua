@@ -2,6 +2,6 @@
 -- pcall(vim.cmd, "colorscheme slate")
 
 -- pcall(vim.cmd, "colorscheme carbonfox")
-pcall(vim.cmd, "cyberdream ")
+pcall(vim.cmd, "colorscheme cyberdream")
 
 require("after.colors")
