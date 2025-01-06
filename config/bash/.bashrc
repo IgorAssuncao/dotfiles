@@ -143,6 +143,11 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
+# Load interactive settings
+if [[ -f ~/dotfiles/config/bash/.bash_profile ]]; then
+  source ~/dotfiles/config/bash/.bash_profile
+fi
+
 [[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
