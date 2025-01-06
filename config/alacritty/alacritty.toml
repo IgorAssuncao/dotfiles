@@ -38,30 +38,22 @@ render_timer = false
 TERM = "alacritty"
 
 [font]
-size = 14
+size = 10
 
 [font.bold]
-# family = "HackNerdFont"
-family = "Hurmit Nerd Font"
-# family = "Hack Nerd Font"
+family = "Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-# family = "HackNerdFont"
-family = "Hurmit Nerd Font"
-# family = "Hack Nerd Font"
+family = "Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-# family = "HackNerdFont"
-family = "Hurmit Nerd Font"
-# family = "Hack Nerd Font"
+family = "Nerd Font"
 style = "Italic"
 
 [font.normal]
-# family = "HackNerdFont"
-family = "Hurmit Nerd Font"
-# family = "Hack Nerd Font"
+family = "Nerd Font"
 style = "Regular"
 
 [mouse]
@@ -99,5 +91,5 @@ y = 5
 
 [general]
 # dynamic_title = true
-live_config_reload = false
+live_config_reload = true
 working_directory = "None"
