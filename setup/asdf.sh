@@ -2,7 +2,7 @@
 
 cd "$(dirname "$(readlink -f "$0")")"
 
-source $HOME/system-config/setup/utils.sh
+source $HOME/dotfiles/setup/utils.sh
 
 ASDF_VERSION=$1
 
@@ -62,14 +62,16 @@ download() {
 }
 
 configure_shell() {
-  if [[ ! $SHELL == "/bin/zsh" ]]; then
+  if [[ ! $SHELL == "/bin/zsh" && ! $SHELL == "/bin/bash" ]]; then
     echo "$SHELL currently not supported"
     echo "You need to configure manually"
     echo "Check asdf documentation for more information"
     return 1
   fi
 
-  echo "$source_cmd" >> $zsh_config_file
+  if [[ $SHELL == "/bin/zsh" ]]; then
+    echo "$source_cmd" >> $zsh_config_file
+  fi
 }
 
 setup_plugins() {
@@ -97,7 +99,7 @@ install() {
     configure_shell
   fi
 
-  if [[ ! $SHELL == "/bin/zsh" ]]; then
+  if [[ ! $SHELL == "/bin/zsh" && ! $SHELL == "/bin/bash" ]]; then
     exit 1
   fi
 
