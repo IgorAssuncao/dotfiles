@@ -13,4 +13,3 @@ fi
 if [[ -f ~/dotfiles/config/bash/.bashrc ]]; then
   source ~/dotfiles/config/bash/.bashrc
 fi
-
