@@ -97,15 +97,15 @@ for i = 1, 9, 1 do
 end
 
 which_key.add({
-    { mode = "v" },
+    mode = { "v" },
     { "",          group = "Visual Character Mode" },
-    { "<leader>J", ":m '>+1<CR>gv=gv",             desc = "Move current selection downwards" },
-    { "<leader>K", ":m '<-2<CR>gv=gv",             desc = "Move current selection upwards" },
+    { "J",         ":m '>+1<CR>gv=gv",             desc = "Move current selection downwards" },
+    { "K",         ":m '<-2<CR>gv=gv",             desc = "Move current selection upwards" },
     { "<leader>y", "\"+y",                         desc = "Yank into system clipboard while in visual mode" }
 })
 
 which_key.add({
-    { mode = "x" },
+    mode = { "x" },
     { "<leader>",  group = "[X] mode" },
     { "<leader>P", "\"_dP",           desc = "Keep old past in paste buffer" }
 })
