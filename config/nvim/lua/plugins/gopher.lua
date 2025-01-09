@@ -21,32 +21,17 @@ return {
         if not status_which_key then
             vim.notify("Error from plugins.p_fugitive.keymaps: which-key not found.")
         else
-            which_key.register({
-                ["<leader>L"] = {
-                    g = {
-                        name = "[G]olang Gopher",
-                        e = { function() vim.cmd { cmd = "GoIfErr" } end, "If [E]rr" },
-                        i = {
-                            function()
-                                vim.cmd { cmd = "GoImpl", args = {
-                                    vim.fn.input("<receiver_name> <receiver_type> <interface>: ") } }
-                            end,
-                            "[I]mplement Interface" },
-                        t = {
-                            name = "Manage [T]ags",
-                            a = {
-                                name = "[A]dd tags",
-                                j = { function() vim.cmd { cmd = "GoTagAdd json" } end, "[J]son tags" },
-                                y = { function() vim.cmd { cmd = "GoTagAdd yaml" } end, "[Y]aml tags" }
-                            },
-                            r = {
-                                name = "[R]emove tags",
-                                j = { function() vim.cmd { cmd = "GoTagRm json" } end, "[J]son tags" },
-                                y = { function() vim.cmd { cmd = "GoTagRm yaml" } end, "[Y]aml tags" }
-                            },
-                        }
-                    }
-                }
+            which_key.add({
+                { "<leader>L",   group = "[G]olang Gopher" },
+                { "<leader>Le",  function() vim.cmd { cmd = "GoIfErr" } end,                                                                          desc = "If [E]rr" },
+                { "<leader>Li",  function() vim.cmd { cmd = "GoImpl", args = { vim.fn.input("<receiver_name> <receiver_type> <interface>: ") } } end, desc = "[I]mplement Interface" },
+                { "<leader>Lt",  group = "Manage [T]ags" },
+                { "<leader>Lta", group = "Add [T]ags" },
+                { "<leaderLtaj", function() vim.cmd { cmd = "GoTagAdd json" } end,                                                                    desc = "[J]son tags" },
+                { "<leaderLtay", function() vim.cmd { cmd = "GoTagAdd yaml" } end,                                                                    desc = "[Y]aml tags" },
+                { "<leader>Ltr", group = "Remove [T]ags" },
+                { "<leaderLtaj", function() vim.cmd { cmd = "GoTagRm json" } end,                                                                     desc = "[J]son tags" },
+                { "<leaderLtay", function() vim.cmd { cmd = "GoTagRm yaml" } end,                                                                     desc = "[Y]aml tags" },
             })
         end
     end

@@ -6,19 +6,15 @@ if not status then
 end
 
 function RegisterKeysIntoVimHelp()
-    which_key.register({
-        ["<leader>"] = {
-            l = {
-                name = "[D]efinition",
-                p = { function() BASE.peekDefinition() end, "[P]eek" },
-                g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
-                s = { function() BASE.split_definition() end, "Open in a [S]plit window" },
-                v = { function() BASE.split_definition("v") end, "Open in a [V]ertical split window" },
-                i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
-                r = { function() vim.lsp.buf.references() end, "[R]eferences" },
-                R = { function() vim.lsp.buf.rename() end, "[R]ename" },
-            }
-        }
+    which_key.add({
+        { "<leader>l",  group = "[D]efinition" },
+        { "<leader>lp", function() BASE.peekDefinition() end,        desc = "[P]eek" },
+        { "<leader>lg", function() vim.lsp.buf.definition() end,     desc = "[G]o desc = to in current window" },
+        { "<leader>ls", function() BASE.split_definition() end,      desc = "Open in adesc =  [S]plit window" },
+        { "<leader>lv", function() BASE.split_definition("v") end,   desc = "Open in a desc = [V]ertical split window" },
+        { "<leader>li", function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
+        { "<leader>lr", function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
+        { "<leader>lR", function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
     })
 end
 

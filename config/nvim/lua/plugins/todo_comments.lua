@@ -1,16 +1,16 @@
 -- Plugin that helps finding TODO (and others) comments
 -- in various parts of the code.
 
-local function createTodoCommandTable(command)
+local function createTodoCommandTable(leader, command)
     return {
-        a = { function() vim.cmd { cmd = command } end, "[A]ll" },
-        t = { function() vim.cmd { cmd = command, args = { "keywords=TODO" } } end, "[T]odo" },
-        n = { function() vim.cmd { cmd = command, args = { "keywords=NOTE" } } end, "[N]ote" },
-        f = { function() vim.cmd { cmd = command, args = { "keywords=FIX" } } end, "[F]ix" },
-        h = { function() vim.cmd { cmd = command, args = { "keywords=HACK" } } end, "[H]ack" },
-        w = { function() vim.cmd { cmd = command, args = { "keywords=WARN" } } end, "[W]arning" },
-        p = { function() vim.cmd { cmd = command, args = { "keywords=PERF" } } end, "[P]erf" },
-        T = { function() vim.cmd { cmd = command, args = { "keywords=TEST" } } end, "[T]est" }
+        { leader .. "a", function() vim.cmd { cmd = command } end,                             desc = "[A]ll" },
+        { leader .. "t", function() vim.cmd { cmd = command, args = { "keywords=TODO" } } end, desc = "[T]odo" },
+        { leader .. "n", function() vim.cmd { cmd = command, args = { "keywords=NOTE" } } end, desc = "[N]ote" },
+        { leader .. "f", function() vim.cmd { cmd = command, args = { "keywords=FIX" } } end,  desc = "[F]ix" },
+        { leader .. "h", function() vim.cmd { cmd = command, args = { "keywords=HACK" } } end, desc = "[H]ack" },
+        { leader .. "w", function() vim.cmd { cmd = command, args = { "keywords=WARN" } } end, desc = "[W]arning" },
+        { leader .. "p", function() vim.cmd { cmd = command, args = { "keywords=PERF" } } end, desc = "[P]erf" },
+        { leader .. "T", function() vim.cmd { cmd = command, args = { "keywords=TEST" } } end, desc = "[T]est" }
     }
 end
 
@@ -23,32 +23,15 @@ return {
     config = function()
         require("todo-comments").setup()
 
-        require("which-key").register({
-            ["<leader>"] = {
-                f = {
-                    c = vim.tbl_extend("keep",
-                        {
-                            name = "Todo [c]omments",
-                        },
-                        createTodoCommandTable("TodoTelescope")
-                    )
-                },
-                t = {
-                    name = "[T]odo comments",
-                    q = vim.tbl_extend("keep",
-                        {
-                            name = "Todo [Q]uickFix",
-                        },
-                        createTodoCommandTable("TodoQuickFix")
-                    ),
-                    t = vim.tbl_extend("keep",
-                        {
-                            name = "Todo [T]rouble",
-                        },
-                        createTodoCommandTable("TodoTrouble")
-                    )
-                }
-            }
+        require("which-key").add({
+            { "<leader>f",  group = "TodoTelescope" },
+            { "<leader>fc", group = "Todo [c]omments" },
+            createTodoCommandTable("<leader>fc", "TodoTelescope"),
+            { "<leader>t",  group = "[T]odo comments" },
+            { "<leader>tq", group = "Todo [Q]uickFix" },
+            createTodoCommandTable("<leader>tq", "TodoQuickFix"),
+            { "<leader>tt", group = "Todo [T]rouble" },
+            createTodoCommandTable("<leader>tt", "TodoTrouble")
         })
     end
 }

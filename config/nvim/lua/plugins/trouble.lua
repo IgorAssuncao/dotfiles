@@ -10,20 +10,14 @@ return {
         trouble.setup()
 
         local which_key = require("which-key")
-        which_key.register({
-            ["<leader>"] = {
-                T = {
-                    name = "[T]rouble",
-                    {
-                        T = { function() trouble.open() end, "[T]oggle Trouble" },
-                        w = { function() trouble.open("workspace_diagnostics") end, "[W]orkspace diagnostics" },
-                        d = { function() trouble.open("document_diagnostics") end, "[D]ocument diagnostics" },
-                        q = { function() trouble.open("quickfix") end, "[Q]uickFix" },
-                        l = { function() trouble.open("loclist") end, "[L]ocList" },
-                        r = { function() trouble.open("lsp_references") end, "Lsp [R]eferences" }
-                    }
-                }
-            }
+        which_key.add({
+            { "<leader>T",  group = "[T]rouble" },
+            { "<leader>TT", function() trouble.open() end,                        desc = "[T]oggle Trouble" },
+            { "<leader>Tw", function() trouble.open("workspace_diagnostics") end, desc = "[W]orkspace diagnostics" },
+            { "<leader>Td", function() trouble.open("document_diagnostics") end,  desc = "[D]ocument diagnostics" },
+            { "<leader>Tq", function() trouble.open("quickfix") end,              desc = "[Q]uickFix" },
+            { "<leader>Tl", function() trouble.open("loclist") end,               desc = "[L]ocList" },
+            { "<leader>Tr", function() trouble.open("lsp_references") end,        desc = "Lsp [R]eferences" }
         })
     end
 }

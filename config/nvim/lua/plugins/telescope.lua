@@ -65,68 +65,45 @@ return {
 
         local builtin = require("telescope.builtin")
 
-        which_key.register({
-            ["<leader>"] = {
-                f = {
-                    name = "Telescope Fuzzy [F]inder",
-                    b = { builtin.current_buffer_fuzzy_find, "Current [b]uffer fuzzy find" },
-                    f = { builtin.find_files, "Find [f]iles in cwd" },
-                    g = {
-                        name = "[G]it",
-                        b = { builtin.git_bcommits, "[B]commits" },
-                        c = { builtin.git_commits, "[C]ommits" },
-                        f = { builtin.git_files, "[F]iles" },
-                        s = { builtin.git_status, "Files in git [S]tatus" },
-                    },
-                    h = { builtin.help_tags, "[H]elp Tags" },
-                    l = { builtin.live_grep, "[L]ive [G]rep" },
-                    r = { builtin.resume, "[R]esume" },
-                    w = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "Find [W]ord" }
-                }
-            }
+        which_key.add({
+            { "<leader>f",  group = "Telescope Fuzzy [F]inder" },
+            { "<leader>fb", builtin.current_buffer_fuzzy_find,                                        desc = "Current [b]uffer fuzzy find" },
+            { "<leader>ff", builtin.find_files,                                                       desc = "Find [f]iles in cwd" },
+            { "<leader>fh", builtin.help_tags,                                                        desc = "[H]elp Tags" },
+            { "<leader>fl", builtin.live_grep,                                                        desc = "[L]ive [G]rep" },
+            { "<leader>fr", builtin.resume,                                                           desc = "[R]esume" },
+            { "<leader>fw", function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
+            { "<leader>fg", group = "[G]it" },
+            { "<leader>fg", builtin.git_bcommits,                                                     desc = "[B]commits" },
+            { "<leader>fg", builtin.git_commits,                                                      desc = "[C]ommits" },
+            { "<leader>fg", builtin.git_files,                                                        desc = "[F]iles" },
+            { "<leader>fg", builtin.git_status,                                                       desc = "Files in git [S]tatus" },
         })
 
         -- Extensions
         local project = require("project_nvim")
         project.setup()
-
-        which_key.register({
-            ["<leader>"] = {
-                f = {
-                    name = "Telescope Fuzzy [F]inder",
-                    p = { function()
-                        telescope.extensions.projects.projects {}
-                    end, "[P]rojects" }
-                }
-            }
+        telescope.load_extension("projects")
+        which_key.add({
+            { "<leader>fp", function() telescope.extensions.projects.projects {} end, desc = "[P]rojects" }
         })
 
-        telescope.load_extension("projects")
         -- telescope.load_extension("notify")
 
         require("git-worktree").setup()
         telescope.load_extension("git_worktree")
-        which_key.register({
-            ["<leader>"] = {
-                g = {
-                    name = "[G]it",
-                    w = {
-                        name = "[W]orktrees",
-                        c = { function() telescope.extensions.git_worktree.create_git_worktree() end, "[C]reate Worktree" },
-                        l = { function() telescope.extensions.git_worktree.git_worktrees() end, "[L]ist Worktrees" }
-                    }
-                }
-            }
+        which_key.add({
+            { "<leader>gw", group = "[W]orktrees" },
+            { "<leadergwc", function() telescope.extensions.git_worktree.create_git_worktree() end, desc = "[C]reate Worktree" },
+            { "<leadergwl", function() telescope.extensions.git_worktree.git_worktrees() end,       desc = "[L]ist Worktrees" }
         })
 
         -- NOTE: Attempt to integrate harpoon2 into telescope
         -- local harpoon = require("harpoon")
         -- harpoon:setup({})
         -- telescope.load_extension("harpoon")
-        -- which_key.register({
-        --     h = {
-        --         u = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Toggle [U]I" },
-        --     }
+        -- which_key.add({
+        --     {"<leader>hu", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Toggle [U]I" },
         -- })
     end
 }

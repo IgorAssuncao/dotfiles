@@ -44,52 +44,18 @@ return {
                         -- )
                     end
 
-                    -- TODO: Move keymaps assignments to its own file.
                     local status_which_key, which_key = pcall(require, "which-key")
                     if not status_which_key then
                         vim.notify("Error from plugins.lsp.mason_lspconfig: which-key not found.")
                     else
-                        which_key.register({
-                            ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
-                        }, { mode = "i" })
-
-                        which_key.register({
-                            ["<leader>"] = {
-                                l = {
-                                    name = "[L]sp",
-                                    p = { function() BASE.peekDefinition() end, "[P]eek" },
-                                    g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
-                                    s = { function() BASE.split_definition() end, "Open in a [S]plit window" },
-                                    v = { function() BASE.split_definition("v") end, "Open in a [V]ertical split window" },
-                                    i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
-                                    r = { function() vim.lsp.buf.references() end, "[R]eferences" },
-                                    R = { function() vim.lsp.buf.rename() end, "[R]ename" }
-                                },
-                                D = {
-                                    name = "[D]iagnostics",
-                                    h = { function() vim.diagnostic.hide() end, "[H]ide" },
-                                    s = { function() vim.diagnostic.show() end, "[S]how" },
-                                    p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
-                                    n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
-                                },
-                                -- a = { function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end,
-                                --   "Code [A]ctions" }
-                                a = { function() vim.lsp.buf.code_action() end,
-                                    "Code [A]ctions" }
-                            },
-                            K = { function() vim.lsp.buf.hover() end, "Hover" }
-                        }, { buffer = bufnr })
+                        BASE.set_lsp_keymaps(bufnr, which_key)
 
                         local status_telescope_builtin, telescope_builtin = pcall(require, "telescope.builtin")
                         if not status_telescope_builtin then
                             vim.notify("Error from plugins.lsp.mason_lspconfig: telescope.builtin not found.")
                         else
-                            which_key.register({
-                                ["<leader>"] = {
-                                    D = {
-                                        a = { telescope_builtin.diagnostics, "[A]ll" },
-                                    }
-                                }
+                            which_key.add({
+                                { "<leader>Da", telescope_builtin.diagnostics, desc = "[A]ll" },
                             })
                         end
                     end

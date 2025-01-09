@@ -9,24 +9,15 @@ return {
     config = function()
         require("gitsigns").setup {
             numhl = true,
+            linehl = false,
+            current_line_blame = false,
         }
 
-        require("which-key").register({
-            g = {
-                B = {
-                    function() vim.cmd.Gitsigns { args = { "toggle_current_line_blame" } } end,
-                    "Toggle line [b]lame"
-                },
-                h = {
-                    function() vim.cmd.Gitsigns { args = { "preview_hunk_inline" } } end, "Preview [h]unk inline"
-                },
-                D = {
-                    function() vim.cmd.Gitsigns { args = { "diffthis" } } end, "[D]iff this file"
-                },
-                L = {
-                    function() vim.cmd.Gitsigns { args = { "toggle_linehl" } } end, "Toggle [L]ine highlight"
-                }
-            }
-        }, { prefix = "<leader>" })
+        require("which-key").add({
+            { "<leader>gB", function() vim.cmd.Gitsigns { args = { "toggle_current_line_blame" } } end, desc = "Toggle line [b]lame" },
+            { "<leader>gh", function() vim.cmd.Gitsigns { args = { "preview_hunk_inline" } } end,       desc = "Preview [h]unk inline" },
+            { "<leader>gD", function() vim.cmd.Gitsigns { args = { "diffthis" } } end,                  desc = "[D]iff this file" },
+            { "<leader>gL", function() vim.cmd.Gitsigns { args = { "toggle_linehl" } } end,             desc = "Toggle [L]ine highlight" },
+        })
     end
 }

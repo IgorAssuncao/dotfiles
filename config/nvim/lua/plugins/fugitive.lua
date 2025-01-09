@@ -37,41 +37,25 @@ return {
     "tpope/vim-fugitive",
     event = "VeryLazy",
     config = function()
-        require("which-key").register({
-            g = {
-                name = "[G]it",
-                s = { vim.cmd.Git, "[S]tatus" },
-                l = { vim.cmd.GcLog, "[L]og" },
-                f = { function() vim.cmd.Git { args = { "fetch" } } end, "[F]etch" },
-                b = { function() vim.cmd.Git { args = { "branch" } } end, "[B]ranch" },
-                c = {
-                    name = "[C]heckout",
-                    b = { function() vim.cmd.Git { args = { "switch " .. vim.fn.input("Target branch: ") } } end,
-                        "[S]witch to existing branch" },
-                    c = { function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,
-                        "[C]reate branch" },
-                },
-                d = {
-                    name = "[D]iff",
-                    h = { function() vim.cmd { cmd = "diffget", args = { "//2" } } end, "Choose diff content on left window" },
-                    l = { function() vim.cmd { cmd = "diffget", args = { "//3" } } end, "Choose diff content on right window" }
-                },
-                p = { function() vim.cmd.Git { args = { "push" } } end, "[P]ush" },
-                P = {
-                    name = "Pull Options",
-                    P = { function() vim.cmd { cmd = "Git", args = { "pull" } } end, "Default" },
-                    B = {
-                        function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,
-                        "Default from branch" },
-                    M = { function() vim.cmd { cmd = "Git", args = { "pull --no-rebase" } } end, "[M]erge" },
-                    R = { function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end, "[R]ebase" },
-                    C = { function()
-                        vim.cmd { cmd = "Git",
-                            args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } }
-                    end,
-                        "[R]ebase from branch" }
-                },
-            }
-        }, { prefix = "<leader>" })
+        require("which-key").add({
+            { "<leader>g",   group = "[G]it" },
+            { "<leader>gs",  vim.cmd.Git,                                                                                                           desc = "[S]tatus" },
+            { "<leader>gl",  vim.cmd.GcLog,                                                                                                         desc = "[L]og" },
+            { "<leader>gf",  function() vim.cmd.Git { args = { "fetch" } } end,                                                                     desc = "[F]etch" },
+            { "<leader>gb",  function() vim.cmd.Git { args = { "branch" } } end,                                                                    desc = "[B]ranch" },
+            { "<leader>gc",  group = "[C]heckout" },
+            { "<leader>gcb", function() vim.cmd.Git { args = { "switch " .. vim.fn.input("Target branch: ") } } end,                                desc = "[S]witch" },
+            { "<leader>gcc", function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,                             desc = "[C]reate branch" },
+            { "<leader>gd",  group = "[D]iff" },
+            { "<leader>gdh", function() vim.cmd { cmd = "diffget", args = { "//2" } } end,                                                          desc = "Choose diff content on left window" },
+            { "<leader>gdl", function() vim.cmd { cmd = "diffget", args = { "//3" } } end,                                                          desc = "Choose diff content on right window" },
+            { "<leader>p",   function() vim.cmd.Git { args = { "push" } } end,                                                                      desc = "[P]ush" },
+            { "<leader>gP",  group = "[P]ull" },
+            { "<leader>gPP", function() vim.cmd { cmd = "Git", args = { "pull" } } end,                                                             desc = "Default" },
+            { "<leader>gPB", function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,            desc = "Default from [b]ranch" },
+            { "<leader>gPM", function() vim.cmd { cmd = "Git", args = { "pull --no-rebase" } } end,                                                 desc = "[M]erge" },
+            { "<leader>gPR", function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end,                                                    desc = "[R]ebase" },
+            { "<leader>gPC", function() vim.cmd { cmd = "Git", args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } } end, desc = "Rebase from bran[c]h" },
+        })
     end
 }

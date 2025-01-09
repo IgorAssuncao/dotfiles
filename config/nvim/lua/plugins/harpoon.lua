@@ -48,15 +48,11 @@ return {
             }):find()
         end
 
-        require("which-key").register({
-            h = {
-                name = "[H]arpoon",
-                l = { function()
-                    toggle_telescope(harpoon:list())
-                end, "[L]ist files" },
-                a = { function() harpoon:list():append() end, "[A]dd file" },
-                r = { function() harpoon:list():remove() end, "[R]emove file" },
-            }
-        }, { prefix = "<leader>" })
+        require("which-key").add({
+            { "<leader>h",  group = "[H]arpoon" },
+            { "<leader>hl", function() toggle_telescope(harpoon:list()) end, desc = "[L]ist files" },
+            { "<leader>ha", function() harpoon:list():append() end,          desc = "[A]dd file" },
+            { "<leader>hr", function() harpoon:list():remove() end,          desc = "[R]emove file" },
+        })
     end
 }

@@ -28,28 +28,26 @@ return {
 
         local which_key = require("which-key")
 
-        which_key.register({
-            ["<C-\\>"] = {
-                name = "Toggleterm",
-                d = { function() terms.below:toggle() end, "Toggle terminal below" },
-                G = { function() terms.lazygit:toggle() end, "Toggle Lazygit terminal" },
-                g = { function() terms.git_dir:toggle() end, "Toggle git dir terminal" },
-                h = { function() terms.htop:toggle() end, "Toggle htop terminal" },
-            }
+        which_key.add({
+            { "<C-\\>",  group = "Toggleterm" },
+            { "<C-\\>d", function() terms.below:toggle() end,   desc = "Toggle terminal below" },
+            { "<C-\\>G", function() terms.lazygit:toggle() end, desc = "Toggle Lazygit terminal" },
+            { "<C-\\>g", function() terms.git_dir:toggle() end, desc = "Toggle git dir terminal" },
+            { "<C-\\>h", function() terms.htop:toggle() end,    desc = "Toggle htop terminal" },
         })
 
         function Toggleterm_set_terminal_keymaps()
             local buffer = 0
-            which_key.register({
-                ["<C-\\>"] = {
-                    name = "Toggleterm",
-                    ["<C-\\>"] = { [[<C-\><C-n>]], "Exit insert mode inside terminal" },
-                    ["<C-h>"] = { [[<cmd>wincmd h<cr>]], "Move to left terminal" },
-                    ["<C-j>"] = { [[<cmd>wincmd j<cr>]], "Move to terminal below" },
-                    ["<C-k>"] = { [[<cmd>wincmd k<cr>]], "Move to terminal above" },
-                    ["<C-l>"] = { [[<cmd>wincmd l<cr>]], "Move to right terminal" },
-                }
-            }, { mode = "t", buffer = buffer })
+
+            which_key.add({
+                mode = { "t", buffer = buffer },
+                { "<C-\\>", group = "Toggleterm" },
+                { "<C-\\>", [[<C-\><C-n>]],        desc = "Exit insert mode inside terminal" },
+                { "<C-h>",  [[<cmd>wincmd h<cr>]], desc = "Move to left terminal" },
+                { "<C-j>",  [[<cmd>wincmd j<cr>]], desc = "Move to terminal below" },
+                { "<C-k>",  [[<cmd>wincmd k<cr>]], desc = "Move to terminal above" },
+                { "<C-l>",  [[<cmd>wincmd l<cr>]], desc = "Move to right terminal" },
+            })
         end
 
         vim.api.nvim_create_autocmd(

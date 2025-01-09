@@ -8,14 +8,10 @@ return {
         local illuminate = require("illuminate")
         illuminate.configure()
 
-        require("which-key").register({
-            ["<leader>"] = {
-                i = {
-                    name = "[I]lluminate",
-                    n = { function() illuminate.goto_next_reference() end, "[N]ext reference" },
-                    p = { function() illuminate.goto_prev_reference() end, "[P]revious reference" }
-                }
-            }
+        require("which-key").add({
+            { "<leader>i",  group = "[I]lluminate" },
+            { "<leader>in", function() illuminate.goto_next_reference() end, desc = "[N]ext reference" },
+            { "<leader>ip", function() illuminate.goto_prev_reference() end, desc = "[P]revious reference" }
         })
     end
 }

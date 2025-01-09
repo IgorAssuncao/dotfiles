@@ -1,30 +1,11 @@
 local function register_keys(bufnr, wk, rt)
-    wk.register({
-        ["<leader>L"] = {
-            r = {
-                name = "[R]ust tools",
-                -- Hover Actions
-                h = { function() rt.hover_actions.hover_actions() end, "[H]over actions" },
-                -- Code action groups
-                a = { function() rt.code_action_group.code_action_group() end, "Code [a]ction group" },
-            }
-        }
+    wk.add({
+        { "<leader>Lr",  group = "[R]ust tools" },
+        -- Hover Actions
+        { "<leader>Lrh", function() rt.hover_actions.hover_actions() end,         desc = "[H]over actions" },
+        -- Code action groups
+        { "<leader>Lra", function() rt.code_action_group.code_action_group() end, desc = "Code [a]ction group" },
     }, { buffer = bufnr })
-    -- if which_key and rust_tools then
-    --     which_key.register({
-    --         ["<leader>L"] = {
-    --             r = {
-    --                 name = "[R]ust tools",
-    --                 -- Hover Actions
-    --                 h = { function() rust_tools.hover_actions.hover_actions() end, "[H]over actions" },
-    --                 -- Code action groups
-    --                 a = { function() rust_tools.code_action_group.code_action_group() end, "Code [a]ction group" },
-    --             }
-    --         }
-    --     }, { buffer = bufnr })
-    -- else
-    --     print("Error from plugins.rust_tools: which-key or rust-tools not found.")
-    -- end
 end
 
 -- local status_mason_registry, mason_registry = pcall(require, "mason-registry")

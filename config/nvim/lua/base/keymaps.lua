@@ -68,63 +68,47 @@ if not status_which_key then
     -- return {}
 end
 
-which_key.register({
-    -- ["<C-H>"] = { function() vim.cmd.wincmd('h') end, "Move to window on the left" },
-    -- ["<C-J>"] = { function() vim.cmd.wincmd('j') end, "Move to window below" },
-    -- ["<C-K>"] = { function() vim.cmd.wincmd('k') end, "Move to window above" },
-    -- ["<C-L>"] = { function() vim.cmd.wincmd('l') end, "Move to window on the right" },
-    ["<leader>"] = {
-        name = "Custom",
-        C = {
-            function() vim.cmd("nohls") end, "[C]lear Search Highlighting"
-        },
-        E = { vim.cmd.Ex, "[E]xplorer" },
-        b = {
-            name = "[B]uffer",
-            d = { vim.cmd.bd, "[D]elete", },
-            n = { vim.cmd.bn, "[N]ext" },
-            p = { vim.cmd.bp, "[P]revious" },
-        },
-        q = { function() vim.cmd.quit {} end, "[Q]uit" },
-        Q = { function() vim.cmd.quit { bang = true } end, "Force [Q]uit" },
-        w = { function() vim.cmd.write {} end, "[W]rite" },
-        W = { function() vim.cmd.write { bang = true } end, "Force [W]rite" },
-        x = { function() vim.cmd.exit {} end, "E[x]it" },
-        X = { function() vim.cmd.exit { bang = true } end, "Force E[x]it" },
-    },
-    H = { "^", "Go to start of line" },
-    L = { "$", "Go to end of line" },
-    ["<Left>"] = { vim.cmd.bp, "Previous buffer" },
-    ["<Right>"] = { vim.cmd.bn, "Next buffer" },
-    ["<M-,>"] = { "<C-w>5<", "Decrease window width by 5" },
-    ["<M-.>"] = { "<C-w>5>", "Increase window width by 5" },
-    ["<M-t>"] = { "<C-w>+", "Decrease window height by 5" },
-    ["<M-s>"] = { "<C-w>-", "Decrease window height by 5" }
+which_key.add({
+    { "<leader>",   group = "Custom" },
+    { "<leader>C",  function() vim.cmd("nohls") end,             desc = "[C]lear Search Highlighting" },
+    { "<leader>E",  vim.cmd.Ex,                                  desc = "[E]xplorer" },
+    { "<leader>b",  group = "[B]uffer" },
+    { "<leader>bd", vim.cmd.bd,                                  desc = "[D]elete" },
+    { "<leader>bn", vim.cmd.bn,                                  desc = "[N]ext" },
+    { "<leader>bp", vim.cmd.bp,                                  desc = "[P]revious" },
+    { "<leader>q",  function() vim.cmd.quit {} end,              desc = "[Q]uit" },
+    { "<leader>Q",  function() vim.cmd.quit { bang = true } end, desc = "Force [Q]uit" },
+    { "<leader>w",  function() vim.cmd.write {} end,             desc = "[W]rite" },
+    { "<leader>x",  function() vim.cmd.exit {} end,              desc = "E[x]it" },
+    { "<Left>",     vim.cmd.bp,                                  desc = "Previous buffer" },
+    { "<Right>",    vim.cmd.bn,                                  desc = "Next buffer" },
+    { "<M-,>",      "<C-w>5<",                                   desc = "Decrease window width by 5" },
+    { "<M-.>",      "<C-w>5>",                                   desc = "Increase window width by 5" },
+    { "<M-t>",      "<C-w>+",                                    desc = "Decrease window height by 5" },
+    { "<M-s>",      "<C-w>-",                                    desc = "Decrease window height by 5" }
 })
 
 for i = 1, 9, 1 do
     local key = "<leader>" .. i
     local cmd = i .. "<C-W>w"
-    which_key.register({
-        [key] = { cmd, "move to window " .. i }
+    which_key.add({
+        { key, cmd, desc = "move to window " .. i }
     })
 end
 
-which_key.register({
-    [""] = {
-        name = "Visual Character Mode",
-        J = { ":m '>+1<CR>gv=gv", "Move current selection downwards" },
-        K = { ":m '<-2<CR>gv=gv", "Move current selection upwards" }
-    },
-    ["<leader>y"] = { "\"+y", "Yank into system clipboard while in visual mode" }
-}, { mode = "v" })
+which_key.add({
+    { mode = "v" },
+    { "",          group = "Visual Character Mode" },
+    { "<leader>J", ":m '>+1<CR>gv=gv",             desc = "Move current selection downwards" },
+    { "<leader>K", ":m '<-2<CR>gv=gv",             desc = "Move current selection upwards" },
+    { "<leader>y", "\"+y",                         desc = "Yank into system clipboard while in visual mode" }
+})
 
-which_key.register({
-    ["<leader>"] = {
-        name = "[X] mode",
-        P = { "\"_dP", "Keep old past in paste buffer" }
-    }
-}, { mode = "x" })
+which_key.add({
+    { mode = "x" },
+    { "<leader>",  group = "[X] mode" },
+    { "<leader>P", "\"_dP",           desc = "Keep old past in paste buffer" }
+})
 
 -- local function old_split_definition(split_direction)
 --   split_direction = split_direction or "s"
@@ -181,35 +165,28 @@ function BASE.peekDefinition()
 end
 
 function BASE.set_lsp_keymaps(bufnr, wk)
-    wk.register({
-        ["<c-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
-    }, { mode = "i" })
+    which_key.add({
+        { mode = "i" },
+        { "<c-h>",   function() vim.lsp.buf.signature_help() end, desc = "Signature Help" }
+    })
 
-    wk.register({
-        ["<leader>"] = {
-            l = {
-                name = "[L]sp",
-                p = { function() BASE.peekDefinition() end, "[P]eek" },
-                g = { function() vim.lsp.buf.definition() end, "[G]o to in current window" },
-                s = { function() BASE.split_definition() end, "Open in a [S]plit window" },
-                v = { function() BASE.split_definition("v") end, "Open in a [V]ertical split window" },
-                i = { function() vim.lsp.buf.implementation() end, "[I]mplementation" },
-                r = { function() vim.lsp.buf.references() end, "[R]eferences" },
-                R = { function() vim.lsp.buf.rename() end, "[R]ename" }
-            },
-            D = {
-                name = "[D]iagnostics",
-                h = { function() vim.diagnostic.hide() end, "[H]ide" },
-                s = { function() vim.diagnostic.show() end, "[S]how" },
-                a = { telescope_builtin.diagnostics, "[A]ll" },
-                p = { function() vim.diagnostic.goto_prev() end, "Previous diagnostic" },
-                n = { function() vim.diagnostic.goto_next() end, "Next diagnostic" }
-            },
-            -- a = { function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end,
-            --   "Code [A]ctions" }
-            a = { function() vim.lsp.buf.code_action() end,
-                "Code [A]ctions" }
-        },
-        K = { function() vim.lsp.buf.hover() end, "Hover" }
-    }, { buffer = bufnr })
+    wk.add({
+        { buffer = bufnr },
+        { "<leader>l",   group = "[L]sp" },
+        { "<leader>lp",  function() BASE.peekDefinition() end,        desc = "[P]eek" },
+        { "<leader>lg",  function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
+        { "<leader>ls",  function() BASE.split_definition() end,      desc = "Open in a [S]plit window" },
+        { "<leader>lv",  function() BASE.split_definition("v") end,   desc = "Open in a [V]ertical split window" },
+        { "<leader>li",  function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
+        { "<leader>lr",  function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
+        { "<leader>lR",  function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
+        { "<leader>D",   group = "[D]iagnostics" },
+        { "<leader>Dh",  function() vim.diagnostic.hide() end,        desc = "[H]ide" },
+        { "<leader>Ds",  function() vim.diagnostic.show() end,        desc = "[S]how" },
+        { "<leader>Dp",  function() vim.diagnostic.goto_prev() end,   desc = "Previous diagnostic" },
+        { "<leader>Dn",  function() vim.diagnostic.goto_next() end,   desc = "Next diagnostic" },
+        -- "<leader>a", function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end, desc = "Code [A]ctions" }
+        { "<leader>a",   function() vim.lsp.buf.code_action() end,    desc = "Code [A]ctions" },
+        { "<leader>K",   function() vim.lsp.buf.hover() end,          desc = "Hover" }
+    })
 end

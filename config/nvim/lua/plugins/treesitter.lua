@@ -34,7 +34,6 @@ return {
                     "markdown_inline",
                     "python",
                     "regex",
-                    "ruby",
                     "rust",
                     "sql",
                     "terraform",
