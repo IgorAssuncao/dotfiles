@@ -1,19 +1,19 @@
 # $HOME/.profile
 
 # Load profiles from /etc/profile.d
-# if test -d /etc/profile.d/; then
-# 	for profile in /etc/profile.d/*.sh; do
-# 		test -r "$profile" && . "$profile"
-# 	done
-# 	unset profile
-# fi
+if test -d /etc/profile.d/; then
+    for profile in /etc/profile.d/*.sh; do
+        test -r "$profile" && . "$profile"
+    done
+    unset profile
+fi
 
 [[ -e /usr/share/defaults/etc/profile ]] && source /usr/share/defaults/etc/profile
 
 checkAndSource() {
-  FILE=$1
-  [[ -f $FILE ]] && . $FILE
-  [[ ! -f $FILE ]] && echo "$FILE not found."
+    FILE=$1
+    [[ -f $FILE ]] && . $FILE
+    [[ ! -f $FILE ]] && echo "$FILE not found."
 }
 
 # Set our default path
@@ -31,14 +31,16 @@ else
     export VISUAL="vim"
 fi
 
-if command -v kitty &>/dev/null; then
-    export TERMINAL=kitty
-elif command -v alacritty &>/dev/null; then
+if command -v alacritty &>/dev/null; then
     export TERMINAL=alacritty
+elif command -v kitty &>/dev/null; then
+    export TERMINAL=kitty
 fi
 
 if command -v brave &>/dev/null; then
     export BROWSER=/usr/bin/brave
+elif command -v google-chrome-stable &>/dev/null; then
+    export BROWSER=/usr/bin/google-chrome-stable
 elif command -v firefox &>/dev/null; then
     export BROWSER=/usr/bin/firefox
 fi
@@ -49,7 +51,7 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # Start Hyprland
-[[ $(command -v Hyprland) && "$(tty)" = "/dev/tty1" ]] && exec Hyprland
+[[ $(command -v Hyprland) && "$(tty)" = "/dev/tty1" ]] && exec dbus-run-session Hyprland
 
 # golang gopath
 # USER_LOCAL_BIN_PATH="$HOME/.local/bin"
