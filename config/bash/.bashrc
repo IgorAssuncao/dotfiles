@@ -148,6 +148,11 @@ if [[ -f ~/dotfiles/config/bash/.bash_profile ]]; then
   source ~/dotfiles/config/bash/.bash_profile
 fi
 
+# Load custom bash functions
+if [[ -f ~/dotfiles/config/bash/.bash_functions ]]; then
+  source ~/dotfiles/config/bash/.bash_functions
+fi
+
 [[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
