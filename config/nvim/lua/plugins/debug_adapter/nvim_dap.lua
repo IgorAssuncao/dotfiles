@@ -41,19 +41,16 @@ return {
         if not status_mason_registry then
             vim.notify("Error from plugins.debug_adapter.nvim_dap: mason-registry not found.")
         else
-            local codelldb = mason_registry.get_package("codelldb")
-            local extension_path = codelldb:get_install_path() .. "/extension/"
-            codelldb_path = extension_path .. "adapter/codelldb"
+            -- local codelldb = mason_registry.get_package("codelldb")
+            -- -- FIX: Function below is undefined, probably renamed to something else.
+            -- local extension_path = codelldb:get_install_path() .. "/extension/"
+            -- codelldb_path = extension_path .. "adapter/codelldb"
         end
 
-        nvim_dap.adapters.codelldb = {
-            type = "server",
-            port = "${port}",
-            executable = {
-                command = codelldb_path,
-                args = { "--port", "${port}" }
-            }
-        }
+        -- nvim_dap.adapters.codelldb = {
+        --     type = "executable",
+        --     command = codelldb_path
+        -- }
 
         local neodev = require("neodev")
         neodev.setup({
