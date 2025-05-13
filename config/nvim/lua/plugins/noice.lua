@@ -5,7 +5,10 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
-        { "MunifTanjim/nui.nvim" },
+        {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify"
+        },
     },
     opts = {
         lsp = {
@@ -29,7 +32,7 @@ return {
                     col = "50%"
                 },
                 size = {
-                    width = 60,
+                    width = "auto",
                     height = "auto"
                 }
             },
