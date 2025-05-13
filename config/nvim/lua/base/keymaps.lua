@@ -1,7 +1,5 @@
 vim.cmd.mapclear()
 
-vim.g.mapleader = " "
-
 local function set_keymap(params)
     local mode = params.mode or "n"
     local keys
@@ -160,12 +158,22 @@ local function _preview_location_callback(_, result)
 end
 
 function BASE.peekDefinition()
-    local params = vim.lsp.util.make_position_params()
+    local params = vim.lsp.util.make_position_params(0, 'utf-8')
     return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
 
+local common_lsp_keymaps = {
+    { "<leader>lr", function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
+    { "<leader>lp", function() BASE.peekDefinition() end,        desc = "[P]eek" },
+    { "<leader>lg", function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
+    { "<leader>ls", function() BASE.split_definition() end,      desc = "Open in [S]plit window" },
+    { "<leader>lv", function() BASE.split_definition("v") end,   desc = "Open in [V]ertical split window" },
+    { "<leader>lI", function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
+    { "<leader>lR", function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
+}
+
 function BASE.set_lsp_keymaps(bufnr, wk)
-    which_key.add({
+    wk.add({
         { mode = "i" },
         { "<c-h>",   function() vim.lsp.buf.signature_help() end, desc = "Signature Help" }
     })
@@ -173,20 +181,24 @@ function BASE.set_lsp_keymaps(bufnr, wk)
     wk.add({
         { buffer = bufnr },
         { "<leader>l",   group = "[L]sp" },
-        { "<leader>lp",  function() BASE.peekDefinition() end,        desc = "[P]eek" },
-        { "<leader>lg",  function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
-        { "<leader>ls",  function() BASE.split_definition() end,      desc = "Open in a [S]plit window" },
-        { "<leader>lv",  function() BASE.split_definition("v") end,   desc = "Open in a [V]ertical split window" },
-        { "<leader>li",  function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
-        { "<leader>lr",  function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
-        { "<leader>lR",  function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
         { "<leader>D",   group = "[D]iagnostics" },
-        { "<leader>Dh",  function() vim.diagnostic.hide() end,        desc = "[H]ide" },
-        { "<leader>Ds",  function() vim.diagnostic.show() end,        desc = "[S]how" },
-        { "<leader>Dp",  function() vim.diagnostic.goto_prev() end,   desc = "Previous diagnostic" },
-        { "<leader>Dn",  function() vim.diagnostic.goto_next() end,   desc = "Next diagnostic" },
+        { "<leader>Dh",  function() vim.diagnostic.hide() end,      desc = "[H]ide" },
+        { "<leader>Ds",  function() vim.diagnostic.show() end,      desc = "[S]how" },
+        -- FIX: goto_next and goto_prev has been deprecated
+        { "<leader>Dp",  function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
+        { "<leader>Dn",  function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
         -- "<leader>a", function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end, desc = "Code [A]ctions" }
-        { "<leader>a",   function() vim.lsp.buf.code_action() end,    desc = "Code [A]ctions" },
-        { "<leader>K",   function() vim.lsp.buf.hover() end,          desc = "Hover" }
+        { "<leader>a",   function() vim.lsp.buf.code_action() end,  desc = "Code [A]ctions" },
+        { "<leader>K",   function() vim.lsp.buf.hover() end,        desc = "Hover" }
     })
 end
+
+vim.api.nvim_create_autocmd(
+    { "FileType" },
+    {
+        pattern = { "help" },
+        callback = function()
+            which_key.add(common_lsp_keymaps)
+        end
+    }
+)
