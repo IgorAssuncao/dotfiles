@@ -33,12 +33,12 @@ return {
             lualine_z = { "location" }
         }
         opts.inactive_sections = {
-            -- lualine_a = { window },
+            lualine_a = { window },
             -- lualine_b = { "branch" },
-            -- lualine_c = { { "filename", path = 1 } },
+            lualine_c = { { "filename", path = 1 } },
             -- lualine_x = {},
-            -- lualine_y = { "diagnostics" },
-            -- lualine_z = { "location" }
+            lualine_y = { "diagnostics" },
+            lualine_z = { "location" }
         }
         table.insert(opts.sections.lualine_x, {
             symbols.get,
