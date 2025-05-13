@@ -6,7 +6,8 @@ return {
     --   { "<leader>nt", function() vim.cmd { cmd = "NvimTreeToggle" } end, desc = "[T]oggle" },
     -- },
     dependencies = {
-        "git@github.com:nvim-tree/nvim-web-devicons.git"
+        "echasnovski/mini.nvim",
+        "git@github.com:nvim-tree/nvim-web-devicons.git",
         -- "nvim-tree/nvim-web-devicons"
     },
     opts = {
