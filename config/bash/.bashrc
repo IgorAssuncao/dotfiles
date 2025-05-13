@@ -160,3 +160,7 @@ fi
 
 [[ $(command -v fzf) ]] && eval "$(fzf --bash)"
 
+[[ $commands[kubectl] ]] && source <(kubectl completion bash)
+[[ $commands[yq] ]] && source <(yq shell-completion bash)
+
+fastfetch
