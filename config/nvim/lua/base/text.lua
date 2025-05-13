@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd(
         callback = function()
             vim.highlight.on_yank({
                 higroup = "IncSearch",
-                timeout = 300
+                timeout = 500
             })
         end
     }
