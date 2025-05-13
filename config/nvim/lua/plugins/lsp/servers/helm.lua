@@ -1,10 +1,9 @@
-return function(opts)
-    opts.settings = {
+return {
+    settings = {
         ['helm-ls'] = {
             yamlls = {
                 path = "yaml-language-server"
             }
         }
     }
-    return opts
-end
+}

@@ -3,11 +3,14 @@
 -- file:close()
 -- print(output)
 
-return function(opts)
-    opts.settings = {
+return {
+    settings = {
         Lua = {
             diagnostics = {
-                globals = { "vim" }
+                globals = {
+                    "vim",
+                    "vim.g"
+                }
             },
             hint = {
                 enable = true
@@ -22,5 +25,4 @@ return function(opts)
             }
         }
     }
-    return opts
-end
+}

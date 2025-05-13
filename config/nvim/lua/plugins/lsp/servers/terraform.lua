@@ -1,5 +1,5 @@
-return function(opts)
-    opts.filetypes = {
+return {
+    filetypes = {
         "terraform",
         "terraform-vars",
         "tf",
@@ -15,6 +15,4 @@ return function(opts)
         ".tfrc",
         "*.tfrc"
     }
-
-    return opts
-end
+}

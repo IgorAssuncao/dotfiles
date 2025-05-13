@@ -1,5 +1,5 @@
-return function(opts)
-    opts.settings = {
+return {
+    settings = {
         gopls = {
             hints = {
                 assignVariableTypes = true,
@@ -12,5 +12,4 @@ return function(opts)
             }
         }
     }
-    return opts
-end
+}

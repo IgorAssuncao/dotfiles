@@ -14,8 +14,8 @@
 --   return false
 -- end
 
-return function(opts)
-    opts.settings = {
+return {
+    settings = {
         -- format = not eslint_config_exists(),
         javascript = {
             includeInlayEnumMemberValueHints = true,
@@ -36,6 +36,4 @@ return function(opts)
             includeInlayVariableTypeHints = true
         }
     }
-
-    return opts
-end
+}
