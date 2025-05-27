@@ -77,7 +77,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 decorations = "full"
 dynamic_padding = false
 # gtk_theme_variant = "None"
-opacity = 0.9
+opacity = 0.75
 startup_mode = "Windowed"
 title = "Alacritty"
 
