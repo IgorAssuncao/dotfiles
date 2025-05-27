@@ -8,23 +8,35 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
+    tab name="Personal Dev" {
+        pane
+    }
+    tab name="Dotfiles" {
+        pane {
+            name "Dotfiles"
+            command "cd ~/dotfiles/"
+        }
+    }
     tab name="Monitor" focus=true {
         pane split_direction="vertical" {
             pane focus=true
             pane {
                 pane
-                pane {
-                    name "htop"
-                    command "htop"
-                    // close_on_exit true
-                }
+                // pane {
+                //     name "htop"
+                //     command "htop"
+                //     // close_on_exit true
+                // }
             }
         }
     }
-    tab name="Default" {
+    tab name="Dev" {
         pane
     }
-    tab name="Dev" {
+    tab name="30%" {
+        pane
+    }
+    tab name="Other" {
         pane
     }
 }
