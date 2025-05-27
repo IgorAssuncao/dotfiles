@@ -11,21 +11,21 @@ local defaults = {
         docker = "dockerls",
         -- eslint = "eslint",
         go = "gopls",
-        grammarly = "grammarly",
-        helm = "helm_ls",
+        -- grammarly = "grammarly",
+        -- helm = "helm_ls",
         -- html = "html",
         json = "jsonls",
         lua = "lua_ls",
-        markdown = "marksman",
+        -- markdown = "marksman",
         -- python = "ruff",
         rust = "rust_analyzer",
         -- sql = "sqlls",
         toml = "taplo",
-        typescript = "ts_ls",
+        -- typescript = "ts_ls",
         terraform = "terraformls",
         -- terraform_lint = "tflint",
         vim = "vimls",
-        vue = "vuels",
+        -- vue = "vuels",
         yaml = "yamlls",
     },
     icons = {
@@ -110,7 +110,9 @@ setmetatable(M, {
         if options == nil then
             M.setup()
         end
-        return options[key]
+        if options ~= nil and key ~= nil then
+            return options[key]
+        end
     end
 })
 

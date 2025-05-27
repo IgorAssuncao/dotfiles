@@ -29,20 +29,20 @@ return {
                     "jsdoc",
                     "json",
                     "lua",
-                    "make",
-                    "markdown",
-                    "markdown_inline",
+                    -- "make",
+                    -- "markdown",
+                    -- "markdown_inline",
                     "python",
                     "regex",
                     "rust",
-                    "sql",
+                    -- "sql",
                     "terraform",
                     "toml",
-                    "tsx",
-                    "typescript",
+                    -- "tsx",
+                    -- "typescript",
                     "vim",
                     "vimdoc",
-                    "vue",
+                    -- "vue",
                     "yaml",
                 },
 
@@ -104,6 +104,8 @@ return {
                 }
             }
         )
-        require 'treesitter-context'.setup {}
+        require 'treesitter-context'.setup {
+            multiwindow = true
+        }
     end
 }
