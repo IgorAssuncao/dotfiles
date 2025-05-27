@@ -16,14 +16,14 @@ if not status_lazy then
 end
 
 lazy.setup({
-    {
-        "iamcco/markdown-preview.nvim",
-        build = "cd app & npm install",
-        config = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" }
-    },
+    -- {
+    --     "iamcco/markdown-preview.nvim",
+    --     build = "cd app & npm install",
+    --     config = function()
+    --         vim.g.mkdp_filetypes = { "markdown" }
+    --     end,
+    --     ft = { "markdown" }
+    -- },
     spec = {
         { import = "plugins" },
         { import = "plugins.lsp" },
@@ -35,4 +35,4 @@ lazy.setup({
 -- because of which-key plugin that registers keymaps.
 require("base.keymaps")
 
-require("after")
+vim.cmd("runtime! after/colors/init.lua")
