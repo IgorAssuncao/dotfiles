@@ -14,7 +14,9 @@ layout {
     tab name="Dotfiles" {
         pane {
             name "Dotfiles"
-            command "cd ~/dotfiles/"
+            cwd "~/dotfiles/"
+            command "nvim"
+            args "."
         }
     }
     tab name="Monitor" focus=true {
