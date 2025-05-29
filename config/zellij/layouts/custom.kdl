@@ -8,7 +8,7 @@ layout {
             plugin location="zellij:status-bar"
         }
     }
-    tab name="Personal Dev" {
+    tab name="Personal Dev" focus=true {
         pane
     }
     tab name="Dotfiles" {
@@ -19,26 +19,26 @@ layout {
             args "."
         }
     }
-    tab name="Monitor" focus=true {
-        pane split_direction="vertical" {
-            pane focus=true
-            pane {
-                pane
-                // pane {
-                //     name "htop"
-                //     command "htop"
-                //     // close_on_exit true
-                // }
-            }
-        }
-    }
+    // tab name="Monitor" {
+    //     pane split_direction="vertical" {
+    //         pane focus=true
+    //         pane {
+    //             pane
+    //             // pane {
+    //             //     name "htop"
+    //             //     command "htop"
+    //             //     // close_on_exit true
+    //             // }
+    //         }
+    //     }
+    // }
     tab name="Dev" {
         pane
     }
-    tab name="30%" {
-        pane
-    }
-    tab name="Other" {
+    // tab name="30%" {
+    //     pane
+    // }
+    tab name="Misc" {
         pane
     }
 }
