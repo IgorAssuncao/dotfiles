@@ -5,6 +5,7 @@
 	defaultBranch = main
 [core]
 	excludesfile = ~/dotfiles/config/git/.gitignore
+	bare = true
 [pull]
     rebase = true
 [push]
