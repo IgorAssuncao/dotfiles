@@ -50,6 +50,15 @@ return {
             { "<leader>gdh", function() vim.cmd { cmd = "diffget", args = { "//2" } } end,                                                          desc = "Choose diff content on left window" },
             { "<leader>gdl", function() vim.cmd { cmd = "diffget", args = { "//3" } } end,                                                          desc = "Choose diff content on right window" },
             { "<leader>gp",  function() vim.cmd.Git { args = { "push" } } end,                                                                      desc = "[P]ush" },
+            -- TODO: Somehow make this work, it can be useful in small and fast commits.
+            -- {
+            --     "<leader>gp",
+            --     function()
+            --         vim.cmd.Git { args = { "push" } }
+            --         vim.cmd.quit
+            --     end,
+            --     desc = "[P]ush"
+            -- },
             { "<leader>gP",  group = "[P]ull" },
             { "<leader>gPP", function() vim.cmd { cmd = "Git", args = { "pull" } } end,                                                             desc = "Default" },
             { "<leader>gPB", function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,            desc = "Default from [b]ranch" },
