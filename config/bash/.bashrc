@@ -160,7 +160,6 @@ fi
 
 [[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-[[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
 [[ -f "$HOME/.asdf/completions/asdf.bash" ]] && . "$HOME/.asdf/completions/asdf.bash"
 
 [[ $(command -v fzf) ]] && eval "$(fzf --bash)"
@@ -176,4 +175,3 @@ else
 fi
 
 [[ $commands[fastfetch] ]] && fastfetch
-. "$HOME/.cargo/env"
