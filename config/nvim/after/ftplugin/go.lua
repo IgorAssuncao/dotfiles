@@ -6,9 +6,9 @@ require("which-key").add({
     { "<leader>Lgi",   function() vim.cmd { cmd = "GoImpl", args = { vim.fn.input("<receiver_name> <receiver_type> <interface>: ") } } end, desc = "[I]mplement Interface" },
     { "<leader>Lgt",   group = "Manage [T]ags" },
     { "<leader>Lgta",  group = "Add [T]ags" },
-    { "<leader>Lgtaj", function() vim.cmd { cmd = "GoTagAdd json" } end,                                                                    desc = "[J]son tags" },
-    { "<leader>Lgtay", function() vim.cmd { cmd = "GoTagAdd yaml" } end,                                                                    desc = "[Y]aml tags" },
+    { "<leader>Lgtaj", function() vim.cmd { cmd = "GoTagAdd", args = { "json" } } end,                                                      desc = "[J]son tags" },
+    { "<leader>Lgtay", function() vim.cmd { cmd = "GoTagAdd", args = { "yaml" } } end,                                                      desc = "[Y]aml tags" },
     { "<leader>Lgtr",  group = "Remove [T]ags" },
-    { "<leader>Lgtaj", function() vim.cmd { cmd = "GoTagRm json" } end,                                                                     desc = "[J]son tags" },
-    { "<leader>Lgtay", function() vim.cmd { cmd = "GoTagRm yaml" } end,                                                                     desc = "[Y]aml tags" },
+    { "<leader>Lgtrj", function() vim.cmd { cmd = "GoTagRm", args = { "json" } } end,                                                       desc = "[J]son tags" },
+    { "<leader>Lgtry", function() vim.cmd { cmd = "GoTagRm", args = { "yaml" } } end,                                                       desc = "[Y]aml tags" },
 }, { buffer = bufnr })
