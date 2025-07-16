@@ -153,6 +153,11 @@ if [[ -f ~/dotfiles/config/bash/.bash_functions ]]; then
   source ~/dotfiles/config/bash/.bash_functions
 fi
 
+# Load custom bash aliases
+if [[ -f ~/dotfiles/config/bash/.bash_aliases ]]; then
+  source ~/dotfiles/config/bash/.bash_aliases
+fi
+
 [[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -f "$HOME/.asdf/asdf.sh" ]] && . "$HOME/.asdf/asdf.sh"
