@@ -5,6 +5,10 @@ return {
         { "nvim-treesitter/nvim-treesitter" }
     },
     event = "VeryLazy",
+    ft = "go",
+    build = function()
+        vim.cmd.GoInstallDeps()
+    end,
     config = function()
         require("gopher").setup {
             commands = {
