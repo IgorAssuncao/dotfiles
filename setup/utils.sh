@@ -16,3 +16,16 @@ createSymlink() {
     ln -s ~/system-config/config/$software ~/.config/$target
     echo "Created symlink for $t successfully"
 }
+
+install_pkg() {
+  pkg=$1
+  if [[ $distro == "ubuntu" ]]; then
+    sudo apt install -y $pkg
+  fi
+  if [[ $distro == "manjaro" || $distro == "arch" ]]; then
+    sudo pacman -S $pkg
+  fi
+  if [[ $distro == "void" ]]; then
+    sudo xbps-install $pkg
+  fi
+}
