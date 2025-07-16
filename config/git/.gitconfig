@@ -14,5 +14,5 @@
 	insteadOf = https://github.com/
 [worktree]
 	guessRemote = true
-[remote "origin"]
-    mirror = true
+; [remote "origin"]
+;     mirror = true
