@@ -165,7 +165,15 @@ fi
 
 [[ $(command -v fzf) ]] && eval "$(fzf --bash)"
 
-[[ $commands[kubectl] ]] && source <(kubectl completion bash)
-[[ $commands[yq] ]] && source <(yq shell-completion bash)
+set +o posix
+if [[ -s $HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh || -f /usr/share/bash-completion/bash_completion ]]; then
+   [[ $commands[kubectl] ]] && source <(kubectl completion bash)
+   [[ $commands[yq] ]] && source <(yq shell-completion bash)
+else
+    echo "bash-completion is not installed!"
+    echo "Skipping completions"
+    echo
+fi
 
-fastfetch
+[[ $commands[fastfetch] ]] && fastfetch
+. "$HOME/.cargo/env"
