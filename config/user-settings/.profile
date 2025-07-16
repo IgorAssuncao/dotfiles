@@ -53,6 +53,8 @@ fi
 # Start Hyprland
 [[ $(command -v Hyprland) && "$(tty)" = "/dev/tty1" ]] && exec dbus-run-session Hyprland
 
+checkAndSource $HOME/.asdf/asdf.sh
+
 # golang gopath
 # USER_LOCAL_BIN_PATH="$HOME/.local/bin"
 # GO_EXT_TOOLS_PATH="$USER_LOCAL_BIN_PATH/go_ext_tools"
@@ -67,5 +69,4 @@ fi
 export GOBIN="$(go env GOPATH)/bin"
 export PATH=$PATH:$GOBIN
 
-checkAndSource $HOME/.asdf/asdf.sh
 checkAndSource $HOME/.cargo/env
