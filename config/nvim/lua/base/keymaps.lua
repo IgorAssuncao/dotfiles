@@ -163,6 +163,7 @@ function BASE.peekDefinition()
 end
 
 local common_lsp_keymaps = {
+    { "<leader>l",  group = "[L]sp" },
     { "<leader>lr", function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
     { "<leader>lp", function() BASE.peekDefinition() end,        desc = "[P]eek" },
     { "<leader>lg", function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
@@ -180,7 +181,7 @@ function BASE.set_lsp_keymaps(bufnr, wk)
 
     wk.add({
         { buffer = bufnr },
-        { "<leader>l",   group = "[L]sp" },
+        common_lsp_keymaps,
         { "<leader>D",   group = "[D]iagnostics" },
         { "<leader>Dh",  function() vim.diagnostic.hide() end,      desc = "[H]ide" },
         { "<leader>Ds",  function() vim.diagnostic.show() end,      desc = "[S]how" },
