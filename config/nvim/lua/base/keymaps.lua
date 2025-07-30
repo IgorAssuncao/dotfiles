@@ -171,6 +171,8 @@ local common_lsp_keymaps = {
     { "<leader>lv", function() BASE.split_definition("v") end,   desc = "Open in [V]ertical split window" },
     { "<leader>lI", function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
     { "<leader>lR", function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
+    -- "<leader>a", function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end, desc = "Code [A]ctions" }
+    { "<leader>la", function() vim.lsp.buf.code_action() end,    desc = "Code [A]ctions" },
 }
 
 function BASE.set_lsp_keymaps(bufnr, wk)
@@ -188,8 +190,6 @@ function BASE.set_lsp_keymaps(bufnr, wk)
         -- FIX: goto_next and goto_prev has been deprecated
         { "<leader>Dp",  function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
         { "<leader>Dn",  function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
-        -- "<leader>a", function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end, desc = "Code [A]ctions" }
-        { "<leader>a",   function() vim.lsp.buf.code_action() end,  desc = "Code [A]ctions" },
         { "<leader>K",   function() vim.lsp.buf.hover() end,        desc = "Hover" }
     })
 end
