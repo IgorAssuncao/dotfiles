@@ -2,18 +2,10 @@
 
 return {
     "xiyaowong/transparent.nvim",
-    opts = {
-        extra_groups = {
-            "NormalFloat",
-            "NvimTreeNormal",
-            "NotifyBackground"
-        }
-    },
-    config = function(_, opts)
-        -- require("transparent").setup()
-        vim.opt.pumblend = 30
-        vim.opt.winblend = 30
-        -- vim.opt.hightlight-blend = 30
+    config = function()
+        vim.opt.pumblend = 50
+        vim.opt.winblend = 50
+        -- vim.opt.hightlight-blend = 50
 
         -- vim.g.transparent_groups = vim.list_extend(
         --   vim.g.transparent_groups or {},
@@ -21,6 +13,23 @@ return {
         --     return value.hl_group
         --   end, vim.tbl_values(require("bufferline.config").highlights or {}))
         -- )
+
+        require("transparent").setup({
+            extra_groups = {
+                "NormalFloat",
+                "NvimTreeNormal",
+                "NotifyBackground",
+                "Pmenu"
+            },
+            exclude_groups = {
+                -- "CursorLine",
+                -- "StatusLine",
+                -- "StatusLineNC",
+                -- "StatusLineTerm",
+                -- "StatusLineTermNC",
+                -- "LuaLine"
+            }
+        })
 
         vim.cmd { cmd = "TransparentEnable" }
     end

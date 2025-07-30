@@ -18,7 +18,7 @@ return {
             format = "{kind_icon}{symbol.name:Normal}",
             -- The following line is needed to fix the background color
             -- Set it to the lualine section you want to use
-            hl_group = "lualine_x_normal",
+            -- hl_group = "lualine_x_normal",
         })
 
         opts.options = {
