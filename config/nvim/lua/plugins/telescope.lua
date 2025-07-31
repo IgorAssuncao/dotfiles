@@ -9,7 +9,8 @@ return {
 
         -- Telescope extensions
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-        "ahmedkhalf/project.nvim",
+        -- NOTE: Removed project since not being used.
+        -- "ahmedkhalf/project.nvim",
         "ThePrimeagen/git-worktree.nvim",
         -- NOTE: Check note near EOF.
         -- {
@@ -94,11 +95,11 @@ return {
         -- Extensions
         telescope.load_extension('fzf')
 
-        require("project_nvim").setup()
-        telescope.load_extension("projects")
-        which_key.add({
-            { "<leader>fp", function() telescope.extensions.projects.projects {} end, desc = "[P]rojects" }
-        })
+        -- require("project_nvim").setup()
+        -- telescope.load_extension("projects")
+        -- which_key.add({
+        --     { "<leader>fp", function() telescope.extensions.projects.projects {} end, desc = "[P]rojects" }
+        -- })
 
         telescope.load_extension("notify")
 
