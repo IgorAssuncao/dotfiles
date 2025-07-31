@@ -18,7 +18,11 @@ return {
                 impl = "impl",
                 iferr = "iferr",
                 dlv = "dlv"
-            }
+            },
+            iferr = {
+                -- choose a custom error message
+                message = "fmt.Errorf(\"Error: %v\", err)",
+            },
         }
     end
 }
