@@ -33,7 +33,7 @@ local function set_keymap(params)
     return vim.keymap.set(mode, keys, cmd, _opts)
 end
 
-function BASE.set_keymaps(keymaps_list)
+local function set_keymaps(keymaps_list)
     for _, v in pairs(keymaps_list) do
         set_keymap(v)
     end
@@ -58,7 +58,7 @@ local keymaps = {
 --
 -- print(vim.cmd.buffers())
 
-BASE.set_keymaps(keymaps)
+set_keymaps(keymaps)
 
 local status_which_key, which_key = pcall(require, "which-key")
 if not status_which_key then
@@ -137,7 +137,7 @@ if not status_telescope_builtin then
     vim.notify("Error from base.keymaps: telescope.builtin not found.")
 end
 
-function BASE.split_definition(split_direction)
+local function split_definition(split_direction)
     split_direction = split_direction or "s"
 
     local split_direction_command = "split"
@@ -157,7 +157,7 @@ local function _preview_location_callback(_, result)
     vim.lsp.util.preview_location(result[1])
 end
 
-function BASE.peekDefinition()
+function peekDefinition()
     local params = vim.lsp.util.make_position_params(0, 'utf-8')
     return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
@@ -165,10 +165,10 @@ end
 local common_lsp_keymaps = {
     { "<leader>l",  group = "[L]sp" },
     { "<leader>lr", function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
-    { "<leader>lp", function() BASE.peekDefinition() end,        desc = "[P]eek" },
+    { "<leader>lp", function() peekDefinition() end,             desc = "[P]eek" },
     { "<leader>lg", function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
-    { "<leader>ls", function() BASE.split_definition() end,      desc = "Open in [S]plit window" },
-    { "<leader>lv", function() BASE.split_definition("v") end,   desc = "Open in [V]ertical split window" },
+    { "<leader>ls", function() split_definition() end,           desc = "Open in [S]plit window" },
+    { "<leader>lv", function() split_definition("v") end,        desc = "Open in [V]ertical split window" },
     { "<leader>lI", function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
     { "<leader>lR", function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
     -- "<leader>a", function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end, desc = "Code [A]ctions" }
