@@ -9,9 +9,9 @@ return {
         illuminate.configure()
 
         require("which-key").add({
-            { "<leader>i",  group = "[I]lluminate" },
-            { "<leader>in", function() illuminate.goto_next_reference() end, desc = "[N]ext reference" },
-            { "<leader>ip", function() illuminate.goto_prev_reference() end, desc = "[P]revious reference" }
+            { "<leader>i", group = "[I]lluminate" },
+            { "N",         function() illuminate.goto_next_reference() end, desc = "[N]ext reference" },
+            { "P",         function() illuminate.goto_prev_reference() end, desc = "[P]revious reference" }
         })
     end
 }
