@@ -8,6 +8,7 @@ return {
             "folke/neodev.nvim"
         },
     },
+    event = "VeryLazy",
     config = function()
         local status_nvim_dap_virtual_text, nvim_dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
         if not status_nvim_dap_virtual_text then
