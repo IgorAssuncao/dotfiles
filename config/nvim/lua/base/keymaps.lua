@@ -184,12 +184,12 @@ function BASE.set_lsp_keymaps(bufnr, wk)
     wk.add({
         { buffer = bufnr },
         common_lsp_keymaps,
-        { "<leader>D",   group = "[D]iagnostics" },
-        { "<leader>Dh",  function() vim.diagnostic.hide() end,      desc = "[H]ide" },
-        { "<leader>Ds",  function() vim.diagnostic.show() end,      desc = "[S]how" },
+        { "<leader>d",   group = "[D]iagnostics" },
+        { "<leader>dh",  function() vim.diagnostic.hide() end,      desc = "[H]ide" },
+        { "<leader>ds",  function() vim.diagnostic.show() end,      desc = "[S]how" },
         -- FIX: goto_next and goto_prev has been deprecated
-        { "<leader>Dp",  function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
-        { "<leader>Dn",  function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
+        { "<leader>dp",  function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
+        { "<leader>dn",  function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
         { "<leader>K",   function() vim.lsp.buf.hover() end,        desc = "Hover" }
     })
 end

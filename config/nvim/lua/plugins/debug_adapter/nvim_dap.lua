@@ -63,12 +63,12 @@ return {
         })
 
         require("which-key").add({
-            { "<leader>d",  group = "[D]ap" },
-            { "<leader>dt", function() nvim_dap_ui.toggle() end,               desc = "[T]oggle UI" },
-            { "<leader>db", function() nvim_dap.toggle_breakpoint() end,       desc = "Toggle [B]reakpoint" },
-            { "<leader>dr", function() nvim_dap_ui.open({ reset = true }) end, desc = "[R]eset UI" },
-            { "<leader>dc", function() nvim_dap.continue() end,                desc = "[C]ontinue" },
-            { "<leader>ds", function() nvim_dap.terminate() end,               desc = "[S]top" }
+            { "<leader>D",  group = "[D]ap" },
+            { "<leader>Dt", function() nvim_dap_ui.toggle() end,               desc = "[T]oggle UI" },
+            { "<leader>Db", function() nvim_dap.toggle_breakpoint() end,       desc = "Toggle [B]reakpoint" },
+            { "<leader>Dr", function() nvim_dap_ui.open({ reset = true }) end, desc = "[R]eset UI" },
+            { "<leader>Dc", function() nvim_dap.continue() end,                desc = "[C]ontinue" },
+            { "<leader>Ds", function() nvim_dap.terminate() end,               desc = "[S]top" }
         })
     end
 }
