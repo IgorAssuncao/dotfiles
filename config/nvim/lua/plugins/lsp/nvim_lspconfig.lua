@@ -63,10 +63,6 @@ return {
             }
 
             for k, v in pairs(lsp_servers) do
-                if k ~= "rust" then -- Rustaceanvim enables rust lsp by default
-                    vim.lsp.enable(v)
-                end
-
                 local require_ok, server_setup = pcall(require, "plugins.lsp.servers." .. k)
                 if require_ok then
                     local default_opts = vim.tbl_deep_extend("force", default_setup_opts, {})
@@ -77,6 +73,10 @@ return {
                     --   vim.notify("Error from plugins.p_lsp.mason.handlers: requiring servers." .. k .. " not found.")
 
                     vim.lsp.config(v, opts)
+                end
+
+                if k == "rust" then -- Rustaceanvim needs to have rust lsp disabled
+                    vim.lsp.enable(v, false)
                 end
             end
 

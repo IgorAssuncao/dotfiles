@@ -4,6 +4,11 @@ return {
     lazy = false,
     config = function()
         vim.g.rustaceanvim = {
+            tools = {
+                float_win_config = {
+                    auto_focus = true
+                },
+            },
             server = {
                 default_settings = {
                     ["rust-analyzer"] = {
