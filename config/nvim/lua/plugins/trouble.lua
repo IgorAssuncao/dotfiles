@@ -20,17 +20,21 @@ return {
             }
         })
 
+        local wkTroublePrefix = "<leader>t"
+
         local which_key = require("which-key")
         which_key.add({
-            { "<leader>T",   group = "[T]rouble" },
-            { "<leader>Td",  group = "[D]iagnostics" },
-            { "<leader>Tda", function() trouble.open("diagnostics") end,       desc = "[A]ll" },
-            { "<leader>Tde", function() trouble.open("diagnostics_error") end, desc = "[E]rror" },
-            { "<leader>Tdw", function() trouble.open("diagnostics_warn") end,  desc = "[W]arning" },
-            { "<leader>Ts",  function() trouble.open("symbols") end,           desc = "[S]ymbols" },
-            { "<leader>Tq",  function() trouble.open("quickfix") end,          desc = "[Q]uickFix" },
-            { "<leader>Tl",  function() trouble.open("loclist") end,           desc = "[L]ocList" },
-            { "<leader>Tr",  function() trouble.open("lsp_references") end,    desc = "Lsp [R]eferences" }
+            { wkTroublePrefix,         group = "[T]rouble" },
+            { wkTroublePrefix .. "d",  group = "[D]iagnostics" },
+            { wkTroublePrefix .. "da", function() trouble.open("diagnostics") end,       desc = "[A]ll" },
+            { wkTroublePrefix .. "de", function() trouble.open("diagnostics_error") end, desc = "[E]rror" },
+            { wkTroublePrefix .. "dw", function() trouble.open("diagnostics_warn") end,  desc = "[W]arning" },
+            { wkTroublePrefix .. "s",  function() trouble.open("symbols") end,           desc = "[S]ymbols" },
+            { wkTroublePrefix .. "q",  function() trouble.open("quickfix") end,          desc = "[Q]uickFix" },
+            { wkTroublePrefix .. "l",  function() trouble.open("loclist") end,           desc = "[L]ocList" },
+            { wkTroublePrefix .. "r",  function() trouble.open("lsp_references") end,    desc = "Lsp [R]eferences" },
+            { wkTroublePrefix .. "c",  group = "Todo [c]omments in Trouble" },
+            CreateTodoCommandTable(wkTroublePrefix .. "c", "TodoTrouble")
         })
     end
 }

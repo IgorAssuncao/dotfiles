@@ -1,7 +1,7 @@
 -- Plugin that helps finding TODO (and others) comments
 -- in various parts of the code.
 
-local function createTodoCommandTable(prefix, command)
+function CreateTodoCommandTable(prefix, command)
     return {
         { prefix .. "a", function() vim.cmd { cmd = command } end,                             desc = "[A]ll" },
         { prefix .. "t", function() vim.cmd { cmd = command, args = { "keywords=TODO" } } end, desc = "[T]odo" },
@@ -23,14 +23,11 @@ return {
     config = function()
         require("todo-comments").setup()
 
+        WkCommentPrefix = "<leader>c"
+
         require("which-key").add({
-            { "<leader>fc", group = "Todo [c]omments" },
-            createTodoCommandTable("<leader>fc", "TodoTelescope"),
-            { "<leader>t",  group = "[T]odo comments" },
-            { "<leader>tq", group = "Todo [Q]uickFix" },
-            createTodoCommandTable("<leader>tq", "TodoQuickFix"),
-            { "<leader>tt", group = "Todo [T]rouble" },
-            createTodoCommandTable("<leader>tt", "TodoTrouble")
+            { WkCommentPrefix, group = "Todo [c]omments in quickfix" },
+            CreateTodoCommandTable(WkCommentPrefix, "TodoQuickFix"),
         })
     end
 }

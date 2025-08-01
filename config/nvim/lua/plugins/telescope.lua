@@ -77,19 +77,23 @@ return {
 
         local builtin = require("telescope.builtin")
 
+        WkFindPrefix = "<leader>f"
+
         which_key.add({
-            { "<leader>f",   group = "Telescope Fuzzy [F]inder" },
-            { "<leader>fb",  builtin.current_buffer_fuzzy_find,                                        desc = "Current [b]uffer fuzzy find" },
-            { "<leader>ff",  builtin.find_files,                                                       desc = "Find [f]iles in cwd" },
-            { "<leader>fh",  builtin.help_tags,                                                        desc = "[H]elp Tags" },
-            { "<leader>fl",  builtin.live_grep,                                                        desc = "[L]ive [G]rep" },
-            { "<leader>fr",  builtin.resume,                                                           desc = "[R]esume" },
-            { "<leader>fw",  function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
-            { "<leader>fg",  group = "[G]it" },
-            { "<leader>fgb", builtin.git_bcommits,                                                     desc = "[B]ranches" },
-            { "<leader>fgc", builtin.git_commits,                                                      desc = "[C]ommits" },
-            { "<leader>fgf", builtin.git_files,                                                        desc = "[F]iles" },
-            { "<leader>fgs", builtin.git_status,                                                       desc = "Files in git [S]tatus" },
+            { WkFindPrefix,         group = "Telescope Fuzzy [F]inder" },
+            { WkFindPrefix .. "b",  builtin.current_buffer_fuzzy_find,                                        desc = "Current [b]uffer fuzzy find" },
+            { WkFindPrefix .. "f",  builtin.find_files,                                                       desc = "Find [f]iles in cwd" },
+            { WkFindPrefix .. "h",  builtin.help_tags,                                                        desc = "[H]elp Tags" },
+            { WkFindPrefix .. "l",  builtin.live_grep,                                                        desc = "[L]ive [G]rep" },
+            { WkFindPrefix .. "r",  builtin.resume,                                                           desc = "[R]esume" },
+            { WkFindPrefix .. "w",  function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
+            { WkFindPrefix .. "g",  group = "[G]it" },
+            { WkFindPrefix .. "gb", builtin.git_bcommits,                                                     desc = "[B]ranches" },
+            { WkFindPrefix .. "gc", builtin.git_commits,                                                      desc = "[C]ommits" },
+            { WkFindPrefix .. "gf", builtin.git_files,                                                        desc = "[F]iles" },
+            { WkFindPrefix .. "gs", builtin.git_status,                                                       desc = "Files in git [S]tatus" },
+            { WkFindPrefix .. "c",  group = "Todo [c]omments" },
+            CreateTodoCommandTable(WkFindPrefix .. "c", "TodoTelescope"),
         })
 
         -- Extensions
