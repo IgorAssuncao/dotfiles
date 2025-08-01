@@ -12,5 +12,5 @@ require("which-key").add({
     { "<leader>Lgtr",  group = "Remove [T]ags" },
     { "<leader>Lgtrj", function() vim.cmd { cmd = "GoTagRm", args = { "json" } } end,                                               desc = "[J]son tags" },
     { "<leader>Lgtry", function() vim.cmd { cmd = "GoTagRm", args = { "yaml" } } end,                                               desc = "[Y]aml tags" },
-    { "<leader>Lgtrm", function() vim.cmd { cmd = "GoTagAdd", args = { "mapstructure" } } end,                                      desc = "[Y]aml tags" },
+    { "<leader>Lgtrm", function() vim.cmd { cmd = "GoTagAdd", args = { "mapstructure" } } end,                                      desc = "[M]apstructure tags" },
 }, { buffer = bufnr })
