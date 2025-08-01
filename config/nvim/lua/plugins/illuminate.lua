@@ -10,8 +10,8 @@ return {
 
         require("which-key").add({
             { "<leader>i", group = "[I]lluminate" },
-            { "N",         function() illuminate.goto_next_reference() end, desc = "[N]ext reference" },
-            { "P",         function() illuminate.goto_prev_reference() end, desc = "[P]revious reference" }
+            { "<leader>N", function() illuminate.goto_next_reference() end, desc = "[N]ext reference" },
+            { "<leader>P", function() illuminate.goto_prev_reference() end, desc = "[P]revious reference" }
         })
     end
 }
