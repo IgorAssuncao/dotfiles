@@ -77,23 +77,23 @@ return {
 
         local builtin = require("telescope.builtin")
 
-        local wkFindPrefix = "<leader>f"
+        local wk_find_prefix = "<leader>f"
 
         which_key.add({
-            { wkFindPrefix,         group = "Telescope Fuzzy [F]inder" },
-            { wkFindPrefix .. "b",  builtin.current_buffer_fuzzy_find,                                        desc = "Current [b]uffer fuzzy find" },
-            { wkFindPrefix .. "f",  builtin.find_files,                                                       desc = "Find [f]iles in cwd" },
-            { wkFindPrefix .. "h",  builtin.help_tags,                                                        desc = "[H]elp Tags" },
-            { wkFindPrefix .. "l",  builtin.live_grep,                                                        desc = "[L]ive [G]rep" },
-            { wkFindPrefix .. "r",  builtin.resume,                                                           desc = "[R]esume" },
-            { wkFindPrefix .. "w",  function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
-            { wkFindPrefix .. "g",  group = "[G]it" },
-            { wkFindPrefix .. "gb", builtin.git_bcommits,                                                     desc = "[B]ranches" },
-            { wkFindPrefix .. "gc", builtin.git_commits,                                                      desc = "[C]ommits" },
-            { wkFindPrefix .. "gf", builtin.git_files,                                                        desc = "[F]iles" },
-            { wkFindPrefix .. "gs", builtin.git_status,                                                       desc = "Files in git [S]tatus" },
-            { wkFindPrefix .. "c",  group = "Todo [c]omments" },
-            CreateTodoCommandTable(wkFindPrefix .. "c", "TodoTelescope"),
+            { wk_find_prefix,         group = "Telescope Fuzzy [F]inder" },
+            { wk_find_prefix .. "b",  builtin.current_buffer_fuzzy_find, desc = "Current [b]uffer fuzzy find" },
+            { wk_find_prefix .. "f",  builtin.find_files,                desc = "Find [f]iles in cwd" },
+            { wk_find_prefix .. "h",  builtin.help_tags,                 desc = "[H]elp Tags" },
+            { wk_find_prefix .. "l",  builtin.live_grep,                 desc = "[L]ive [G]rep" },
+            { wk_find_prefix .. "r",  builtin.resume,                    desc = "[R]esume" },
+            -- { wk_find_prefix .. "w",  function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
+            { wk_find_prefix .. "g",  group = "[G]it" },
+            { wk_find_prefix .. "gb", builtin.git_bcommits,              desc = "[B]ranches" },
+            { wk_find_prefix .. "gc", builtin.git_commits,               desc = "[C]ommits" },
+            { wk_find_prefix .. "gf", builtin.git_files,                 desc = "[F]iles" },
+            { wk_find_prefix .. "gs", builtin.git_status,                desc = "Files in git [S]tatus" },
+            { wk_find_prefix .. "c",  group = "Todo [c]omments" },
+            CreateTodoCommandTable(wk_find_prefix .. "c", "TodoTelescope"),
         })
 
         -- Extensions
@@ -111,13 +111,13 @@ return {
             telescope.load_extension("notify")
         end
 
-        local wkGitWorktreePrefix = "<leader>gw"
+        local wk_git_worktree_prefix = "<leader>gw"
 
         telescope.load_extension("git_worktree")
         which_key.add({
-            { wkGitWorktreePrefix,        group = "[W]orktrees" },
-            { wkGitWorktreePrefix .. "c", function() telescope.extensions.git_worktree.create_git_worktree() end, desc = "[C]reate Worktree" },
-            { wkGitWorktreePrefix .. "l", function() telescope.extensions.git_worktree.git_worktrees() end,       desc = "[L]ist Worktrees" }
+            { wk_git_worktree_prefix,        group = "[W]orktrees" },
+            { wk_git_worktree_prefix .. "c", function() telescope.extensions.git_worktree.create_git_worktree() end, desc = "[C]reate Worktree" },
+            { wk_git_worktree_prefix .. "l", function() telescope.extensions.git_worktree.git_worktrees() end,       desc = "[L]ist Worktrees" }
         })
 
         -- NOTE: Attempt to integrate harpoon2 into telescope

@@ -24,21 +24,21 @@ return {
             }
         })
 
-        local wkTroublePrefix = "<leader>t"
+        local wk_trouble_prefix = "<leader>t"
 
         local which_key = require("which-key")
         which_key.add({
-            { wkTroublePrefix,         group = "[T]rouble" },
-            { wkTroublePrefix .. "d",  group = "[D]iagnostics" },
-            { wkTroublePrefix .. "da", function() trouble.open("diagnostics") end,       desc = "[A]ll" },
-            { wkTroublePrefix .. "de", function() trouble.open("diagnostics_error") end, desc = "[E]rror" },
-            { wkTroublePrefix .. "dw", function() trouble.open("diagnostics_warn") end,  desc = "[W]arning" },
-            { wkTroublePrefix .. "s",  function() trouble.open("symbols") end,           desc = "[S]ymbols" },
-            { wkTroublePrefix .. "q",  function() trouble.open("quickfix") end,          desc = "[Q]uickFix" },
-            { wkTroublePrefix .. "l",  function() trouble.open("loclist") end,           desc = "[L]ocList" },
-            { wkTroublePrefix .. "r",  function() trouble.open("lsp_references") end,    desc = "Lsp [R]eferences" },
-            { wkTroublePrefix .. "c",  group = "Todo [c]omments in Trouble" },
-            CreateTodoCommandTable(wkTroublePrefix .. "c", "TodoTrouble")
+            { wk_trouble_prefix,         group = "[T]rouble" },
+            { wk_trouble_prefix .. "d",  group = "[D]iagnostics" },
+            { wk_trouble_prefix .. "da", function() trouble.open("diagnostics") end,       desc = "[A]ll" },
+            { wk_trouble_prefix .. "de", function() trouble.open("diagnostics_error") end, desc = "[E]rror" },
+            { wk_trouble_prefix .. "dw", function() trouble.open("diagnostics_warn") end,  desc = "[W]arning" },
+            { wk_trouble_prefix .. "s",  function() trouble.open("symbols") end,           desc = "[S]ymbols" },
+            { wk_trouble_prefix .. "q",  function() trouble.open("quickfix") end,          desc = "[Q]uickFix" },
+            { wk_trouble_prefix .. "l",  function() trouble.open("loclist") end,           desc = "[L]ocList" },
+            { wk_trouble_prefix .. "r",  function() trouble.open("lsp_references") end,    desc = "Lsp [R]eferences" },
+            { wk_trouble_prefix .. "c",  group = "Todo [c]omments in Trouble" },
+            CreateTodoCommandTable(wk_trouble_prefix .. "c", "TodoTrouble")
         })
     end
 }

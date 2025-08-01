@@ -42,7 +42,7 @@ return {
                     if not status_which_key then
                         vim.notify("Error from plugins.lsp.nvim_lspconfig: which-key not found.")
                     else
-                        BASE.set_lsp_keymaps(bufnr, which_key)
+                        BASE.set_lsp_diagnostics_keymaps(bufnr, which_key)
 
                         local status_telescope_builtin, telescope_builtin = pcall(require, "telescope.builtin")
                         if not status_telescope_builtin then

@@ -66,24 +66,29 @@ if not status_which_key then
     -- return {}
 end
 
+local function exit()
+    vim.cmd.exit {}
+    vim.cmd.bd {}
+end
+
 which_key.add({
     { "<leader>",   group = "Custom" },
-    { "<leader>C",  function() vim.cmd("nohls") end,             desc = "[C]lear Search Highlighting" },
-    { "<leader>E",  vim.cmd.Ex,                                  desc = "[E]xplorer" },
+    { "<leader>C",  function() vim.cmd("nohls") end,   desc = "[C]lear Search Highlighting" },
+    { "<leader>E",  vim.cmd.Ex,                        desc = "[E]xplorer" },
     { "<leader>b",  group = "[B]uffer" },
-    { "<leader>bd", vim.cmd.bd,                                  desc = "[D]elete" },
-    { "<leader>bn", vim.cmd.bn,                                  desc = "[N]ext" },
-    { "<leader>bp", vim.cmd.bp,                                  desc = "[P]revious" },
-    { "<leader>q",  function() vim.cmd.quit {} end,              desc = "[Q]uit" },
-    { "<leader>Q",  function() vim.cmd.quit { bang = true } end, desc = "Force [Q]uit" },
-    { "<leader>w",  function() vim.cmd.write {} end,             desc = "[W]rite" },
-    { "<leader>x",  function() vim.cmd.exit {} end,              desc = "E[x]it" },
-    { "<Left>",     vim.cmd.bp,                                  desc = "Previous buffer" },
-    { "<Right>",    vim.cmd.bn,                                  desc = "Next buffer" },
-    { "<M-,>",      "<C-w>5<",                                   desc = "Decrease window width by 5" },
-    { "<M-.>",      "<C-w>5>",                                   desc = "Increase window width by 5" },
-    { "<M-t>",      "<C-w>+",                                    desc = "Decrease window height by 5" },
-    { "<M-s>",      "<C-w>-",                                    desc = "Decrease window height by 5" }
+    { "<leader>bd", vim.cmd.bd,                        desc = "[D]elete" },
+    { "<leader>bn", vim.cmd.bn,                        desc = "[N]ext" },
+    { "<leader>bp", vim.cmd.bp,                        desc = "[P]revious" },
+    { "<leader>q",  function() vim.cmd.quit {} end,    desc = "[Q]uit" },
+    { "<leader>Q",  function() vim.cmd.quitall {} end, desc = "[Q]uit all" },
+    { "<leader>w",  function() vim.cmd.write {} end,   desc = "[W]rite" },
+    { "<leader>x",  function() exit() end,             desc = "E[x]it and delete buffer" },
+    { "<Left>",     vim.cmd.bp,                        desc = "Previous buffer" },
+    { "<Right>",    vim.cmd.bn,                        desc = "Next buffer" },
+    { "<M-,>",      "<C-w>5<",                         desc = "Decrease window width by 5" },
+    { "<M-.>",      "<C-w>5>",                         desc = "Increase window width by 5" },
+    { "<M-t>",      "<C-w>+",                          desc = "Decrease window height by 5" },
+    { "<M-s>",      "<C-w>-",                          desc = "Decrease window height by 5" }
 })
 
 for i = 1, 9, 1 do
@@ -162,20 +167,34 @@ local function peekDefinition()
     return vim.lsp.buf_request(0, "textDocument/definition", params, _preview_location_callback)
 end
 
-local common_lsp_keymaps = {
-    { "<leader>l",  group = "[L]sp" },
-    { "<leader>lr", function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
-    { "<leader>lp", function() peekDefinition() end,             desc = "[P]eek" },
-    { "<leader>lg", function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
-    { "<leader>ls", function() split_definition() end,           desc = "Open in [S]plit window" },
-    { "<leader>lv", function() split_definition("v") end,        desc = "Open in [V]ertical split window" },
-    { "<leader>lI", function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
-    { "<leader>lR", function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
-    -- "<leader>a", function() require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end, desc = "Code [A]ctions" }
-    { "<leader>la", function() vim.lsp.buf.code_action() end,    desc = "Code [A]ctions" },
+local wk_leader_prefix = "<leader>"
+local wk_lsp_prefix = wk_leader_prefix .. "l"
+
+local lsp_keymaps = {
+    { wk_leader_prefix .. "K", function() vim.lsp.buf.hover() end,          desc = "Hover" },
+    { wk_lsp_prefix,           group = "[L]sp" },
+    { wk_lsp_prefix .. "r",    function() vim.lsp.buf.rename() end,         desc = "[R]ename" },
+    { wk_lsp_prefix .. "p",    function() peekDefinition() end,             desc = "[P]eek" },
+    { wk_lsp_prefix .. "g",    function() vim.lsp.buf.definition() end,     desc = "[G]o to in current window" },
+    { wk_lsp_prefix .. "s",    function() split_definition() end,           desc = "Open in [S]plit window" },
+    { wk_lsp_prefix .. "v",    function() split_definition("v") end,        desc = "Open in [V]ertical split window" },
+    { wk_lsp_prefix .. "I",    function() vim.lsp.buf.implementation() end, desc = "[I]mplementation" },
+    { wk_lsp_prefix .. "R",    function() vim.lsp.buf.references() end,     desc = "[R]eferences" },
+    { wk_lsp_prefix .. "a",    function() vim.lsp.buf.code_action() end,    desc = "Code [A]ctions" },
 }
 
-function BASE.set_lsp_keymaps(bufnr, wk)
+local wk_diagnostic_prefix = wk_leader_prefix .. "d"
+
+local diagnostic_keymaps = {
+    { wk_diagnostic_prefix,        group = "[D]iagnostics" },
+    { wk_diagnostic_prefix .. "h", function() vim.diagnostic.hide() end,      desc = "[H]ide" },
+    { wk_diagnostic_prefix .. "s", function() vim.diagnostic.show() end,      desc = "[S]how" },
+    -- FIX: goto_next and goto_prev has been deprecated
+    { wk_diagnostic_prefix .. "p", function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
+    { wk_diagnostic_prefix .. "n", function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
+}
+
+function BASE.set_lsp_diagnostics_keymaps(bufnr, wk)
     wk.add({
         { mode = "i" },
         { "<c-h>",   function() vim.lsp.buf.signature_help() end, desc = "Signature Help" }
@@ -183,14 +202,8 @@ function BASE.set_lsp_keymaps(bufnr, wk)
 
     wk.add({
         { buffer = bufnr },
-        common_lsp_keymaps,
-        { "<leader>d",   group = "[D]iagnostics" },
-        { "<leader>dh",  function() vim.diagnostic.hide() end,      desc = "[H]ide" },
-        { "<leader>ds",  function() vim.diagnostic.show() end,      desc = "[S]how" },
-        -- FIX: goto_next and goto_prev has been deprecated
-        { "<leader>dp",  function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
-        { "<leader>dn",  function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
-        { "<leader>K",   function() vim.lsp.buf.hover() end,        desc = "Hover" }
+        lsp_keymaps,
+        diagnostic_keymaps
     })
 end
 
@@ -199,7 +212,7 @@ vim.api.nvim_create_autocmd(
     {
         pattern = { "help" },
         callback = function()
-            which_key.add(common_lsp_keymaps)
+            which_key.add(lsp_keymaps)
         end
     }
 )
