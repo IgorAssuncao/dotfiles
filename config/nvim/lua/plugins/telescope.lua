@@ -77,23 +77,23 @@ return {
 
         local builtin = require("telescope.builtin")
 
-        WkFindPrefix = "<leader>f"
+        local wkFindPrefix = "<leader>f"
 
         which_key.add({
-            { WkFindPrefix,         group = "Telescope Fuzzy [F]inder" },
-            { WkFindPrefix .. "b",  builtin.current_buffer_fuzzy_find,                                        desc = "Current [b]uffer fuzzy find" },
-            { WkFindPrefix .. "f",  builtin.find_files,                                                       desc = "Find [f]iles in cwd" },
-            { WkFindPrefix .. "h",  builtin.help_tags,                                                        desc = "[H]elp Tags" },
-            { WkFindPrefix .. "l",  builtin.live_grep,                                                        desc = "[L]ive [G]rep" },
-            { WkFindPrefix .. "r",  builtin.resume,                                                           desc = "[R]esume" },
-            { WkFindPrefix .. "w",  function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
-            { WkFindPrefix .. "g",  group = "[G]it" },
-            { WkFindPrefix .. "gb", builtin.git_bcommits,                                                     desc = "[B]ranches" },
-            { WkFindPrefix .. "gc", builtin.git_commits,                                                      desc = "[C]ommits" },
-            { WkFindPrefix .. "gf", builtin.git_files,                                                        desc = "[F]iles" },
-            { WkFindPrefix .. "gs", builtin.git_status,                                                       desc = "Files in git [S]tatus" },
-            { WkFindPrefix .. "c",  group = "Todo [c]omments" },
-            CreateTodoCommandTable(WkFindPrefix .. "c", "TodoTelescope"),
+            { wkFindPrefix,         group = "Telescope Fuzzy [F]inder" },
+            { wkFindPrefix .. "b",  builtin.current_buffer_fuzzy_find,                                        desc = "Current [b]uffer fuzzy find" },
+            { wkFindPrefix .. "f",  builtin.find_files,                                                       desc = "Find [f]iles in cwd" },
+            { wkFindPrefix .. "h",  builtin.help_tags,                                                        desc = "[H]elp Tags" },
+            { wkFindPrefix .. "l",  builtin.live_grep,                                                        desc = "[L]ive [G]rep" },
+            { wkFindPrefix .. "r",  builtin.resume,                                                           desc = "[R]esume" },
+            { wkFindPrefix .. "w",  function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, desc = "Find [W]ord" },
+            { wkFindPrefix .. "g",  group = "[G]it" },
+            { wkFindPrefix .. "gb", builtin.git_bcommits,                                                     desc = "[B]ranches" },
+            { wkFindPrefix .. "gc", builtin.git_commits,                                                      desc = "[C]ommits" },
+            { wkFindPrefix .. "gf", builtin.git_files,                                                        desc = "[F]iles" },
+            { wkFindPrefix .. "gs", builtin.git_status,                                                       desc = "Files in git [S]tatus" },
+            { wkFindPrefix .. "c",  group = "Todo [c]omments" },
+            CreateTodoCommandTable(wkFindPrefix .. "c", "TodoTelescope"),
         })
 
         -- Extensions

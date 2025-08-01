@@ -23,11 +23,11 @@ return {
     config = function()
         require("todo-comments").setup()
 
-        WkCommentPrefix = "<leader>c"
+        local wkCommentPrefix = "<leader>c"
 
         require("which-key").add({
-            { WkCommentPrefix, group = "Todo [c]omments in quickfix" },
-            CreateTodoCommandTable(WkCommentPrefix, "TodoQuickFix"),
+            { wkCommentPrefix, group = "Todo [c]omments in quickfix" },
+            CreateTodoCommandTable(wkCommentPrefix, "TodoQuickFix"),
         })
     end
 }
