@@ -9,9 +9,9 @@ return {
 
         -- Telescope extensions
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        "ThePrimeagen/git-worktree.nvim",
         -- NOTE: Removed project since not being used.
         -- "ahmedkhalf/project.nvim",
-        "ThePrimeagen/git-worktree.nvim",
         -- NOTE: Check note near EOF.
         -- {
         --     "theprimeagen/harpoon",
@@ -22,9 +22,9 @@ return {
     config = function()
         local telescope = require("telescope")
 
-        local status_trouble, trouble = pcall(require, "trouble.sources.telescope")
+        local has_trouble, trouble = pcall(require, "trouble.sources.telescope")
         local mappings = {}
-        if not status_trouble then
+        if not has_trouble then
             vim.notify("Error from plugins.telescope: trouble not found.\nUnable to bind trouble keymaps to telescope")
         else
             mappings = {
@@ -105,14 +105,19 @@ return {
         --     { "<leader>fp", function() telescope.extensions.projects.projects {} end, desc = "[P]rojects" }
         -- })
 
-        telescope.load_extension("notify")
+        local has_notify, _ = pcall(require, "notify")
 
-        require("git-worktree").setup()
+        if has_notify then
+            telescope.load_extension("notify")
+        end
+
+        local wkGitWorktreePrefix = "<leader>gw"
+
         telescope.load_extension("git_worktree")
         which_key.add({
-            { "<leader>gw",  group = "[W]orktrees" },
-            { "<leader>gwc", function() telescope.extensions.git_worktree.create_git_worktree() end, desc = "[C]reate Worktree" },
-            { "<leader>gwl", function() telescope.extensions.git_worktree.git_worktrees() end,       desc = "[L]ist Worktrees" }
+            { wkGitWorktreePrefix,        group = "[W]orktrees" },
+            { wkGitWorktreePrefix .. "c", function() telescope.extensions.git_worktree.create_git_worktree() end, desc = "[C]reate Worktree" },
+            { wkGitWorktreePrefix .. "l", function() telescope.extensions.git_worktree.git_worktrees() end,       desc = "[L]ist Worktrees" }
         })
 
         -- NOTE: Attempt to integrate harpoon2 into telescope
