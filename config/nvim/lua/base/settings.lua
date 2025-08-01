@@ -10,7 +10,7 @@ vim.opt.smartindent = true
 vim.opt.textwidth = 80
 
 vim.opt.ruler = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 vim.opt.wrap = false
 

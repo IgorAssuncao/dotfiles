@@ -1,36 +1,39 @@
 -- Plugin that allows Nvim to have a transparent background.
 
 return {
-    "xiyaowong/transparent.nvim",
-    config = function()
-        vim.opt.pumblend = 50
-        vim.opt.winblend = 50
-        -- vim.opt.hightlight-blend = 50
-
-        -- vim.g.transparent_groups = vim.list_extend(
-        --   vim.g.transparent_groups or {},
-        --   vim.tbl_map(function(value)
-        --     return value.hl_group
-        --   end, vim.tbl_values(require("bufferline.config").highlights or {}))
-        -- )
-
-        require("transparent").setup({
-            extra_groups = {
-                "NormalFloat",
-                "NvimTreeNormal",
-                "NotifyBackground",
-                "Pmenu"
-            },
-            exclude_groups = {
-                -- "CursorLine",
-                -- "StatusLine",
-                -- "StatusLineNC",
-                -- "StatusLineTerm",
-                -- "StatusLineTermNC",
-                -- "LuaLine"
-            }
-        })
-
-        vim.cmd { cmd = "TransparentEnable" }
-    end
+    -- "xiyaowong/transparent.nvim",
+    -- config = function()
+    --     vim.opt.pumblend = 50
+    --     vim.opt.winblend = 50
+    --     -- vim.opt.hightlight-blend = 50
+    --
+    --     -- vim.g.transparent_groups = vim.list_extend(
+    --     --   vim.g.transparent_groups or {},
+    --     --   vim.tbl_map(function(value)
+    --     --     return value.hl_group
+    --     --   end, vim.tbl_values(require("bufferline.config").highlights or {}))
+    --     -- )
+    --
+    --     require("transparent").setup({
+    --         extra_groups = {
+    --             -- "NormalFloat",
+    --             -- "NvimTreeNormal",
+    --             -- "NotifyBackground",
+    --             -- "Pmenu"
+    --         },
+    --         exclude_groups = {
+    --             "NormalFloat",
+    --             "NotifyBackground",
+    --             "Pmenu",
+    --             -- "CursorLine",
+    --             "StatusLine",
+    --             "StatusLineNC",
+    --             "StatusLineTerm",
+    --             "StatusLineTermNC",
+    --             -- "LuaLine"
+    --         }
+    --     })
+    --
+    --     vim.cmd { cmd = "TransparentEnable" }
+    -- end
 }
