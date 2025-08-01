@@ -8,7 +8,11 @@ return {
     config = function()
         local trouble = require("trouble")
         trouble.setup({
+            auto_preview = false,
             modes = {
+                lsp_base = {
+                    include_current = true
+                },
                 diagnostics_error = {
                     mode = "diagnostics",
                     filter = { severity = vim.diagnostic.severity.ERROR }
