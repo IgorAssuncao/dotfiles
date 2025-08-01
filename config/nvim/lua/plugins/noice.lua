@@ -7,7 +7,9 @@ return {
     dependencies = {
         {
             "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify"
+            -- NOTE: Only use nvim-notify if you want to have
+            -- notifications view.
+            -- "rcarriga/nvim-notify"
         },
     },
     opts = {
