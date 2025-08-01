@@ -66,11 +66,6 @@ if not status_which_key then
     -- return {}
 end
 
-local function exit()
-    vim.cmd.exit {}
-    vim.cmd.bd {}
-end
-
 which_key.add({
     { "<leader>",   group = "Custom" },
     { "<leader>C",  function() vim.cmd("nohls") end,   desc = "[C]lear Search Highlighting" },
@@ -82,7 +77,7 @@ which_key.add({
     { "<leader>q",  function() vim.cmd.quit {} end,    desc = "[Q]uit" },
     { "<leader>Q",  function() vim.cmd.quitall {} end, desc = "[Q]uit all" },
     { "<leader>w",  function() vim.cmd.write {} end,   desc = "[W]rite" },
-    { "<leader>x",  function() exit() end,             desc = "E[x]it and delete buffer" },
+    { "<leader>x",  function() vim.cmd.exit {} end,    desc = "E[x]it and delete buffer" },
     { "<Left>",     vim.cmd.bp,                        desc = "Previous buffer" },
     { "<Right>",    vim.cmd.bn,                        desc = "Next buffer" },
     { "<M-,>",      "<C-w>5<",                         desc = "Decrease window width by 5" },
