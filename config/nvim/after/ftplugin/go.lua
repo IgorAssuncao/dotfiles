@@ -8,7 +8,7 @@ require("which-key").add({
     { "<leader>Lgta",  group = "Add [T]ags" },
     { "<leader>Lgtaj", function() vim.cmd { cmd = "GoTagAdd", args = { "json" } } end,                                              desc = "[J]son tags" },
     { "<leader>Lgtay", function() vim.cmd { cmd = "GoTagAdd", args = { "yaml" } } end,                                              desc = "[Y]aml tags" },
-    { "<leader>Lgtam", function() vim.cmd { cmd = "GoTagAdd", args = { "mapstructure" } } end,                                      desc = "[Y]aml tags" },
+    { "<leader>Lgtam", function() vim.cmd { cmd = "GoTagAdd", args = { "mapstructure" } } end,                                      desc = "[M]apstructure tags" },
     { "<leader>Lgtr",  group = "Remove [T]ags" },
     { "<leader>Lgtrj", function() vim.cmd { cmd = "GoTagRm", args = { "json" } } end,                                               desc = "[J]son tags" },
     { "<leader>Lgtry", function() vim.cmd { cmd = "GoTagRm", args = { "yaml" } } end,                                               desc = "[Y]aml tags" },
