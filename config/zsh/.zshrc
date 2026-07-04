@@ -113,3 +113,8 @@ source ~/dotfiles/config/zsh/.zsh_completion_yq
 
 fastfetch
 alias n="/home/igor/Downloads/nvim-linux64/bin/nvim"
+
+
+echo >> $HOME/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> $HOME/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
