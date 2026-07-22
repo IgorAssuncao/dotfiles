@@ -160,18 +160,24 @@ fi
 
 [[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-[[ -f "$HOME/.asdf/completions/asdf.bash" ]] && . "$HOME/.asdf/completions/asdf.bash"
+if [[ -d "$HOME/.asdf" ]]; then
+    [[ -f "$HOME/.asdf/completions/asdf.bash" ]] && . "$HOME/.asdf/completions/asdf.bash"
+fi
 
 [[ $(command -v fzf) ]] && eval "$(fzf --bash)"
 
 set +o posix
 if [[ -s $HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh || -f /usr/share/bash-completion/bash_completion ]]; then
-   [[ $commands[kubectl] ]] && source <(kubectl completion bash)
-   [[ $commands[yq] ]] && source <(yq shell-completion bash)
+   [[ $(command -v kubectl) ]] && source <(kubectl completion bash)
+   [[ $(command -v yq) ]] && source <(yq shell-completion bash)
 else
     echo "bash-completion is not installed!"
     echo "Skipping completions"
     echo
 fi
 
-[[ $commands[fastfetch] ]] && fastfetch
+[[ $(command -v fastfetch) ]] && fastfetch
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
