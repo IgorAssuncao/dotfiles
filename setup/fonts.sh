@@ -55,3 +55,7 @@ ensure_curl
 # install_fonts
 
 cd -
+
+if [[ $(uname) == "Darwin" && $(commands -v brew) ]]; then
+    brew install --cask font-roboto-mono-nerd-font font-hack-nerd-font
+fi
