@@ -8,12 +8,12 @@ if test -d /etc/profile.d/; then
     unset profile
 fi
 
-[[ -e /usr/share/defaults/etc/profile ]] && source /usr/share/defaults/etc/profile
+[[ -f /usr/share/defaults/etc/profile ]] && source /usr/share/defaults/etc/profile
 
 checkAndSource() {
     FILE=$1
     [[ -f $FILE ]] && . $FILE
-    [[ ! -f $FILE ]] && echo "$FILE not found."
+    # [[ ! -f $FILE ]] && echo "$FILE not found."
 }
 
 # Set our default path
@@ -50,8 +50,10 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
 
+# Start Sway
+[[ $(command -v sway) && "$(tty)" = "/dev/tty1" ]] && exec dbus-run-session sway
 # Start Hyprland
-[[ $(command -v Hyprland) && "$(tty)" = "/dev/tty1" ]] && exec dbus-run-session Hyprland
+[[ $(command -v Hyprland) && "$(tty)" = "/dev/tty7" ]] && exec dbus-run-session Hyprland
 
 checkAndSource $HOME/.asdf/asdf.sh
 
