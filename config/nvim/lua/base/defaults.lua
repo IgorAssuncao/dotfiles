@@ -26,7 +26,7 @@ local defaults = {
         -- terraform_lint = "tflint",
         vim = "vimls",
         -- vue = "vuels",
-        yaml = "yamlls",
+        -- yaml = "yamlls",
     },
     icons = {
         diagnostics = {},
