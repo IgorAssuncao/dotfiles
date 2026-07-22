@@ -6,9 +6,6 @@ return {
     },
     event = "VeryLazy",
     ft = "go",
-    build = function()
-        vim.cmd.GoInstallDeps()
-    end,
     config = function()
         require("gopher").setup {
             commands = {
@@ -24,5 +21,7 @@ return {
                 message = "fmt.Errorf(\"Error: %v\", err)",
             },
         }
+
+        -- vim.cmd.GoInstallDeps()
     end
 }
