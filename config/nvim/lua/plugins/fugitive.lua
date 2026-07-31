@@ -37,34 +37,36 @@ return {
     "tpope/vim-fugitive",
     event = "VeryLazy",
     config = function()
+        local wk_git_prefix = "<leader>g"
+
         require("which-key").add({
-            { "<leader>g",   group = "[G]it" },
-            { "<leader>gs",  vim.cmd.Git,                                                                                                           desc = "[S]tatus" },
-            { "<leader>gl",  vim.cmd.GcLog,                                                                                                         desc = "[L]og" },
-            { "<leader>gf",  function() vim.cmd.Git { args = { "fetch" } } end,                                                                     desc = "[F]etch" },
-            { "<leader>gb",  function() vim.cmd.Git { args = { "branch" } } end,                                                                    desc = "[B]ranch" },
-            { "<leader>gc",  group = "[C]heckout" },
-            { "<leader>gcb", function() vim.cmd.Git { args = { "switch " .. vim.fn.input("Target branch: ") } } end,                                desc = "[S]witch" },
-            { "<leader>gcc", function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,                             desc = "[C]reate branch" },
-            { "<leader>gd",  group = "[D]iff" },
-            { "<leader>gdh", function() vim.cmd { cmd = "diffget", args = { "//2" } } end,                                                          desc = "Choose diff content on left window" },
-            { "<leader>gdl", function() vim.cmd { cmd = "diffget", args = { "//3" } } end,                                                          desc = "Choose diff content on right window" },
-            { "<leader>gp",  function() vim.cmd.Git { args = { "push" } } end,                                                                      desc = "[P]ush" },
+            { wk_git_prefix,         group = "[G]it" },
+            { wk_git_prefix .. "s",  vim.cmd.Git,                                                                                                           desc = "[S]tatus" },
+            { wk_git_prefix .. "l",  vim.cmd.GcLog,                                                                                                         desc = "[L]og" },
+            { wk_git_prefix .. "f",  function() vim.cmd.Git { args = { "fetch" } } end,                                                                     desc = "[F]etch" },
+            { wk_git_prefix .. "b",  function() vim.cmd.Git { args = { "branch" } } end,                                                                    desc = "[B]ranch" },
+            { wk_git_prefix .. "c",  group = "[C]heckout" },
+            { wk_git_prefix .. "cb", function() vim.cmd.Git { args = { "switch " .. vim.fn.input("Target branch: ") } } end,                                desc = "[S]witch" },
+            { wk_git_prefix .. "cc", function() vim.cmd.Git { args = { "switch -c " .. vim.fn.input("Create branch: ") } } end,                             desc = "[C]reate branch" },
+            { wk_git_prefix .. "d",  group = "[D]iff" },
+            { wk_git_prefix .. "dh", function() vim.cmd { cmd = "diffget", args = { "//2" } } end,                                                          desc = "Choose diff content on left window" },
+            { wk_git_prefix .. "dl", function() vim.cmd { cmd = "diffget", args = { "//3" } } end,                                                          desc = "Choose diff content on right window" },
+            { wk_git_prefix .. "p",  function() vim.cmd.Git { args = { "push" } } end,                                                                      desc = "[P]ush" },
             -- TODO: Somehow make this work, it can be useful in small and fast commits.
             -- {
-            --     "<leader>gp",
+            --     wk_git_prefix .. "p",
             --     function()
             --         vim.cmd.Git { args = { "push" } }
             --         vim.cmd.quit
             --     end,
             --     desc = "[P]ush"
             -- },
-            { "<leader>gP",  group = "[P]ull" },
-            { "<leader>gPP", function() vim.cmd { cmd = "Git", args = { "pull" } } end,                                                             desc = "Default" },
-            { "<leader>gPB", function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,            desc = "Default from [b]ranch" },
-            { "<leader>gPM", function() vim.cmd { cmd = "Git", args = { "pull --no-rebase" } } end,                                                 desc = "[M]erge" },
-            { "<leader>gPR", function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end,                                                    desc = "[R]ebase" },
-            { "<leader>gPC", function() vim.cmd { cmd = "Git", args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } } end, desc = "Rebase from bran[c]h" },
+            { wk_git_prefix .. "P",  group = "[P]ull" },
+            { wk_git_prefix .. "PP", function() vim.cmd { cmd = "Git", args = { "pull" } } end,                                                             desc = "Default" },
+            { wk_git_prefix .. "PB", function() vim.cmd { cmd = "Git", args = { "pull origin " .. vim.fn.input("Branch to pull from: ") } } end,            desc = "Default from [b]ranch" },
+            { wk_git_prefix .. "PM", function() vim.cmd { cmd = "Git", args = { "pull --no-rebase" } } end,                                                 desc = "[M]erge" },
+            { wk_git_prefix .. "PR", function() vim.cmd { cmd = "Git", args = { "pull --rebase" } } end,                                                    desc = "[R]ebase" },
+            { wk_git_prefix .. "PC", function() vim.cmd { cmd = "Git", args = { "pull --rebase origin " .. vim.fn.input("Branch to rebase from: ") } } end, desc = "Rebase from bran[c]h" },
         })
     end
 }
