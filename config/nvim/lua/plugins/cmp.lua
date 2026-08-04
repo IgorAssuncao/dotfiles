@@ -12,7 +12,7 @@ local function create_sources_table()
 
     table.insert(sources, { name = "nvim_lsp" })
     table.insert(sources, { name = "nvim_lsp_signature_help" })
-    if vim.api.nvim_buf_get_option(0, "filetype") == "lua" then
+    if vim.api.nvim_get_option_value("filetype", {buf=0}) == "lua" then
         table.insert(sources, { name = "nvim_lua" })
     end
     table.insert(sources, { name = "luasnip" })

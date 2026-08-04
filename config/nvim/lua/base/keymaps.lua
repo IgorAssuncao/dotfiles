@@ -132,7 +132,7 @@ which_key.add({
 --     end)
 -- end
 
-local status_telescope_builtin, telescope_builtin = pcall(require, "telescope.builtin")
+local status_telescope_builtin, _ = pcall(require, "telescope.builtin")
 if not status_telescope_builtin then
     vim.notify("Error from base.keymaps: telescope.builtin not found.")
 end
@@ -185,8 +185,8 @@ local diagnostic_keymaps = {
     { wk_diagnostic_prefix .. "h", function() vim.diagnostic.hide() end,      desc = "[H]ide" },
     { wk_diagnostic_prefix .. "s", function() vim.diagnostic.show() end,      desc = "[S]how" },
     -- FIX: goto_next and goto_prev has been deprecated
-    { wk_diagnostic_prefix .. "p", function() vim.diagnostic.goto_prev() end, desc = "Previous diagnostic" },
-    { wk_diagnostic_prefix .. "n", function() vim.diagnostic.goto_next() end, desc = "Next diagnostic" },
+    { wk_diagnostic_prefix .. "p", function() vim.diagnostic.jump({count=-1, float=true}) end, desc = "Previous diagnostic" },
+    { wk_diagnostic_prefix .. "n", function() vim.diagnostic.jump({count=1, float=true}) end, desc = "Next diagnostic" },
 }
 
 function BASE.set_lsp_diagnostics_keymaps(bufnr, wk)
