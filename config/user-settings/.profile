@@ -51,6 +51,8 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 # Start Sway
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
 [[ $(command -v sway) && "$(tty)" = "/dev/tty1" ]] && exec dbus-run-session sway
 # Start Hyprland
 [[ $(command -v Hyprland) && "$(tty)" = "/dev/tty7" ]] && exec dbus-run-session Hyprland
