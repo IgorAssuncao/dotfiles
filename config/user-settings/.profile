@@ -1,12 +1,12 @@
 # $HOME/.profile
 
-# Load profiles from /etc/profile.d
-if test -d /etc/profile.d/; then
-    for profile in /etc/profile.d/*.sh; do
-        test -r "$profile" && . "$profile"
-    done
-    unset profile
-fi
+# # Load profiles from /etc/profile.d
+# if test -d /etc/profile.d/; then
+#     for profile in /etc/profile.d/*.sh; do
+#         test -r "$profile" && . "$profile"
+#     done
+#     unset profile
+# fi
 
 [[ -f /usr/share/defaults/etc/profile ]] && source /usr/share/defaults/etc/profile
 
