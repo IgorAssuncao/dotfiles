@@ -144,9 +144,9 @@ source "$OSH"/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 
 # Load interactive settings
-if [[ -f ~/dotfiles/config/bash/.bash_profile ]]; then
-  source ~/dotfiles/config/bash/.bash_profile
-fi
+# if [[ -f ~/dotfiles/config/bash/.bash_profile ]]; then
+#   source ~/dotfiles/config/bash/.bash_profile
+# fi
 
 # Load custom bash functions
 if [[ -f ~/dotfiles/config/bash/.bash_functions ]]; then
