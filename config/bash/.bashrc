@@ -175,12 +175,9 @@ else
     echo "Skipping completions"
     echo
 fi
+set -o posix
 
 [[ $(command -v fastfetch) ]] && fastfetch
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Pi
 export PATH="/home/ir0n/.local/share/pi-node/node-v22.23.1-linux-x64/bin:$PATH"
