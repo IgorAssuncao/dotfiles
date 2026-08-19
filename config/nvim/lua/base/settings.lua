@@ -7,12 +7,17 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
-vim.opt.textwidth = 80
+-- NOTE: Disabling it to use soft line wrap instead of hard line wrap.
+-- vim.opt.textwidth = 80
+
+-- NOTE: Soft line wrap options.
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
+-- vim.opt.columns = 80
 
 vim.opt.ruler = true
 vim.opt.cursorline = false
-
-vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
