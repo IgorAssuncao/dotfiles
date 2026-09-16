@@ -6,6 +6,13 @@ return {
     },
     event = "VeryLazy",
     ft = "go",
+    init = function()
+      -- Inject Go path specifically when this plugin initializes
+      local go_bin = os.getenv("GOBIN") or vim.fn.expand("$HOME/go/bin")
+      if vim.fn.isdirectory(go_bin) == 1 then
+        vim.env.PATH = go_bin .. ":" .. vim.env.PATH
+      end
+    end,
     config = function()
         require("gopher").setup {
             commands = {
