@@ -181,3 +181,13 @@ set -o posix
 
 # Pi
 export PATH="/home/ir0n/.local/share/pi-node/node-v22.23.1-linux-x64/bin:$PATH"
+
+
+
+
+
+# NOTE: Bash hook that executes before the command a user passes.
+# preexec_fn() {
+#     echo "Test"
+# }
+# trap 'preexec_fn' DEBUG
