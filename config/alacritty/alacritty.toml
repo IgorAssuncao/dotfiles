@@ -58,7 +58,7 @@ size = 10
 
 [font.normal]
 family = "RobotoMono Nerd Font"
-style = "Regular"
+style = "Bold"
 
 [mouse]
 hide_when_typing = false
