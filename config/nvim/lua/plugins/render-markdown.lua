@@ -8,6 +8,9 @@ return {
             lsp = {
                 enabled = true
             }
+        },
+        latex = {
+            enabled = false
         }
     },
 }
