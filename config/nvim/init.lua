@@ -16,14 +16,6 @@ if not status_lazy then
 end
 
 lazy.setup({
-    -- {
-    --     "iamcco/markdown-preview.nvim",
-    --     build = "cd app & npm install",
-    --     config = function()
-    --         vim.g.mkdp_filetypes = { "markdown" }
-    --     end,
-    --     ft = { "markdown" }
-    -- },
     spec = {
         { import = "plugins" },
         { import = "plugins.lsp" },
