@@ -1,28 +1,28 @@
-[colors.bright]
-black = "0x969896"
-blue = "0x00a0ff"
-cyan = "0x00ffff"
-green = "0x00ff63"
-magenta = "0xa36ac7"
-red = "0xcc342b"
-white = "0xc5c8c6"
-yellow = "0xffff00"
-
-[colors.normal]
-black = "0x1d1f21"
-blue = "0x00a0ff"
-cyan = "0x00ffff"
-green = "0x00ff63"
-magenta = "0xa36ac7"
-red = "0xcc342b"
-white = "0xffffff"
-yellow = "0xffff00"
-
-[colors.primary]
-background = "#1f1f1f"
-bright_foreground = "#ffffff"
-dim_foreground = "#9a9a9a"
-foreground = "#eaeaea"
+# [colors.bright]
+# black = "0x969896"
+# blue = "0x00a0ff"
+# cyan = "0x00ffff"
+# green = "0x00ff63"
+# magenta = "0xa36ac7"
+# red = "0xcc342b"
+# white = "0xc5c8c6"
+# yellow = "0xffff00"
+# 
+# [colors.normal]
+# black = "0x1d1f21"
+# blue = "0x00a0ff"
+# cyan = "0x00ffff"
+# green = "0x00ff63"
+# magenta = "0xa36ac7"
+# red = "0xcc342b"
+# white = "0xffffff"
+# yellow = "0xffff00"
+# 
+# [colors.primary]
+# background = "#1f1f1f"
+# bright_foreground = "#ffffff"
+# dim_foreground = "#9a9a9a"
+# foreground = "#eaeaea"
 
 [cursor]
 style = "Block"
@@ -97,3 +97,5 @@ y = 5
 # dynamic_title = true
 live_config_reload = true
 working_directory = "None"
+
+import = ["~/.config/alacritty/themes/cyberdream.toml"]
