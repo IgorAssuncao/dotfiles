@@ -3,12 +3,13 @@
 
 return {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    version = "*",
     dependencies = {
         "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        { "nvim-tree/nvim-web-devicons" },
 
         -- Telescope extensions
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         "ThePrimeagen/git-worktree.nvim",
         -- NOTE: Removed project since not being used.
         -- "ahmedkhalf/project.nvim",
