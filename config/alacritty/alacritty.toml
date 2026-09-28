@@ -38,7 +38,7 @@ render_timer = false
 TERM = "alacritty"
 
 [font]
-size = 10
+size = 12
 
 # [font.bold]
 # family = "Hack Nerd Font"

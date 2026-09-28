@@ -1,5 +1,10 @@
 local M = {}
 
+-- NOTE: This defaults.lsp_servers is giving me some ideas since
+-- Mason does not install everything I need (e.g codelldb).
+-- Maybe I can change this from key,value stuff to lua table or arrays.
+-- I just have to make sure that things are clearer so I can understand each
+-- tool's context
 local defaults = {
     -- load_colorscheme = function(colorscheme_name)
     --   require(colorscheme_name).load()
@@ -27,6 +32,9 @@ local defaults = {
         vim = "vimls",
         -- vue = "vuels",
         yaml = "yamlls",
+        -- yamlfix
+        -- yamlfmt
+        -- yamllint
     },
     icons = {
         diagnostics = {},
