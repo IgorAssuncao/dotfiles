@@ -91,7 +91,7 @@ function M.setup(opts)
     M.options = vim.tbl_deep_extend("force", options, opts or {})
 end
 
-function M.load(opts)
+function M.load()
     M.setup()
 end
 
