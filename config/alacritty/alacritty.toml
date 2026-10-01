@@ -38,7 +38,7 @@ render_timer = false
 TERM = "alacritty"
 
 [font]
-size = 12
+size = 9.5
 
 # [font.bold]
 # family = "Hack Nerd Font"
@@ -53,12 +53,16 @@ size = 12
 # style = "Italic"
 
 # [font.normal]
-# family = "Hack Nerd Font"
-# style = "Regular"
+# family = "Hurmit Nerd Font Mono"
+# style = "Bold"
 
 [font.normal]
-family = "RobotoMono Nerd Font"
+family = "Hack Nerd Font"
 style = "Bold"
+
+# [font.normal]
+# family = "RobotoMono Nerd Font"
+# style = "Bold"
 
 [mouse]
 hide_when_typing = false
