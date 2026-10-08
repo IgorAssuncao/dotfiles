@@ -175,7 +175,6 @@ else
     echo "Skipping completions"
     echo
 fi
-set -o posix
 
 [[ $(command -v fastfetch) ]] && fastfetch
 
