@@ -43,15 +43,6 @@ return {
                         vim.notify("Error from plugins.lsp.nvim_lspconfig: which-key not found.")
                     else
                         BASE.set_lsp_diagnostics_keymaps(bufnr, which_key)
-
-                        local status_telescope_builtin, telescope_builtin = pcall(require, "telescope.builtin")
-                        if not status_telescope_builtin then
-                            vim.notify("Error from plugins.lsp.nvim_lspconfig: telescope.builtin not found.")
-                        else
-                            which_key.add({
-                                { "<leader>Da", telescope_builtin.diagnostics, desc = "[A]ll" },
-                            })
-                        end
                     end
 
                     if client.name == "tsserver" then
